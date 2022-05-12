@@ -52,15 +52,6 @@ for event in event_list:
 	print("Event: " + event)
 	sub_data = sub_data_all[sub_data_all['redcap_event_name'].isin([event])]
 	sub_data = sub_data.reset_index(drop=True)
-	print(sub_data)
-
-	## TEST
-	#form = dict.loc[dict['Form Name'] == 'informed_consent']
-	#form_vars = form['Variable'].tolist()
-	#for var in form_vars:
-	#	if var in sub_data:
-	#		print(sub_data[var])
-
 
 	### Looping through each of the variables in each of the forms to calculate the total 		number of poten#tial variables, the variables that actually exist for the participant, 		and the % missing
 
@@ -83,7 +74,6 @@ for event in event_list:
 		miss=0
 		for variable in form_vars:
 			if (variable in sub_data) and sub_data[variable].isnull().values.any():
-				#if str(sub_data.loc[variable].isnull().values.any()):
 				miss=miss+1
 		all_forms.at["Missing_vars", name] = miss	
 
@@ -100,9 +90,9 @@ for event in event_list:
 			all_forms.at["Percentage", col] = 0
 
 	all_forms = all_forms.loc[:,~all_forms.columns.str.contains('^ sans-serif', case=False)] 
-	print(all_forms)
+	#print(all_forms)
 
-	## Looping through to get whcih forms are marked as complete
+	## Looping through to get whcih forms are marked as complete - currently not using
 	forms_complete = pd.DataFrame(columns = form_names)
 	col=0
 	for name in form_names:
@@ -119,20 +109,18 @@ for event in event_list:
 			else:
 				forms_complete.at["Completed", name] = "NA"
 
-	print(forms_complete.T)
+	#print(forms_complete.T)
 
 	# Create dataframe for date of interview and date of data entry
 	date_forms = pd.DataFrame(columns = form_names)
 	col=0
 	for name in form_names:
-		print(name)		
 		col=col+1
 		form = dict.loc[dict['Form Name'] == name]
 		form_vars = form['Variable / Field Name'].tolist()
 
 		for var in form_vars:
 			if '_interview_date' in var:
-				print(var)
 				date_forms.at["Interview_date", name] = sub_data.at[0, var]
                        
 		for var in form_vars:
@@ -141,7 +129,7 @@ for event in event_list:
 
 	date_forms = date_forms.loc[:,~date_forms.columns.str.contains('^ sans-serif', case=False)]
 	
-	print(date_forms.T)
+	#print(date_forms.T)
 	# Getting difference between dates & dropping forms without both dates
 	date_forms = date_forms.dropna(axis=1)
 
@@ -154,7 +142,7 @@ for event in event_list:
 			date_forms.at["Date_diff", col] = days_between(d1, d2)
 
 	date_forms = date_forms.add_suffix('_date')              
-	print(date_forms.T)
+	#print(date_forms.T)
 	# Removing forms that are missing data
 	for col in all_forms:
 		if all_forms.loc["Percentage", col] == 0:
@@ -188,16 +176,22 @@ for event in event_list:
 	dpdash_main = pd.DataFrame(columns = names_dash)
 	dpdash_main.at[event, 'subjectid'] = id
 	dpdash_main.at[event, 'site'] = site
-	dpdash_main.at[event, 'mtime'] = sub_data.at[0, "chric_consent_date"]
-	dpdash_main.at[event, 'day'] = 1
-	#print(dpdash_main)
+	# want to change this to the interview date
+	entry = date_forms.columns[1]
+	dpdash_main.at[event, 'mtime'] = date_forms.at["Interview_date", entry]
+
+	sub_consent = sub_data_all[sub_data_all['redcap_event_name'].isin(["screening_arm_1"])]
+	d1 = sub_consent.at[0, "chric_consent_date"]
+	d2 = date_forms.at["Interview_date", entry]
+	dpdash_main.at[event, 'day'] = days_between(d1, d2) + 1
 
 	frames = [dpdash_main, dp_con]
 	dpdash_full = pd.concat(frames, axis=1)
-	print(dpdash_full.T)
+	#print(dpdash_full.T)
 
 	# Saving to a csv based on ID and event
-	dpdash_full.to_csv("Pronet_status/"+event+"-"+site+"-"+id+"-formscheck-day1to1_3.csv", sep=',', index = False, header=True)
+	dpdash_full.to_csv("Pronet_status/"+event+"-"+site+"-"+id+"-formscheck.csv", sep=',', index = False, header=True)
+
 
 
 
