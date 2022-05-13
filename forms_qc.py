@@ -114,6 +114,7 @@ for event in event_list:
 	all_forms = all_forms.loc[:,~all_forms.columns.str.contains('^ sans-serif', case=False)] 
 	date_forms = date_forms.loc[:,~date_forms.columns.str.contains('^ sans-serif', case=False)]
 
+	forms_missing = forms_missing.dropna(axis=1)	
 	print(forms_missing.T)         	
 
 	# Getting difference between dates & dropping forms without both dates

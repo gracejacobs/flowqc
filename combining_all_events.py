@@ -24,10 +24,25 @@ day = dpdash.at[1,'day']
 day = str(day)
 # can reorder variables later if clearer
 
+# getting column names
+cols = list(dpdash.columns)
+to_remove = {'day', 'reftime', 'timeofday', 'weekday', 'site', 'mtime'}
+cols = [e for e in cols if e not in to_remove]
+cols = pd.DataFrame(columns = cols)
+
 # saving the csv
 dpdash.to_csv("Pronet_status/formqc-"+site+"-"+id+"-formscheck-day1to"+day+".csv", sep=',', index = False, header=True)
 
 dpdash.to_csv(output_path+"formqc-"+site+"-"+id+"-formscheck-day1to"+day+".csv", sep=',', index = False, header=True)
+
+# saving column names
+cols.to_csv("Column_names.csv", sep=",", index=False, header=True)
+
+#column_names = pd.read_csv("Column_names.csv")
+#cols = list(column_names.columns)
+#print(cols)
+
+
 
 
 

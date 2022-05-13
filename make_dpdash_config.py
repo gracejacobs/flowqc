@@ -17,7 +17,7 @@ for col in cols:
     template2['label']=col
     dict1['config'].append(template2)
 
-dict1['name']='formqc-2'
+dict1['name']='formqc-3'
 
-with open('/tmp/formqc-2.json','w') as f:
+with open('formqc-3.json','w') as f:
     json.dump(dict1,f,indent=3)

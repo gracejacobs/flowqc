@@ -5,3 +5,8 @@ For each event (e.g., screening, baseline) goes through all of the forms and cal
 
 #### combining_all_events.py
 Takes the individual csvs for each event and appends them into a master csv that can be uploaded to dpdash.
+
+#### making_dpdash_config.py
+Takes the formqc-1.json template and applies it to all of the variables based on the Column_names.csv generated in combining_all_events.py
+
+The new config file created from this script needs to be manually uploaded to dpdash and tagged as the default before running **/data/predict/utility/dpimport_formqc.sh** to import the csvs located in /data/predict/kcho/flow_test/formqc/
