@@ -57,6 +57,9 @@ for event in event_list:
 
 	#creating dataframe for output data
 	all_forms = pd.DataFrame(columns = form_names)
+	forms_missing = pd.DataFrame(columns = form_names)
+	date_forms = pd.DataFrame(columns = form_names)
+
 	col=0
 	for name in form_names:
 		col=col+1
@@ -64,18 +67,37 @@ for event in event_list:
 		form_vars = form['Variable / Field Name'].tolist()
 		#print('Number of variables/columns in form: ', len(form_vars))
 		all_forms.at["Tot_variables", name] = len(form_vars)
-	
+		
+		# Calculating how many variables per form exist in the json
 		ex=0
 		for var in form_vars:
 			if var in sub_data:
 				ex=ex+1 #print("Column", col, "exists in the DataFrame.")
 		all_forms.at["Existing_variables", name] = ex
 
+		# Calculating how many of those don't have values
 		miss=0
 		for variable in form_vars:
 			if (variable in sub_data) and sub_data[variable].isnull().values.any():
 				miss=miss+1
-		all_forms.at["Missing_vars", name] = miss	
+		all_forms.at["Missing_vars", name] = miss
+
+		#checking if there is information about missing data
+		for var in form_vars:
+			if 'missing_spec' in var and (var in sub_data):
+				#print(var)
+				forms_missing.at["Missing", name] = sub_data.at[0, var]
+		
+		# fill dataframe for date of interview and date of data entry 
+		for var in form_vars:
+			if '_interview_date' in var:
+				date_forms.at["Interview_date", name] = sub_data.at[0, var]
+                       
+		for var in form_vars:
+			if '_entry_date' in var:
+				date_forms.at["Entry_date", name] = sub_data.at[0, var]
+
+
 
 	# Calculating the percentage of missing as compared to the existing variables
 	for col in all_forms:
@@ -90,46 +112,10 @@ for event in event_list:
 			all_forms.at["Percentage", col] = 0
 
 	all_forms = all_forms.loc[:,~all_forms.columns.str.contains('^ sans-serif', case=False)] 
-	#print(all_forms)
-
-	## Looping through to get whcih forms are marked as complete - currently not using
-	forms_complete = pd.DataFrame(columns = form_names)
-	col=0
-	for name in form_names:
-		col=col+1
-		form = dict.loc[dict['Form Name'] == name]
-		form_vars = form['Variable / Field Name'].tolist()
-
-		# Add completed or not
-		for var in form_vars:
-			if 'complete' in var:
-				print(var)
-				#all_forms.at["Completed", name] = sub_data[var]
-				forms_complete.at["Completed", name] = "yes"
-			else:
-				forms_complete.at["Completed", name] = "NA"
-
-	#print(forms_complete.T)
-
-	# Create dataframe for date of interview and date of data entry
-	date_forms = pd.DataFrame(columns = form_names)
-	col=0
-	for name in form_names:
-		col=col+1
-		form = dict.loc[dict['Form Name'] == name]
-		form_vars = form['Variable / Field Name'].tolist()
-
-		for var in form_vars:
-			if '_interview_date' in var:
-				date_forms.at["Interview_date", name] = sub_data.at[0, var]
-                       
-		for var in form_vars:
-			if '_entry_date' in var:
-				date_forms.at["Entry_date", name] = sub_data.at[0, var]
-
 	date_forms = date_forms.loc[:,~date_forms.columns.str.contains('^ sans-serif', case=False)]
-	
-	#print(date_forms.T)
+
+	print(forms_missing.T)         	
+
 	# Getting difference between dates & dropping forms without both dates
 	date_forms = date_forms.dropna(axis=1)
 
@@ -142,12 +128,15 @@ for event in event_list:
 			date_forms.at["Date_diff", col] = days_between(d1, d2)
 
 	date_forms = date_forms.add_suffix('_date')              
-	#print(date_forms.T)
+	print(date_forms.T)
+	
 	# Removing forms that are missing data
 	for col in all_forms:
 		if all_forms.loc["Percentage", col] == 0:
 			#all_forms = all_forms.drop(col, axis=1, inplace=True)
 			del all_forms[col]
+
+	#print(all_forms.T)
 
 	# creating dpdash forms
 	dpdash_percent = pd.DataFrame(all_forms.loc["Percentage"])
@@ -160,15 +149,22 @@ for event in event_list:
 	dpdash_tot.columns = [event]
 	#print(dpdash_tot)
 
+	dpdash_miss = pd.DataFrame(forms_missing.loc["Missing"])
+	dpdash_miss.index = dpdash_miss.index.str.replace('(.*)', r'\1_miss')
+	dpdash_miss.columns = [event]
+	print(dpdash_miss)
+
 	dpdash_date = pd.DataFrame(date_forms.loc["Date_diff"])
 	dpdash_date.columns = [event]
 	#print(dpdash_date)
 
 	# concatenating all of the measures
-	frames = [dpdash_percent, dpdash_tot, dpdash_date]
+	frames = [dpdash_percent, dpdash_tot, dpdash_miss, dpdash_date]
 	dp_con = pd.concat(frames)
+
 	# reorganizing measures
 	dp_con = dp_con.sort_index(axis = 0)
+	print(dp_con)
 	dp_con = dp_con.transpose()
 	#print(dp_con)
 
@@ -183,6 +179,7 @@ for event in event_list:
 	sub_consent = sub_data_all[sub_data_all['redcap_event_name'].isin(["screening_arm_1"])]
 	d1 = sub_consent.at[0, "chric_consent_date"]
 	d2 = date_forms.at["Interview_date", entry]
+	# setting day as the difference between the consent date (day 1) and interview date
 	dpdash_main.at[event, 'day'] = days_between(d1, d2) + 1
 
 	frames = [dpdash_main, dp_con]
@@ -195,27 +192,27 @@ for event in event_list:
 
 
 
-
-## Looping through to get whcih forms have a missing table
-#forms_missing = pd.DataFrame(columns = form_names)
-#col=0
-#for name in form_names:
-#        col=col+1
-#        form = dict.loc[dict['Form Name'] == name]
-#        form_vars = form['Variable / Field Name'].tolist()
+## Looping through to get whcih forms are marked as complete - currently not using
+#	forms_complete = pd.DataFrame(columns = form_names)#
+#	col=0
+#	for name in form_names:
+#		col=col+1
+#		form = dict.loc[dict['Form Name'] == name]
+#		form_vars = form['Variable / Field Name'].tolist()
 #
-#        # Add missing data
-#        for var in form_vars:
-#                if 'missing' in var:
-#                        if (var in sub_data) and sub_data[var].isnull().values.any():
-#                        print(var)
-#                        #all_forms.at["Completed", name] = sub_data[var]
-#                        forms_complete.at["Missing", name] = "yes"
-#                else:
-#                        forms_complete.at["Missing", name] = "NA"
+#		# Add completed or not
+#		for var in form_vars:
+#			if 'complete' in var:
+#				#print(var)
+#				if (var in sub_data) and sub_data[var].isnull().values.any():
+#					#print(sub_data[var])
+#					forms_complete.at["Completed", name] = "yes"
+#			else:
+#				forms_complete.at["Completed", name] = "NA"
+#	
+#	forms_complete = forms_complete.loc[:,~forms_complete.columns.str.contains('^ sans-serif', case=False)]
+#	
 #
-#print(forms_missing.T)
-
 
 
 
