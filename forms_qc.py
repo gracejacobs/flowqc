@@ -115,7 +115,13 @@ for event in event_list:
 	date_forms = date_forms.loc[:,~date_forms.columns.str.contains('^ sans-serif', case=False)]
 
 	forms_missing = forms_missing.dropna(axis=1)	
-	print(forms_missing.T)         	
+	#print(forms_missing.T)  
+
+	# Removing forms that are missing all of their data
+	for col in all_forms:
+		if all_forms.loc["Percentage", col] == 0:
+			#all_forms = all_forms.drop(col, axis=1, inplace=True)
+			del all_forms[col]       	
 
 	# Getting difference between dates & dropping forms without both dates
 	date_forms = date_forms.dropna(axis=1)
@@ -129,16 +135,23 @@ for event in event_list:
 			date_forms.at["Date_diff", col] = days_between(d1, d2)
 
 	date_forms = date_forms.add_suffix('_date')              
-	print(date_forms.T)
+	#print(date_forms.T)
+
+	# Adding the _complete variable for each of the forms
+	completed = pd.DataFrame(columns = ['Variable', 'Value'])
+	ro=0
+	for col in sub_data:
+		#if '_complete' in col:
+		if col.endswith('_complete'):
+			ro=ro+1
+			completed.at[ro, 'Variable'] = col
+			completed.at[ro, 'Value'] = sub_data.at[0, col]
+			#completed = completed.append(df, ignore_index=True)
+
+	completed = completed.dropna(axis=0)
+	completed = completed.set_index('Variable')
+	#print(completed)
 	
-	# Removing forms that are missing data
-	for col in all_forms:
-		if all_forms.loc["Percentage", col] == 0:
-			#all_forms = all_forms.drop(col, axis=1, inplace=True)
-			del all_forms[col]
-
-	#print(all_forms.T)
-
 	# creating dpdash forms
 	dpdash_percent = pd.DataFrame(all_forms.loc["Percentage"])
 	dpdash_percent.index = dpdash_percent.index.str.replace('(.*)', r'\1_perc') 
@@ -153,14 +166,17 @@ for event in event_list:
 	dpdash_miss = pd.DataFrame(forms_missing.loc["Missing"])
 	dpdash_miss.index = dpdash_miss.index.str.replace('(.*)', r'\1_miss')
 	dpdash_miss.columns = [event]
-	print(dpdash_miss)
 
 	dpdash_date = pd.DataFrame(date_forms.loc["Date_diff"])
 	dpdash_date.columns = [event]
 	#print(dpdash_date)
 
+	# completed data
+	completed.columns = [event]
+	print(completed)
+
 	# concatenating all of the measures
-	frames = [dpdash_percent, dpdash_tot, dpdash_miss, dpdash_date]
+	frames = [dpdash_percent, dpdash_tot, dpdash_miss, dpdash_date, completed]
 	dp_con = pd.concat(frames)
 
 	# reorganizing measures
@@ -189,39 +205,6 @@ for event in event_list:
 
 	# Saving to a csv based on ID and event
 	dpdash_full.to_csv("Pronet_status/"+event+"-"+site+"-"+id+"-formscheck.csv", sep=',', index = False, header=True)
-
-
-
-
-## Looping through to get whcih forms are marked as complete - currently not using
-#	forms_complete = pd.DataFrame(columns = form_names)#
-#	col=0
-#	for name in form_names:
-#		col=col+1
-#		form = dict.loc[dict['Form Name'] == name]
-#		form_vars = form['Variable / Field Name'].tolist()
-#
-#		# Add completed or not
-#		for var in form_vars:
-#			if 'complete' in var:
-#				#print(var)
-#				if (var in sub_data) and sub_data[var].isnull().values.any():
-#					#print(sub_data[var])
-#					forms_complete.at["Completed", name] = "yes"
-#			else:
-#				forms_complete.at["Completed", name] = "NA"
-#	
-#	forms_complete = forms_complete.loc[:,~forms_complete.columns.str.contains('^ sans-serif', case=False)]
-#	
-#
-
-
-
-
-
-
-
-
 
 
 

@@ -31,9 +31,9 @@ cols = [e for e in cols if e not in to_remove]
 cols = pd.DataFrame(columns = cols)
 
 # saving the csv
-dpdash.to_csv("Pronet_status/formqc-"+site+"-"+id+"-formscheck-day1to"+day+".csv", sep=',', index = False, header=True)
+dpdash.to_csv("Pronet_status/formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
 
-dpdash.to_csv(output_path+"formqc-"+site+"-"+id+"-formscheck-day1to"+day+".csv", sep=',', index = False, header=True)
+dpdash.to_csv(output_path+"formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
 
 # saving column names
 cols.to_csv("Column_names.csv", sep=",", index=False, header=True)
