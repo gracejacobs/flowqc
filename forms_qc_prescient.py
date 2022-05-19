@@ -101,7 +101,8 @@ dpdash_main = pd.DataFrame(columns = names_dash)
 dpdash_main.at['Value', 'subjectid'] = id
 dpdash_main.at['Value', 'site'] = site
 dpdash_main.at['Value', 'mtime'] = inclusion.at[0, 'interview_date']
-dpdash_main.at['Value', 'day'] = 1
+day = '1'
+dpdash_main.at['Value', 'day'] = day
 
 frames = [dpdash_main, dp_con]
 dpdash_full = pd.concat(frames, axis=1)
@@ -109,9 +110,9 @@ print(dpdash_full.T)
 
 
 # saving the csv
-dpdash.to_csv("Prescient_status/formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
+dpdash_full.to_csv("Prescient_status/formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
 
-dpdash.to_csv(output_path+"formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
+dpdash_full.to_csv(output_path+"formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
 
 
 
