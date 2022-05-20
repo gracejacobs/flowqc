@@ -1,0 +1,22 @@
+{
+   "config": [
+      {
+         "_id": 0,
+         "analysis": "complete",
+         "category": "informed",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "informed_consent",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "informed_consent"
+      }
+   ],
+   "name": "formqc-complete_copy"
+}

@@ -32,8 +32,6 @@ demos = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Pre
 
 health = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_HealthConditions.csv")
 
-inclusion = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_InclusionExclusionCriteriaReview.csv")
-
 lifetime = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_LifetimeAP.csv")
 
 missing = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_MissingData.csv")
@@ -52,10 +50,10 @@ sofas = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Pre
 
 # All csvs have LastModifiedDate, subjectkey, interview_date, interview_age, gender, visit
 # making a list of names for each of the forms
-form_names = ['bprs', 'cdss', 'coenrollment', 'demos', 'health', 'inclusion', 'lifetime', 'missing', 'pgis', 'premorbidiq', 'promis', 'recruitment', 'inclusion', 'sofas']
+form_names = ['bprs', 'cdss', 'coenrollment', 'sociodemographics', 'health_conditions_genetics_fluid_biomarkers', 'lifetime_ap_exposure_screen', 'missing_data', 'pgis', 'premorbid_iq_reading_accuracy', 'item_promis_for_sleep', 'recruitment_source', 'inclusionexclusion_criteria_review', 'sofas_screening']
 
 # making a list of the dataframes
-forms = [bprs, cdss, coenrollment, demos, health, inclusion, lifetime, missing, pgis, premorbidiq, promis, recruitment, inclusion, sofas]
+forms = [bprs, cdss, coenrollment, demos, health, lifetime, missing, pgis, premorbidiq, promis, recruitment, inclusion, sofas]
 
 # creating a dataframe to store all the info
 forms_info = pd.DataFrame(index = form_names, columns = ['Visit', 'Interview_date', 'Total_Variables', 'Percent_complete'])
