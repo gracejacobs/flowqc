@@ -58,13 +58,13 @@ form_names = ['bprs', 'cdss', 'coenrollment', 'demos', 'health', 'inclusion', 'l
 forms = [bprs, cdss, coenrollment, demos, health, inclusion, lifetime, missing, pgis, premorbidiq, promis, recruitment, inclusion, sofas]
 
 # creating a dataframe to store all the info
-forms_info = pd.DataFrame(index = form_names, columns = ['Total', 'Missing', 'Percent_complete'])
+forms_info = pd.DataFrame(index = form_names, columns = ['Visit', 'Interview_date', 'Total_Variables', 'Percent_complete'])
 
 dpdash_tot = pd.DataFrame(index = form_names, columns = ['Value'])
 dpdash_percent = pd.DataFrame(index = form_names, columns = ['Value'])
 
 for df,name in zip(forms,form_names):
-	print(df.T)
+	#print(df.T)
 	#print('Visit: ', df.at[0, 'visit'])
 	num_var = len(df.T) - 6
 	#print("Number of variables: ", num_var)
@@ -72,8 +72,9 @@ for df,name in zip(forms,form_names):
 	#print('Missing variables: ', missing)
 	percent = 100 - round((missing/num_var)*100)
 
-	forms_info.at[name, 'Total'] = num_var
-	forms_info.at[name, 'Missing'] = missing
+	forms_info.at[name, 'Visit'] = df.at[0, 'visit']
+	forms_info.at[name, 'Interview_date'] = df.at[0, 'interview_date']
+	forms_info.at[name, 'Total_Variables'] = num_var
 	forms_info.at[name, 'Percent_complete'] = percent
 
 	dpdash_tot.at[name, 'Value'] = num_var
@@ -83,8 +84,8 @@ print(forms_info)
 
 dpdash_percent.index = dpdash_percent.index.str.replace('(.*)', r'\1_perc') 
 dpdash_tot.index = dpdash_tot.index.str.replace('(.*)', r'\1_tot') 
-print(dpdash_percent)
-print(dpdash_tot)
+#print(dpdash_percent)
+#print(dpdash_tot)
 
 # concatenating all of the measures
 frames = [dpdash_percent, dpdash_tot]
@@ -93,7 +94,7 @@ dp_con = pd.concat(frames)
 # reorganizing measures
 dp_con = dp_con.sort_index(axis = 0)
 dp_con = dp_con.transpose()
-print(dp_con)
+#print(dp_con)
 
 names_dash = ['day', 'reftime', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 

@@ -3,7 +3,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "subjectid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -26,7 +26,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "family",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "family_interview_for_genetic_studies_figs_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "family_interview_for_genetic_studies_figs_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "family",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -49,7 +72,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "family",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -72,7 +95,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "family",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -95,7 +118,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "guid",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "guid_form_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "guid_form_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "guid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -118,7 +164,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "guid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -141,7 +187,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "guid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -164,7 +210,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "health",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "health_conditions_genetics_fluid_biomarkers_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "health_conditions_genetics_fluid_biomarkers_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "health",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -187,7 +256,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "health",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -210,7 +279,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "health",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -233,7 +302,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "inclusionexclusion",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "inclusionexclusion_criteria_review_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "inclusionexclusion_criteria_review_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "inclusionexclusion",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -256,7 +348,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "inclusionexclusion",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -279,7 +371,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "informed",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "informed_consent_run_sheet_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "informed_consent_run_sheet_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "informed",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -302,7 +417,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "informed",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -325,7 +440,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "lifetime",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "lifetime_ap_exposure_screen_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "lifetime_ap_exposure_screen_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "lifetime",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -348,7 +486,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "lifetime",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -371,7 +509,76 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "missing",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "missing_data_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "missing_data_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "pa",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "pa_consent_chr_v_11nov2021_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "pa_consent_chr_v_11nov2021_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "past",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "past_pharmaceutical_treatment_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "past_pharmaceutical_treatment_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "past",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -394,7 +601,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "psychs_p1p8_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "psychs_p1p8_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -417,7 +647,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -440,7 +670,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -463,7 +693,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "psychs_p9ac32_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "psychs_p9ac32_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -486,7 +739,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -509,7 +762,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "ra",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "ra_prediction_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "ra_prediction_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "ra",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -532,7 +808,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "ra",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -555,7 +831,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "ra",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -578,7 +854,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "recruitment",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "recruitment_source_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "recruitment_source_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "recruitment",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -601,7 +900,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "recruitment",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -624,7 +923,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "recruitment",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -647,7 +946,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "scid5",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "scid5_schizotypal_personality_sciddpq_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "scid5_schizotypal_personality_sciddpq_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "scid5",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -670,7 +992,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "scid5",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -693,7 +1015,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "scid5",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -716,7 +1038,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "sofas",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "sofas_screening_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "sofas_screening_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "sofas",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -739,7 +1084,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "sofas",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -762,7 +1107,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "traumatic",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "traumatic_brain_injury_screen_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "traumatic_brain_injury_screen_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "traumatic",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -785,7 +1153,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "traumatic",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -808,7 +1176,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "traumatic",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -831,7 +1199,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "ya",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "ya_consent_chr_v_11nov2021_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "ya_consent_chr_v_11nov2021_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "ya",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -854,7 +1245,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "ya",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -877,7 +1268,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "assist",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "assist_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "assist_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "assist",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -900,7 +1314,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "assist",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -923,7 +1337,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "assist",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -946,7 +1360,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "blood",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "blood_sample_preanalytic_quality_assurance_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "blood_sample_preanalytic_quality_assurance_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "blood",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -969,7 +1406,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "blood",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -992,7 +1429,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "blood",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1015,7 +1452,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "blood",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1038,7 +1475,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "bprs",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "bprs_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "bprs_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "bprs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1061,7 +1521,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "bprs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1084,7 +1544,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "bprs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1107,7 +1567,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cbc",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "cbc_with_differential_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "cbc_with_differential_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "cbc",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1130,7 +1613,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cbc",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1153,7 +1636,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cbc",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1176,7 +1659,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cdss",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "cdss_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "cdss_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "cdss",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1199,7 +1705,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cdss",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1222,7 +1728,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cdss",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1245,7 +1751,53 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "chrpenn",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "chrpenn_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "chrpenn_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "cssrs",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "cssrs_baseline_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "cssrs_baseline_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "cssrs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1268,7 +1820,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cssrs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1291,7 +1843,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "cssrs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1314,7 +1866,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "current",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "current_health_status_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "current_health_status_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "current",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1337,7 +1912,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "current",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1360,7 +1935,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "current",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1383,7 +1958,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "daily",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "daily_activity_and_saliva_sample_collection_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "daily_activity_and_saliva_sample_collection_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "daily",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1406,7 +2004,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "daily",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1429,7 +2027,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "daily",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1452,7 +2050,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "digital",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "digital_biomarkers_axivity_onboarding_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "digital_biomarkers_axivity_onboarding_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "digital",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1475,7 +2096,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "digital",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1498,7 +2119,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "digital",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1521,7 +2142,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "digital",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "digital_biomarkers_mindlamp_onboarding_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "digital_biomarkers_mindlamp_onboarding_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "digital",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1544,7 +2188,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "digital",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1567,7 +2211,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "digital",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1590,7 +2234,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "eeg",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "eeg_run_sheet_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "eeg_run_sheet_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "eeg",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1613,7 +2280,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "eeg",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1636,7 +2303,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "eeg",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1659,7 +2326,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "global",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "global_functioning_role_scale_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "global_functioning_role_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "global",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1682,7 +2372,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "global",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1705,7 +2395,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "global",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1728,7 +2418,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "global",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "global_functioning_social_scale_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "global_functioning_social_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "global",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1751,7 +2464,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "global",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1774,7 +2487,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "global",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1797,7 +2510,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "iq",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "iq_assessment_wasiii_wiscv_waisiv_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "iq_assessment_wasiii_wiscv_waisiv_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "iq",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1820,7 +2556,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "iq",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1843,7 +2579,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "iq",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1866,7 +2602,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "item",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "item_promis_for_sleep_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "item_promis_for_sleep_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "item",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1889,7 +2648,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "item",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1912,7 +2671,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "item",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1935,7 +2694,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "mri",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "mri_run_sheet_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "mri_run_sheet_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "mri",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1958,7 +2740,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "mri",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -1981,7 +2763,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "nsipr",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "nsipr_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "nsipr_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "nsipr",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2004,7 +2809,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "nsipr",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2027,7 +2832,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "nsipr",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2050,7 +2855,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "oasis",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "oasis_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "oasis_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "oasis",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2073,7 +2901,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "oasis",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2096,7 +2924,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "oasis",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2119,7 +2947,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "penncnb",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "penncnb_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "penncnb_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "penncnb",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2142,7 +2993,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "penncnb",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2165,7 +3016,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "penncnb",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2188,7 +3039,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "perceived",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "perceived_discrimination_scale_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "perceived_discrimination_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "perceived",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2211,7 +3085,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "perceived",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2234,7 +3108,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "perceived",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2257,7 +3131,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "perceived",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "perceived_stress_scale_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "perceived_stress_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "perceived",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2280,7 +3177,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "perceived",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2303,7 +3200,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "perceived",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2326,7 +3223,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "pgis",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "pgis_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "pgis_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "pgis",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2349,7 +3269,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "pgis",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2372,7 +3292,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "pgis",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2395,7 +3315,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "premorbid",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "premorbid_iq_reading_accuracy_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "premorbid_iq_reading_accuracy_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "premorbid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2418,7 +3361,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "premorbid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2441,7 +3384,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "premorbid",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2464,7 +3407,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "psychs_p1p8_fu_draft_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "psychs_p1p8_fu_draft_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2487,7 +3453,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "psychs",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2510,7 +3476,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "pubertal",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "pubertal_developmental_scale_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "pubertal_developmental_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "pubertal",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2533,7 +3522,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "pubertal",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2556,7 +3545,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "pubertal",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2579,7 +3568,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "scid5",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "scid5_psychosis_mood_substance_abuse_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "scid5_psychosis_mood_substance_abuse_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "scid5",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2602,7 +3614,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "scid5",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2625,7 +3637,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "scid5",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2648,7 +3660,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "sociodemographics",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "sociodemographics_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "sociodemographics_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "sociodemographics",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2671,7 +3706,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "sociodemographics",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2694,7 +3729,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "sociodemographics",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2717,7 +3752,30 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "speech",
+         "color": [
+            "#ffffd9",
+            "#edf8b1",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#253494",
+            "#081d58"
+         ],
+         "label": "speech_sampling_run_sheet_complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "speech_sampling_run_sheet_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "percent",
+         "category": "speech",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2740,7 +3798,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "speech",
          "color": [
             "#ffffd9",
             "#edf8b1",
@@ -2763,7 +3821,7 @@
       {
          "_id": 0,
          "analysis": "percent",
-         "category": "percent",
+         "category": "speech",
          "color": [
             "#ffffd9",
             "#edf8b1",
