@@ -19,34 +19,44 @@ print("ID: ", id)
 site=str(sys.argv[2])
 print("Site: ", site)
 
+input_path = "/data/predict/data_from_nda_dev/Prescient/PHOENIX/PROTECTED/"
+print("Input path: " + input_path)
+
 output_path = "/data/predict/kcho/flow_test/formqc/"
 print("Output path: " + output_path)
 
-bprs = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_BPRS.csv")
+# there are double coenrollment, and health conditions, promis, lifetime ap, NSI/nsipr, premorbid iq, perceived stress scale, recruitment source
+# two inclusion criterias but they're a little different
+# variety of ways empty cells are indicated
 
-cdss = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_CDSS.csv")
-
-coenrollment = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_Coenrollment.csv")
-
-demos = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_Demographics.csv")
-
-health = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_HealthConditions.csv")
-
-lifetime = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_LifetimeAP.csv")
-
-missing = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_MissingData.csv")
-
-pgis = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PGIS.csv")
-
-premorbidiq = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PremorbidIQ.csv")
-
-promis = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PromisSD.csv")
-
-recruitment = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_RecruitmentSource.csv")
-
-inclusion = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_InclusionExclusionCriteriaReview.csv")
-
-sofas = pd.read_csv("/data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Prescient"+site+"/raw/"+id+"/surveys/"+id+"_SOFAS.csv")
+adverse = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_adverse_events.csv")
+bprs = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_BPRS.csv")
+cdss = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_CDSS.csv")
+coenrollment = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_Coenrollment.csv")
+current_health = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_current_health_status.csv")
+demos = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_Demographics.csv")
+global_role = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_global_functioning_role_scale.csv")
+global_social = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_global_functioning_social_scale.csv")
+health = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_HealthConditions.csv")
+inclusion = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_InclusionExclusionCriteriaReview.csv")
+promis = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PromisSD.csv")
+lifetime = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_LifetimeAP.csv")
+missing = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_MissingData.csv")
+nsi = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_NSI.csv")
+pas = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PAS.csv")
+pds = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PDS.csv")
+penn = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PennCNB.csv")
+per_dis = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_perceived_discrimination_scale.csv")
+per_stress = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_perceived_stress_scale.csv")
+pgis = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PGIS.csv")
+premorbidadjust = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_premorbid_adjustment_scale.csv")
+premorbidiq = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PremorbidIQ.csv")
+psychosis = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_psychosis_polyrisk_score.csv")
+psychsp1p8 = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_PSYCHSP1P8.csv")
+puberty = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_pubertal_developmental_scale.csv")
+recruitment = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_RecruitmentSource.csv")
+scid_psychosis = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_SCID_Psychosis_Mood_Substance.csv")
+sofas = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_SOFAS.csv")
 
 # All csvs have LastModifiedDate, subjectkey, interview_date, interview_age, gender, visit
 # making a list of names for each of the forms
@@ -61,13 +71,17 @@ forms_info = pd.DataFrame(index = form_names, columns = ['Visit', 'Interview_dat
 dpdash_tot = pd.DataFrame(index = form_names, columns = ['Value'])
 dpdash_percent = pd.DataFrame(index = form_names, columns = ['Value'])
 
+
 for df,name in zip(forms,form_names):
-	#print(df.T)
+	df = df.replace('-', np.NaN)	
+	df = df.replace('na', np.NaN)
+	df = df.replace('na.', np.NaN)
+	df = df.replace('None', np.NaN)
 	#print('Visit: ', df.at[0, 'visit'])
 	num_var = len(df.T) - 6
 	#print("Number of variables: ", num_var)
 	missing = df.isnull().sum(axis=1)[0]
-	#print('Missing variables: ', missing)
+	print('Missing variables: ', missing)
 	percent = 100 - round((missing/num_var)*100)
 
 	forms_info.at[name, 'Visit'] = df.at[0, 'visit']

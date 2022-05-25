@@ -1,0 +1,22 @@
+{
+   "config": [
+      {
+         "_id": 0,
+         "analysis": "date",
+         "category": "informed",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "informed_consent",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "informed_consent"
+      }
+   ],
+   "name": "formqc-date_copy"
+}
