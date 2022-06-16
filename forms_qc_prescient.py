@@ -101,7 +101,7 @@ dpdash_missing = pd.DataFrame(index = form_names, columns = ['Value'])
 
 for df,name in zip(forms,form_names):
 	print(name)
-	#print(df.T)
+	print(df.T)
 	df = df.replace('-', np.NaN)	
 	df = df.replace('na', np.NaN)
 	df = df.replace('na.', np.NaN)

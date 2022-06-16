@@ -6,7 +6,7 @@ import pandas as pd
 id = str(sys.argv[1])
 print("ID: ", id)
 
-site=str(sys.argv[2])
+site = id[0:2]
 print("Site: ", site)
 
 output_path = "/data/predict/kcho/flow_test/formqc/"

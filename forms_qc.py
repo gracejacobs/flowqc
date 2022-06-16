@@ -20,14 +20,14 @@ def days_between(d1, d2):
 id = str(sys.argv[1])
 print("ID: ", id)
 
-site=str(sys.argv[2])
+site = id[0:2]
 print("Site: ", site)
 
 #event = str(sys.argv[3])
 #print("Event: ", event)
 event_list = ["screening_arm_1", "baseline_arm_1"]
 
-sub_data = "/data/predict/data_from_nda/Pronet/PHOENIX/PROTECTED/Pronet{0}/raw/{1}/surveys/{1}.Pronet.json".format(site, id)
+sub_data = "/data/predict/data_from_nda_dev/Pronet/PHOENIX/PROTECTED/Pronet{0}/raw/{1}/surveys/{1}.Pronet.json".format(site, id)
 print("Participant json: ", sub_data)
 
 with open(sub_data, 'r') as f:
@@ -62,6 +62,7 @@ for event in event_list:
 
 	col=0
 	for name in form_names:
+		#print(name)
 		col=col+1
 		form = dict.loc[dict['Form Name'] == name]
 		form_vars = form['Variable / Field Name'].tolist()
@@ -74,6 +75,7 @@ for event in event_list:
 			if var in sub_data:
 				ex=ex+1 #print("Column", col, "exists in the DataFrame.")
 		all_forms.at["Existing_variables", name] = ex
+		#print("Existing_vars: ", ex)
 
 		# Calculating how many of those don't have values
 		miss=0
@@ -81,6 +83,7 @@ for event in event_list:
 			if (variable in sub_data) and sub_data[variable].isnull().values.any():
 				miss=miss+1
 		all_forms.at["Missing_vars", name] = miss
+		#print("Missing_vars: ", miss)
 
 		#checking if there is information about missing data
 		for var in form_vars:
@@ -98,6 +101,8 @@ for event in event_list:
 				date_forms.at["Entry_date", name] = sub_data.at[0, var]
 
 
+	#print(date_forms)
+	#print(forms_missing)
 
 	# Calculating the percentage of missing as compared to the existing variables
 	for col in all_forms:
@@ -115,7 +120,7 @@ for event in event_list:
 	date_forms = date_forms.loc[:,~date_forms.columns.str.contains('^ sans-serif', case=False)]
 
 	forms_missing = forms_missing.dropna(axis=1)	
-	#print(forms_missing.T)  
+	#print(all_forms.T)  
 
 	# Removing forms that are missing all of their data
 	for col in all_forms:
@@ -125,6 +130,16 @@ for event in event_list:
 
 	# Getting difference between dates & dropping forms without both dates
 	date_forms = date_forms.dropna(axis=1)
+	#print(date_forms.T)
+
+	#removing the time from
+	date_forms = date_forms.replace(' 09:16', '', regex=True)
+	date_forms = date_forms.replace(' 14:48', '', regex=True)
+	date_forms = date_forms.replace(' 11:12', '', regex=True)
+	date_forms = date_forms.replace(' 13:50', '', regex=True)
+	
+	#print(date_forms.T)
+
 
 	for col in date_forms:
 		if type(date_forms.at["Interview_date", col]) == float and pd.isna(date_forms.at["Interview_date", col]):
@@ -173,7 +188,7 @@ for event in event_list:
 
 	# completed data
 	completed.columns = [event]
-	print(completed)
+	#print(completed)
 
 	# concatenating all of the measures
 	frames = [dpdash_percent, dpdash_tot, dpdash_miss, dpdash_date, completed]
@@ -181,7 +196,7 @@ for event in event_list:
 
 	# reorganizing measures
 	dp_con = dp_con.sort_index(axis = 0)
-	print(dp_con)
+	#print(dp_con)
 	dp_con = dp_con.transpose()
 	#print(dp_con)
 
@@ -201,7 +216,7 @@ for event in event_list:
 
 	frames = [dpdash_main, dp_con]
 	dpdash_full = pd.concat(frames, axis=1)
-	#print(dpdash_full.T)
+	print(dpdash_full.T)
 
 	# Saving to a csv based on ID and event
 	dpdash_full.to_csv("Pronet_status/"+event+"-"+site+"-"+id+"-formscheck.csv", sep=',', index = False, header=True)
