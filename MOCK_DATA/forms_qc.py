@@ -39,7 +39,7 @@ sub_data_all = sub_data_all.apply(lambda x: x.str.strip()).replace('', np.nan)
 
 # Opening data dictionary
 #dict = pd.read_csv('AMPSCZFormRepository_DataDictionary_2022-04-02.csv',
-dict = pd.read_csv('CloneOfREDCapIIYaleRecords_DataDictionary_2022-05-11.csv',
+dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/CloneOfREDCapIIYaleRecords_DataDictionary_2022-05-11.csv',
                                 sep= ",",
                                 index_col = False, low_memory=False)
 
@@ -73,6 +73,8 @@ for event in event_list:
 		ex=0
 		for var in form_vars:
 			if var in sub_data:
+				#print(var)
+				#print(sub_data.at[0, var])
 				ex=ex+1 #print("Column", col, "exists in the DataFrame.")
 		all_forms.at["Existing_variables", name] = ex
 		#print("Existing_vars: ", ex)
@@ -200,7 +202,7 @@ for event in event_list:
 	dp_con = dp_con.transpose()
 	#print(dp_con)
 
-	names_dash = ['day', 'reftime', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
+	names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 	dpdash_main = pd.DataFrame(columns = names_dash)
 	dpdash_main.at[event, 'subjectid'] = id
 	dpdash_main.at[event, 'site'] = site
@@ -216,10 +218,10 @@ for event in event_list:
 
 	frames = [dpdash_main, dp_con]
 	dpdash_full = pd.concat(frames, axis=1)
-	print(dpdash_full.T)
+	#print(dpdash_full.T)
 
 	# Saving to a csv based on ID and event
-	dpdash_full.to_csv("Pronet_status/"+event+"-"+site+"-"+id+"-formscheck.csv", sep=',', index = False, header=True)
+	dpdash_full.to_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/MOCK_DATA/Pronet_status/"+event+"-"+site+"-"+id+"-formscheck.csv", sep=',', index = False, header=True)
 
 
 

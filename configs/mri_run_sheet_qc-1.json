@@ -1,0 +1,83 @@
+{
+   "config": [
+      {
+         "_id": 0,
+         "analysis": "mri_run_sheet",
+         "category": "id",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Subject ID",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "subjectid"
+      },
+      {
+         "_id": 0,
+         "analysis": "mri_run_sheet",
+         "category": "forms_qc",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "mri_run_sheet - Total Variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Existing_variables"
+      },
+      {
+         "_id": 0,
+         "analysis": "mri_run_sheet",
+         "category": "forms_qc",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Missing specification",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "Missing_spec"
+      },
+      {
+         "_id": 0,
+         "analysis": "mri_run_sheet",
+         "category": "forms_qc",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      }
+   ],
+   "name": "mri_run_sheet_qc-1"
+}

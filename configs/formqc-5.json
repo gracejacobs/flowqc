@@ -1,0 +1,2870 @@
+{
+   "config": [
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "subjectid",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Subject ID",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "subjectid"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "current",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "current health status complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "current_health_status_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "enrollment",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "enrollment note complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "enrollment_note_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "family",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "family interview for genetic studies figs complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "family_interview_for_genetic_studies_figs_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "family",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "family_interview_for_genetic_studies_figs_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "family",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "family_interview_for_genetic_studies_figs_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "family",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "family_interview_for_genetic_studies_figs_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "guid",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "guid form complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "guid_form_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "guid",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "guid_form_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "guid",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "guid_form_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "guid",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "guid_form_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "health",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "health conditions genetics fluid biomarkers complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "health_conditions_genetics_fluid_biomarkers_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "health",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "health_conditions_genetics_fluid_biomarkers_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "health",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "health_conditions_genetics_fluid_biomarkers_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "health",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "health_conditions_genetics_fluid_biomarkers_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "inclusionexclusion",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "inclusionexclusion criteria review complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "inclusionexclusion_criteria_review_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "inclusionexclusion",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "inclusionexclusion_criteria_review_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "inclusionexclusion",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "inclusionexclusion_criteria_review_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "informed",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "informed consent run sheet complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "informed_consent_run_sheet_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "informed",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "informed_consent_run_sheet_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "informed",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "informed_consent_run_sheet_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "lifetime",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "lifetime ap exposure screen complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "lifetime_ap_exposure_screen_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "lifetime",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "lifetime_ap_exposure_screen_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "lifetime",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "lifetime_ap_exposure_screen_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "missing",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "missing data complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "missing_data_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "past",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "past pharmaceutical treatment complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "past_pharmaceutical_treatment_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "past",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "past_pharmaceutical_treatment_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "psychs p1p8 complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "psychs_p1p8_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "psychs_p1p8_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "psychs_p1p8_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "psychs_p1p8_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "psychs p9ac32 complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "psychs_p9ac32_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "psychs_p9ac32_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "psychs_p9ac32_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "ra",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "ra prediction complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "ra_prediction_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "ra",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "ra_prediction_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "ra",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "ra_prediction_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "ra",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "ra_prediction_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "recruitment",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "recruitment source complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "recruitment_source_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "recruitment",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "recruitment_source_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "recruitment",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "recruitment_source_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "recruitment",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "recruitment_source_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "scid5 schizotypal personality sciddpq complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "scid5_schizotypal_personality_sciddpq_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "scid5_schizotypal_personality_sciddpq_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "scid5_schizotypal_personality_sciddpq_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "scid5_schizotypal_personality_sciddpq_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "sofas screening complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "sofas_screening_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "sofas_screening_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "sofas_screening_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "sofas_screening_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "traumatic",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "traumatic brain injury screen complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "traumatic_brain_injury_screen_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "traumatic",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "traumatic_brain_injury_screen_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "traumatic",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "traumatic_brain_injury_screen_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "traumatic",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "traumatic_brain_injury_screen_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "assist",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "assist complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "assist_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "assist",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "assist_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "assist",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "assist_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "assist",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "assist_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "blood",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "blood sample preanalytic quality assurance complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "blood_sample_preanalytic_quality_assurance_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "blood",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "blood_sample_preanalytic_quality_assurance_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "blood",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "blood_sample_preanalytic_quality_assurance_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "blood",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "blood_sample_preanalytic_quality_assurance_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "bprs",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "bprs complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "bprs_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "bprs",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "bprs_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "bprs",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "bprs_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "bprs",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "bprs_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cbc",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "cbc with differential complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "cbc_with_differential_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cbc",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "cbc_with_differential_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cbc",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "cbc_with_differential_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cbc",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "cbc_with_differential_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cdss",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "cdss complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "cdss_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cdss",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "cdss_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cdss",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "cdss_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cdss",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "cdss_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "chrpenn",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "chrpenn complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrpenn_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cssrs",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "cssrs baseline complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "cssrs_baseline_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cssrs",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "cssrs_baseline_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cssrs",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "cssrs_baseline_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "cssrs",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "cssrs_baseline_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "current",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "current_health_status_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "current",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "current_health_status_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "current",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "current_health_status_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "daily",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "daily activity and saliva sample collection complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "daily_activity_and_saliva_sample_collection_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "daily",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "daily_activity_and_saliva_sample_collection_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "daily",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "daily_activity_and_saliva_sample_collection_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "daily",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "daily_activity_and_saliva_sample_collection_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "global functioning role scale complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "global_functioning_role_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "global_functioning_role_scale_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "global_functioning_role_scale_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "global_functioning_role_scale_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "global functioning social scale complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "global_functioning_social_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "global_functioning_social_scale_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "global_functioning_social_scale_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "global",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "global_functioning_social_scale_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "iq",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "iq assessment wasiii wiscv waisiv complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "iq_assessment_wasiii_wiscv_waisiv_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "iq",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "iq_assessment_wasiii_wiscv_waisiv_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "iq",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "iq_assessment_wasiii_wiscv_waisiv_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "iq",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "iq_assessment_wasiii_wiscv_waisiv_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "item",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "item promis for sleep complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "item_promis_for_sleep_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "item",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "item_promis_for_sleep_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "item",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "item_promis_for_sleep_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "item",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "item_promis_for_sleep_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "nsipr",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "nsipr complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "nsipr_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "nsipr",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "nsipr_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "nsipr",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "nsipr_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "nsipr",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "nsipr_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "oasis",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "oasis complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "oasis_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "oasis",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "oasis_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "oasis",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "oasis_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "oasis",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "oasis_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "penncnb",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "penncnb complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "penncnb_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "penncnb",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "penncnb_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "penncnb",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "penncnb_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "penncnb",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "penncnb_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "perceived discrimination scale complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "perceived_discrimination_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "perceived_discrimination_scale_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "perceived_discrimination_scale_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "perceived_discrimination_scale_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "perceived stress scale complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "perceived_stress_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "perceived_stress_scale_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "perceived_stress_scale_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "perceived",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "perceived_stress_scale_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pgis",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "pgis complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "pgis_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pgis",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "pgis_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pgis",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "pgis_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pgis",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "pgis_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "premorbid",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "premorbid iq reading accuracy complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "premorbid_iq_reading_accuracy_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "premorbid",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "premorbid_iq_reading_accuracy_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "premorbid",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "premorbid_iq_reading_accuracy_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "premorbid",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "premorbid_iq_reading_accuracy_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "psychs p1p8 fu draft complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "psychs_p1p8_fu_draft_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "psychs",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "psychs p9ac32 fu draft complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "psychs_p9ac32_fu_draft_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pubertal",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "pubertal developmental scale complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "pubertal_developmental_scale_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pubertal",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "pubertal_developmental_scale_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pubertal",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "pubertal_developmental_scale_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "pubertal",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "pubertal_developmental_scale_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "scid5 psychosis mood substance abuse complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "scid5_psychosis_mood_substance_abuse_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "scid5_psychosis_mood_substance_abuse_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "scid5_psychosis_mood_substance_abuse_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "scid5",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "scid5_psychosis_mood_substance_abuse_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sociodemographics",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "sociodemographics complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "sociodemographics_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sociodemographics",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "sociodemographics_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sociodemographics",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "sociodemographics_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sociodemographics",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "sociodemographics_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "sofas followup complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "sofas_followup_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "sofas_followup_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "sofas",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "sofas_followup_tot"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "speech",
+         "color": [
+            "#e5f5e0",
+            "#a1d99b",
+            "#31a354"
+         ],
+         "label": "speech sampling run sheet complete",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "speech_sampling_run_sheet_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "speech",
+         "color": [
+            "#fde0dd",
+            "#fa9fb5",
+            "#c51b8a"
+         ],
+         "label": "Time between interview & entry",
+         "range": [
+            0,
+            "21"
+         ],
+         "text": true,
+         "variable": "speech_sampling_run_sheet_date"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "speech",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "speech_sampling_run_sheet_perc"
+      },
+      {
+         "_id": 0,
+         "analysis": "forms_qc",
+         "category": "speech",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#3182bd",
+            "#08519c"
+         ],
+         "label": "Total variables",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "speech_sampling_run_sheet_tot"
+      }
+   ],
+   "name": "formqc-5"
+}

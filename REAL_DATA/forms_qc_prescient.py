@@ -23,7 +23,7 @@ print("Site: ", site)
 input_path = "/data/predict/data_from_nda_dev/Prescient/PHOENIX/PROTECTED/"
 print("Input path: " + input_path)
 
-output_path = "/data/predict/kcho/flow_test/formqc/"
+output_path = "/data/predict/data_from_nda/formqc/"
 print("Output path: " + output_path)
 
 # there are double coenrollment, and health conditions, promis, lifetime ap, NSI/nsipr, premorbid iq, perceived stress scale, recruitment source, speech, MRI run sheet
@@ -39,9 +39,11 @@ print("Output path: " + output_path)
 
 adverse = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_adverse_events.csv")
 assist = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_assist.csv")
+blood = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_blood_sample_preanalytic_quality_assurance.csv")
 bprs = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_bprs.csv")
 cdss = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_cdss.csv")
 coenrollment = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_coenrollment_form.csv")
+cssrs = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_cssrs_baseline.csv")
 current_health = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_current_health_status.csv")
 daily_activity = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_daily_activity_and_saliva_sample_collection.csv")
 dig_axivity = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_digital_biomarkers_axivity_onboarding.csv")
@@ -54,6 +56,8 @@ guid = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_guid_
 health_biomarkers = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_health_conditions_genetics_fluid_biomarkers.csv")
 health_history = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_health_conditions_medical_historypsychiatric_histo.csv")
 inclusion = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_inclusionexclusion_criteria_review.csv")
+informed_consent = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_informed_consent_run_sheet.csv")
+iq = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_iq_assessment_wasiii_wiscv_waisiv.csv")
 promis = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_item_promis_for_sleep.csv")
 lifetime = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_lifetime_ap_exposure_screen.csv")
 missing = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_missing_data.csv")
@@ -82,13 +86,14 @@ sofas_screening = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"
 sofas_followup = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_sofas_followup.csv")
 #speech_sampling_run_sheet
 speech = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_speech_sampling_run_sheet.csv")
+tbi = pd.read_csv(input_path+"Prescient"+site+"/raw/"+id+"/surveys/"+id+"_traumatic_brain_injury_screen.csv")
 
 # All csvs have LastModifiedDate, subjectkey, interview_date, interview_age, gender, visit
 # making a list of names for each of the forms
-form_names = ['adverse_events', 'assist','bprs', 'cdss', 'coenrollment_form', 'current_health_status', 'daily_activity_and_saliva_sample_collection', 'digital_biomarkers_axivity_onboarding', 'digital_biomarkers_mindlamp_onboarding', 'eeg_run_sheet', 'entry_status', 'global_functioning_role_scale', 'global_functioning_social_scale', 'guid_form', 'health_conditions_genetics_fluid_biomarkers', 'health_conditions_medical_historypsychiatric_histo', 'inclusionexclusion_criteria_review', 'item_promis_for_sleep', 'lifetime_ap_exposure_screen', 'missing_data', 'mri_run_sheet', 'nsipr', 'oasis', 'penncnb', 'perceived_discrimination_scale', 'perceived_stress_scale', 'pgis', 'premorbid_adjustment_scale', 'premorbid_iq_reading_accuracy', 'psychosis_polyrisk_score', 'psychosocial_treatment_form', 'psychs_p1p8', 'pubertal_developmental_scale', 'ra_prediction', 'recruitment_source', 'scid5_schizotypal_personality_sciddpq', 'sociodemographics', 'sofas_screening', 'sofas_followup', 'speech_sampling_run_sheet']
+form_names = ['adverse_events', 'assist', 'blood_sample_preanalytic_quality_assurance', 'bprs', 'cdss', 'coenrollment_form', 'cssrs_baseline', 'current_health_status', 'daily_activity_and_saliva_sample_collection', 'digital_biomarkers_axivity_onboarding', 'digital_biomarkers_mindlamp_onboarding', 'eeg_run_sheet', 'entry_status', 'global_functioning_role_scale', 'global_functioning_social_scale', 'guid_form', 'health_conditions_genetics_fluid_biomarkers', 'health_conditions_medical_historypsychiatric_histo', 'inclusionexclusion_criteria_review', 'informed_consent_run_sheet', 'iq_assessment_wasiii_wiscv_waisiv', 'item_promis_for_sleep', 'lifetime_ap_exposure_screen', 'missing_data', 'mri_run_sheet', 'nsipr', 'oasis', 'penncnb', 'perceived_discrimination_scale', 'perceived_stress_scale', 'pgis', 'premorbid_adjustment_scale', 'premorbid_iq_reading_accuracy', 'psychosis_polyrisk_score', 'psychosocial_treatment_form', 'psychs_p1p8', 'pubertal_developmental_scale', 'ra_prediction', 'recruitment_source', 'scid5_schizotypal_personality_sciddpq', 'sociodemographics', 'sofas_screening', 'sofas_followup', 'speech_sampling_run_sheet', 'traumatic_brain_injury_screen']
 
 # making a list of the dataframes
-forms = [adverse, assist, bprs, cdss, coenrollment, current_health, daily_activity, dig_axivity, dig_mindlamp, eeg, entry_status, global_role, global_social, guid, health_biomarkers, health_history, inclusion, promis, lifetime, missing, mri, nsipr, oasis, penn, per_dis, per_stress, pgis, premorbidadjust, premorbidiq, psychosis, psychosocial, psychsp1p8, puberty, ra_pred, recruitment, scid_psychosis, demos, sofas_screening, sofas_followup, speech]
+forms = [adverse, assist, blood, bprs, cdss, coenrollment, cssrs, current_health, daily_activity, dig_axivity, dig_mindlamp, eeg, entry_status, global_role, global_social, guid, health_biomarkers, health_history, inclusion, informed_consent, iq, promis, lifetime, missing, mri, nsipr, oasis, penn, per_dis, per_stress, pgis, premorbidadjust, premorbidiq, psychosis, psychosocial, psychsp1p8, puberty, ra_pred, recruitment, scid_psychosis, demos, sofas_screening, sofas_followup, speech, tbi]
 
 # creating a dataframe to store all the info
 forms_info = pd.DataFrame(index = form_names, columns = ['Visit', 'Interview_date', 'Total_Variables', 'Percent_complete'])
@@ -101,7 +106,7 @@ dpdash_missing = pd.DataFrame(index = form_names, columns = ['Value'])
 
 for df,name in zip(forms,form_names):
 	print(name)
-	print(df.T)
+	#print(df.T)
 	df = df.replace('-', np.NaN)	
 	df = df.replace('na', np.NaN)
 	df = df.replace('na.', np.NaN)
@@ -144,7 +149,7 @@ dpdash_complete.index = dpdash_complete.index.str.replace('(.*)', r'\1_complete'
 # Removing forms that are missing all of their data
 dpdash_complete = dpdash_complete.dropna(axis=0)
 
-print(dpdash_complete)
+#print(dpdash_complete)
 #print(dpdash_tot)
 
 # concatenating all of the measures
@@ -157,7 +162,7 @@ dp_con = dp_con.sort_index(axis = 0)
 dp_con = dp_con.transpose()
 #print(dp_con)
 
-names_dash = ['day', 'reftime', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
+names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 
 dpdash_main = pd.DataFrame(columns = names_dash)
 dpdash_main.at['Value', 'subjectid'] = id
@@ -168,13 +173,13 @@ dpdash_main.at['Value', 'day'] = day
 
 frames = [dpdash_main, dp_con]
 dpdash_full = pd.concat(frames, axis=1)
-print(dpdash_full.T)
+#print(dpdash_full.T)
 
 
 # saving the csv
-dpdash_full.to_csv("Prescient_status/formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
+dpdash_full.to_csv("Prescient_status/formqc-"+id+"-forms_qc-day1to"+day+".csv", sep=',', index = False, header=True)
 
-dpdash_full.to_csv(output_path+"formqc-"+id+"-percent-day1to"+day+".csv", sep=',', index = False, header=True)
+dpdash_full.to_csv(output_path+"formqc-"+id+"-forms_qc-day1to"+day+".csv", sep=',', index = False, header=True)
 
 
 
