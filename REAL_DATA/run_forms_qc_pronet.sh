@@ -10,22 +10,39 @@ cat prescient_sub_list.txt
 
 
 #### getting data for all pronet participants
-echo "Creating csvs - Pronet"
-cat pronet_sub_list.txt | while read sub; do
-  python forms_qc.py $sub
-done 
+#echo "Creating csvs - Pronet"
+#cat pronet_sub_list.txt | while read sub; do
+#  python forms_qc.py $sub
+#done 
 
 #### Combining screening and baseline for pronet
-echo "Combining csvs - Pronet"
-cat pronet_sub_list.txt | while read sub; do
-  python combining_all_events.py $sub
-done 
+#echo "Combining csvs - Pronet"
+#cat pronet_sub_list.txt | while read sub; do
+#  python combining_all_events.py $sub
+#done 
 
-### mri run sheet
+### a/v pipeline
+#print("Creating speech and psychs csvs - Pronet")
+#cat pronet_sub_list.txt | while read sub; do
+#  python assessments/pronet_speech_sampling_formsqc.py $sub
+#done 
+
+## inclusion, exclusion criteria
+#print("Creating speech and psychs csvs - Pronet")
+#cat pronet_sub_list.txt | while read sub; do
+#  python assessments/pronet_speech_sampling_formsqc.py $sub
+#done 
+
 #print("Creating mri_run_sheet csvs - Pronet")
 #cat pronet_sub_list.txt | while read sub; do
 #  python assessments/pronet_mri_formsqc.py $sub
 #done 
+
+#### getting data for all pronet participants
+echo "Creating csvs - Pronet"
+cat pronet_sub_list.txt | while read sub; do
+  python forms_qc_ind_csv.py $sub
+done 
 
 #### getting csvs for prescient participants
 echo "Creating csvs - Prescient"
@@ -34,8 +51,8 @@ cat prescient_sub_list.txt | while read sub; do
 done 
 
 ### combining forms_qc files into a single file including baseline and screening
-echo "Combining forms_qc screening and baseline data across participants"
-python forms_qc_combiner.py
+#echo "Combining forms_qc screening and baseline data across participants"
+#python forms_qc_combiner.py
 
 
 # Uploading data to dpdash

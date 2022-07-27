@@ -24,10 +24,12 @@ if path.is_file():
 
 	# appending event csvs
 	dpdash = screening.append(baseline)
-	dpdash = dpdash.reset_index(drop=True)
-	dpdash.at[0,'day']='1' #making sure the first day is labeled as 1
-	dpdash.at[1,'day']='2' #for mock subjects make baseline day 2
-	day = dpdash.at[1,'day']
+	print(dpdash.T)
+	#dpdash = dpdash.reset_index(drop=True)
+	#dpdash.at[0,'day']='1' #making sure the first day is labeled as 1
+	#dpdash.at[1,'day']='2' #for mock subjects make baseline day 2
+	print(dpdash['day'].iat[1])
+	day = dpdash['day'].iat[1]
 	day = str(day)
 	# can reorder variables later if clearer
 
