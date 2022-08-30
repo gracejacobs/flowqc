@@ -15,6 +15,9 @@ cat prescient_sub_list.txt | while read sub; do
   python forms_qc_ind_csv_prescient.py $sub
 done 
 
+### combining forms for prescient
+python combined_forms_prescient.py
+
 #### creating csvs for forms for all pronet participants
 echo "Creating csvs - Pronet"
 #cat pronet_sub_list_chr.txt | while read sub; do
