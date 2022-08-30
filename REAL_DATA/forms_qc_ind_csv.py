@@ -24,13 +24,16 @@ print("ID: ", id)
 site = id[0:2]
 print("Site: ", site)
 
+# chr or healthy
+#sub_type = str(sys.argv[2])
+
 output1 = "/data/predict/data_from_nda/formqc/"
 output_processed = "/data/predict/data_from_nda/Pronet/PHOENIX/PROTECTED/Pronet{0}/processed/{1}/surveys/".format(site, id)
 
 # creating a folder if there isn't one
 if not os.path.exists(output_processed):
 	print("Creating output directory in participant's processed directory")
-	os.makedirs(output_processed)
+	#os.makedirs(output_processed)
 
 sub_data = "/data/predict/data_from_nda/Pronet/PHOENIX/PROTECTED/Pronet{0}/raw/{1}/surveys/{1}.Pronet.json".format(site, id)
 print("Participant json: ", sub_data)
@@ -42,68 +45,67 @@ sub_data_all = pd.DataFrame.from_dict(json, orient="columns")
 #replacing empty cells with NaN
 sub_data_all = sub_data_all.apply(lambda x: x.str.strip()).replace('', np.nan)
 
-# Opening data dictionary
-#dict = pd.read_csv('AMPSCZFormRepository_DataDictionary_2022-04-02.csv',
-dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/CloneOfREDCapIIYaleRecords_DataDictionary_2022-07-27.csv',
-                                sep= ",",
-                                index_col = False, low_memory=False)
-
-# Getting all the form names from the data dictionary
-#form_names = pd.read_csv('form_names.csv')
-form_names = dict['Form Name'].unique()
-for i in form_names:
-	print(i)
-#form_names = form_names.remove('psychs_p1p8_fu_draft')
-
-all_events = sub_data_all['redcap_event_name'].unique()
-print(all_events)
-
 #form_names = ['informed_consent_run_sheet', 'inclusionexclusion_criteria_review', 'recruitment_source', 'coenrollment_form', 'sofas_screening', 'mri_run_sheet', 'sociodemographics', 'lifetime_ap_exposure_screen']
 
-
 # Subsetting data based on event
-#events = sub_data.redcap_event_name.unique()
-event_list = ["screening_arm_1", "baseline_arm_1", "month_1_arm_1", "month_2_arm_1"]
+event_list = sub_data_all.redcap_event_name.unique()
+screening = event_list[0]
+print("Screening visit: " + screening)
 
+# Opening data dictionary
+dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=False)
+
+# Getting all the form names from the data dictionary
+form_names = dict['Form Name'].unique()
+percentage_form = pd.DataFrame(columns = form_names)
+
+print(id)
+#Looping through forms to get form data
 for name in form_names:
 	form_tracker = {}
 	day_tracker = []
 
-	for event in event_list:
-		print(name)
+	form = dict.loc[dict['Form Name'] == name]
+	form_vars = form['Variable / Field Name'].tolist()
+
+	#print(id)
+	print(name)
+	for event in event_list: #### NEED TO LOOP THROUGH VARIABLES ONCE AND ADD INFO FROM ALL OF THE EVENTS AT ONCE
 		print("Event: " + event)
 		sub_data = sub_data_all[sub_data_all['redcap_event_name'].isin([event])]
 		sub_data = sub_data.reset_index(drop=True)
 
-		#print(sub_data)
-
-
-		form_info = pd.DataFrame(columns = ['Variables'])
-		form = dict.loc[dict['Form Name'] == name]
-		form_vars = form['Variable / Field Name'].tolist()
-
-		# Adding all variables to the csv
-		for var in form_vars:
-			if var in sub_data:
-				form_info.at[var, 'Variables'] = sub_data.at[0, var]
 	
-		form_info.at["Total_variables", 'Variables'] = len(form_vars)
-		
-		# Calculating how many variables per form exist in the json
+		form_info = pd.DataFrame(columns = ['Variables'])
+		form_info_2 = pd.DataFrame(columns = [event_list])
+
+		#print(form_vars)
+
+		# Adding all variables to the csv & calculating how many there are
+		#print("1) Looping through variables and adding them to the csv")
 		ex=0
+		miss=0
 		for var in form_vars:
 			if var in sub_data:
-				ex=ex+1 #print("Column", col, "exists in the DataFrame.")
-		form_info.at["Existing_variables", 'Variables'] = ex
+				ex=ex+1
+				form_info.at[var, 'Variables'] = sub_data.at[0, var]
+				
+				for event_2 in event_list:
+					sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event_2])]
+					sub_data_test = sub_data_test.reset_index(drop=True)
+					form_info_2.at[var, event_2] = sub_data_test.at[0, var]
+					#df.iat[3, df.columns.get_loc('Remarks')] = 'No stock available. Will be available in 5 days'
+				
+				if sub_data[var].isnull().values.any():
+					miss=miss+1
 
-		# Calculating how many of those don't have values
-		miss=0
-		for variable in form_vars:
-			if (variable in sub_data) and sub_data[variable].isnull().values.any():
-				miss=miss+1
+		form_info.at["Total_variables", 'Variables'] = len(form_vars)
+		form_info.at["Existing_variables", 'Variables'] = ex
 		form_info.at["Missing_vars", 'Variables'] = miss
-		
+			
+		#print(form_info_2)
 		# Calculating the percentage of missing as compared to the existing variables
+		#print("2) Calculating percentage")
 		if form_info.at["Existing_variables", 'Variables'] > 0:
 			if form_info.at["Missing_vars", 'Variables'] > 0:
 				m=form_info.at["Missing_vars", 'Variables']
@@ -114,44 +116,36 @@ for name in form_names:
 		else:
 			form_info.at["Percentage", 'Variables'] = 0
 
-		#all_forms = all_forms.loc[:,~all_forms.columns.str.contains('^ sans-serif', case=False)] 
-		
-		# rounding varibles
-		#for i in range(0, len(form_info.index)-1):	
-		#	var = form_info.at[i, 'Variables'] 	
-		#	if type(var) == float:
-		#		form_info.at[i, 'Variables'] = round(var, decimals = 2)
-				
 
-		#form_info['Variables'].round(decimals = 2)
+		# make csv with form name, percentage, event
+		percentage_form.at[event, name] = form_info.at["Percentage", 'Variables']
 
 		form_info = form_info.transpose()
-		#print(form_info)
 
+		#print("Setting up dpdash columns")
+		#print("3) Adding dpdash columns")
 		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 		dpdash_main = pd.DataFrame(columns = names_dash)
 		dpdash_main.at[event, 'subjectid'] = id
 		dpdash_main.at[event, 'site'] = site
 
-		sub_consent = sub_data_all[sub_data_all['redcap_event_name'].isin(["screening_arm_1"])]
+		sub_consent = sub_data_all[sub_data_all['redcap_event_name'].isin([screening])]
 		consent = sub_consent.at[0, "chric_consent_date"]
+		print("Consent date:" + consent)
 
 		# want to change this to the interview date
 		int_avail = [s for s in form_vars if "_interview_date" in s]
-		print("Int avail: ", int_avail)
 		ent_avail = [s for s in form_vars if "_entry_date" in s]
-		print("Ent avail: ", ent_avail)
 
 		#print(form_info.T)
 
 		# if interview is available and in the data
+		#print("4) Setting the day")
 		if len(int_avail) > 0 and int_avail[0] in sub_data and name not in ['mri_run_sheet', 'current_health_status'] :
 			print('Use interview date')
 			var = int_avail[0]
 			int_date = sub_data.at[0, var]
-			if pd.isna(int_date):
-				print('interview date is Nan')
-			else:
+			if pd.notna(int_date):
 				dpdash_main.at[event, 'mtime'] = int_date
 				day = days_between(consent, int_date) + 1
 		else:
@@ -163,18 +157,15 @@ for name in form_names:
 				day = 2
 
 		# use entry date for a couple forms that interview date doesn't work
+		# check coenrollment_form
 		if name in ['mri_run_sheet', 'current_health_status'] and ent_avail[0] in sub_data:
-			print("need entry date")
+			#print("need entry date")
 			var = ent_avail[0]
 			ent_date = sub_data.at[0, var]
-			if pd.isna(ent_date):
-				print('entry date is Nan')
-			else:
-	
+			if pd.notna(ent_date):
 				dpdash_main.at[event, 'mtime'] = ent_date
 				day = days_between(consent, ent_date) + 1
 				
-
 		# setting day as the difference between the consent date (day 1) and interview date
 		dpdash_main.at[event, 'day'] = day
 
@@ -183,37 +174,42 @@ for name in form_names:
 
 		frames = [dpdash_main, form_info]
 		dpdash_full = pd.concat(frames, axis=1)
-		#print(dpdash_full.T)
+		print(dpdash_full.T)
 
 		day_tracker.append(str(day)) 
 
 		form_tracker["Form_event_{0}".format(event)] = dpdash_full
 
 
-	#print(form_tracker.keys())
-	#print(form_tracker[Form_event_screening_arm_1])
-	#print(form_tracker[0])
-	#print(form_tracker["Form_event_screening_arm_1"])
-
+	# concatenating and saving csvs
+	#print("6) Concatenating all the dataframes")
 	if day_tracker[-1] == 1:	
 		last_day = 1
 	else:
 		last_day = day_tracker[-1]
 
-	print(last_day)
-	
-	frames = [form_tracker["Form_event_screening_arm_1"], form_tracker["Form_event_baseline_arm_1"], form_tracker["Form_event_month_1_arm_1"], form_tracker["Form_event_month_2_arm_1"]]
+	final_csv = pd.concat(form_tracker, axis=0, ignore_index=True)
 
-	final_csv = pd.concat(frames)
-	print(name)
 	#removing rows with no data
 	final_csv = final_csv[final_csv.Percentage != 0]
-	print("FINAL CSV TO BE EXPORTED:\n", final_csv.T)
+
+	if name in ['lifetime_ap_exposure_screen']:
+		print("Rounding ap exposure")
+		final_csv[["chrap_total"]] = final_csv[["chrap_total"]].apply(pd.to_numeric)
+		print(final_csv[["chrap_total"]])
+		final_csv = final_csv.round({"chrap_total":1})
+		print(final_csv[["chrap_total"]])
+
+	#print("Printing final csv for: ", name)	
+	#print(final_csv.T)
 	
 	# Saving to a csv based on ID and event
 	final_csv.to_csv(output1 + site+"-"+id+"-form_"+name+'-day1to'+last_day+".csv", sep=',', index = False, header=True)
 
-	final_csv.to_csv(output_processed + site+"-"+id+"-form_"+name+'-day1to'+last_day+".csv", sep=',', index = False, header=True)
+
+#print(percentage_form.T)
+#percentage_form.to_csv(output1 + site+"-"+id+"-percentage.csv", sep=',', index = True, header=True)
+
 
 
 

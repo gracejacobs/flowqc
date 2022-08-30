@@ -1,0 +1,831 @@
+{
+   "config": [
+      {
+         "_id": 0,
+         "analysis": "form_inclusionexclusion_criteria_review",
+         "category": "inclusion",
+         "color": [
+            "#8dd3c7",
+            "#ffffb3",
+            "#bebada"
+         ],
+         "label": "CHR or Healthy Control (CHR=1)",
+         "range": [
+            "1",
+            "2"
+         ],
+         "text": true,
+         "variable": "chrcrit_part"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_inclusionexclusion_criteria_review",
+         "category": "inclusion",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Meets Inclusion Criteria (yes=1)",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "chrcrit_included"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_inclusionexclusion_criteria_review",
+         "category": "inclusion",
+         "color": [
+            "#fee8c8",
+            "#fdbb84",
+            "#e34a33"
+         ],
+         "label": "Meets Exclusion Criteria (yes=0)",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "chrcrit_excluded"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_informed_consent_run_sheet",
+         "category": "consent",
+         "color": [
+            "#7fc97f",
+            "#beaed4",
+            "#fdc086"
+         ],
+         "label": "Consent for Passive Sensing (full=1)",
+         "range": [
+            "1",
+            "3"
+         ],
+         "text": true,
+         "variable": "chric_passive"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_informed_consent_run_sheet",
+         "category": "consent",
+         "color": [
+            "#7fc97f",
+            "#beaed4",
+            "#fdc086"
+         ],
+         "label": "Consent for Actigraphy (full=1)",
+         "range": [
+            "1",
+            "2"
+         ],
+         "text": true,
+         "variable": "chric_actigraphy"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_informed_consent_run_sheet",
+         "category": "consent",
+         "color": [
+            "#7fc97f",
+            "#beaed4",
+            "#fdc086"
+         ],
+         "label": "Consent for Surveys & Diaries (full=1)",
+         "range": [
+            "1",
+            "2"
+         ],
+         "text": true,
+         "variable": "chric_surveys"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_inclusionexclusion_criteria_review",
+         "category": "inclusion",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "Inclusion Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_inclusionexclusion_criteria_review",
+         "category": "inclusion",
+         "color": [
+            "#8dd3c7",
+            "#ffffb3",
+            "#bebada"
+         ],
+         "label": "Informed Consent Obtained (yes=1)",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "chrcrit_inc2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_missing_data",
+         "category": "inclusion",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "Missing Data (red=yes)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_recruitment_source",
+         "category": "recruitment",
+         "color": [
+            "#b3e2cd",
+            "#fdcdac",
+            "#cbd5e8",
+            "#f4cae4",
+            "#e6f5c9",
+            "#fff2ae",
+            "#f1e2cc",
+            "#cccccc"
+         ],
+         "label": "Recruitment Method (1-15)",
+         "range": [
+            0,
+            "15"
+         ],
+         "text": true,
+         "variable": "chrrecruit"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_lifetime_ap_exposure_screen",
+         "category": "ap_exposure",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#b30000",
+            "#7f0000"
+         ],
+         "label": "Lifetime Total Antipsychotics (>50=exclude)",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrap_total"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_lifetime_ap_exposure_screen",
+         "category": "ap_exposure",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "AP Form Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_past_pharmaceutical_treatment",
+         "category": "past_pharm",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "Past Pharm Form Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_health_conditions_genetics_fluid_biomarkers",
+         "category": "health_conditions",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "Health Cond Form Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_schizotypal_personality_sciddpq",
+         "category": "scid5",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#990000"
+         ],
+         "label": "Scid-5 Schizotypal Criteria at Threshold (>4=cont)",
+         "range": [
+            "1",
+            "9"
+         ],
+         "text": true,
+         "variable": "chrschizotypal_threshold_2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_schizotypal_personality_sciddpq",
+         "category": "scid5",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Qualifies for Schizotypal dx (yes=1)",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "chrschizotypal_summ"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_schizotypal_personality_sciddpq",
+         "category": "scid5",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "Scid-5 Schizotypal Form Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_traumatic_brain_injury_screen",
+         "category": "tbi",
+         "color": [
+            "#fee8c8",
+            "#fdbb84",
+            "#e34a33"
+         ],
+         "label": "Any Traumatic Brain Injury (yes=1)",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "chrtbi_subject_head_injury"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_traumatic_brain_injury_screen",
+         "category": "tbi",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#b30000",
+            "#7f0000"
+         ],
+         "label": "Number of TBI's",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrtbi_number_injs"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_traumatic_brain_injury_screen",
+         "category": "tbi",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#fc4e2a",
+            "#e31a1c",
+            "#b10026"
+         ],
+         "label": "Most severe TBI (>6=exclude)",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrtbi_severe_inj"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_traumatic_brain_injury_screen",
+         "category": "tbi",
+         "color": [
+            "#f1eef6",
+            "#bdc9e1",
+            "#74a9cf",
+            "#0570b0"
+         ],
+         "label": "Information Source (subject=1)",
+         "range": [
+            "1",
+            "3"
+         ],
+         "text": true,
+         "variable": "chrtbi_sourceinfo"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_traumatic_brain_injury_screen",
+         "category": "tbi",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "TBI Form Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_family_interview_for_genetic_studies_figs",
+         "category": "figs",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "FIGS Form Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_screening",
+         "category": "sofas",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "SOFAS Premorbid Score (0-100)",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrsofas_premorbid"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_screening",
+         "category": "sofas",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "SOFAS Last 12 Months Score (0-100)",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrsofas_currscore12mo"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_screening",
+         "category": "sofas",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "SOFAS Past Month Score (0-100)",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrsofas_currscore"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_screening",
+         "category": "sofas",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "SOFAS Lowest in Year Score (0-100)",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrsofas_lowscore"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_screening",
+         "category": "sofas",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "SOFAS Screen Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p1p8",
+         "category": "psychs",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "PSYCHS P1-P8 Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "PSYCHS Psychosis Dx Screen (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "CAARMS BLIPS Group (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "CAARMS APS Group (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac5"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "CAARMS Vulnerability Group (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac6"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "CAARMS UHR Criteria (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac7"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "SIPS BIPS Lifetime dx (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac8"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "SIPS APSS Lifetime dx (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac14"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "SIPS GRD Lifetime dx (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac20"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "SIPS CHR Lifetime dx (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac26"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#ffeda0",
+            "#feb24c",
+            "#f03b20"
+         ],
+         "label": "DSM Attenuated Psychosis dx (yes=1)",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpsychs_scr_ac32"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_psychs_p9ac32",
+         "category": "psychs",
+         "color": [
+            "#f7fcf5",
+            "#e5f5e0",
+            "#c7e9c0",
+            "#a1d99b",
+            "#74c476",
+            "#41ab5d",
+            "#238b45",
+            "#006d2c",
+            "#00441b"
+         ],
+         "label": "PSYCHS P9-AC32 Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_enrollment_note",
+         "category": "inclusion",
+         "color": [
+            "#8dd3c7",
+            "#ffffb3",
+            "#bebada"
+         ],
+         "label": "Consent Date",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "enrollmentnote_dateofconsent"
+      },
+      {
+         "_id": 0,
+         "analysis": "flowcheck",
+         "category": "subject-id",
+         "color": [
+            "#8dd3c7",
+            "#ffffb3",
+            "#bebada",
+            "#fb8072"
+         ],
+         "label": "Subject ID",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "subject_id"
+      }
+   ],
+   "name": "screening-forms"
+}

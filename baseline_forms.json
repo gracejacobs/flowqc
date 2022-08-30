@@ -1,0 +1,2417 @@
+{
+   "config": [
+      {
+         "_id": 0,
+         "analysis": "form_sociodemographics",
+         "category": "subjectid",
+         "color": [
+            "#b3e2cd",
+            "#fdcdac",
+            "#cbd5e8"
+         ],
+         "label": "Subject ID",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "subjectid"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sociodemographics",
+         "category": "sociodemographics",
+         "color": [
+            "#efedf5",
+            "#bcbddc",
+            "#756bb1"
+         ],
+         "label": "Sociodemographics - Assigned Sex",
+         "range": [
+            0,
+            1
+         ],
+         "text": true,
+         "variable": "chrdemo_sexassigned"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sociodemographics",
+         "category": "sociodemographics",
+         "color": [
+            "#f7fbff",
+            "#deebf7",
+            "#c6dbef",
+            "#9ecae1",
+            "#6baed6",
+            "#4292c6",
+            "#2171b5",
+            "#084594"
+         ],
+         "label": "Age in Years",
+         "range": [
+            0,
+            "35"
+         ],
+         "text": true,
+         "variable": "chrdemo_age_mos3"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sociodemographics",
+         "category": "sociodemographics",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_psychosis_mood_substance_abuse",
+         "category": "scid5",
+         "color": [
+            "#edf8e9",
+            "#bae4b3",
+            "#74c476",
+            "#31a354",
+            "#006d2c"
+         ],
+         "label": "SCID-5 Psychosis - Type",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrscid_type"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_psychosis_mood_substance_abuse",
+         "category": "scid5",
+         "color": [
+            "#edf8e9",
+            "#bae4b3",
+            "#74c476",
+            "#31a354",
+            "#006d2c"
+         ],
+         "label": "SCID-5 Version",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrschid_overview_version"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_psychosis_mood_substance_abuse",
+         "category": "scid5",
+         "color": [
+            "#b3e2cd",
+            "#fdcdac",
+            "#cbd5e8",
+            "#f4cae4",
+            "#e6f5c9",
+            "#fff2ae",
+            "#f1e2cc",
+            "#cccccc"
+         ],
+         "label": "SCID-5 Current Diagnosis",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrscid_cur_diagnosis"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_scid5_psychosis_mood_substance_abuse",
+         "category": "scid5",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_followup",
+         "category": "sofas",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "SOFAS Current Score",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrsofas_currscore_fu"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_followup",
+         "category": "sofas",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "SOFAS 12 Months Ago Score",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrsofas_currscore12mo_fu"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_sofas_followup",
+         "category": "sofas",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_perceived_discrimination_scale",
+         "category": "discrim",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Perceived Discrimination - Percentage",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_pubertal_developmental_scale",
+         "category": "puberty",
+         "color": [
+            "#ffffcc",
+            "#c7e9b4",
+            "#7fcdbb",
+            "#41b6c4",
+            "#1d91c0",
+            "#225ea8",
+            "#0c2c84"
+         ],
+         "label": "Pubertal Dev - Height Change",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrpds_pds_1_p"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_pubertal_developmental_scale",
+         "category": "puberty",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_penncnb",
+         "category": "penn",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "PennCNB Complete",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpenn_complete"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_penncnb",
+         "category": "penn",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Will Be Completed Later",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpenn_missing_1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_penncnb",
+         "category": "penn",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_iq_assessment_wasiii_wiscv_waisiv",
+         "category": "iq",
+         "color": [
+            "#b3e2cd",
+            "#fdcdac",
+            "#cbd5e8",
+            "#f4cae4",
+            "#e6f5c9"
+         ],
+         "label": "IQ Assessment",
+         "range": [
+            0,
+            "4"
+         ],
+         "text": true,
+         "variable": "chriq_assessment"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_iq_assessment_wasiii_wiscv_waisiv",
+         "category": "iq",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Matrix Reasoning t-score",
+         "range": [
+            0,
+            "150"
+         ],
+         "text": true,
+         "variable": "chriiq_tscore_matrix"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_iq_assessment_wasiii_wiscv_waisiv",
+         "category": "iq",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Vocab t-score",
+         "range": [
+            0,
+            "150"
+         ],
+         "text": true,
+         "variable": "chriq_tscore_vocab"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_iq_assessment_wasiii_wiscv_waisiv",
+         "category": "iq",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Composite Score FSIQ-2",
+         "range": [
+            0,
+            "150"
+         ],
+         "text": true,
+         "variable": "chriq_fsiq"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_iq_assessment_wasiii_wiscv_waisiv",
+         "category": "iq",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_iq_reading_accuracy",
+         "category": "premorbid",
+         "color": [
+            "#fbb4ae",
+            "#b3cde3",
+            "#ccebc5",
+            "#decbe4",
+            "#fed9a6"
+         ],
+         "label": "WRAT Reading Task",
+         "range": [
+            0,
+            "5"
+         ],
+         "text": true,
+         "variable": "chrpreiq_reading_task"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_iq_reading_accuracy",
+         "category": "premorbid",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "WRAT Raw Score",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrpreiq_total_raw"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_iq_reading_accuracy",
+         "category": "premorbid",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "WRAT Standard Score",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrpreiq_standard_score"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_iq_reading_accuracy",
+         "category": "premorbid",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "EEG Clue Circle Task Complete",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chreeg_run3"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "EEG Tone Task Complete",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chreeg_run6"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "EEG Click Task Complete",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chreeg_run14"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "EEG Rest Complete",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chreeg_run15"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Data Uploaded to Hub",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chreeg_hub"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Data Uploaded to Drive",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chreeg_drive"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_eeg_run_sheet",
+         "category": "eeg",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#b3e2cd",
+            "#fdcdac",
+            "#cbd5e8",
+            "#f4cae4"
+         ],
+         "label": "MRI Scanner",
+         "range": [
+            0,
+            "5"
+         ],
+         "text": true,
+         "variable": "chrmri_scanner"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "T1w MPR Quality Check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_t1_qc"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "T2w SPC quality check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_t2_qc"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "rsfMRI rest AP quality check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_fmriap_qc"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "rsfMRI res PA quaclity check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_fmripa_qc"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "dMRI_b0_AP quality check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_dmri_b0_qc"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "dMRI dir176 PA quality check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_dmri176_qc"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "dMRI b0 AP quality check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrmri_dmri_b0_qc_2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_mri_run_sheet",
+         "category": "mri",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_mindlamp_onboarding",
+         "category": "mindlamp",
+         "color": [
+            "#ffffcc",
+            "#c2e699",
+            "#78c679",
+            "#238443"
+         ],
+         "label": "Mindlamp Version",
+         "range": [
+            0,
+            "4"
+         ],
+         "text": true,
+         "variable": "chrdbb_opt_in"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_mindlamp_onboarding",
+         "category": "mindlamp",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Phone Type",
+         "range": [
+            0,
+            "4"
+         ],
+         "text": true,
+         "variable": "chrdbb_phone_type"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_mindlamp_onboarding",
+         "category": "mindlamp",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_axivity_onboarding",
+         "category": "axivity",
+         "color": [
+            "#ffffcc",
+            "#a1dab4",
+            "#41b6c4",
+            "#2c7fb8",
+            "#253494"
+         ],
+         "label": "Axivity Device Given",
+         "range": [
+            0,
+            "4"
+         ],
+         "text": true,
+         "variable": "chrax_device_given"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_axivity_onboarding",
+         "category": "axivity",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Axivity Data Uploaded",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrax_box_upload"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_axivity_onboarding",
+         "category": "axivity",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Axivity Data On Dpdash",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrax_qaqc1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_digital_biomarkers_axivity_onboarding",
+         "category": "axivity",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cbc_with_differential",
+         "category": "cbc",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "CBC With Differential Percentage",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#e0f3db",
+            "#a8ddb5",
+            "#43a2ca"
+         ],
+         "label": "Speech Sampling Remote",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrspeech_remote_status"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Zoom Used",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrspeech_zoom"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Data Uploaded",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrspeech_upload"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#fee6ce",
+            "#fdae6b",
+            "#e6550d"
+         ],
+         "label": "Pause in Recording",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chr_speech_pause"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#fee6ce",
+            "#fdae6b",
+            "#e6550d"
+         ],
+         "label": "Deviation in Recording",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrspeech_deviation"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#f7fcb9",
+            "#addd8e",
+            "#31a354"
+         ],
+         "label": "Quality Check",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrspeech_quality"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_speech_sampling_run_sheet",
+         "category": "speech",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "CBC With Differential Percentage",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Avolition Behavior",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item1_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Avolition Internal Experience",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item2_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Anhedonia",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item6_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Asociality Behavior",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item3_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Asociality Internal Experience",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item5_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Anhedonia Affective Forecasting",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item7_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Facial Affect",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item8_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Vocal Affect",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item9_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Expressive Body",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item10_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Alogia",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item11_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffb2",
+            "#fed976",
+            "#feb24c",
+            "#fd8d3c",
+            "#f03b20",
+            "#bd0026"
+         ],
+         "label": "NSI-PR Asociality Social Media",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrnsipr_item4_rating"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_nsipr",
+         "category": "nsipr",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "NSI-PR Percentage",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Depression",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Hopelessness",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Self-Depreciation",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg3"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Guilty Ideas of Reference",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg4"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Pathological Guilt",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg5"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Morning Depression",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg6"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Early Wakening",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg7"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Suicide",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg8"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "CDSS Observed Depression",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrcdss_calg9"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cdss",
+         "category": "cdss",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "CDSS Percentage",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_oasis",
+         "category": "oasis",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#b30000",
+            "#7f0000"
+         ],
+         "label": "OASIS Total Score",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chroasis_total10"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_oasis",
+         "category": "oasis",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "OASIS Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Tobacco Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Alcohol Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Cannabis Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use3"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Cocaine Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use4"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Amphetamine Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use5"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Inhalants Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use6"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Sedatives Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use7"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Hallucinogens Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use8"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Opioids Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use9"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "ASSIST Other Substances Use",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrassist_whoassist_use10"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_assist",
+         "category": "assist",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "OASIS Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cssrs_baseline",
+         "category": "cssrsb",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#e34a33",
+            "#b30000"
+         ],
+         "label": "CSSRSB Total Lifetime Suicide Attempts",
+         "range": [
+            0,
+            "4"
+         ],
+         "text": true,
+         "variable": "chrcssrsb_snmacatl"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cssrs_baseline",
+         "category": "cssrsb",
+         "color": [
+            "#fef0d9",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#e34a33",
+            "#b30000"
+         ],
+         "label": "CSSRSB Intensity of Suicide Attempts",
+         "range": [
+            0,
+            "6"
+         ],
+         "text": true,
+         "variable": "chrcssrsb_idintsvl"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_cssrs_baseline",
+         "category": "cssrsb",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "CSSRC Baseline Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_perceived_stress_scale",
+         "category": "perceived_stress_scale",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#e34a33",
+            "#b30000"
+         ],
+         "label": "Perceived Stress Upset",
+         "range": [
+            0,
+            "4"
+         ],
+         "text": true,
+         "variable": "chrpss_pssp1_1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_perceived_stress_scale",
+         "category": "perceived_stress_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Stress Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_social_scale",
+         "category": "global_functioning_social_scale",
+         "color": [
+            "#ffffcc",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#31a354",
+            "#006837"
+         ],
+         "label": "Satisfaction with Social Life",
+         "range": [
+            0,
+            "5"
+         ],
+         "text": true,
+         "variable": "chrgfs_overallsat"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_social_scale",
+         "category": "global_functioning_social_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Global Functioning Social Score",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrgfs_gf_social_scale"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_social_scale",
+         "category": "global_functioning_social_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Global Functioning Lowest Social Score",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrgfs_gf_social_low"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_social_scale",
+         "category": "global_functioning_social_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Global Functioning Highest Social Score",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrgfs_gf_social_high"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_social_scale",
+         "category": "global_functioning_social_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_role_scale",
+         "category": "global_functioning_role_scale",
+         "color": [
+            "#8dd3c7",
+            "#ffffb3",
+            "#bebada"
+         ],
+         "label": "Global Functioning Primary Role",
+         "range": [
+            0,
+            "2"
+         ],
+         "text": true,
+         "variable": "chrgfr_gf_primaryrole"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_role_scale",
+         "category": "global_functioning_role_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Global Functioning Current Score",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrgfr_gf_role_scole"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_role_scale",
+         "category": "global_functioning_role_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Global Functioning High Score",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrgfr_gf_role_high"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_role_scale",
+         "category": "global_functioning_role_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Global Functioning Low Score",
+         "range": [
+            0,
+            "10"
+         ],
+         "text": true,
+         "variable": "chrgfr_gf_role_low"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_global_functioning_role_scale",
+         "category": "global_functioning_role_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_item_promis_for_sleep",
+         "category": "item_promis_for_sleep",
+         "color": [
+            "#ffffcc",
+            "#c2e699",
+            "#78c679",
+            "#31a354",
+            "#006837"
+         ],
+         "label": "Sleep Quality Last Week",
+         "range": [
+            0,
+            "5"
+         ],
+         "text": true,
+         "variable": "chrpromis_sleep109"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_item_promis_for_sleep",
+         "category": "item_promis_for_sleep",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_bprs",
+         "category": "bprs",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#b30000",
+            "#7f0000"
+         ],
+         "label": "BPRS Total Score",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": true,
+         "variable": "chrbprs_bprs_total"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_pgis",
+         "category": "pgis",
+         "color": [
+            "#fef0d9",
+            "#fdcc8a",
+            "#fc8d59",
+            "#d7301f"
+         ],
+         "label": "PGI-S Overall Severity of Symptoms",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrpgi_2"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_pgis",
+         "category": "pgis",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_adjustment_scale",
+         "category": "premorbid_adjustment_scale",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#990000"
+         ],
+         "label": "PAS Adaptation to School - Childhood",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrpas_pmod_child4"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_adjustment_scale",
+         "category": "premorbid_adjustment_scale",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#990000"
+         ],
+         "label": "Adaptation to School - Early Adolescence",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrpas_pmod_adol_early4"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_adjustment_scale",
+         "category": "premorbid_adjustment_scale",
+         "color": [
+            "#fff7ec",
+            "#fee8c8",
+            "#fdd49e",
+            "#fdbb84",
+            "#fc8d59",
+            "#ef6548",
+            "#d7301f",
+            "#990000"
+         ],
+         "label": "Adaptation to School - Late Adolescence",
+         "range": [
+            0,
+            "7"
+         ],
+         "text": true,
+         "variable": "chrpas_pmod_adol_late4"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_adjustment_scale",
+         "category": "premorbid_adjustment_scale",
+         "color": [
+            "#eff3ff",
+            "#bdd7e7",
+            "#6baed6",
+            "#2171b5"
+         ],
+         "label": "Married Presently or Formerly",
+         "range": [
+            0,
+            "3"
+         ],
+         "text": true,
+         "variable": "chrpas_pmod_adult3v1"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_premorbid_adjustment_scale",
+         "category": "premorbid_adjustment_scale",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "PAS Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_ra_prediction",
+         "category": "ra_prediction",
+         "color": [
+            "#ef8a62",
+            "#f7f7f7",
+            "#67a9cf"
+         ],
+         "label": "RA Prediction Transition",
+         "range": [
+            0,
+            "1"
+         ],
+         "text": true,
+         "variable": "chrpred_transition"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_ra_prediction",
+         "category": "ra_prediction",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "RA Months of Experience",
+         "range": [
+            0,
+            "24"
+         ],
+         "text": true,
+         "variable": "chrpred_experience"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_ra_prediction",
+         "category": "ra_prediction",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      },
+      {
+         "_id": 0,
+         "analysis": "form_guid_form",
+         "category": "guid_form",
+         "color": [
+            "#ffffe5",
+            "#f7fcb9",
+            "#d9f0a3",
+            "#addd8e",
+            "#78c679",
+            "#41ab5d",
+            "#238443",
+            "#006837",
+            "#004529"
+         ],
+         "label": "GUID Percentage Complete",
+         "range": [
+            0,
+            "100"
+         ],
+         "text": false,
+         "variable": "Percentage"
+      }
+   ],
+   "name": "baseline_forms"
+}

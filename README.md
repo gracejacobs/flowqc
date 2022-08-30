@@ -8,8 +8,10 @@ Takes the individual csvs for each event and appends them into a master csv that
 
 #### getting the config template
 cd /data/predict/utility
-source .vault/.env.dpstage
-./download_config.sh formqc-percent /data/pnl/home/gj936/U24/Clinical_qc/flowqc/formqc-percent.json
+source .vault/.env.dpstage OR
+source .vault/.env.rc-predict
+
+./download_config.sh screening-forms /data/pnl/home/gj936/U24/Clinical_qc/flowqc/configs/screening-forms.json
 
 #### making_dpdash_config.py
 Takes the formqc-template.json template and applies it to all of the variables based on the Column_names.csv generated in combining_all_events.py
