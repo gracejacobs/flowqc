@@ -205,15 +205,15 @@ for name in form_names:
 		final_csv = final_csv.round({"chrap_total":1})
 		print(final_csv[["chrap_total"]])
 
-	print("Printing final csv for: ", name)	
-	print(final_csv.T)
+	#print("Printing final csv for: ", name)	
+	#print(final_csv.T)
 	
 	# Saving to a csv based on ID and event
 	final_csv.to_csv(output1 + site+"-"+id+"-form_"+name+'-day1to'+str(last_day)+".csv", sep=',', index = False, header=True)
 
 
 
-print(percentage_form_2.T["baseline_arm_1"])
+#print(percentage_form_2.T["baseline_arm_1"])
 percentage_form_2.to_csv(output1 + site+"-"+id+"-percentage.csv", sep=',', index = True, header=True)
 
 

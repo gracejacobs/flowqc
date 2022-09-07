@@ -143,6 +143,18 @@ for id in id_list:
 
 	else:
 		print("Baseline data doesn't exist")
+		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent']
+		dpdash_main = pd.DataFrame(columns = names_dash)
+		dpdash_main.at[0, 'subjectid'] = id
+		dpdash_main.at[0, 'site'] = site
+		dpdash_main.at[0, 'mtime'] = consent
+		dpdash_main.at[0, 'day'] = 1
+
+		dpdash_baseline = dpdash_main
+
+		id_baseline_tracker["Baseline_{0}".format(id)] = dpdash_baseline
+
+
 
 ## Concatenating all participant data together
 # screening visit
