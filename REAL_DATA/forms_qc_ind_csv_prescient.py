@@ -30,16 +30,33 @@ print("Loading data dictionary")
 #dict = pd.read_csv('AMPSCZFormRepository_DataDictionary_2022-04-02.csv',
 dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=False)
 
+status = "0"
+percpath = (output1 + site+"-"+id+"-percentage.csv")
+if os.path.exists(percpath):
+	perc_check = pd.read_csv(percpath)
+	perc_check = perc_check.fillna(0)
+	print(perc_check)
+	perc_check = perc_check.drop('informed_consent_run_sheet' , axis='columns')
+	perc_check = perc_check[perc_check["Unnamed: 0"] != 99]
+	perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
+	perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
+	print(perc_check)
+	perc_check = perc_check[perc_check.Completed > 300]
+
+	if perc_check.empty:
+		status = "0"
+	else:
+		status = perc_check["Unnamed: 0"].iloc[-1]
+
+		if perc_check['Total_empty'].min() > 58:
+			status = "0"
+	print("Visit status: " + str(status))
+
+
 # Getting all the form names from the data dictionary
 #form_names = pd.read_csv('form_names.csv')
 form_names = dict['Form Name'].unique()
 percentage_form = pd.DataFrame(columns = form_names)
-
-### three TBI run sheets - need to join these
-#tbi_1 = pd.read_csv(input_path+id+"_traumatic_brain_injury_screen.csv")
-#tbi_parent = pd.read_csv(input_path+id+"_traumatic_brain_injury_screen_parent.csv")
-#tbi_subject = pd.read_csv(input_path+id+"_traumatic_brain_injury_screen_subject.csv")
-
 
 file = input_path+id+"_informed_consent_run_sheet.csv"
 sub_consent = pd.read_csv(file)
@@ -58,12 +75,16 @@ for name in form_names:
 	form_tracker = {}
 	day_tracker = []
 	print(name)
-	file = input_path+id+"_"+name+".csv"
-	print(file)
+
+	if name in ["traumatic_brain_injury_screen"]: # using combined version of 3 csvs
+		file = input_path+id+"_"+name+".csv.flat"	
+	else:
+		file = input_path+id+"_"+name+".csv"
+	#print(file)
 
 	if os.path.isfile(file): 
 		sub_data_all = pd.read_csv(file)
-		print("Printing data for form")
+		#print("Printing data for form")
 		#print(sub_data_all.T)
 		sub_data_all = sub_data_all.replace('-3', np.NaN, regex=True)
 		sub_data_all = sub_data_all.replace(-3, np.NaN, regex=True)
@@ -127,6 +148,43 @@ for name in form_names:
 			## Adding percentage data
 			percentage_form.at[event, name] = form_info.at["Percentage", 'Variables']
 
+			# adding visit status
+			if name in ['informed_consent_run_sheet']: 
+				print(name)
+				form_info.at["visit_status", 'Variables'] = status
+				print(form_info) 
+
+			# adding included/excluded variables
+			# creating a single exclusion inclusion variable
+			if name in ['inclusionexclusion_criteria_review']: 
+				form_info.at["included_excluded", 'Variables'] = Nan
+
+				if "chrcrit_included" in sub_data and "chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == "1":
+					print("Participant meets inclusion criteria")
+					form_info.at["included_excluded", 'Variables'] = 1
+		
+				if "chrcrit_excluded" in sub_data_all and pd.notna(sub_data.loc[0, "chrcrit_excluded"]) and sub_data.loc[0, "chrcrit_excluded"] == "1":
+					form_info.at["included_excluded", 'Variables'] = 0
+
+				print("Is this person included or not? ")				
+				print(form_info.at["included_excluded", 'Variables'])
+
+			# adding interview age
+			age = 0
+			if name in ['sociodemographics'] and pd.notna(sub_data.loc[0, "interview_age"]): 
+				print(sub_data.T)
+				form_info.at["interview_age", 'Variables'] = sub_data.loc[0, "interview_age"]	
+
+			print("Age: " + str(age))
+
+			# creating a total score for oasis
+			#if name in ['oasis']:
+			#	if sub_data.at[0, 'chroasis_oasis_1'] > -1 and sub_data.at[0, 'chroasis_oasis_2'] > -1 and sub_data.at[0, 'chroasis_oasis_3'] > -1 and sub_data.at[0, 'chroasis_oasis_4'] > -1 and sub_data.at[0, 'chroasis_oasis_5'] > -1: 					
+			#		numbers = [sub_data.at[0, 'chroasis_oasis_1'], sub_data.at[0, 'chroasis_oasis_2'], sub_data.at[0, 'chroasis_oasis_3'], sub_data.at[0, 'chroasis_oasis_4'], sub_data.at[0, 'chroasis_oasis_5']]
+			#	else:
+			#		form_info.at["included_excluded", 'Variables'] = 999
+				
+	
 			# transposing
 			form_info = form_info.transpose()
 
@@ -159,6 +217,22 @@ for name in form_names:
 					dpdash_main.at[event, 'mtime'] = consent
 					day = 1
 
+			# creating time between entry and interview date
+			if "interview_date" in sub_data and "entry_date" in sub_data:
+				int_date = sub_data.at[0, "interview_date"]
+				ent_date = sub_data.at[0, "entry_date"]
+				
+				if pd.isna(int_date) | pd.isna(ent_date):
+					dpdash_main.at[event, 'time_between_int_ent'] = 'NaN'
+					
+				else:
+					ent_date = datetime.strptime(ent_date, "%m/%d/%Y")
+					int_date = datetime.strptime(int_date, "%m/%d/%Y")
+					dpdash_main.at[event, 'time_between_int_ent'] = days_between(ent_date, int_date)
+			print("Time between interview and entry date: ")
+			print(dpdash_main.at[event, 'time_between_int_ent'])
+
+
 			# setting day as the difference between the consent date (day 1) and interview date
 			dpdash_main.at[event, 'day'] = day
 
@@ -186,7 +260,7 @@ for name in form_names:
 		final_csv = pd.concat(form_tracker, axis=0, ignore_index=True)
 		print(name)
 		#removing rows with no data
-		final_csv = final_csv[final_csv.Percentage != 0]
+		#final_csv = final_csv[final_csv.Percentage != 0]
 		print("FINAL CSV TO BE EXPORTED:\n", final_csv.T)
 	
 		# Saving to a csv based on ID and event

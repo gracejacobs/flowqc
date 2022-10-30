@@ -8,7 +8,7 @@ cat pronet_sub_list_chr.txt
 #### creating csvs for forms for all pronet participants
 echo "Creating csvs - Pronet"
 cat pronet_sub_list_chr.txt | while read sub; do
-  #rm /data/predict/data_from_nda/formqc/*$sub*
+  rm /data/predict/data_from_nda/formqc/*$sub*day*
   python forms_qc_ind_csv_updated.py $sub
 done 
 

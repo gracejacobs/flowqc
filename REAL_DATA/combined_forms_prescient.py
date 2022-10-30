@@ -21,7 +21,7 @@ today = today.strftime("%Y-%m-%d")
 output1 = "/data/predict/data_from_nda/formqc/"
 
 # list of sites for site-specific combined files
-site_list = ["ME"]
+site_list = ["ME", "CP"]
 
 # list of ids to include
 ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/prescient_sub_list.txt", sep= "\n", index_col = False, header = None)
@@ -52,6 +52,7 @@ for id in id_list:
 	percentage_file = "/data/predict/data_from_nda/formqc/{0}-{1}-percentage.csv".format(site, id)
 	screening_perc = []
 	baseline_perc = []
+	status = "0"
 
 	if os.path.exists(percentage_file):
 		percentages = pd.read_csv(percentage_file, sep= ",", index_col= 0)
@@ -61,9 +62,29 @@ for id in id_list:
 		screening_perc = screening_perc.reset_index(drop=True)
 		baseline_perc = baseline_perc.reset_index(drop=True)
 
+		# getting the visit status
+		perc_check = percentages
+		perc_check = perc_check.fillna(0)
+		#print(perc_check)
+		perc_check = perc_check.drop('informed_consent_run_sheet' , axis='columns')
+		perc_check = perc_check[perc_check.index != 99]
+		perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
+		perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
+		print(perc_check)
+		perc_check = perc_check[perc_check.Completed > 200]
+
+		if perc_check.empty:
+			status = "0"
+		else:
+			status = perc_check.index[-1]
+
+			if perc_check['Total_empty'].min() > 58:
+				status = "0"
+	print("Visit status: " + str(status))
+
 	# screening
 	screen = (output1 + site+"-"+id+"-screening.csv")
-	if os.path.exists(percentage_file):
+	if os.path.exists(screen):
 		sub_screening = pd.read_csv(screen)
 		consent = sub_screening[sub_screening["Unnamed: 1"].isin(["chric_consent_date"])]
 		consent = consent.at[0, "Variables"]
@@ -77,12 +98,13 @@ for id in id_list:
 		#print(sub_screening)
 
 		# setting up dpdash columns for screening
-		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent']
+		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent', 'visit_status']
 		dpdash_main = pd.DataFrame(columns = names_dash)
 		dpdash_main.at[0, 'subjectid'] = id
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
+		dpdash_main.at[0, 'visit_status'] = status
 
 		#dpdash_main = dpdash_main.transpose()
 		#print(dpdash_main)
@@ -99,7 +121,7 @@ for id in id_list:
 		dpdash_screening = pd.concat(frames, axis=1)
 		dpdash_screening = dpdash_screening.loc[:,~dpdash_screening.columns.duplicated()]
 		print("Screening csv: ")
-		print(dpdash_screening.T)
+		#print(dpdash_screening.T)
 
 		id_tracker["Screening_{0}".format(id)] = dpdash_screening
 
@@ -111,16 +133,15 @@ for id in id_list:
 		sub_baseline = sub_baseline.set_index('Unnamed: 1')
 		del sub_baseline['Unnamed: 0']
 		sub_baseline = sub_baseline.transpose()
-		#print(sub_baseline)
-	
 
 		# setting up dpdash columns for baseline
-		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent']
+		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent', 'visit_status']
 		dpdash_main = pd.DataFrame(columns = names_dash)
 		dpdash_main.at[0, 'subjectid'] = id
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
+		dpdash_main.at[0, 'visit_status'] = status
 
 		#dpdash_main = dpdash_main.transpose()
 		#print(dpdash_main)
@@ -137,7 +158,7 @@ for id in id_list:
 
 		print("Baseline csv: ")
 		dpdash_baseline = dpdash_baseline.loc[:,~dpdash_baseline.columns.duplicated()]
-		print(dpdash_baseline.T)
+		#print(dpdash_baseline.T)
 
 		id_baseline_tracker["Baseline_{0}".format(id)] = dpdash_baseline
 
@@ -158,7 +179,7 @@ for id in id_list:
 
 ## Concatenating all participant data together
 # screening visit
-print(len(id_tracker))
+#print(len(id_tracker))
 if len(id_tracker) > 0:
 	final_csv = pd.concat(id_tracker,axis=0, ignore_index=True)
 	#final_csv[["chrap_total"]] = final_csv[["chrap_total"]].apply(pd.to_numeric)
@@ -169,6 +190,8 @@ if len(id_tracker) > 0:
 	print("Final screening file: ")
 	print(final_csv.T)
 	final_csv.to_csv(output1 + "combined-PRESCIENT-form_screening-day1to1.csv", sep=',', index = False, header=True)
+
+	final_csv.to_csv(output1 + "combined-ME-form_screening-day1to1.csv", sep=',', index = False, header=True)
 
 	## Creating site specific combined files for screening and baseline
 	for si in site_list:
@@ -192,6 +215,8 @@ if len(id_baseline_tracker) > 0:
 	print("Combined baseline file: ")
 	print(final_baseline_csv.T)
 	final_baseline_csv.to_csv(output1 + "combined-PRESCIENT-form_baseline-day1to1.csv", sep=',', index = False, header=True)
+
+	final_baseline_csv.to_csv(output1 + "combined-ME-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
 
 	## Creating site specific combined files for screening and baseline
