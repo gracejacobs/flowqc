@@ -95,7 +95,7 @@ consent = sub_consent.at[0, "chric_consent_date"]
 print("Consent date:" + consent)
 
 print(id)
-#form_names = ["inclusionexclusion_criteria_review"]
+#form_names = ["guid_form"]
 #Looping through forms to get form data
 for name in form_names:
 	form_tracker = {}
@@ -162,7 +162,7 @@ for name in form_names:
 
 	# creating a single exclusion inclusion variable
 	if name in ['inclusionexclusion_criteria_review']: 
-		form_info_2.at["included_excluded", screening] = NaN
+		form_info_2.at["included_excluded", screening] = np.nan
 
 		if "chrcrit_included" in sub_data_all and "chrcrit_included" in sub_data_all and sub_consent.loc[0, "chrcrit_included"] == "1":
 			print("Participant meets inclusion criteria")
@@ -172,8 +172,20 @@ for name in form_names:
 			form_info_2.at["included_excluded", screening] = 0
 
 		print("Is this person included or not? ")				
-		print(form_info_2.at["included_excluded", screening])	
+		#print(str(form_info_2.at["included_excluded", screening]))	
 
+	# making a yes/no GUID form for whether there is a GUID or pseudoguid
+	if name in ['guid_form']: 
+		if "chrguid_guid" in sub_data_all and pd.notna(sub_data_all.loc[0, "chrguid_guid"]):
+			form_info_2.at["guid_available", screening] = 1
+		else:
+			form_info_2.at["guid_available", screening] = 0
+		# pseudoguid
+		if "chrguid_pseudoguid" in sub_data_all and pd.notna(sub_data_all.loc[0, "chrguid_pseudoguid"]):
+			form_info_2.at["pseudoguid_available", screening] = 1
+		else:
+			form_info_2.at["pseudoguid_available", screening] = 0
+		
 	
 	# adding visit status
 	if name in ['informed_consent_run_sheet']: 

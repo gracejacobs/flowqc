@@ -78,6 +78,7 @@ for name in form_names:
 
 	if name in ["traumatic_brain_injury_screen"]: # using combined version of 3 csvs
 		file = input_path+id+"_"+name+".csv.flat"	
+		print("Alternative name for the TBI screen: " + file)
 	else:
 		file = input_path+id+"_"+name+".csv"
 	#print(file)
@@ -157,13 +158,14 @@ for name in form_names:
 			# adding included/excluded variables
 			# creating a single exclusion inclusion variable
 			if name in ['inclusionexclusion_criteria_review']: 
-				form_info.at["included_excluded", 'Variables'] = Nan
+				form_info.at["included_excluded", 'Variables'] = np.nan
 
-				if "chrcrit_included" in sub_data and "chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == "1":
+				if "chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == 1:
 					print("Participant meets inclusion criteria")
 					form_info.at["included_excluded", 'Variables'] = 1
 		
-				if "chrcrit_excluded" in sub_data_all and pd.notna(sub_data.loc[0, "chrcrit_excluded"]) and sub_data.loc[0, "chrcrit_excluded"] == "1":
+				if "chrcrit_excluded" in sub_data and sub_data.at[0, "chrcrit_excluded"] == 1:
+					print("Participant meets exclusion criteria")					
 					form_info.at["included_excluded", 'Variables'] = 0
 
 				print("Is this person included or not? ")				
@@ -173,19 +175,37 @@ for name in form_names:
 			age = 0
 			if name in ['sociodemographics'] and pd.notna(sub_data.loc[0, "interview_age"]): 
 				print(sub_data.T)
-				form_info.at["interview_age", 'Variables'] = sub_data.loc[0, "interview_age"]	
+				form_info.at["interview_age", 'Variables'] = round((sub_data.loc[0, "interview_age"])/12)	
+				print("Age: " + str(age))
 
-			print("Age: " + str(age))
+			# making a yes/no GUID form for whether there is a GUID or pseudoguid
+			if name in ['guid_form']: 
+				if "chrguid_guid" in sub_data and pd.notna(sub_data.loc[0, "chrguid_guid"]):
+					form_info.at["guid_available", 'Variables'] = 1
+				else:
+					form_info.at["guid_available", 'Variables'] = 0
+
+				# pseudoguid
+				if "chrguid_pseudoguid" in sub_data and pd.notna(sub_data.loc[0, "chrguid_pseudoguid"]):
+					form_info.at["pseudoguid_available", 'Variables'] = 1
+				else:
+					form_info.at["pseudoguid_available", 'Variables'] = 0
+
 
 			# creating a total score for oasis
-			#if name in ['oasis']:
-			#	if sub_data.at[0, 'chroasis_oasis_1'] > -1 and sub_data.at[0, 'chroasis_oasis_2'] > -1 and sub_data.at[0, 'chroasis_oasis_3'] > -1 and sub_data.at[0, 'chroasis_oasis_4'] > -1 and sub_data.at[0, 'chroasis_oasis_5'] > -1: 					
-			#		numbers = [sub_data.at[0, 'chroasis_oasis_1'], sub_data.at[0, 'chroasis_oasis_2'], sub_data.at[0, 'chroasis_oasis_3'], sub_data.at[0, 'chroasis_oasis_4'], sub_data.at[0, 'chroasis_oasis_5']]
-			#	else:
-			#		form_info.at["included_excluded", 'Variables'] = 999
+			if name in ['oasis']:
+				if sub_data.at[0, 'chroasis_oasis_1'] > -1 and sub_data.at[0, 'chroasis_oasis_2'] > -1 and sub_data.at[0, 'chroasis_oasis_3'] > -1 and sub_data.at[0, 'chroasis_oasis_4'] > -1 and sub_data.at[0, 'chroasis_oasis_5'] > -1: 					
+					# creating list of values
+					numbers = [sub_data.at[0, 'chroasis_oasis_1'], sub_data.at[0, 'chroasis_oasis_2'], sub_data.at[0, 'chroasis_oasis_3'], sub_data.at[0, 'chroasis_oasis_4'], sub_data.at[0, 'chroasis_oasis_5']]
+					# adding values to get total score
+					form_info.at["chroasis_oasis_total10", 'Variables'] = sum(numbers)				
+				
+				else:
+					form_info.at["chroasis_oasis_total10", 'Variables'] = 999
 				
 	
 			# transposing
+			print(form_info)
 			form_info = form_info.transpose()
 
 
@@ -229,8 +249,8 @@ for name in form_names:
 					ent_date = datetime.strptime(ent_date, "%m/%d/%Y")
 					int_date = datetime.strptime(int_date, "%m/%d/%Y")
 					dpdash_main.at[event, 'time_between_int_ent'] = days_between(ent_date, int_date)
-			print("Time between interview and entry date: ")
-			print(dpdash_main.at[event, 'time_between_int_ent'])
+				print("Time between interview and entry date: ")
+			#print(dpdash_main.at[event, 'time_between_int_ent'])
 
 
 			# setting day as the difference between the consent date (day 1) and interview date

@@ -20,7 +20,7 @@ today = today.strftime("%Y-%m-%d")
 output1 = "/data/predict/data_from_nda/formqc/"
 
 # list of sites for site-specific combined files
-site_list = ["YA", "LA", "WU", "PI", "PA", "OR", "NN", "IR", "NL", "NN", "NC", "TE"]
+site_list = ["YA", "LA", "WU", "PI", "PA", "OR", "NN", "IR", "NL", "NN", "NC", "TE", "MT"]
 
 # list of ids to include
 ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/pronet_sub_list_chr.txt", sep= "\n", index_col = False, header = None)
@@ -112,16 +112,32 @@ for id in id_list:
 		form_info_baseline.at["interview_age", 'Variables'] = sub_data_baseline.at[0, "chrdemo_age_yrs_hc"]
 	
 	## adding inclusion/exclusion criteria
-	form_info.at["included_excluded", 'Variables'] = "NaN"
+	form_info.at["included_excluded", 'Variables'] = np.nan
+
 	if 'chrcrit_included' in sub_data and pd.notna(sub_data.at[0, "chrcrit_included"]) and sub_data.loc[0, "chrcrit_included"] == "1":
 		form_info.at["included_excluded", 'Variables'] = 1
 	if "chrcrit_excluded" in sub_data and pd.notna(sub_data.loc[0, "chrcrit_excluded"]) and sub_data.loc[0, "chrcrit_excluded"] == "0":
 		form_info.at["included_excluded", 'Variables'] = 0
+
+	# making a yes/no GUID form for whether there is a GUID or pseudoguid
+	form_info.at["guid_available", 'Variables'] = np.nan
+	form_info.at["pseudoguid_available", 'Variables'] = np.nan
+
+	if "chrguid_guid" in sub_data and pd.notna(sub_data.loc[0, "chrguid_guid"]):
+		form_info.at["guid_available", 'Variables'] = 1
+	else:
+		form_info.at["guid_available", 'Variables'] = 0
+	# pseudoguid
+	if "chrguid_pseudoguid" in sub_data and pd.notna(sub_data.loc[0, "chrguid_pseudoguid"]):
+		form_info.at["pseudoguid_available", 'Variables'] = 1
+	else:
+		form_info.at["pseudoguid_available", 'Variables'] = 0
 		
 
 
 	print("Age")
 	print(str(age))
+	print(form_info)
 	print(form_info_baseline)
 	form_info = form_info.transpose()
 	form_info_baseline = form_info_baseline.transpose()
@@ -222,16 +238,12 @@ numbers = list(range(1,(len(final_baseline_csv.index) +1))) # changing day numbe
 final_baseline_csv['day'] = numbers
 
 ## Saving combined csvs
-# AMPSCZ and Pronet
-final_csv.to_csv(output1 + "combined-AMPSCZ-form_screening-day1to1.csv", sep=',', index = False, header=True)
-final_baseline_csv.to_csv(output1 + "combined-AMPSCZ-form_baseline-day1to1.csv", sep=',', index = False, header=True)
-
-print("Final combined AMPSCZ csvs")
-print(final_csv.T)
-print(final_baseline_csv.T)
-
 final_csv.to_csv(output1 + "combined-PRONET-form_screening-day1to1.csv", sep=',', index = False, header=True)
 final_baseline_csv.to_csv(output1 + "combined-PRONET-form_baseline-day1to1.csv", sep=',', index = False, header=True)
+
+print("Final combined Pronet csvs")
+print(final_csv.T)
+print(final_baseline_csv.T)
 
 ## Creating site specific combined files for screening and baseline
 for si in site_list:
@@ -255,7 +267,29 @@ for si in site_list:
 	site_scr_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
 
 
+# AMPSCZ
 
+# loading prescient data
+
+baseline_prescient = pd.read_csv(output1 + "combined-PRESCIENT-form_baseline-day1to1.csv")
+screening_prescient = pd.read_csv(output1 + "combined-PRESCIENT-form_screening-day1to1.csv")
+
+ampscz_screening = pd.concat([final_csv, screening_prescient],axis=0, ignore_index=True)
+print("Completed concatenation for screening")
+numbers = list(range(1,(len(ampscz_screening.index) +1))) # changing day numbers to sequence
+ampscz_screening['day'] = numbers
+
+ampscz_baseline = pd.concat([final_baseline_csv, baseline_prescient], axis=0, ignore_index=True)
+print("Completed concatenation for baseline")
+numbers = list(range(1,(len(ampscz_baseline.index) +1))) # changing day numbers to sequence
+ampscz_baseline['day'] = numbers
+
+ampscz_screening.to_csv(output1 + "combined-AMPSCZ-form_screening-day1to1.csv", sep=',', index = False, header=True)
+ampscz_baseline.to_csv(output1 + "combined-AMPSCZ-form_baseline-day1to1.csv", sep=',', index = False, header=True)
+
+print("Final combined AMPSCZ csvs")
+print(ampscz_screening.T)
+print(ampscz_baseline.T)
 
 
 

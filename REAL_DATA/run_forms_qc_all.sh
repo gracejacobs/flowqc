@@ -5,10 +5,14 @@
 echo "Pronet participant List: "
 ls /data/predict/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_chr.txt
 cat pronet_sub_list_chr.txt
+echo "Total Number of Pronet Participants: "
+cat pronet_sub_list_chr.txt | wc -l
 
 echo "Prescient participant List: "
 ls /data/predict/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*informed_consent_run_sheet.csv | sed 's:.*/::' | cut -d '_' -f1 > prescient_sub_list.txt
 cat prescient_sub_list.txt
+echo "Total Number of Prescient Participants: "
+cat prescient_sub_list.txt | wc -l
 
 
 
