@@ -1,5 +1,12 @@
 ### Checking incoming forms for AMP-SCZ based on a participant's json from PHOENIX
 
+All updated code is in REAL_DATA.
+
+There are two master scripts to set up and import data to dpdash:
+
+1) run_forms_qc_pronet.sh
+2) run_forms_qc_all.sh
+
 #### forms_qc.py
 For each event (e.g., screening, baseline) goes through all of the forms and calculates the number of variables in the participant's json, what percentage of the variables were filled out, and the difference between the interview and data entry dates.
 

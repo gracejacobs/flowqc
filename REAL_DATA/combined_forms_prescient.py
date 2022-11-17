@@ -8,9 +8,9 @@ from datetime import datetime
 from datetime import date
 
 def days_between(d1, d2):
-    d1 = datetime.strptime(d1, "%Y-%m-%d")
-    d2 = datetime.strptime(d2, "%Y-%m-%d")
-    return abs((d2 - d1).days)
+	d1 = datetime.strptime(d1, "%Y-%m-%d")
+	d2 = datetime.strptime(d2, "%Y-%m-%d")
+	return abs((d2 - d1).days)
 
 
 # getting today's date
@@ -88,9 +88,11 @@ for id in id_list:
 		sub_screening = pd.read_csv(screen)
 		consent = sub_screening[sub_screening["Unnamed: 1"].isin(["chric_consent_date"])]
 		consent = consent.at[0, "Variables"]
+		consent = str(consent)
 		consent = consent.split(" ")[0]
 		consent = datetime.strptime(consent, "%d/%m/%Y")
-		#print(consent)
+		consent = str(consent)
+		consent = consent.split(" ")[0]
 
 		sub_screening = sub_screening.set_index('Unnamed: 1')
 		del sub_screening['Unnamed: 0']
@@ -104,6 +106,8 @@ for id in id_list:
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
+		dpdash_main.at[0, 'days_since_consent'] = days_between(consent, today)
+		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'])
 		dpdash_main.at[0, 'visit_status'] = status
 
 		#dpdash_main = dpdash_main.transpose()
@@ -141,7 +145,9 @@ for id in id_list:
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
+		dpdash_main.at[0, 'days_since_consent'] = days_between(consent, today)
 		dpdash_main.at[0, 'visit_status'] = status
+		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'])
 
 		#dpdash_main = dpdash_main.transpose()
 		#print(dpdash_main)
@@ -170,6 +176,8 @@ for id in id_list:
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
+		dpdash_main.at[0, 'days_since_consent'] = days_between(consent, today)
+		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'])
 
 		dpdash_baseline = dpdash_main
 
@@ -187,6 +195,11 @@ if len(id_tracker) > 0:
 
 	numbers = list(range(1,(len(final_csv.index) +1))) # changing day numbers to sequence
 	final_csv['day'] = numbers
+	
+	# reordering based on days since consent
+	final_csv = final_csv.sort_values(['days_since_consent', 'day'])
+	final_csv['day'] = numbers
+
 	print("Final screening file: ")
 	print(final_csv.T)
 	final_csv.to_csv(output1 + "combined-PRESCIENT-form_screening-day1to1.csv", sep=',', index = False, header=True)
@@ -212,8 +225,14 @@ if len(id_baseline_tracker) > 0:
 	final_baseline_csv = pd.concat(id_baseline_tracker, ignore_index=True)
 	numbers = list(range(1,(len(final_baseline_csv.index) +1))) # changing day numbers to sequence
 	final_baseline_csv['day'] = numbers
+	
+	# reordering based on days since consent
+	final_baseline_csv = final_baseline_csv.sort_values(['days_since_consent', 'day'])
+	print(final_baseline_csv.T.iloc[:10 , :5])
+	final_baseline_csv['day'] = numbers
+
 	print("Combined baseline file: ")
-	print(final_baseline_csv.T)
+	print(final_baseline_csv.T.iloc[:10 , :5])
 	final_baseline_csv.to_csv(output1 + "combined-PRESCIENT-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
 	final_baseline_csv.to_csv(output1 + "combined-ME-form_baseline-day1to1.csv", sep=',', index = False, header=True)
