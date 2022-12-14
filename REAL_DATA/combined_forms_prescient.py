@@ -27,6 +27,7 @@ site_list = ["ME", "CP"]
 ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/prescient_sub_list.txt", sep= "\n", index_col = False, header = None)
 
 id_list = ids.iloc[:, 0].tolist()
+#id_list.remove("ME84344")
 #id_list = ids.iloc[:3, 0].tolist()
 
 
@@ -45,6 +46,11 @@ print("\nCombining all measures for screening and baseline visits: ")
 # then going to append them to each other
 for id in id_list:
 	print("\nID: " + id)
+	last_date = id.split(" ")[0]
+	print(last_date)
+	id = id.split(" ")[1]
+	print(id)
+
 	site = id[0:2]
 	print("Site: ", site)
 
@@ -55,6 +61,7 @@ for id in id_list:
 	status = "0"
 
 	if os.path.exists(percentage_file):
+		print("Reading in percentage file")
 		percentages = pd.read_csv(percentage_file, sep= ",", index_col= 0)
 		screening_perc = percentages.iloc[:1,:]
 		baseline_perc = percentages.iloc[2:3,:]
@@ -70,7 +77,7 @@ for id in id_list:
 		perc_check = perc_check[perc_check.index != 99]
 		perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
 		perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
-		print(perc_check)
+		print(perc_check.T)
 		perc_check = perc_check[perc_check.Completed > 200]
 
 		if perc_check.empty:
@@ -100,18 +107,44 @@ for id in id_list:
 		#print(sub_screening)
 
 		# setting up dpdash columns for screening
-		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent', 'visit_status']
+		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent', 'weeks_since_consent', 'visit_status', 'file_updated']
 		dpdash_main = pd.DataFrame(columns = names_dash)
 		dpdash_main.at[0, 'subjectid'] = id
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
 		dpdash_main.at[0, 'days_since_consent'] = days_between(consent, today)
-		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'])
 		dpdash_main.at[0, 'visit_status'] = status
+		dpdash_main.at[0, 'file_updated'] = last_date
+		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'] / 7)
+
+		if status == "0":
+			dpdash_main.at[0, 'visit_status_string'] = "consent"
+		if status == 1:
+			dpdash_main.at[0, 'visit_status_string'] = "screen"
+		if status == 2:
+			dpdash_main.at[0, 'visit_status_string'] = "baseln"
+		if status == 3:
+			dpdash_main.at[0, 'visit_status_string'] = "month1"
+		if status == 4:
+			dpdash_main.at[0, 'visit_status_string'] = "month2"
+		if status == 5:
+			dpdash_main.at[0, 'visit_status_string'] = "month3"
+		if status == 6:
+			dpdash_main.at[0, 'visit_status_string'] = "month4"
+		if status == 7:
+			dpdash_main.at[0, 'visit_status_string'] = "month5"
+		if status == 8:
+			dpdash_main.at[0, 'visit_status_string'] = "month6"
+		if status == 99:
+			dpdash_main.at[0, 'visit_status_string'] = "removed"
+
+		print("Visit Status: ")
+		print(dpdash_main.at[0, 'visit_status_string'])
 
 		#dpdash_main = dpdash_main.transpose()
-		#print(dpdash_main)
+		print("Printing dpdash main")
+		print(dpdash_main.T)
 
 		dpdash_main = dpdash_main.reset_index(drop=True)
 		sub_screening = sub_screening.reset_index(drop=True)
@@ -125,7 +158,7 @@ for id in id_list:
 		dpdash_screening = pd.concat(frames, axis=1)
 		dpdash_screening = dpdash_screening.loc[:,~dpdash_screening.columns.duplicated()]
 		print("Screening csv: ")
-		#print(dpdash_screening.T)
+		print(dpdash_screening.T.iloc[:10 , :14])
 
 		id_tracker["Screening_{0}".format(id)] = dpdash_screening
 
@@ -139,18 +172,44 @@ for id in id_list:
 		sub_baseline = sub_baseline.transpose()
 
 		# setting up dpdash columns for baseline
-		names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime', 'days_since_consent', 'visit_status']
-		dpdash_main = pd.DataFrame(columns = names_dash)
+		names_dash = ['reftime','timeofday', 'weekday']
+		dpdash_main = pd.DataFrame(columns = names_dash, index = [0])
+		print(dpdash_main)
 		dpdash_main.at[0, 'subjectid'] = id
 		dpdash_main.at[0, 'site'] = site
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
 		dpdash_main.at[0, 'days_since_consent'] = days_between(consent, today)
 		dpdash_main.at[0, 'visit_status'] = status
-		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'])
+		dpdash_main.at[0, 'file_updated'] = last_date
+		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'] / 7)
+		
+		if status == "0":
+			dpdash_main.at[0, 'visit_status_string'] = "consent"
+		if status == 1:
+			dpdash_main.at[0, 'visit_status_string'] = "screen"
+		if status == 2:
+			dpdash_main.at[0, 'visit_status_string'] = "baseln"
+		if status == 3:
+			dpdash_main.at[0, 'visit_status_string'] = "month1"
+		if status == 4:
+			dpdash_main.at[0, 'visit_status_string'] = "month2"
+		if status == 5:
+			dpdash_main.at[0, 'visit_status_string'] = "month3"
+		if status == 6:
+			dpdash_main.at[0, 'visit_status_string'] = "month4"
+		if status == 7:
+			dpdash_main.at[0, 'visit_status_string'] = "month5"
+		if status == 8:
+			dpdash_main.at[0, 'visit_status_string'] = "month6"
+		if status == 99:
+			dpdash_main.at[0, 'visit_status_string'] = "removed"
 
+		print("Visit Status: ")
+		print(dpdash_main.at[0, 'visit_status_string'])
 		#dpdash_main = dpdash_main.transpose()
-		#print(dpdash_main)
+		print("baseline dpdash main")		
+		print(dpdash_main.T.iloc[:10 , :14])
 
 		dpdash_main = dpdash_main.reset_index(drop=True)
 		sub_baseline = sub_baseline.reset_index(drop=True)
@@ -164,7 +223,7 @@ for id in id_list:
 
 		print("Baseline csv: ")
 		dpdash_baseline = dpdash_baseline.loc[:,~dpdash_baseline.columns.duplicated()]
-		#print(dpdash_baseline.T)
+		print(dpdash_baseline.T.iloc[:10 , :14])
 
 		id_baseline_tracker["Baseline_{0}".format(id)] = dpdash_baseline
 
@@ -177,7 +236,30 @@ for id in id_list:
 		dpdash_main.at[0, 'mtime'] = consent
 		dpdash_main.at[0, 'day'] = 1
 		dpdash_main.at[0, 'days_since_consent'] = days_between(consent, today)
-		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'])
+		dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'] / 7)
+		dpdash_main.at[0, 'file_updated'] = last_date
+		dpdash_main.at[0, 'visit_status'] = status
+
+		if status == "0":
+			dpdash_main.at[0, 'visit_status_string'] = "consent"
+		if status == 1:
+			dpdash_main.at[0, 'visit_status_string'] = "screen"
+		if status == 2:
+			dpdash_main.at[0, 'visit_status_string'] = "baseln"
+		if status == 3:
+			dpdash_main.at[0, 'visit_status_string'] = "month1"
+		if status == 4:
+			dpdash_main.at[0, 'visit_status_string'] = "month2"
+		if status == 5:
+			dpdash_main.at[0, 'visit_status_string'] = "month3"
+		if status == 6:
+			dpdash_main.at[0, 'visit_status_string'] = "month4"
+		if status == 7:
+			dpdash_main.at[0, 'visit_status_string'] = "month5"
+		if status == 8:
+			dpdash_main.at[0, 'visit_status_string'] = "month6"
+		if status == 99:
+			dpdash_main.at[0, 'visit_status_string'] = "removed"
 
 		dpdash_baseline = dpdash_main
 
@@ -228,11 +310,11 @@ if len(id_baseline_tracker) > 0:
 	
 	# reordering based on days since consent
 	final_baseline_csv = final_baseline_csv.sort_values(['days_since_consent', 'day'])
-	print(final_baseline_csv.T.iloc[:10 , :5])
+	print(final_baseline_csv.T.iloc[:14 , :5])
 	final_baseline_csv['day'] = numbers
 
 	print("Combined baseline file: ")
-	print(final_baseline_csv.T.iloc[:10 , :5])
+	print(final_baseline_csv.T.iloc[:14 , :5])
 	final_baseline_csv.to_csv(output1 + "combined-PRESCIENT-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
 	final_baseline_csv.to_csv(output1 + "combined-ME-form_baseline-day1to1.csv", sep=',', index = False, header=True)

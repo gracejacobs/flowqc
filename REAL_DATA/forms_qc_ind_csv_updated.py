@@ -19,6 +19,11 @@ today = today.strftime("%Y-%m-%d")
 id = str(sys.argv[1])
 print("ID: ", id)
 
+#last_date = id.split(" ")[0]
+#print(last_date)
+#id = id.split(" ")[1]
+#print(id)
+
 site = id[0:2]
 print("Site: ", site)
 
@@ -104,7 +109,7 @@ for name in form_names:
 	form = dict.loc[dict['Form Name'] == name]
 	form_vars = form['Variable / Field Name'].tolist()
 
-	print(id)
+	#print(id)
 	print(name)
 
 	form_info_2 = pd.DataFrame(columns = [event_list])
@@ -168,11 +173,12 @@ for name in form_names:
 			print("Participant meets inclusion criteria")
 			form_info_2.at["included_excluded", screening] = 1
 		
-		if "chrcrit_excluded" in sub_data_all and pd.notna(sub_consent.loc[0, "chrcrit_excluded"]) and sub_consent.loc[0, "chrcrit_excluded"] == "0":
+		if "chrcrit_excluded" in sub_data_all and pd.notna(sub_consent.loc[0, "chrcrit_excluded"]) and sub_consent.loc[0, "chrcrit_excluded"] == "1":
 			form_info_2.at["included_excluded", screening] = 0
 
-		print("Is this person included or not? ")				
-		#print(str(form_info_2.at["included_excluded", screening]))	
+		#print("Is this person included or not? ")
+		#form_info_2.at['file_updated', screening] = last_date				
+
 
 	# making a yes/no GUID form for whether there is a GUID or pseudoguid
 	if name in ['guid_form']: 
@@ -190,24 +196,72 @@ for name in form_names:
 	# adding visit status
 	if name in ['informed_consent_run_sheet']: 
 		form_info_2.at["visit_status", screening] = status
-		print(form_info_2)
+		#print(form_info_2)
 
 	# adding an age variable
 	age = 0
+	age_months = 0
 	if name in ['sociodemographics']: 
-		print(sub_data_all)
-		if 'chrdemo_age_yrs_chr' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_age_yrs_chr"]):
-			age = sub_data_all.at[2, "chrdemo_age_yrs_chr"]
-			form_info_2.at["interview_age", baseline] = sub_data_all.at[2, "chrdemo_age_yrs_chr"]
+		#print(sub_data_all)
 
-		if 'chrdemo_age_yrs_hc' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_age_yrs_hc"]):
-			age = sub_data_all.at[2, "chrdemo_age_yrs_hc"]
-			form_info_2.at["interview_age", baseline] = sub_data_all.at[2, "chrdemo_age_yrs_hc"]
-	
-		print(form_info_2.T)	
+		# getting the time difference between consent date and the date of the sociodemographics form
+		# need months to be more precise
+		if 'chrdemo_age_mos_chr' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_age_mos_chr"]):
+			age_months = sub_data_all.at[2, "chrdemo_age_mos_chr"]
 
-		print("Age: " + str(age))
+		if 'chrdemo_age_mos_hc' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_age_mos_hc"]):
+			age_months = sub_data_all.at[2, "chrdemo_age_mos_hc"]
+
 		
+		if 'chrdemo_entry_date' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_entry_date"]):
+			int_date = sub_data_all.at[2, "chrdemo_entry_date"]
+			months_bet = (days_between(consent, int_date))/30
+
+			age_months = int(age_months)
+			age = round(age_months/12, 1)
+
+			age_adj = age_months - months_bet
+			age_adj = round(age_adj/12, 1)
+
+			print("Adjusted age: "  + str(age_adj))
+			form_info_2.at["consent_age", baseline] = age_adj
+			form_info_2.at["interview_age", baseline] = age
+		
+		print("Age: " + str(age))
+
+
+	## adding blood biomarkers
+	if name in ['blood_sample_preanalytic_quality_assurance']: 
+		if "chrblood_plasma_freeze" in sub_data_all:
+			plasma_time = sub_data_all.at[2, "chrblood_plasma_freeze"]
+			print(str(plasma_time))
+			plasma_time = int(plasma_time)
+
+			plasma = 0
+
+			if plasma_time < 60 and plasma_time > 0:
+				plasma = 1
+			if plasma_time > 60 and plasma_time < 121:
+				plasma = 2
+			if plasma_time > 120:
+				plasma = 3
+
+			print ("Plasma processing time: " + str(plasma_time) + " Label: " + str(plasma))
+			form_info_2.at["plasma_time", baseline] = plasma
+		
+			# EDTA plasma sample
+			pl_1 = int(sub_data_all.at[2, "chrblood_pl1vol"])
+			pl_2 = int(sub_data_all.at[2, "chrblood_pl2vol"])
+			pl_3 = int(sub_data_all.at[2, "chrblood_pl3vol"])
+			pl_4 = int(sub_data_all.at[2, "chrblood_pl4vol"])
+			pl_5 = int(sub_data_all.at[2, "chrblood_pl5vol"])
+			pl_6 = int(sub_data_all.at[2, "chrblood_pl6vol"])
+
+			num_vials = np.nansum([pl_1 + pl_2 + pl_3 + pl_4 + pl_5 + pl_6])
+			print("Number of vials (max 6): " + str(num_vials))
+			form_info_2.at["num_plasma_vials", baseline] = num_vials
+
+
 	form_info_2 = form_info_2.transpose()
 	form_info_2.reset_index(inplace=True)
 
@@ -236,8 +290,9 @@ for name in form_names:
 			sub_data_test = sub_data_test.reset_index(drop=True)
 			int_date = sub_data_test.at[0, var]
 
-			if pd.notna(int_date):
+			if pd.notna(int_date) and int_date != '-9' and int_date != '-3':
 				dpdash_main.at[event_2, 'mtime'] = int_date
+				print(str(int_date))
 				day = days_between(consent, int_date) + 1
 		else:
 			#print("No interview date")
@@ -281,7 +336,7 @@ for name in form_names:
 		print(final_csv[["chrap_total"]])
 
 	#print("Printing final csv for: ", name)	
-	print(final_csv.T)
+	#print(final_csv.T)
 	
 	# Saving to a csv based on ID and event
 	final_csv.to_csv(output1 + site+"-"+id+"-form_"+name+'-day1to'+str(last_day)+".csv", sep=',', index = False, header=True)

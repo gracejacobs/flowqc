@@ -5,9 +5,13 @@ import argparse
 import json
 import os
 from datetime import datetime
+from datetime import date
 
 def days_between(d1, d2):
     return abs((d2 - d1).days)
+
+today = date.today()
+today = today.strftime("%Y-%m-%d")
 
 id = str(sys.argv[1])
 print("ID: ", id)
@@ -32,6 +36,7 @@ dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormReposi
 
 status = "0"
 percpath = (output1 + site+"-"+id+"-percentage.csv")
+print("Loading percent file")
 if os.path.exists(percpath):
 	perc_check = pd.read_csv(percpath)
 	perc_check = perc_check.fillna(0)
@@ -56,8 +61,10 @@ if os.path.exists(percpath):
 # Getting all the form names from the data dictionary
 #form_names = pd.read_csv('form_names.csv')
 form_names = dict['Form Name'].unique()
+print("check")
 percentage_form = pd.DataFrame(columns = form_names)
 
+print("Loading consent sheet")
 file = input_path+id+"_informed_consent_run_sheet.csv"
 sub_consent = pd.read_csv(file)
 consent = sub_consent.at[0, "chric_consent_date"]
@@ -83,18 +90,24 @@ for name in form_names:
 		file = input_path+id+"_"+name+".csv"
 	#print(file)
 
+	if name in ["blood_sample_preanalytic_quality_assurance"]: # using combined version of 3 csvs
+		file = input_path+id+"_"+name+".csv.flat"	
+		print("Alternative name for the blood: " + file)
+	else:
+		file = input_path+id+"_"+name+".csv"
+
 	if os.path.isfile(file): 
 		sub_data_all = pd.read_csv(file)
 		#print("Printing data for form")
 		#print(sub_data_all.T)
 		sub_data_all = sub_data_all.replace('-3', np.NaN, regex=True)
 		sub_data_all = sub_data_all.replace(-3, np.NaN, regex=True)
-		print(sub_data_all['visit'].unique())
+		#print(sub_data_all['visit'].unique())
 		check = 1
 
 		for event in sub_data_all['visit'].unique():
 			event = str(event)
-			print("Event: " + event)
+			#print("Event: " + event)
 			sub_data = sub_data_all[sub_data_all['visit'].astype(str).isin([event])]
 			sub_data = sub_data.reset_index(drop=True)
 			#sub_data = sub_data.apply(lambda x: x.str.strip()).replace('', np.nan)
@@ -107,15 +120,6 @@ for name in form_names:
 			for var in form_vars:
 				if var in sub_data:
 					form_info.at[var, 'Variables'] = sub_data.at[0, var]
-
-			#### setting up combined forms
-			if event == '1':
-				#print("Saving screening variables")
-				screening_tracker["Screening_{0}".format(name)] = form_info
-			
-			if event == '2':
-				#print("Saving baseline variables")
-				baseline_tracker["Baseline_{0}".format(name)] = form_info
 	
 			form_info.at["Total_variables", 'Variables'] = len(form_vars)
 		
@@ -151,8 +155,10 @@ for name in form_names:
 
 			# adding visit status
 			if name in ['informed_consent_run_sheet']: 
-				print(name)
 				form_info.at["visit_status", 'Variables'] = status
+				consent_age = sub_data.at[0, "interview_age"]
+
+				form_info.at["consent_age", 'Variables'] = round((int(consent_age)/12), 1)
 				print(form_info) 
 
 			# adding included/excluded variables
@@ -174,8 +180,11 @@ for name in form_names:
 			# adding interview age
 			age = 0
 			if name in ['sociodemographics'] and pd.notna(sub_data.loc[0, "interview_age"]): 
-				print(sub_data.T)
-				form_info.at["interview_age", 'Variables'] = round((sub_data.loc[0, "interview_age"])/12)	
+				#print(sub_data.T)
+				age = sub_data.loc[0, "interview_age"]
+				print("Age: " + str(age))
+				age = round((int(age)/12), 1)
+				form_info.at["interview_age", 'Variables'] = age	
 				print("Age: " + str(age))
 
 			# making a yes/no GUID form for whether there is a GUID or pseudoguid
@@ -203,9 +212,56 @@ for name in form_names:
 				else:
 					form_info.at["chroasis_oasis_total10", 'Variables'] = 999
 				
+			
+			if name in ['blood_sample_preanalytic_quality_assurance'] and event == '2': 
+				if "chrblood_plfrztime" in sub_data:
+					plasma_time = sub_data.loc[0, "chrblood_plfrztime"]
+					print("Plasma freeze time: " + str(plasma_time))
+					form_info.at["plasma_time", 'Variables'] = plasma_time
+					# usually nan
+					#plasma_time = int(plasma_time)
+
+				#if plasma_time < 60:
+				#	plasma = 1
+				#if plasma_time > 60 and plasma_time < 121:
+				#	plasma = 2
+				#if plasma_time > 120:
+				#	plasma = 3
+				#if plasma_time == -3 or plasma_time == -9 or pd.notna(plasma_time):
+				#	plasma = 0
+
+			#print ("Plasma processing time: " + str(plasma_time) + " Label: " + str(plasma))
+			#form_info.at["plasma_time", baseline] = plasma
+
+				# EDTA plasma sample
+				print("Plasma volumes:")
+				pl_1 = sub_data.at[0, "chrblood_pl1vol"]
+				print("Pl1: " + str(pl_1))
+				pl_2 = sub_data.at[0, "chrblood_pl2vol"]
+				pl_3 = sub_data.at[0, "chrblood_pl3vol"]
+				pl_4 = sub_data.at[0, "chrblood_pl4vol"]
+				pl_5 = sub_data.at[0, "chrblood_pl5vol"]
+				pl_6 = sub_data.at[0, "chrblood_pl6vol"]
+
+				num_vials = np.nansum([pl_1 + pl_2 + pl_3 + pl_4 + pl_5 + pl_6])
+				print("Number of vials (max 6): " + str(num_vials))
+				form_info.at["num_plasma_vials", 'Variables'] = num_vials
+				
+
+
+			#### setting up combined forms
+			# moved this down so that the calculated variables would be included
+			if event == '1':
+				#print("Saving screening variables")
+				screening_tracker["Screening_{0}".format(name)] = form_info
+			
+			if event == '2':
+				#print("Saving baseline variables")
+				baseline_tracker["Baseline_{0}".format(name)] = form_info
+
 	
 			# transposing
-			print(form_info)
+			#print(form_info)
 			form_info = form_info.transpose()
 
 
@@ -213,6 +269,7 @@ for name in form_names:
 			dpdash_main = pd.DataFrame(columns = names_dash)
 			dpdash_main.at[event, 'subjectid'] = id
 			dpdash_main.at[event, 'site'] = site
+			dpdash_main.at[event, 'file_updated'] = today
 
 			if "interview_date" in sub_data:
 				int_date = sub_data.at[0, "interview_date"]
@@ -249,7 +306,7 @@ for name in form_names:
 					ent_date = datetime.strptime(ent_date, "%m/%d/%Y")
 					int_date = datetime.strptime(int_date, "%m/%d/%Y")
 					dpdash_main.at[event, 'time_between_int_ent'] = days_between(ent_date, int_date)
-				print("Time between interview and entry date: ")
+				#print("Time between interview and entry date: ")
 			#print(dpdash_main.at[event, 'time_between_int_ent'])
 
 
@@ -278,10 +335,10 @@ for name in form_names:
 		#print(form_tracker)
 
 		final_csv = pd.concat(form_tracker, axis=0, ignore_index=True)
-		print(name)
+		#print(name)
 		#removing rows with no data
 		#final_csv = final_csv[final_csv.Percentage != 0]
-		print("FINAL CSV TO BE EXPORTED:\n", final_csv.T)
+		#print("FINAL CSV TO BE EXPORTED:\n", final_csv.T)
 	
 		# Saving to a csv based on ID and event
 		final_csv.to_csv(output1 + site+"-"+id+"-form_"+name+'-day1to'+str(last_day)+".csv", sep=',', index = False, header=True)
