@@ -1,0 +1,208 @@
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*MT11185*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*PA07319*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SI07530*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/site-packages/pandas/core/indexing.py:966: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self.obj[item] = s
+combined_forms_qc.py:776: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_qc.py:785: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_scr_final['day'] = numbers
+combined_forms_qc.py:787: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_scr_final['num'] = numbers
