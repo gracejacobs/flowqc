@@ -12,6 +12,9 @@ def days_between(d1, d2):
     d2 = datetime.strptime(d2, "%Y-%m-%d")
     return abs((d2 - d1).days)
 
+def createList(r1, r2):
+    return list(range(r1, r2+1))
+
 # getting today's date
 today = date.today()
 today = today.strftime("%Y-%m-%d")
@@ -21,7 +24,7 @@ today = today.strftime("%Y-%m-%d")
 output1 = "/data/predict1/data_from_nda/formqc/"
 
 # list of sites for site-specific combined files
-site_list = ["CA", "SD", "SF", "SI", "HA", "YA", "LA", "WU", "PI", "PA", "OR", "NN", "IR", "NL", "NN", "NC", "TE", "MT"]
+site_list = ["CA", "CM", "GA", "SD", "SF", "SI", "HA", "YA", "LA", "WU", "PI", "PA", "PV", "OR", "NN", "IR", "NL", "NN", "NC", "TE", "MT", "LS"]
 
 # list of ids to include
 ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/pronet_sub_list_chr.txt", sep= "\n", index_col = False, header = None)
@@ -45,14 +48,6 @@ id_month5_tracker = {}
 id_month6_tracker = {}
 id_month7_tracker = {}
 id_month8_tracker = {}
-sub_data_month1 = pd.DataFrame()
-sub_data_month2 = pd.DataFrame()
-sub_data_month3 = pd.DataFrame()
-sub_data_month4 = pd.DataFrame()
-sub_data_month5 = pd.DataFrame()
-sub_data_month6 = pd.DataFrame()
-sub_data_month7 = pd.DataFrame()
-sub_data_month8 = pd.DataFrame()
 
 print("\nCombining all measures for screening, baseline, and month 1-4 visits: ")
 
@@ -78,7 +73,7 @@ for id in id_list:
 	sub_data_all = sub_data_all.apply(lambda x: x.str.strip()).replace('', np.nan)
 	sub_data_all.dropna(axis=1, how='all', inplace=True)
 
-	#print(sub_data_all)
+	print(sub_data_all)
 	
 	all_events = sub_data_all['redcap_event_name'].unique()
 	screening = [i for i in all_events if i.startswith('screening_')][0]
@@ -91,20 +86,25 @@ for id in id_list:
 		baseline = baseline[0]
 
 	for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
-		visit_data = vars()['sub_data_month' + str(vi)]
+		#visit_data = vars()['sub_data_month' + str(vi)]
 		#name = ('sub_data_month' + str(vi))
 		#print(visit_data)
+		visit_data = pd.DataFrame()
 
-		list = [i for i in all_events if i.startswith('month_' + str(vi) + "_")]
-		if list == []:
+		evlist = [i for i in all_events if i.startswith('month_' + str(vi) + "_")]
+		if evlist == []:
 			name = []
 		else:
-			name = list[0]
+			name = evlist[0]
 			print(str(name))
 
 		if name != []:
+			print("Subsetting data for: " + str(name))
 			visit_data = sub_data_all[sub_data_all['redcap_event_name'].isin([name])]
-			visit_data = visit_data.reset_index(drop=True)
+			globals()['sub_data_month'+str(vi)] = visit_data.reset_index(drop=True)
+			#print(visit_data)
+		else:
+			globals()['sub_data_month'+str(vi)] = pd.DataFrame()
 
 	print("Printing month 1 data")
 	print(sub_data_month1)
@@ -157,7 +157,7 @@ for id in id_list:
 
 
 	## adding inclusion/exclusion criteria
-	sub_data.at["included_excluded", 'Variables'] = np.nan
+	sub_data.at[0, "included_excluded"] = np.nan
 
 	if 'chrcrit_included' in sub_data and pd.notna(sub_data.at[0, "chrcrit_included"]):
 		if sub_data.loc[0, "chrcrit_included"] == "1":
@@ -180,9 +180,153 @@ for id in id_list:
 		sub_data.at[0, "pseudoguid_available"] = 1
 	else:
 		sub_data.at[0, "pseudoguid_available"] = 0
-		
-	##### Calculating missingness for clinical forms
-	
+
+	print("Creating time_fasting variable")
+	date_drawn_bl = np.nan
+	date_ate_bl = np.nan
+	date_drawn_m2 = np.nan
+	date_ate_m2 = np.nan
+	if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != -3 and sub_data_baseline.at[0, "chrblood_drawdate"] != -9:
+			date_drawn_bl = sub_data_baseline.at[0, "chrblood_drawdate"]
+			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
+			print(str(date_drawn_bl))
+	if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != -3 and sub_data_month2.at[0, "chrblood_drawdate"] != -9:
+			date_drawn_m2 = sub_data_month2.at[0, "chrblood_drawdate"]
+			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
+			print(str(date_drawn_m2))
+	if "chrchs_ate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != -3 and sub_data_baseline.at[0, "chrchs_ate"] != -9:
+		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
+			#print(form_info_2)
+			date_ate_bl = sub_data_baseline.at[0, "chrchs_ate"]
+			date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
+			print(str(date_ate_bl))
+	if "chrchs_ate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != -3 and sub_data_month2.at[0, "chrchs_ate"] != -9:
+			date_ate_m2 = sub_data_month2.at[0, "chrchs_ate"]
+			date_ate_m2 = datetime.strptime(date_ate_m2, "%Y-%m-%d %H:%M")
+			print(str(date_ate_m2))
+
+	if pd.isna(date_drawn_bl) or pd.isna(date_ate_bl):
+		print("Basline not complete")
+	else:
+		print(str((((date_drawn_bl - date_ate_bl).total_seconds()) / 60) / 60))
+		sub_data_baseline.at[0, "time_fasting"] = round((((date_drawn_bl - date_ate_bl).total_seconds()) / 60) / 60, 1)
+	if pd.isna(date_drawn_m2) or pd.isna(date_ate_m2):
+		print("Month 2 not complete")
+	else:
+		print(str((((date_drawn_m2 - date_ate_m2).total_seconds()) / 60) / 60))
+		sub_data_month2.at[0, "time_fasting"] = round((((date_drawn_m2 - date_ate_m2).total_seconds()) / 60) / 60, 1)
+
+	print('blood_sample_preanalytic_quality_assurance')
+
+		 #days_between(sub_data.at[0, "chric_consent_date"], today)
+		#chrblood_drawdate
+		#chrchs_ate - current health status	
+
+
+	wb_1_m2 = wb_2_m2 = wb_3_m2 = 0
+	sr_1_m2 = sr_2_m2 = sr_3_m2 = 0
+	pl_1_m2 = pl_2_m2 = pl_3_m2 = pl_4_m2 = pl_5_m2 = pl_6_m2 = 0
+	bc_1_m2 = 0
+
+	if "chrblood_bc1vol" in sub_data_baseline:
+		bc_1 = sub_data_baseline.at[0, "chrblood_bc1vol"]
+		bc_1_m2 = sub_data_month2.at[0, "chrblood_bc1vol"]
+	else: 
+		bc_1 = 0
+	if "chrblood_wb1vol" in sub_data_baseline:
+		wb_1 = sub_data_baseline.at[0, "chrblood_wb1vol"]
+		wb_1_m2 = sub_data_month2.at[0, "chrblood_wb1vol"]
+	else: 
+		wb_1 = 0
+	if "chrblood_wb2vol" in sub_data_baseline:
+		wb_2 = sub_data_baseline.at[0, "chrblood_wb2vol"]
+		wb_2_m2 = sub_data_month2.at[0, "chrblood_wb2vol"]
+	else: 
+		wb_2 = 0
+	if "chrblood_wb3vol" in sub_data_baseline:	
+		wb_3 = sub_data_baseline.at[0, "chrblood_wb3vol"]
+		wb_3_m2 = sub_data_month2.at[0, "chrblood_wb3vol"]
+	else: 
+		wb_3 = 0
+
+	if "chrblood_se1vol" in sub_data_baseline:
+		sr_1 = sub_data_baseline.at[0, "chrblood_se1vol"]
+		sr_1_m2 = sub_data_month2.at[0, "chrblood_se1vol"]
+	else: 
+		sr_1 = 0
+	if "chrblood_se2vol" in sub_data_baseline:
+		sr_2 = sub_data_baseline.at[0, "chrblood_se2vol"]
+		sr_2_m2 = sub_data_month2.at[0, "chrblood_se2vol"]
+	else: 
+		sr_2 = 0
+	if "chrblood_se3vol" in sub_data_baseline:
+		sr_3 = sub_data_baseline.at[0, "chrblood_se3vol"]
+		sr_3_m2 = sub_data_month2.at[0, "chrblood_se3vol"]
+	else: 
+		sr_3 = 0
+
+	if "chrblood_pl1vol" in sub_data_baseline:
+		pl_1 = sub_data_baseline.at[0, "chrblood_pl1vol"]
+		pl_1_m2 = sub_data_month2.at[0, "chrblood_pl1vol"]
+	else: 
+		pl_1 = 0
+	if "chrblood_pl2vol" in sub_data_baseline:
+		pl_2 = sub_data_baseline.at[0, "chrblood_pl2vol"]
+		pl_2_m2 = sub_data_month2.at[0, "chrblood_pl2vol"]
+	else: 
+		pl_2 = 0
+	if "chrblood_pl3vol" in sub_data_baseline:
+		pl_3 = sub_data_baseline.at[0, "chrblood_pl3vol"]
+		pl_3_m2 = sub_data_month2.at[0, "chrblood_pl3vol"]
+	else: 
+		pl_3 = 0
+	if "chrblood_pl4vol" in sub_data_baseline:
+		pl_4 = sub_data_baseline.at[0, "chrblood_pl4vol"]
+		pl_4_m2 = sub_data_month2.at[0, "chrblood_pl4vol"]
+	else: 
+		pl_4 = 0
+	if "chrblood_pl5vol" in sub_data_baseline:
+		pl_5 = sub_data_baseline.at[0, "chrblood_pl5vol"]
+		pl_5_m2 = sub_data_month2.at[0, "chrblood_pl5vol"]
+	else: 
+		pl_5 = 0
+	if "chrblood_pl6vol" in sub_data_baseline:
+		pl_6 = sub_data_baseline.at[0, "chrblood_pl6vol"]
+		pl_6_m2 = sub_data_month2.at[0, "chrblood_pl6vol"]
+	else: 
+		pl_6 = 0
+
+	vials = [wb_1, wb_2, wb_3, sr_1, sr_2, sr_3, pl_1, pl_2, pl_3, pl_4, pl_5, pl_6, bc_1]
+	vials_m2 = [wb_1_m2, wb_2_m2, wb_3_m2, sr_1_m2, sr_2_m2, sr_3_m2, pl_1_m2, pl_2_m2, pl_3_m2, pl_4_m2, pl_5_m2, pl_6_m2, bc_1_m2]
+	print(vials)
+	print(vials_m2)
+
+	for x in range(len(vials)):
+		if pd.isnull(vials[x]) or vials[x] == '-9' or vials[x] == '-3' or vials[x] == 'nan':
+			vials[x] = 0
+
+	for x in range(len(vials_m2)):
+		if pd.isnull(vials_m2[x]) or vials_m2[x] == '-9' or vials_m2[x] == '-3' or vials_m2[x] == 'nan':
+			vials_m2[x] = 0
+
+	#vials_m2[np.isnan(vials_m2)] = 0
+	print("Printing VIAL VOLUMES")
+	for i in range(len(vials)):
+		if isinstance(vials[i], str):
+			vials[i] = eval(vials[i])
+
+	for i in range(len(vials_m2)):
+		if isinstance(vials_m2[i], str):
+			vials_m2[i] = eval(vials_m2[i])
+	print(vials)
+	print(vials_m2)
+	print(str(np.count_nonzero(vials)))
+	print(str(np.count_nonzero(vials_m2)))
+	sub_data_baseline.at[0, 'number_blood_vials'] = np.count_nonzero(vials)	
+	sub_data_month2.at[0, 'number_blood_vials'] = np.count_nonzero(vials_m2)	
+
+
+##### Calculating missingness for clinical forms
 ############ Missing variables for clinical data
 	#perceived discimination scale
 	if "chrdim_dim_yesno_q1_1" not in sub_data_baseline or "chrdlm_dim_yesno_q1_2" not in sub_data_baseline or "chrdlm_dim_sex" not in sub_data_baseline or "chrdlm_dim_yesno_age" not in sub_data_baseline or "chrdlm_dim_yesno_q4_1" not in sub_data_baseline or "chrdlm_dim_yesno_q5" not in sub_data_baseline or "chrdlm_dim_yesno_q3" not in sub_data_baseline or "chrdlm_dim_yesno_q6" not in sub_data_baseline or "chrdlm_dim_yesno_other" not in sub_data_baseline:
@@ -237,18 +381,38 @@ for id in id_list:
 	if "chrnsipr_item1_rating" not in sub_data_baseline or "chrnsipr_item2_rating" not in sub_data_baseline or "chrnsipr_item3_rating" not in sub_data_baseline or "chrnsipr_item4_rating" not in sub_data_baseline or "chrnsipr_item5_rating" not in sub_data_baseline or "chrnsipr_item6_rating" not in sub_data_baseline or "chrnsipr_item7_rating" not in sub_data_baseline or "chrnsipr_item8_rating" not in sub_data_baseline or "chrnsipr_item9_rating" not in sub_data_baseline or "chrnsipr_item10_rating" not in sub_data_baseline or "chrnsipr_item11_rating" not in sub_data_baseline:
 		#print("Missing variables")
 		sub_data_baseline.at[0, 'no_missing_nsipr'] = "0" # missing data
+		sub_data_month1.at[0, 'no_missing_nsipr'] = "0" 
+		sub_data_month2.at[0, 'no_missing_nsipr'] = "0" 
+		sub_data_month3.at[0, 'no_missing_nsipr'] = "0" 
+		sub_data_month6.at[0, 'no_missing_nsipr'] = "0" 
 	else:
 		if pd.notna(sub_data_baseline.at[0, "chrnsipr_item1_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item2_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item3_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item4_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item5_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item6_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item7_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item8_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item9_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item10_rating"]) and pd.notna(sub_data_baseline.at[0, "chrnsipr_item11_rating"]):
 			#print("yay no missing")
 			sub_data_baseline.at[0, 'no_missing_nsipr'] = "1" # none are NA
 		else:
 			sub_data_baseline.at[0, 'no_missing_nsipr'] = "0"
+
+		for vi in ["month1", "month2", "month3", "month6"]:
+			var_list = ["chrnsipr_item1_rating", "chrnsipr_item2_rating", "chrnsipr_item3_rating", "chrnsipr_item4_rating", "chrnsipr_item5_rating", "chrnsipr_item6_rating", "chrnsipr_item7_rating", "chrnsipr_item8_rating", "chrnsipr_item9_rating", "chrnsipr_item10_rating"]
+			print("NSI-PR month " + vi)
+			visit_data = vars()['sub_data_' + str(vi)]
+
+			if set(var_list).issubset(visit_data.columns) and visit_data[var_list].notna().values.any():
+				print(" data")
+				visit_data.loc[0, 'no_missing_nsipr'] = "1"
+			else:
+				print("No data")
+				visit_data.loc[0, 'no_missing_nsipr'] = "0"
 	
 	#if name in ['cdss']:
   		# baseline
 	if "chrcdss_calg1" not in sub_data_baseline or  "chrcdss_calg2" not in sub_data_baseline or "chrcdss_calg3" not in sub_data_baseline or "chrcdss_calg4" not in sub_data_baseline or "chrcdss_calg5" not in sub_data_baseline or "chrcdss_calg6" not in sub_data_baseline or "chrcdss_calg7" not in sub_data_baseline or "chrcdss_calg8" not in sub_data_baseline or "chrcdss_calg9" not in sub_data_baseline:
 		#print("Missing variables")
 		sub_data_baseline.at[0, 'no_missing_cdss'] = "0" #missing data
+		sub_data_month1.at[0, 'no_missing_cdss'] = "0"
+		sub_data_month2.at[0, 'no_missing_cdss'] = "0"
+		sub_data_month3.at[0, 'no_missing_cdss'] = "0"
+		sub_data_month6.at[0, 'no_missing_cdss'] = "0"
 	else:
 		if pd.notna(sub_data_baseline.at[0, "chrcdss_calg1"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg2"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg3"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg4"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg5"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg6"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg7"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg8"]) and pd.notna(sub_data_baseline.at[0, "chrcdss_calg9"]):
 
@@ -258,11 +422,27 @@ for id in id_list:
 			#print("Missing variables")
 			sub_data_baseline.at[0, 'no_missing_cdss'] = "0"
 
+		for vi in ["month1", "month2", "month3", "month6"]:
+			var_list = ["chrcdss_calg1", "chrcdss_calg2", "chrcdss_calg3", "chrcdss_calg4", "chrcdss_calg5", "chrcdss_calg6", "chrcdss_calg7", "chrcdss_calg8", "chrcdss_calg9"]
+			print("CDSS " + vi)
+			visit_data = vars()['sub_data_' + str(vi)]
+
+			if set(var_list).issubset(visit_data.columns) and visit_data[var_list].notna().values.any():
+				print("Data available")
+				visit_data.loc[0, 'no_missing_cdss'] = "1"
+			else:
+				print("No data")
+				visit_data.loc[0, 'no_missing_cdss'] = "0"
+
 	#if name in ['oasis']:
 	# baseline
 	if "chroasis_oasis_1" not in sub_data_baseline or  "chroasis_oasis_2" not in sub_data_baseline or "chroasis_oasis_3" not in sub_data_baseline or "chroasis_oasis_4" not in sub_data_baseline or "chroasis_oasis_2" not in sub_data_baseline:
 		#print("Missing variables nay")
 		sub_data_baseline.at[0, 'no_missing_oasis'] = "0" # something missing
+		sub_data_month1.at[0, 'no_missing_oasis'] = "0"
+		sub_data_month2.at[0, 'no_missing_oasis'] = "0"
+		sub_data_month3.at[0, 'no_missing_oasis'] = "0"
+		sub_data_month6.at[0, 'no_missing_oasis'] = "0"
 	else:
 		if pd.notna(sub_data_baseline.at[0, "chroasis_oasis_1"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_2"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_3"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_4"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_5"]):
 			#print("yay")
@@ -270,22 +450,55 @@ for id in id_list:
 		else:
 			sub_data_baseline.at[0, 'no_missing_oasis'] = "0"
 
+
+		for vi in ["month1", "month2", "month3", "month6"]:
+			var_list = ["chroasis_oasis_1", "chroasis_oasis_2", "chroasis_oasis_3", "chroasis_oasis_4", "chroasis_oasis_5"]
+			print("OASIS " + vi)
+			visit_data = vars()['sub_data_' + str(vi)]
+
+			if set(var_list).issubset(visit_data.columns) and visit_data[var_list].notna().values.any():
+				print("Data available")
+				visit_data.loc[0, 'no_missing_oasis'] = "1"
+			else:
+				print("No data")
+				visit_data.loc[0, 'no_missing_oasis'] = "0"
+
 	#if name in ['pss']:
 		# baseline
 	if "chrpss_pssp1_1" not in sub_data_baseline or  "chrpss_pssp1_1" not in sub_data_baseline or "chrpss_pssp1_2" not in sub_data_baseline or "chrpss_pssp1_3" not in sub_data_baseline or "chrpss_pssp2_1" not in sub_data_baseline or "chrpss_pssp2_3" not in sub_data_baseline or "chrpss_pssp2_4" not in sub_data_baseline or "chrpss_pssp2_5" not in sub_data_baseline or "chrpss_pssp3_1" not in sub_data_baseline or "chrpss_pssp3_4" not in sub_data_baseline:
 		#print("Missing variables")
 		sub_data_baseline.at[0, 'no_missing_pss'] = "0" #missing data
+		sub_data_month1.at[0, 'no_missing_pss'] = "0"
+		sub_data_month2.at[0, 'no_missing_pss'] = "0"
+		sub_data_month3.at[0, 'no_missing_pss'] = "0"
+		sub_data_month6.at[0, 'no_missing_pss'] = "0"
 	else:
 		if pd.isnull(sub_data_baseline.at[0, "chrpss_pssp1_1"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp1_2"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp1_3"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp2_1"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp2_2"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp2_3"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp2_4"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp2_5"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp3_1"]) or pd.isnull(sub_data_baseline.at[0, "chrpss_pssp3_4"]):
 			sub_data_baseline.at[0, 'no_missing_pss'] = "0"
 		else:
 			sub_data_baseline.at[0, 'no_missing_pss'] = "1" #none are null
 
+		for vi in ["month1", "month2", "month3", "month6"]:
+			var_list = ["chrpss_pssp1_1", "chrpss_pssp1_2", "chrpss_pssp1_3", "chrpss_pssp2_1", "chrpss_pssp2_2", "chrpss_pssp2_3", "chrpss_pssp2_4", "chrpss_pssp2_5", "chrpss_pssp3_1", "chrpss_pssp3_4"]
+			print("pss " + vi)
+			visit_data = vars()['sub_data_' + str(vi)]
+
+			if set(var_list).issubset(visit_data.columns) and visit_data[var_list].notna().values.any():
+				print("Data available")
+				visit_data.loc[0, 'no_missing_pss'] = "1"
+			else:
+				print("No data")
+				visit_data.loc[0, 'no_missing_pss'] = "0"
+
 	#if name in ['item_promis_for_sleep']:
 	# baseline
 	if "chrpromis_sleep109" not in sub_data_baseline or "chrpromis_sleep109" not in sub_data_baseline or "chrpromis_sleep116" not in sub_data_baseline or "chrpromis_sleep20" not in sub_data_baseline or "chrpromis_sleep44" not in sub_data_baseline or "chrpromise_sleep108" not in sub_data_baseline or "chrpromis_sleep72" not in sub_data_baseline or "chrpromis_sleep67" not in sub_data_baseline or "chrpromis_sleep115" not in sub_data_baseline:
 		#print("Missing variables")
 		sub_data_baseline.at[0, 'no_missing_promis'] = "0"
+		sub_data_month1.at[0, 'no_missing_promis'] = "0"
+		sub_data_month2.at[0, 'no_missing_promis'] = "0"
+		sub_data_month3.at[0, 'no_missing_promis'] = "0"
+		sub_data_month6.at[0, 'no_missing_promis'] = "0"
 	else:
 		if pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep109"]) or pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep116"]) or pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep20"]) or pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep44"]) or pd.isnull(sub_data_baseline.at[0, "chrpromise_sleep108"]) or pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep72"]) or pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep67"]) or pd.isnull(sub_data_baseline.at[0, "chrpromis_sleep115"]):
 
@@ -296,16 +509,46 @@ for id in id_list:
 			#print("No missing data")
 			sub_data_baseline.at[0, 'no_missing_promis'] = "1"
 
+		for vi in ["month1", "month2", "month3", "month6"]:
+			var_list = ["chrpromis_sleep109", "chrpromis_sleep116", "chrpromis_sleep20", "chrpromis_sleep44", "chrpromise_sleep108", "chrpromis_sleep72", "chrpromis_sleep67", "chrpromis_sleep115"]
+			print("promis " + vi)
+			visit_data = vars()['sub_data_' + str(vi)]
+
+			if set(var_list).issubset(visit_data.columns) and visit_data[var_list].notna().values.any():
+				print("Data available")
+				visit_data.loc[0, 'no_missing_promis'] = "1"
+			else:
+				print("No data")
+				visit_data.loc[0, 'no_missing_promis'] = "0"
+
 	#if name in ['bprs']:
 	# baseline
 	if "chrbprs_bprs_somc" in sub_data_baseline:
 		if "chrbprs_bprs_total" not in sub_data_baseline:
 			sub_data_baseline.at[0, 'no_missing_bprs'] = "0"
+			sub_data_month1.at[0, 'no_missing_bprs'] = "0"
+			sub_data_month2.at[0, 'no_missing_bprs'] = "0"
+			sub_data_month3.at[0, 'no_missing_bprs'] = "0"
+			sub_data_month4.at[0, 'no_missing_bprs'] = "0"
+			sub_data_month5.at[0, 'no_missing_bprs'] = "0"
+			sub_data_month6.at[0, 'no_missing_bprs'] = "0"
 		else:
 			if pd.notna(sub_data_baseline.at[0, "chrbprs_bprs_total"]) and sub_data_baseline.at[0, "chrbprs_bprs_total"] != 999:
 				sub_data_baseline.at[0, 'no_missing_bprs'] = "1"
 			else:
 				sub_data_baseline.at[0, 'no_missing_bprs'] = "0"
+
+		for vi in ["month1", "month2", "month3", "month4", "month5", "month6"]:
+			var_list = ["chrbprs_bprs_total"]
+			print("bprs " + vi)
+			visit_data = vars()['sub_data_' + str(vi)]
+
+			if set(var_list).issubset(visit_data.columns) and visit_data[var_list].notna().values.any():
+				print("Data available")
+				visit_data.loc[0, 'no_missing_bprs'] = "1"
+			else:
+				print("No data")
+				visit_data.loc[0, 'no_missing_bprs'] = "0"
 
 	#if name in ['cssrs_baseline']:
 		# baseline
@@ -484,14 +727,7 @@ for id in id_list:
 	month6_perc = pd.DataFrame()
 	month7_perc = pd.DataFrame()
 	month8_perc = pd.DataFrame()
-	month1 = pd.DataFrame()
-	month2 = pd.DataFrame()
-	month3 = pd.DataFrame()
-	month4 = pd.DataFrame()
-	month5 = pd.DataFrame()
-	month6 = pd.DataFrame()
-	month7 = pd.DataFrame()
-	month8 = pd.DataFrame()
+
 
 	if os.path.exists(percentage_file):
 		print("Reading in percentage file")
@@ -506,25 +742,29 @@ for id in id_list:
 
 		screening_perc = screening_perc.reset_index(drop=True)
 		baseline_perc = baseline_perc.reset_index(drop=True)
+		print("Screening percentage")
 		print(screening_perc)
 
 		for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 			#print(vi)
 			#visit_name = ('month_' + str(vi) + '_')
-			visit_perc = vars()['month' + str(vi) + "_perc"]
+			visit_perc = pd.DataFrame()
 
-			list = [i for i in all_events if i.startswith('month_' + str(vi) + "_")]
-			if list == []:
+			evlist = [i for i in all_events if i.startswith('month_' + str(vi) + "_")]
+			if evlist == []:
 				name = []
 			else:
-				name = list[0]
+				name = evlist[0]
 
 			if name != [] and name in percentages.index:
 				visit_perc = pd.DataFrame(percentages.loc[[name]])
-				visit_perc = visit_perc.transpose()
-				print(visit_perc)
-				visit_perc = visit_perc.reset_index(drop=True)
+				#visit_perc = visit_perc.transpose()
+				#print('Month percentage')
+				#print(visit_perc)
+				globals()['month' + str(vi) + "_perc"] = visit_perc.reset_index(drop=True)
 
+		print("Printing Month 1 perc")
+		print(month1_perc)
 		# getting the visit status
 		perc_check = percentages
 		perc_check = perc_check.drop('informed_consent_run_sheet' , axis='columns')
@@ -629,11 +869,19 @@ for id in id_list:
 		dpdash_main.at[0, 'visit_status_string'] = "month5"
 	if status == 8:
 		dpdash_main.at[0, 'visit_status_string'] = "month6"
+	if status == 9:
+		dpdash_main.at[0, 'visit_status_string'] = "month7"
+	if status == 10:
+		dpdash_main.at[0, 'visit_status_string'] = "month8"
+	if status == 11:
+		dpdash_main.at[0, 'visit_status_string'] = "month9"
+	if status == 12:
+		dpdash_main.at[0, 'visit_status_string'] = "month10"
 	if status_removed == "1":
 		dpdash_main.at[0, 'visit_status_string'] = "removed"
 
 	print("Visit Status: ")
-	print(dpdash_main.at[0, 'visit_status_string'])
+	print(str(dpdash_main.at[0, 'visit_status_string']))
 
 	dpdash_main = dpdash_main.reset_index(drop=True)
 
@@ -646,8 +894,8 @@ for id in id_list:
 	dpdash_full = pd.concat(frames, axis=1)
 
 	dpdash_full.dropna(how='all', axis=0, inplace=True)
-	#print("Screening csv for participant: ")
-	#print(dpdash_full.T)
+	print("Screening csv for participant: ")
+	print(dpdash_full.T)
 	
 	id_tracker["Screening_{0}".format(id)] = dpdash_full
 
@@ -675,7 +923,7 @@ for id in id_list:
 		frames = [dpdash_main, visit_data, visit_perc]
 		dpdash_full = pd.concat(frames, axis=1)
 
-		print("Month " + str(vi) + " csv for participant: ")
+		#print("Month " + str(vi) + " csv for participant: ")
 		dpdash_full.dropna(how='all', axis=0, inplace=True)
 		#print(dpdash_full.T)
 
@@ -728,7 +976,7 @@ for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7",
 	numbers.sort(reverse = True)
 	concat_csv['num'] = numbers
 
-	#print(concat_csv.T)
+	print(concat_csv.T)
 
 	file_name = "combined-PRONET-form_{0}-day1to1.csv".format(vi)
 	concat_csv.to_csv(output1 + file_name, sep=',', index = False, header=True)

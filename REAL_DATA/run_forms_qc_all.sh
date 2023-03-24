@@ -13,11 +13,11 @@ exec 2> $LOGERR 1> $LOGFILE
 ####### gives date as well for combined
 echo "Prescient participant List: "
 # most recently updated prescient participants
-ls /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*.csv | sed 's:.*/::' | cut -d '_' -f1 | cut -d '.' -f1 | sort | uniq > prescient_sub_list_recent.txt
+ls /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*[[:upper:]]*.csv | sed 's:.*/::' | cut -d '_' -f1 | cut -d '.' -f1 | sort | uniq > prescient_sub_list_recent.txt
 
 # all prescient participants for combined
 #ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*informed_consent_run_sheet.csv | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '_' -f1 > prescient_sub_list.txt
-ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/* | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '_' -f1 | cut -d '.' -f1 | sort -r  -k1 | sort -k2 -u > prescient_sub_list.txt
+ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*[[:upper:]]* | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '_' -f1 | cut -d '.' -f1 | sort -r  -k1 | sort -k2 -u > prescient_sub_list.txt
 
 cat prescient_sub_list.txt
 
@@ -78,7 +78,7 @@ echo "Combining forms for pronet participants"
 
 #############################################################################
 # Uploading data to dpdash
-bash /data/predict/utility/dpimport_formqc.sh /data/predict1/data_from_nda/ rc-predict
+#bash /data/predict1/utility/dpimport_formqc.sh /data/predict1/data_from_nda/ rc-predict
 
 #bash /data/predict/utility/dpimport_formqc.sh /data/predict/data_from_nda/ rc-predict
 

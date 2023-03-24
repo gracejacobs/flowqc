@@ -1,22 +1,23 @@
-combined_forms_prescient.py:407: SettingWithCopyWarning: 
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME10092*day*’: No such file or directory
+combined_forms_prescient.py:388: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_scr_final['day'] = numbers
-combined_forms_prescient.py:409: SettingWithCopyWarning: 
+combined_forms_prescient.py:390: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_scr_final['num'] = numbers
-combined_forms_prescient.py:441: SettingWithCopyWarning: 
+combined_forms_prescient.py:426: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_final['day'] = numbers
-combined_forms_prescient.py:443: SettingWithCopyWarning: 
+combined_forms_prescient.py:428: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -34,237 +35,87 @@ Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_final['num'] = numbers
-combined_forms_prescient.py:510: SettingWithCopyWarning: 
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_final['day'] = numbers
-combined_forms_prescient.py:512: SettingWithCopyWarning: 
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_final['num'] = numbers
-combined_forms_prescient.py:543: SettingWithCopyWarning: 
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_final['day'] = numbers
-combined_forms_prescient.py:545: SettingWithCopyWarning: 
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   site_final['num'] = numbers
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_screening-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_screening-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_screening-day1to1.csv
-INFO:__main__:importing file combined-ME-form_screening-day1to1.csv
-INFO:dppylib:combined-ME-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_screening-day1to1.csv
-INFO:__main__:importing file combined-CP-form_screening-day1to1.csv
-INFO:dppylib:combined-CP-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_screening-day1to1.csv
-INFO:__main__:importing file combined-BM-form_screening-day1to1.csv
-INFO:dppylib:combined-BM-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_screening-day1to1.csv
-INFO:__main__:importing file combined-SG-form_screening-day1to1.csv
-INFO:dppylib:combined-SG-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_screening-day1to1.csv
-INFO:__main__:importing file combined-AD-form_screening-day1to1.csv
-INFO:dppylib:combined-AD-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-ME-form_baseline-day1to1.csv
-INFO:dppylib:combined-ME-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-CP-form_baseline-day1to1.csv
-INFO:dppylib:combined-CP-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-BM-form_baseline-day1to1.csv
-INFO:dppylib:combined-BM-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-SG-form_baseline-day1to1.csv
-INFO:dppylib:combined-SG-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-AD-form_baseline-day1to1.csv
-INFO:dppylib:combined-AD-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month1-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month1-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month1-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month1-day1to1.csv
-INFO:dppylib:combined-ME-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month1-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month1-day1to1.csv
-INFO:dppylib:combined-CP-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month1-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month1-day1to1.csv
-INFO:dppylib:combined-BM-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month1-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month1-day1to1.csv
-INFO:dppylib:combined-SG-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month1-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month1-day1to1.csv
-INFO:dppylib:combined-AD-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month2-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month2-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month2-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month2-day1to1.csv
-INFO:dppylib:combined-ME-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month2-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month2-day1to1.csv
-INFO:dppylib:combined-CP-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month2-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month2-day1to1.csv
-INFO:dppylib:combined-BM-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month2-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month2-day1to1.csv
-INFO:dppylib:combined-SG-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month2-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month2-day1to1.csv
-INFO:dppylib:combined-AD-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month3-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month3-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month3-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month3-day1to1.csv
-INFO:dppylib:combined-ME-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month3-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month3-day1to1.csv
-INFO:dppylib:combined-CP-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month3-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month3-day1to1.csv
-INFO:dppylib:combined-BM-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month3-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month3-day1to1.csv
-INFO:dppylib:combined-SG-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month3-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month3-day1to1.csv
-INFO:dppylib:combined-AD-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_screening-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_screening-day1to1.csv
-INFO:dppylib:combined-PRONET-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_baseline-day1to1.csv
-INFO:dppylib:combined-PRONET-form_baseline-day1to1.csv does not exist in the database. Importing.
-Exception ignored in: <generator object read_csv at 0x7f75107e9d90>
-Traceback (most recent call last):
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/tools/reader/__init__.py", line 12, in read_csv
-    except pd.io.common.EmptyDataError as e:
-AttributeError: module 'pandas.io.common' has no attribute 'EmptyDataError'
-Traceback (most recent call last):
-  File "/data/predict/miniconda3/bin/import.py", line 191, in <module>
-    main()
-  File "/data/predict/miniconda3/bin/import.py", line 54, in main
-    dppylib.import_file(db.db, probe)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/dppylib/__init__.py", line 64, in import_file
-    diff_files(db, collection, file_info)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/dppylib/__init__.py", line 72, in diff_files
-    import_data(db, collection, file_info)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/dppylib/__init__.py", line 93, in import_data
-    inserted = insert_data(db, file_info)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/dppylib/__init__.py", line 141, in insert_data
-    data_blob.extend(chunk.to_dict('records'))
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py", line 2054, in to_dict
-    for row in self.itertuples(index=False, name=None)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py", line 1484, in itertuples
-    arrays.extend(self.iloc[:, k] for k in range(len(self.columns)))
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py", line 1484, in <genexpr>
-    arrays.extend(self.iloc[:, k] for k in range(len(self.columns)))
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/indexing.py", line 1067, in __getitem__
-    return self._getitem_tuple(key)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/indexing.py", line 1565, in _getitem_tuple
-    return self._getitem_lowerdim(tup)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/indexing.py", line 967, in _getitem_lowerdim
-    section = self._getitem_axis(key, axis=i)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/indexing.py", line 1627, in _getitem_axis
-    return self.obj._ixs(key, axis=axis)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py", line 3729, in _ixs
-    result = self._box_col_values(col_mgr, i)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/frame.py", line 4263, in _box_col_values
-    return klass(values, name=name, fastpath=True).__finalize__(self)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pandas/core/generic.py", line 5844, in __finalize__
-    @final
-KeyboardInterrupt
-Exception ignored in atexit callback: <function _shutdown_resources at 0x7f7512da35b0>
-Traceback (most recent call last):
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pymongo/monitor.py", line 437, in _shutdown_resources
-    shutdown()
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pymongo/periodic_executor.py", line 182, in _shutdown_executors
-    executor.join(1)
-  File "/data/predict/miniconda3/lib/python3.10/site-packages/pymongo/periodic_executor.py", line 100, in join
-    self._thread.join(timeout)
-  File "/data/predict/miniconda3/lib/python3.10/threading.py", line 1100, in join
-    self._wait_for_tstate_lock(timeout=max(timeout, 0))
-  File "/data/predict/miniconda3/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
-    if lock.acquire(block, timeout):
-KeyboardInterrupt: 
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers

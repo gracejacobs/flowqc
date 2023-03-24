@@ -22,7 +22,7 @@ today = today.strftime("%Y-%m-%d")
 output1 = "/data/predict1/data_from_nda/formqc/"
 
 # list of sites for site-specific combined files
-site_list = ["ME", "CP", "BM", "SG", "AD"]
+site_list = ["ME", "CP", "BM", "SG", "AD", "CM", "GA", "PV", "LS"]
 
 # list of ids to include
 ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/prescient_sub_list.txt", sep= "\n", index_col = False, header = None)
@@ -199,6 +199,14 @@ for id in id_list:
 		dpdash_main.at[0, 'visit_status_string'] = "month5"
 	if status == 8:
 		dpdash_main.at[0, 'visit_status_string'] = "month6"
+	if status == 9:
+		dpdash_main.at[0, 'visit_status_string'] = "month7"
+	if status == 10:
+		dpdash_main.at[0, 'visit_status_string'] = "month8"
+	if status == 11:
+		dpdash_main.at[0, 'visit_status_string'] = "month9"
+	if status == 12:
+		dpdash_main.at[0, 'visit_status_string'] = "month10"
 	if status == 99:
 		dpdash_main.at[0, 'visit_status_string'] = "removed"
 
@@ -206,8 +214,8 @@ for id in id_list:
 	print(dpdash_main.at[0, 'visit_status_string'])
 
 	#dpdash_main = dpdash_main.transpose()
-	print("Printing dpdash main")
-	print(dpdash_main.T)
+	#print("Printing dpdash main")
+	#print(dpdash_main.T)
 
 	status_removed = "0"
 	if os.path.exists(screen):
@@ -230,12 +238,14 @@ for id in id_list:
 		dpdash_screening = pd.concat(frames, axis=1)
 		dpdash_screening = dpdash_screening.loc[:,~dpdash_screening.columns.duplicated()]
 		print("Screening csv: ")
-		print(dpdash_screening.T.iloc[:10 , :14])
+		#print(dpdash_screening.T.iloc[:10 , :14])
 		
 		if "chrmiss_withdrawn" in dpdash_screening and dpdash_screening.at[0, "chrmiss_withdrawn"] == '1':
 			status_removed = "1"
+			dpdash_screening.at[0, 'visit_status_string'] = "removed"
 		if "chrmiss_discon" in dpdash_screening and dpdash_screening.at[0, "chrmiss_discon"] == '1':
 			status_removed = "1"
+			dpdash_screening.at[0, 'visit_status_string'] = "removed"
 		dpdash_screening[0, "status_removed"] = status_removed
 		print(dpdash_screening)
 
@@ -253,8 +263,8 @@ for id in id_list:
 		print("Visit Status: ")
 		print(dpdash_main.at[0, 'visit_status_string'])
 		#dpdash_main = dpdash_main.transpose()
-		print("baseline dpdash main")		
-		print(dpdash_main.T.iloc[:10 , :14])
+		#print("baseline dpdash main")		
+		#print(dpdash_main.T.iloc[:10 , :14])
 
 		dpdash_main = dpdash_main.reset_index(drop=True)
 		sub_baseline = sub_baseline.reset_index(drop=True)
@@ -272,8 +282,10 @@ for id in id_list:
 
 		if "chrmiss_withdrawn" in dpdash_baseline and dpdash_baseline.at[0, "chrmiss_withdrawn"] == '1':
 			status_removed = "1"
+			dpdash_baseline.at[0, 'visit_status_string'] = "removed"
 		if "chrmiss_discon" in dpdash_baseline and dpdash_baseline.at[0, "chrmiss_discon"] == '1':
 			status_removed = "1"
+			dpdash_baseline.at[0, 'visit_status_string'] = "removed"
 
 		dpdash_baseline[0, "status_removed"] = status_removed
 		print(dpdash_baseline)
@@ -287,21 +299,25 @@ for id in id_list:
 
 
 	# month1
-	for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+	for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8"]:
 		print("Month " + vi)
 
-		file = (output1 + site+"-"+id+"-month" + str(vi) +".csv")
-		visit_tracker = vars()['id_month' + str(vi) + '_tracker']
-		visit_perc = vars()['month' + str(vi) + '_perc']
+		file = (output1 + site+"-"+id+"-" + str(vi) +".csv")
+		visit_tracker = vars()['id_' + str(vi) + '_tracker']
+		visit_perc = vars()[str(vi) + '_perc']
 
 		if os.path.exists(file):
+			print("file exists")
 			sub_event = pd.read_csv(file)
 			sub_event = sub_event.set_index('Unnamed: 1')
 			del sub_event['Unnamed: 0']
 			sub_event = sub_event.transpose()
+			print(sub_event)
+			sub_event = sub_event.loc[:,~sub_event.columns.duplicated()]
+			print(sub_event)
 
-			print("Visit Status: ")
-			print(dpdash_main.at[0, 'visit_status_string'])
+			print("Visit Status: " + dpdash_main.at[0, 'visit_status_string'])
+			#print(dpdash_main.at[0, 'visit_status_string'])
 			#dpdash_main = dpdash_main.transpose()
 			#print("dpdash main")		
 			#print(dpdash_main.T.iloc[:10 , :14])
@@ -316,23 +332,28 @@ for id in id_list:
 
 			dpdash_event = pd.concat(frames, axis=1)
 
-
+			# remove duplicated columns
 			dpdash_event = dpdash_event.loc[:,~dpdash_event.columns.duplicated()]
-			print(dpdash_event.T.iloc[:10 , :14])
+			#print(dpdash_event.T.iloc[:25 , :25])
 
 			if "chrmiss_withdrawn" in dpdash_event and dpdash_event.at[0, "chrmiss_withdrawn"] == '1':
 				status_removed = "1"
+				dpdash_event.at[0, 'visit_status_string'] = "removed"
 			if "chrmiss_discon" in dpdash_event and dpdash_event.at[0, "chrmiss_discon"] == '1':
 				status_removed = "1"
+				dpdash_event.at[0, 'visit_status_string'] = "removed"
 
-			dpdash_event[0, "status_removed"] = status_removed
+			dpdash_event.at[0, "status_removed"] = status_removed
+			#print(dpdash_event.T.iloc[:25 , :25])
 
-			id_month1_tracker["Month{0}_{1}".format(vi, id)] = dpdash_event
+			#print("{0}_{1}".format(vi, id))
+			visit_tracker["{0}_{1}".format(vi, id)] = dpdash_event
 
 		else:
 			print("Month" + str(vi) + " data doesn't exist")
 			dpdash_event = dpdash_main
-			visit_tracker["Month{0}_{1}".format(vi, id)] = dpdash_event
+			#print(dpdash_event.iloc[:5,:5])
+			visit_tracker["{0}_{1}".format(vi, id)] = dpdash_event
 
 
 
@@ -386,7 +407,7 @@ if len(id_baseline_tracker) > 0:
 	
 	# reordering based on days since consent
 	final_baseline_csv = final_baseline_csv.sort_values(['days_since_consent', 'day'])
-	print(final_baseline_csv.T.iloc[:14 , :5])
+	#print(final_baseline_csv.T.iloc[:14 , :5])
 	final_baseline_csv['day'] = numbers
 	numbers.sort(reverse = True)
 	final_baseline_csv['num'] = numbers
@@ -419,12 +440,19 @@ if len(id_baseline_tracker) > 0:
 
 # month1 visit
 for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
-	print(vi)
+	print("Combining and saving data for month " + vi)
 	tracker_name = vars()['id_month' + str(vi) + '_tracker']
+	print("Length: " + str(len(tracker_name)))
+	print(tracker_name)
 
 	if len(tracker_name) > 0:
 		final_event_csv = pd.concat(tracker_name, ignore_index=True)
-		final_event_csv.dropna(subset=['subjectid'], inplace=True)
+		#print("Before extra subjects are dropped")
+		#print(final_event_csv)
+		#final_event_csv.dropna(subset=['subjectid'], inplace=True)
+		#final_event_csv = final_event_csv.drop_duplicates(subset=['subjectid'])
+		#print("Before extra subjects are dropped")
+		#print(final_event_csv)
 		numbers = list(range(1,(len(final_event_csv.index) +1))) # changing day numbers to sequence
 		final_event_csv['day'] = numbers
 	
@@ -439,6 +467,7 @@ for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 		final_event_csv.to_csv(output1 + "combined-PRESCIENT-form_month" + str(vi) + "-day1to1.csv", sep=',', index = False, header=True)
 
 		## Creating site specific combined files for screening and baseline
+		print("INDIVIUAL SITES")
 		for si in site_list:
 			print(si)
 			site_final = final_event_csv[final_event_csv['site'].str.contains(si)]

@@ -20,16 +20,8 @@ today = today.strftime("%Y-%m-%d")
 id = str(sys.argv[1])
 print("ID: ", id)
 
-#last_date = id.split(" ")[0]
-#print(last_date)
-#id = id.split(" ")[1]
-#print(id)
-
 site = id[0:2]
 print("Site: ", site)
-
-# chr or healthy
-#sub_type = str(sys.argv[2])
 
 #output1 = "/data/predict/data_from_nda/formqc/"
 output1 = "/data/predict1/data_from_nda/formqc/"
@@ -157,6 +149,10 @@ cognition_status = 0
 blood_status = 0
 saliva_status = 0
 clinical_status = 0
+date_drawn_bl = np.nan
+date_ate_bl = np.nan
+date_drawn_m2 = np.nan
+date_ate_m2 = np.nan
 
 print(id)
 #form_names = ["guid_form"]
@@ -230,6 +226,21 @@ for name in form_names:
 		form_info_2.at["blood_status", screening] = blood_status
 		form_info_2.at["saliva_status", screening] = saliva_status
 		form_info_2.at["clinical_status", screening] = clinical_status
+		print("Calculating time fasting: ")
+		if pd.isna(date_drawn_bl) or pd.isna(date_ate_bl):
+			print("Basline not complete")
+
+		else:
+			print(str(date_drawn_bl))
+			print(str(date_ate_bl))
+			print(str((((date_drawn_bl - date_ate_bl).total_seconds()) / 60) / 60))
+			form_info_2.at["time_fasting", baseline] = (((date_drawn_bl - date_ate_bl).total_seconds()) / 60) / 60
+		if pd.isna(date_drawn_m2) or pd.isna(date_ate_m2):
+			print("Month 2 not complete")
+		else:
+			print(str(date_drawn_m2))
+			print(str(date_ate_m2))
+			form_info_2.at["time_fasting", month2] = (((date_drawn_m2 - date_ate_m2).total_seconds()) / 60) /60
 		#print(form_info_2)
 
 
@@ -456,6 +467,15 @@ for name in form_names:
 
 	## adding blood biomarkers
 	if name in ['blood_sample_preanalytic_quality_assurance']: 
+		if "chrblood_drawdate" in sub_data_all and pd.notna(sub_data_all.at[2, "chrblood_drawdate"]) and sub_data_all.at[2, "chrblood_drawdate"] != -3 and sub_data_all.at[2, "chrblood_drawdate"] != -9:
+			date_drawn_bl = sub_data_all.at[2, "chrblood_drawdate"]
+			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
+			print(str(date_drawn_bl))
+		if "chrblood_drawdate" in sub_data_all and pd.notna(sub_data_all.at[4, "chrblood_drawdate"]) and sub_data_all.at[4, "chrblood_drawdate"] != -3 and sub_data_all.at[4, "chrblood_drawdate"] != -9:
+			date_drawn_m2 = sub_data_all.at[4, "chrblood_drawdate"]
+			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
+			print(str(date_drawn_m2))
+
 		if "chrblood_plasma_freeze" in sub_data_all and pd.notna(sub_data_all.at[2, "chrblood_plasma_freeze"]):
 			plasma_time = sub_data_all.at[2, "chrblood_plasma_freeze"]
 			print(str(plasma_time))
@@ -622,6 +642,21 @@ for name in form_names:
 			blood_status = 0
 			form_info_2.at["blood_status", screening] = 0
 
+	if name in ['current_health_status']: 
+		if "chrchs_ate" in sub_data_all and pd.notna(sub_data_all.at[2, "chrchs_ate"]) and sub_data_all.at[2, "chrchs_ate"] != -3 and sub_data_all.at[2, "chrchs_ate"] != -9:
+		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
+			#print(form_info_2)
+			date_ate_bl = sub_data_all.at[2, "chrchs_ate"]
+			date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
+			print(str(date_ate_bl))
+		if "chrchs_ate" in sub_data_all and pd.notna(sub_data_all.at[4, "chrchs_ate"]) and sub_data_all.at[4, "chrchs_ate"] != -3 and sub_data_all.at[4, "chrchs_ate"] != -9:
+			date_ate_m2 = sub_data_all.at[4, "chrchs_ate"]
+			date_ate_m2 = datetime.strptime(date_ate_m2, "%Y-%m-%d %H:%M")
+			print(str(date_ate_m2))
+			
+	#if name in ['daily_activity_and_saliva_sample_collection']:
+		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
+			#print(form_info_2)
 
 	############ Missing variables for clinical data
 	if name in ['perceived_discrimination_scale']: 

@@ -112,6 +112,10 @@ cognition_status = 0
 blood_status = 0
 saliva_status = 0
 clinical_status = 0
+date_drawn_bl = np.nan
+date_ate_bl = np.nan
+date_drawn_m2 = np.nan
+date_ate_m2 = np.nan
 
 print("\nCreating csvs")
 for name in form_names:
@@ -697,10 +701,31 @@ for name in form_names:
 					print("Incomplete")
 					saliva_status = 0
 
+			#if name in ['current_health_status']: 
+				#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
+				#	print(sub_data.T)
+
+			if name in ['current_health_status']: 
+				#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
+				#	print(sub_data.T)
+				print("Event: " + str(event) + " Time: " + str(sub_data.at[0, "chrchs_ate"]))
+				if event == "2":
+					date_ate_bl = sub_data.at[0, "chrchs_ate"]
+					print(str(date_ate_bl))	
+ 				
+					if pd.notna(date_ate_bl) and date_ate_bl != -3 and date_ate_bl != -9:
+						date_ate_bl = datetime.strptime(date_ate_bl, "%d/%m/%Y %I:%M:%S %p")
+						print(str(date_ate_bl))
+
+				if event == "4" and pd.notna(sub_data.at[0, "chrchs_ate"]) and sub_data.at[0, "chrchs_ate"] != -3 and sub_data.at[0, "chrchs_ate"] != -9:
+					date_ate_m2 = sub_data.at[0, "chrchs_ate"]
+					print(str(date_ate_m2))
+					date_ate_m2 = datetime.strptime(date_ate_m2, "%d/%m/%Y %I:%M:%S %p")
+					print(str(date_ate_m2))
 
 			if name in ['blood_sample_preanalytic_quality_assurance']: 
-				with pd.option_context('display.max_rows', None, 'display.precision', 3,):
-					print(sub_data.T)
+				#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
+				#	print(sub_data.T)
 
 				#whole blood processing time
 				#round(datediff([chrblood_drawdate],[chrblood_wbfrztime], "m","ymd h:m",true),1)
@@ -712,8 +737,12 @@ for name in form_names:
 					chrblood_plfrztime = sub_data.at[0, "chrblood_plfrztime"]
 
 					if pd.notna(drawdate) and drawdate != "-3" and drawdate != "-9":
-						drawdate = drawdate.split(" ", 1)[1]
 						print("Drawdate: " + str(drawdate))
+						if event == '2':
+							date_drawn_bl = datetime.strptime(drawdate, "%d/%m/%Y %I:%M:%S %p")
+						else:
+							date_drawn_m2 = datetime.strptime(drawdate, "%d/%m/%Y %I:%M:%S %p")
+						drawdate = drawdate.split(" ", 1 )[1]			
 						drawdate = datetime.strptime(drawdate, "%I:%M:%S %p")
 						
 						if pd.notna(chrblood_wbfrztime) and chrblood_wbfrztime != "-3" and chrblood_wbfrztime != "-9":
@@ -722,10 +751,10 @@ for name in form_names:
 							chrblood_wbfrztime =  datetime.strptime(chrblood_wbfrztime, "%I:%M:%S %p")
 							chrblood_wholeblood_freeze = ((chrblood_wbfrztime - drawdate).total_seconds()) / 60
 							print("Whole blood processing time: " + str(chrblood_wholeblood_freeze))
-							form_info.at["chrblood_wholeblood_freeze", 'Variables'] =  chrblood_wholeblood_freeze
+							#form_info.at["chrblood_wholeblood_freeze", 'Variables'] =  chrblood_wholeblood_freeze
 						else:
 							print("Missing whole blood freeze time")
-							form_info.at["chrblood_wholeblood_freeze", 'Variables'] = np.nan
+							#form_info.at["chrblood_wholeblood_freeze", 'Variables'] = np.nan
 
 						if pd.notna(chrblood_bcfrztime) and chrblood_bcfrztime != "-3" and chrblood_wbfrztime != "-9":
 							chrblood_bcfrztime = chrblood_bcfrztime.split(" ", 1)[1]
@@ -733,7 +762,7 @@ for name in form_names:
 							chrblood_bcfrztime = datetime.strptime(chrblood_bcfrztime, "%I:%M:%S %p")
 							chrblood_buffy_freeze = ((chrblood_bcfrztime - drawdate).total_seconds()) / 60
 							print('Buffy processing time: ' + str(chrblood_buffy_freeze))
-							form_info.at["chrblood_buffy_freeze", 'Variables'] = chrblood_buffy_freeze 
+							#form_info.at["chrblood_buffy_freeze", 'Variables'] = chrblood_buffy_freeze 
 
 							buffy = 0
 
@@ -745,10 +774,10 @@ for name in form_names:
 								buffy = 3
 
 							print(" Label: " + str(buffy) + "\n")
-							form_info.at["buffy_time", 'Variables'] = buffy
+							#form_info.at["buffy_time", 'Variables'] = buffy
 						else:
 							print("Missing buffy blood freeze time")
-							form_info.at["chrblood_buffy_freeze", 'Variables'] = np.nan
+							#form_info.at["chrblood_buffy_freeze", 'Variables'] = np.nan
 
 						if pd.notna(chrblood_serumfrztime) and chrblood_serumfrztime != "-3" and chrblood_serumfrztime != "-9":
 							chrblood_serumfrztime = chrblood_serumfrztime.split(" ", 1)[1]
@@ -756,10 +785,10 @@ for name in form_names:
 							chrblood_serumfrztime = datetime.strptime(chrblood_serumfrztime, "%I:%M:%S %p")
 							chrblood_serum_freeze = ((chrblood_serumfrztime - drawdate).total_seconds()) / 60
 							print('Serum processing time: ' + str(chrblood_serum_freeze))
-							form_info.at["chrblood_serum_freeze", 'Variables'] = chrblood_serum_freeze 
+							#form_info.at["chrblood_serum_freeze", 'Variables'] = chrblood_serum_freeze 
 						else:
 							print("Missing serum blood freeze time")
-							form_info.at["chrblood_serum_freeze", 'Variables'] = np.nan
+							#form_info.at["chrblood_serum_freeze", 'Variables'] = np.nan
 
 						if pd.notna(chrblood_plfrztime) and chrblood_plfrztime != "-3" and chrblood_plfrztime != "-9":
 							chrblood_plfrztime = chrblood_plfrztime.split(" ", 1)[1]
@@ -767,10 +796,10 @@ for name in form_names:
 							chrblood_plfrztime = datetime.strptime(chrblood_plfrztime, "%I:%M:%S %p")
 							chrblood_plasma_freeze = ((chrblood_plfrztime - drawdate).total_seconds()) / 60
 							print('Plasma processing time: ' + str(chrblood_plasma_freeze))
-							form_info.at["chrblood_plasma_freeze", 'Variables'] = chrblood_serum_freeze 
+							#form_info.at["chrblood_plasma_freeze", 'Variables'] = chrblood_serum_freeze 
 						else:
 							print("Missing plasma blood freeze time")
-							form_info.at["chrblood_plasma_freeze", 'Variables'] = np.nan	
+							#form_info.at["chrblood_plasma_freeze", 'Variables'] = np.nan	
 					
 
 				##
@@ -892,6 +921,7 @@ for name in form_names:
 				print(vials_m2)
 				print(str(np.count_nonzero(vials)))
 				print(str(np.count_nonzero(vials_m2)))
+				form_info.at["number_blood_vials", 'Variables'] = np.count_nonzero(vials)	
 
 				if np.count_nonzero(vials) > 12 and np.count_nonzero(vials_m2) > 12:
 					print("Both complete")
@@ -942,6 +972,24 @@ for name in form_names:
 				#print("Number of vials (max 6): " + str(num_vials))
 				#form_info.at["num_plasma_vials", 'Variables'] = num_vials
 				
+				print("Fasting Time")
+				if event == "2":
+					if pd.isna(date_drawn_bl) or pd.isna(date_ate_bl):
+						print("Fasting time basline not complete")
+					else:
+						print(str(date_drawn_bl))
+						print(str(date_ate_bl))
+						print(str((((date_drawn_bl - date_ate_bl).total_seconds()) / 60) / 60))
+						form_info.at["time_fasting", 'Variables'] = round((((date_drawn_bl - date_ate_bl).total_seconds()) / 60) / 60, 1)
+				
+				if event == "4":
+					if pd.isna(date_drawn_m2) or pd.isna(date_ate_m2):
+						print("Fasting time Month 2 not complete")
+					else:
+						print(str(date_drawn_m2))
+						print(str(date_ate_m2))
+						form_info.at["time_fasting", 'Variables'] = round((((date_drawn_m2 - date_ate_m2).total_seconds()) / 60) /60, 1)
+				print(form_info)
 
 
 			#### setting up combined forms
