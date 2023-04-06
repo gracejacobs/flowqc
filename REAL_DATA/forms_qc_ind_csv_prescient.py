@@ -687,6 +687,10 @@ for name in form_names:
 				print(vials_m2)
 				print(str(np.count_nonzero(vials)))
 				print(str(np.count_nonzero(vials_m2)))
+				if event == "2":
+					form_info.at["number_saliva_vials", 'Variables'] = np.count_nonzero(vials)	
+				if event == "4":
+					form_info.at["number_saliva_vials", 'Variables'] = np.count_nonzero(vials_m2)	
 
 				if np.count_nonzero(vials) > 4 and np.count_nonzero(vials_m2) > 4:
 					print("Both complete")
@@ -921,7 +925,10 @@ for name in form_names:
 				print(vials_m2)
 				print(str(np.count_nonzero(vials)))
 				print(str(np.count_nonzero(vials_m2)))
-				form_info.at["number_blood_vials", 'Variables'] = np.count_nonzero(vials)	
+				if event == "2":
+					form_info.at["number_blood_vials", 'Variables'] = np.count_nonzero(vials)	
+				if event == "4":
+					form_info.at["number_blood_vials", 'Variables'] = np.count_nonzero(vials_m2)	
 
 				if np.count_nonzero(vials) > 12 and np.count_nonzero(vials_m2) > 12:
 					print("Both complete")
@@ -1110,8 +1117,10 @@ for name in form_names:
 		
 		if pd.isna(last_day):
 			last_day = 1
-		#print(last_day)
-		#print(form_tracker)
+
+		if not pd.isna(last_day) and int(last_day) > 300:
+			print("ALERT: ERROR WIITH DATE IN FORM - Last day too high")
+			last_day = 300
 
 		final_csv = pd.concat(form_tracker, axis=0, ignore_index=True)
 		#print(name)

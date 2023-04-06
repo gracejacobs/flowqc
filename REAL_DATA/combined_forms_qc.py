@@ -24,7 +24,7 @@ today = today.strftime("%Y-%m-%d")
 output1 = "/data/predict1/data_from_nda/formqc/"
 
 # list of sites for site-specific combined files
-site_list = ["CA", "CM", "GA", "SD", "SF", "SI", "HA", "YA", "LA", "WU", "PI", "PA", "PV", "OR", "NN", "IR", "NL", "NN", "NC", "TE", "MT", "LS"]
+site_list = ["BI", "CA", "CM", "GA", "KC", "SD", "SF", "SI", "HA", "YA", "LA", "WU", "PI", "PA", "PV", "OR", "NN", "IR", "NL", "NN", "NC", "TE", "MT", "LS"]
 
 # list of ids to include
 ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/pronet_sub_list_chr.txt", sep= "\n", index_col = False, header = None)
@@ -323,7 +323,62 @@ for id in id_list:
 	print(str(np.count_nonzero(vials)))
 	print(str(np.count_nonzero(vials_m2)))
 	sub_data_baseline.at[0, 'number_blood_vials'] = np.count_nonzero(vials)	
-	sub_data_month2.at[0, 'number_blood_vials'] = np.count_nonzero(vials_m2)	
+	sub_data_month2.at[0, 'number_blood_vials'] = np.count_nonzero(vials_m2)
+
+	print("Counting saliva vials")
+
+	s_1 = s_2 = s_3 = s_4 = s_5 = s_6 = 0
+	s_1_m2 = s_2_m2 = s_3_m2 = s_4_m2 = s_5_m2 = s_6_m2 = 0
+
+	if "chrsaliva_vol1a" in sub_data_baseline:
+		s_1 = sub_data_baseline.at[0, "chrsaliva_vol1a"]
+		s_1_m2 = sub_data_month2.at[0, "chrsaliva_vol1a"]
+	if "chrsaliva_vol1b" in sub_data_baseline:
+		s_2 = sub_data_baseline.at[0, "chrsaliva_vol1b"]
+		s_2_m2 = sub_data_month2.at[0, "chrsaliva_vol1b"]
+	if "chrsaliva_vol2a" in sub_data_baseline:
+		s_3 = sub_data_baseline.at[0, "chrsaliva_vol2a"]
+		s_3_m2 = sub_data_month2.at[0, "chrsaliva_vol2a"]
+	if "chrsaliva_vol2b" in sub_data_baseline:
+		s_4 = sub_data_baseline.at[0, "chrsaliva_vol2b"]
+		s_4_m2 = sub_data_month2.at[0, "chrsaliva_vol2b"]
+	if "chrsaliva_vol3a" in sub_data_baseline:
+		s_5 = sub_data_baseline.at[0, "chrsaliva_vol3a"]
+		s_5_m2 = sub_data_month2.at[0, "chrsaliva_vol3a"]
+	if "chrsaliva_vol3b" in sub_data_baseline:
+		s_6 = sub_data_baseline.at[0, "chrsaliva_vol3b"]
+		s_6_m2 = sub_data_month2.at[0, "chrsaliva_vol3b"]
+				
+	vials = [s_1, s_2, s_3, s_4, s_5, s_6]
+	vials_m2 = [s_1_m2, s_2_m2, s_3_m2, s_4_m2, s_5_m2, s_6_m2]
+	print(vials)		
+	print(vials_m2)	
+
+	for x in range(len(vials)):
+		if pd.isnull(vials[x]) or vials[x] == '-9' or vials[x] == '-3' or vials[x] == 'nan':
+			vials[x] = 0
+
+	for x in range(len(vials_m2)):
+		if pd.isnull(vials_m2[x]) or vials_m2[x] == '-9' or vials_m2[x] == '-3' or vials_m2[x] == 'nan':
+			vials_m2[x] = 0
+
+	#vials_m2[np.isnan(vials_m2)] = 0
+	print("Printing VIAL VOLUMES")
+	for i in range(len(vials)):
+		if isinstance(vials[i], str):
+			vials[i] = eval(vials[i])
+
+	for i in range(len(vials_m2)):
+		if isinstance(vials_m2[i], str):
+			vials_m2[i] = eval(vials_m2[i])
+	print(vials)
+	print(vials_m2)
+	print(str(np.count_nonzero(vials)))
+	print(str(np.count_nonzero(vials_m2)))
+	sub_data_baseline.at[0, 'number_saliva_vials'] = np.count_nonzero(vials)	
+	sub_data_month2.at[0, 'number_saliva_vials'] = np.count_nonzero(vials_m2)
+
+
 
 
 ##### Calculating missingness for clinical forms

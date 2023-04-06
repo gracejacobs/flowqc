@@ -111,6 +111,11 @@ if month9 != []:
 	month9 = month9[0]
 
 
+conversion = [i for i in event_list if i.startswith('conversion_')]
+if conversion != []:
+	conversion = conversion[0]
+
+
 # Opening data dictionary
 dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=False)
 
@@ -643,13 +648,13 @@ for name in form_names:
 			form_info_2.at["blood_status", screening] = 0
 
 	if name in ['current_health_status']: 
-		if "chrchs_ate" in sub_data_all and pd.notna(sub_data_all.at[2, "chrchs_ate"]) and sub_data_all.at[2, "chrchs_ate"] != -3 and sub_data_all.at[2, "chrchs_ate"] != -9:
+		if "chrchs_ate" in sub_data_all and pd.notna(sub_data_all.at[2, "chrchs_ate"]) and sub_data_all.at[2, "chrchs_ate"] != '-3' and sub_data_all.at[2, "chrchs_ate"] != '-9':
 		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
 			#print(form_info_2)
 			date_ate_bl = sub_data_all.at[2, "chrchs_ate"]
 			date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
 			print(str(date_ate_bl))
-		if "chrchs_ate" in sub_data_all and pd.notna(sub_data_all.at[4, "chrchs_ate"]) and sub_data_all.at[4, "chrchs_ate"] != -3 and sub_data_all.at[4, "chrchs_ate"] != -9:
+		if "chrchs_ate" in sub_data_all and pd.notna(sub_data_all.at[4, "chrchs_ate"]) and sub_data_all.at[4, "chrchs_ate"] != '-3' and sub_data_all.at[4, "chrchs_ate"] != '-9':
 			date_ate_m2 = sub_data_all.at[4, "chrchs_ate"]
 			date_ate_m2 = datetime.strptime(date_ate_m2, "%Y-%m-%d %H:%M")
 			print(str(date_ate_m2))
@@ -1119,6 +1124,10 @@ for name in form_names:
 	last_day = final_csv['day'].max()
 	if pd.isna(last_day):
 		last_day = 1
+	
+	if not pd.isna(last_day) and int(last_day) > 300:
+		print("ALERT: ERROR WIITH DATE IN FORM - Last day too high")
+		last_day = 300
 	#print("LAST DAY for file: " + str(last_day))
 
 	if 'lifetime_ap_exposure_screen' in final_csv:
