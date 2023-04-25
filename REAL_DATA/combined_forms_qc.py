@@ -48,6 +48,7 @@ id_month5_tracker = {}
 id_month6_tracker = {}
 id_month7_tracker = {}
 id_month8_tracker = {}
+id_conversion_tracker = {}
 
 print("\nCombining all measures for screening, baseline, and month 1-4 visits: ")
 
@@ -80,10 +81,15 @@ for id in id_list:
 
 	baseline = [i for i in all_events if i.startswith('baseline_')]
 	if baseline == []:
-		baseline = ['month_1_arm_1']
-		baseline = baseline[0]
+		baseline = []
 	else:
 		baseline = baseline[0]
+
+	conversion = [i for i in all_events if i.startswith('conversion_')]
+	if conversion == []:
+		conversion = []
+	else:
+		conversion = conversion[0]
 
 	for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 		#visit_data = vars()['sub_data_month' + str(vi)]
@@ -117,16 +123,11 @@ for id in id_list:
 	# setting up baseline
 	sub_data_baseline = sub_data_all[sub_data_all['redcap_event_name'].isin([baseline])]
 	sub_data_baseline = sub_data_baseline.reset_index(drop=True)
-	#print(sub_data_baseline)
 
-	# setting up month 1, 2, 3, 4
-	# creating empty dataframes if timepoint doesn't exist
-	#print(sub_data_all['redcap_event_name'])
+	# setting up conversion
+	sub_data_conversion = sub_data_all[sub_data_all['redcap_event_name'].isin([conversion])]
+	sub_data_conversion = sub_data_conversion.reset_index(drop=True)
 
-	#print(sub_data_month4)
-	
-	# could add all the interview dates and entry dates here
-	# find the difference between them, name them based on the form	
 
 	# Adding age variable
 	age = 0
@@ -186,21 +187,21 @@ for id in id_list:
 	date_ate_bl = np.nan
 	date_drawn_m2 = np.nan
 	date_ate_m2 = np.nan
-	if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != -3 and sub_data_baseline.at[0, "chrblood_drawdate"] != -9:
+	if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9':
 			date_drawn_bl = sub_data_baseline.at[0, "chrblood_drawdate"]
 			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_bl))
-	if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != -3 and sub_data_month2.at[0, "chrblood_drawdate"] != -9:
+	if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9':
 			date_drawn_m2 = sub_data_month2.at[0, "chrblood_drawdate"]
 			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_m2))
-	if "chrchs_ate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != -3 and sub_data_baseline.at[0, "chrchs_ate"] != -9:
+	if "chrchs_ate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != '-3' and sub_data_baseline.at[0, "chrchs_ate"] != '-9':
 		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
 			#print(form_info_2)
 			date_ate_bl = sub_data_baseline.at[0, "chrchs_ate"]
 			date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
 			print(str(date_ate_bl))
-	if "chrchs_ate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != -3 and sub_data_month2.at[0, "chrchs_ate"] != -9:
+	if "chrchs_ate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != '-3' and sub_data_month2.at[0, "chrchs_ate"] != '-9':
 			date_ate_m2 = sub_data_month2.at[0, "chrchs_ate"]
 			date_ate_m2 = datetime.strptime(date_ate_m2, "%Y-%m-%d %H:%M")
 			print(str(date_ate_m2))
@@ -782,6 +783,7 @@ for id in id_list:
 	month6_perc = pd.DataFrame()
 	month7_perc = pd.DataFrame()
 	month8_perc = pd.DataFrame()
+	conversion_perc = pd.DataFrame()
 
 
 	if os.path.exists(percentage_file):
@@ -791,12 +793,15 @@ for id in id_list:
 
 		screening_perc = pd.DataFrame(percentages.loc[screening])
 		baseline_perc = pd.DataFrame(percentages.loc[baseline])
+		conversion_perc = pd.DataFrame(percentages.loc[conversion])
 
 		screening_perc = screening_perc.transpose()
 		baseline_perc = baseline_perc.transpose()
+		conversion_perc = conversion_perc.transpose()
 
 		screening_perc = screening_perc.reset_index(drop=True)
 		baseline_perc = baseline_perc.reset_index(drop=True)
+		conversion_perc = conversion_perc.reset_index(drop=True)
 		print("Screening percentage")
 		print(screening_perc)
 
@@ -818,8 +823,7 @@ for id in id_list:
 				#print(visit_perc)
 				globals()['month' + str(vi) + "_perc"] = visit_perc.reset_index(drop=True)
 
-		print("Printing Month 1 perc")
-		print(month1_perc)
+		#print(month1_perc)
 		# getting the visit status
 		perc_check = percentages
 		perc_check = perc_check.drop('informed_consent_run_sheet' , axis='columns')
@@ -828,16 +832,26 @@ for id in id_list:
 		perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
 		perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
 		#print(perc_check)
-		perc_check = perc_check[perc_check.Completed > 100]
+		perc_check_2 = perc_check[perc_check.Completed > 100]
+		perc_check = perc_check[perc_check.index.str.contains('convers')==True]
+		perc_check = perc_check.reset_index()
+		print("Printing visit perc")
+		print(perc_check_2)
+		print("Printing conversion perc")
+		print(perc_check)
 
-		if perc_check.empty:
+		if perc_check_2.empty:
 			status = "0"
 		else:
-			perc_check = perc_check.reset_index()
-			status = (perc_check.index[-1] + 1)
+			perc_check_2 = perc_check_2.reset_index()
+			status = (perc_check_2.index[-1] + 1)
 
-			if perc_check['Total_empty'].min() > 58:
+			if perc_check_2['Total_empty'].min() > 58:
 				status = "0"
+		if not perc_check.empty:		
+			if perc_check.loc[0, 'Completed'] > 20:
+				status = "98" #conversion
+
 	
 	# adding removed status
 	status_removed = "0"
@@ -932,6 +946,8 @@ for id in id_list:
 		dpdash_main.at[0, 'visit_status_string'] = "month9"
 	if status == 12:
 		dpdash_main.at[0, 'visit_status_string'] = "month10"
+	if status == '98':
+		dpdash_main.at[0, 'visit_status_string'] = "converted"
 	if status_removed == "1":
 		dpdash_main.at[0, 'visit_status_string'] = "removed"
 
@@ -960,10 +976,17 @@ for id in id_list:
 	frames = [dpdash_main, sub_data_baseline, baseline_perc]
 	dpdash_full = pd.concat(frames, axis=1)
 	dpdash_full.dropna(how='all', axis=0, inplace=True)
-	#print("Baseline csv for participant: ")
-	#print(dpdash_full.T)
 
 	id_baseline_tracker["Baseline_{0}".format(id)] = dpdash_full
+
+	# saving conversion visit
+	sub_data_conversion = sub_data_conversion.reset_index(drop=True)
+
+	frames = [dpdash_main, sub_data_conversion, conversion_perc]
+	dpdash_full = pd.concat(frames, axis=1)
+	dpdash_full.dropna(how='all', axis=0, inplace=True)
+
+	id_conversion_tracker["Conversion_{0}".format(id)] = dpdash_full
 
 	# concatenating dpdash main and month1, month2, month3, month4
 	#sub_data_month1 = sub_data_month1.reset_index(drop=True)
@@ -1018,7 +1041,7 @@ final_baseline_csv['num'] = numbers
 final_csv.to_csv(output1 + "combined-PRONET-form_screening-day1to1.csv", sep=',', index = False, header=True)
 final_baseline_csv.to_csv(output1 + "combined-PRONET-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
-for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8"]:
+for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8", "conversion"]:
 	
 	print(vi)
 	tracker_name = vars()['id_' + str(vi) + '_tracker']

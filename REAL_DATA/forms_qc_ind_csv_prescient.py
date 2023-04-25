@@ -46,16 +46,26 @@ if os.path.exists(percpath):
 	perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
 	perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
 	with pd.option_context('display.max_rows', None, 'display.precision', 3,):
-		print(perc_check.T)
-	perc_check = perc_check[perc_check.Completed > 200]
+		print(perc_check)
+	perc_check_2 = perc_check[perc_check.Completed > 200]
+	#checking for conversion
+	perc_check = perc_check[perc_check["Unnamed: 0"] == 98]
+	perc_check = perc_check.reset_index()
+	print(perc_check.transpose())
 
-	if perc_check.empty:
+	if perc_check_2.empty:
 		status = "0"
 	else:
-		status = perc_check["Unnamed: 0"].iloc[-1]
+		status = perc_check_2["Unnamed: 0"].iloc[-1]
 
-		if perc_check['Total_empty'].min() > 58:
+		if perc_check_2['Total_empty'].min() > 58:
 			status = "0"
+
+	if not perc_check.empty:		
+		if perc_check['Completed'].min() > 100:
+			status = "98" #conversion
+
+
 	print("VISIT STATUS: " + str(status))
 
 
@@ -87,6 +97,7 @@ month5_tracker = {}
 month6_tracker = {}
 month7_tracker = {}
 month8_tracker = {}
+conversion_tracker = {}
 
 bl_wasi = 0
 bl_preiq = 0
@@ -728,11 +739,6 @@ for name in form_names:
 					print(str(date_ate_m2))
 
 			if name in ['blood_sample_preanalytic_quality_assurance']: 
-				#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
-				#	print(sub_data.T)
-
-				#whole blood processing time
-				#round(datediff([chrblood_drawdate],[chrblood_wbfrztime], "m","ymd h:m",true),1)
 				if event == "2" or event == "4":
 					drawdate = sub_data.at[0, "chrblood_labdate"]
 					chrblood_wbfrztime = sub_data.at[0, "chrblood_wbfrztime"]
@@ -996,7 +1002,7 @@ for name in form_names:
 						print(str(date_drawn_m2))
 						print(str(date_ate_m2))
 						form_info.at["time_fasting", 'Variables'] = round((((date_drawn_m2 - date_ate_m2).total_seconds()) / 60) /60, 1)
-				print(form_info)
+				#print(form_info)
 
 
 			#### setting up combined forms
@@ -1030,19 +1036,16 @@ for name in form_names:
 				month5_tracker["Month5_{0}".format(name)] = form_info
 
 			if event == '8':
-				#print("Saving month4 variables")
 				month6_tracker["Month6_{0}".format(name)] = form_info
 
 			if event == '9':
-				#print("Saving month4 variables")
 				month7_tracker["Month7_{0}".format(name)] = form_info
 
 			if event == '10':
-				#print("Saving month4 variables")
 				month8_tracker["Month8_{0}".format(name)] = form_info
 
-
-
+			if event == '98':
+				conversion_tracker["Conversion_{0}".format(name)] = form_info
 	
 			# transposing
 			#print(form_info)
@@ -1224,6 +1227,12 @@ if len(baseline_tracker) > 0:
 	#print(baseline)
 	baseline.to_csv(output1 + site+"-"+id+"-baseline.csv", sep=',', index = True, header=True)
 
+if len(conversion_tracker) > 0:
+	conversion = pd.concat(conversion_tracker, axis=0)
+	#print(baseline)
+	conversion.to_csv(output1 + site+"-"+id+"-conversion.csv", sep=',', index = True, header=True)
+
+
 # all the other months
 for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 	print(vi)
@@ -1232,11 +1241,11 @@ for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 
 	if len(tracker_name) > 0:
 		concat_csv = pd.concat(tracker_name, axis=0)
-		print(concat_csv)
+		#print(concat_csv)
 		concat_csv.to_csv(output1 + site+"-"+id+"-month" + str(vi) +".csv", sep=',', index = True, header=True)
 
 
-print(percentage_form.T)
+#print(percentage_form.T)
 percentage_form.to_csv(output1 + site+"-"+id+"-percentage.csv", sep=',', index = True, header=True)
 
 

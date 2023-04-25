@@ -50,17 +50,28 @@ if os.path.exists(percpath):
 	perc_check = perc_check[perc_check['Unnamed: 0'].str.contains('floating')==False]
 	perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
 	perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
+	print("All percentages")
+	#pd.set_option('display.max_rows', None)
 	print(perc_check)
-	perc_check = perc_check[perc_check.Completed > 100]
+	#print(perc_check.transpose())
+	perc_check_2 = perc_check[perc_check.Completed > 100]
+	# adding conversion possibility
+	perc_check = perc_check[perc_check['Unnamed: 0'].str.contains('convers')==True]
+	perc_check = perc_check.reset_index()
+	#print(perc_check)
 
-	if perc_check.empty:
+	if perc_check_2.empty:
 		status = "0"
 	else:
-		perc_check = perc_check.reset_index()
-		status = (perc_check.index[-1] + 1)
+		perc_check_2 = perc_check_2.reset_index()
+		status = (perc_check_2.index[-1] + 1)
 
-		if perc_check['Total_empty'].min() > 58:
+		if perc_check_2['Total_empty'].min() > 58:
 			status = "0"
+	if not perc_check.empty:		
+		if perc_check.loc[0, 'Completed'] > 20:
+			status = "98" #conversion
+
 print("VISIT STATUS: " + str(status))
 
 #form_names = ['pubertal_developmental_scale', 'informed_consent_run_sheet', 'inclusionexclusion_criteria_review', 'recruitment_source', 'coenrollment_form', 'sofas_screening', 'mri_run_sheet', 'sociodemographics', 'lifetime_ap_exposure_screen']
@@ -117,7 +128,7 @@ if conversion != []:
 
 
 # Opening data dictionary
-dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=False)
+dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=True)
 
 # Getting all the form names from the data dictionary
 form_names = dict['Form Name'].unique()
@@ -132,6 +143,7 @@ percentage_form_2 = pd.DataFrame(columns = form_names)
 sub_consent = sub_data_all[sub_data_all['redcap_event_name'].isin([screening])]
 consent = sub_consent.at[0, "chric_consent_date"]
 if id == "IR03960":
+	print("CHECK CONSENT DATE HAS BEEN CORRECTED: " + consent)
 	consent = sub_consent.at[0, "enrollmentnote_dateofconsent"]
 print("Consent date:" + consent)
 

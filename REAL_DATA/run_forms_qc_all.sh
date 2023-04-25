@@ -25,10 +25,13 @@ echo "Total Number of Prescient Participants: "
 cat prescient_sub_list.txt | wc -l
 
 
+echo "Combining forms for prescient participants"
+python combined_forms_prescient.py
+
 #### creating csvs for forms for all prescient participants
 echo "Creating csvs - Prescient"
 cat prescient_sub_list_recent.txt | while read sub; do
-
+  echo "Generating individual forms"
   rm /data/predict1/data_from_nda/formqc/*$sub*day*
   python forms_qc_ind_csv_prescient.py $sub
   echo ""
