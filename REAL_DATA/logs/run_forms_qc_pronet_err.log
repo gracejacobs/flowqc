@@ -1,1032 +1,343 @@
-run_forms_qc_pronet.sh: line 14: eat: command not found
-usage: count <expected line count>
-usage: count <expected line count>
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*BI00230*day*’: No such file or directory
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*KC03734*day*’: No such file or directory
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*NL10958*day*’: No such file or directory
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*OR02889*day*’: No such file or directory
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*PI14566*day*’: No such file or directory
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*TE07527*day*’: No such file or directory
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
-usage: count <expected line count>
 Traceback (most recent call last):
-  File "combined_forms_qc.py", line 201, in <module>
-    date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
-  File "/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/_strptime.py", line 565, in _strptime_datetime
-    tt, fraction = _strptime(data_string, format)
-  File "/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/_strptime.py", line 362, in _strptime
-    (data_string, format))
-ValueError: time data '-3' does not match format '%Y-%m-%d %H:%M'
-INFO:__main__:document does not exist or is out of date combined-GA-form_screening-day1to1.csv
-INFO:__main__:importing file combined-GA-form_screening-day1to1.csv
-INFO:dppylib:combined-GA-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-GA-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-GA-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PA-form_month5-day1to1.csv
-INFO:__main__:importing file combined-PA-form_month5-day1to1.csv
-INFO:dppylib:combined-PA-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PA-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PA-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-OR-form_month5-day1to1.csv
-INFO:__main__:importing file combined-OR-form_month5-day1to1.csv
-INFO:dppylib:combined-OR-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-OR-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-OR-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_month5-day1to1.csv
-INFO:__main__:importing file combined-LA-form_month5-day1to1.csv
-INFO:dppylib:combined-LA-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_month5-day1to1.csv
-INFO:__main__:importing file combined-WU-form_month5-day1to1.csv
-INFO:dppylib:combined-WU-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_month5-day1to1.csv
-INFO:__main__:importing file combined-PI-form_month5-day1to1.csv
-INFO:dppylib:combined-PI-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_month1-day1to1.csv
-INFO:__main__:importing file combined-CA-form_month1-day1to1.csv
-INFO:dppylib:combined-CA-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NL-form_month2-day1to1.csv
-INFO:__main__:importing file combined-NL-form_month2-day1to1.csv
-INFO:dppylib:combined-NL-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NL-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NL-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PV-form_month2-day1to1.csv
-INFO:__main__:importing file combined-PV-form_month2-day1to1.csv
-INFO:dppylib:combined-PV-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PV-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PV-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_month2-day1to1.csv
-INFO:__main__:importing file combined-CA-form_month2-day1to1.csv
-INFO:dppylib:combined-CA-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-GA-form_month1-day1to1.csv
-INFO:__main__:importing file combined-GA-form_month1-day1to1.csv
-INFO:dppylib:combined-GA-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-GA-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-GA-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-KC-form_month5-day1to1.csv
-INFO:__main__:importing file combined-KC-form_month5-day1to1.csv
-INFO:dppylib:combined-KC-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-KC-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-KC-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NN-form_month1-day1to1.csv
-INFO:__main__:importing file combined-NN-form_month1-day1to1.csv
-INFO:dppylib:combined-NN-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NN-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NN-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CM-form_month1-day1to1.csv
-INFO:__main__:importing file combined-CM-form_month1-day1to1.csv
-INFO:dppylib:combined-CM-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CM-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CM-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_month2-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_month2-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AMPSCZ-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AMPSCZ-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-IR-form_month3-day1to1.csv
-INFO:__main__:importing file combined-IR-form_month3-day1to1.csv
-INFO:dppylib:combined-IR-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-IR-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-IR-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_month5-day1to1.csv
-INFO:__main__:importing file combined-HA-form_month5-day1to1.csv
-INFO:dppylib:combined-HA-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_month5-day1to1.csv
-INFO:__main__:importing file combined-YA-form_month5-day1to1.csv
-INFO:dppylib:combined-YA-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NN-form_month3-day1to1.csv
-INFO:__main__:importing file combined-NN-form_month3-day1to1.csv
-INFO:dppylib:combined-NN-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NN-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NN-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_month1-day1to1.csv
-INFO:__main__:importing file combined-WU-form_month1-day1to1.csv
-INFO:dppylib:combined-WU-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_month3-day1to1.csv
-INFO:__main__:importing file combined-LA-form_month3-day1to1.csv
-INFO:dppylib:combined-LA-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_month1-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_month1-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AMPSCZ-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AMPSCZ-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month7-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month7-day1to1.csv
-INFO:dppylib:combined-BM-form_month7-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month7-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month7-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_month1-day1to1.csv
-INFO:__main__:importing file combined-SF-form_month1-day1to1.csv
-INFO:dppylib:combined-SF-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_month1-day1to1.csv
-INFO:__main__:importing file combined-SI-form_month1-day1to1.csv
-INFO:dppylib:combined-SI-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_month1-day1to1.csv
-INFO:__main__:importing file combined-HA-form_month1-day1to1.csv
-INFO:dppylib:combined-HA-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_month1-day1to1.csv
-INFO:__main__:importing file combined-YA-form_month1-day1to1.csv
-INFO:dppylib:combined-YA-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_month1-day1to1.csv
-INFO:__main__:importing file combined-LA-form_month1-day1to1.csv
-INFO:dppylib:combined-LA-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_month3-day1to1.csv
-INFO:__main__:importing file combined-WU-form_month3-day1to1.csv
-INFO:dppylib:combined-WU-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_month3-day1to1.csv
-INFO:__main__:importing file combined-PI-form_month3-day1to1.csv
-INFO:dppylib:combined-PI-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_month5-day1to1.csv
-INFO:__main__:importing file combined-SD-form_month5-day1to1.csv
-INFO:dppylib:combined-SD-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_month5-day1to1.csv
-INFO:__main__:importing file combined-SF-form_month5-day1to1.csv
-INFO:dppylib:combined-SF-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_month5-day1to1.csv
-INFO:__main__:importing file combined-SI-form_month5-day1to1.csv
-INFO:dppylib:combined-SI-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PA-form_month3-day1to1.csv
-INFO:__main__:importing file combined-PA-form_month3-day1to1.csv
-INFO:dppylib:combined-PA-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PA-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PA-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month4-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month4-day1to1.csv
-INFO:dppylib:combined-CP-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PA-form_month1-day1to1.csv
-INFO:__main__:importing file combined-PA-form_month1-day1to1.csv
-INFO:dppylib:combined-PA-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PA-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PA-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LS-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-LS-form_baseline-day1to1.csv
-INFO:dppylib:combined-LS-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LS-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LS-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_screening-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_screening-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_screening-day1to1.csv
-INFO:__main__:importing file combined-ME-form_screening-day1to1.csv
-INFO:dppylib:combined-ME-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_screening-day1to1.csv
-INFO:__main__:importing file combined-CP-form_screening-day1to1.csv
-INFO:dppylib:combined-CP-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_screening-day1to1.csv
-INFO:__main__:importing file combined-BM-form_screening-day1to1.csv
-INFO:dppylib:combined-BM-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_screening-day1to1.csv
-INFO:__main__:importing file combined-SG-form_screening-day1to1.csv
-INFO:dppylib:combined-SG-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_screening-day1to1.csv
-INFO:__main__:importing file combined-AD-form_screening-day1to1.csv
-INFO:dppylib:combined-AD-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-ME-form_baseline-day1to1.csv
-INFO:dppylib:combined-ME-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-CP-form_baseline-day1to1.csv
-INFO:dppylib:combined-CP-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-BM-form_baseline-day1to1.csv
-INFO:dppylib:combined-BM-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-SG-form_baseline-day1to1.csv
-INFO:dppylib:combined-SG-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-AD-form_baseline-day1to1.csv
-INFO:dppylib:combined-AD-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month1-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month1-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month1-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month1-day1to1.csv
-INFO:dppylib:combined-ME-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month1-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month1-day1to1.csv
-INFO:dppylib:combined-CP-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month1-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month1-day1to1.csv
-INFO:dppylib:combined-BM-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month1-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month1-day1to1.csv
-INFO:dppylib:combined-SG-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month1-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month1-day1to1.csv
-INFO:dppylib:combined-AD-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month2-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month2-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month2-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month2-day1to1.csv
-INFO:dppylib:combined-ME-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month2-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month2-day1to1.csv
-INFO:dppylib:combined-CP-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month2-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month2-day1to1.csv
-INFO:dppylib:combined-BM-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month2-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month2-day1to1.csv
-INFO:dppylib:combined-SG-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month2-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month2-day1to1.csv
-INFO:dppylib:combined-AD-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month3-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month3-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month3-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month3-day1to1.csv
-INFO:dppylib:combined-ME-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CP-form_month3-day1to1.csv
-INFO:__main__:importing file combined-CP-form_month3-day1to1.csv
-INFO:dppylib:combined-CP-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CP-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CP-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BM-form_month3-day1to1.csv
-INFO:__main__:importing file combined-BM-form_month3-day1to1.csv
-INFO:dppylib:combined-BM-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BM-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BM-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month3-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month3-day1to1.csv
-INFO:dppylib:combined-SG-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month3-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month3-day1to1.csv
-INFO:dppylib:combined-AD-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-KC-form_month4-day1to1.csv
-INFO:__main__:importing file combined-KC-form_month4-day1to1.csv
-INFO:dppylib:combined-KC-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-KC-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-KC-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BI-form_month5-day1to1.csv
-INFO:__main__:importing file combined-BI-form_month5-day1to1.csv
-INFO:dppylib:combined-BI-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BI-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BI-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_month5-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_month5-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AMPSCZ-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AMPSCZ-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_month5-day1to1.csv
-INFO:__main__:importing file combined-CA-form_month5-day1to1.csv
-INFO:dppylib:combined-CA-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-MT-form_month4-day1to1.csv
-INFO:__main__:importing file combined-MT-form_month4-day1to1.csv
-INFO:dppylib:combined-MT-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-MT-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-MT-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_month5-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_month5-day1to1.csv
-INFO:dppylib:combined-PRONET-form_month5-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_month5-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_month5-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month7-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month7-day1to1.csv
-INFO:dppylib:combined-ME-form_month7-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month7-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month7-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_month3-day1to1.csv
-INFO:__main__:importing file combined-HA-form_month3-day1to1.csv
-INFO:dppylib:combined-HA-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_month3-day1to1.csv
-INFO:__main__:importing file combined-YA-form_month3-day1to1.csv
-INFO:dppylib:combined-YA-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-MT-form_month1-day1to1.csv
-INFO:__main__:importing file combined-MT-form_month1-day1to1.csv
-INFO:dppylib:combined-MT-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-MT-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-MT-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_month2-day1to1.csv
-INFO:__main__:importing file combined-SD-form_month2-day1to1.csv
-INFO:dppylib:combined-SD-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_month2-day1to1.csv
-INFO:__main__:importing file combined-SF-form_month2-day1to1.csv
-INFO:dppylib:combined-SF-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NC-form_month2-day1to1.csv
-INFO:__main__:importing file combined-NC-form_month2-day1to1.csv
-INFO:dppylib:combined-NC-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NC-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NC-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-TE-form_month2-day1to1.csv
-INFO:__main__:importing file combined-TE-form_month2-day1to1.csv
-INFO:dppylib:combined-TE-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-TE-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-TE-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-MT-form_month2-day1to1.csv
-INFO:__main__:importing file combined-MT-form_month2-day1to1.csv
-INFO:dppylib:combined-MT-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-MT-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-MT-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_month3-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_month3-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AMPSCZ-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AMPSCZ-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_month3-day1to1.csv
-INFO:__main__:importing file combined-CA-form_month3-day1to1.csv
-INFO:dppylib:combined-CA-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_month3-day1to1.csv
-INFO:__main__:importing file combined-SD-form_month3-day1to1.csv
-INFO:dppylib:combined-SD-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_month3-day1to1.csv
-INFO:__main__:importing file combined-SF-form_month3-day1to1.csv
-INFO:dppylib:combined-SF-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_month3-day1to1.csv
-INFO:__main__:importing file combined-SI-form_month3-day1to1.csv
-INFO:dppylib:combined-SI-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_month2-day1to1.csv
-INFO:__main__:importing file combined-SI-form_month2-day1to1.csv
-INFO:dppylib:combined-SI-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_month2-day1to1.csv
-INFO:__main__:importing file combined-HA-form_month2-day1to1.csv
-INFO:dppylib:combined-HA-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_month2-day1to1.csv
-INFO:__main__:importing file combined-YA-form_month2-day1to1.csv
-INFO:dppylib:combined-YA-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_month2-day1to1.csv
-INFO:__main__:importing file combined-LA-form_month2-day1to1.csv
-INFO:dppylib:combined-LA-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_month2-day1to1.csv
-INFO:__main__:importing file combined-WU-form_month2-day1to1.csv
-INFO:dppylib:combined-WU-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_month2-day1to1.csv
-INFO:__main__:importing file combined-PI-form_month2-day1to1.csv
-INFO:dppylib:combined-PI-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NC-form_month4-day1to1.csv
-INFO:__main__:importing file combined-NC-form_month4-day1to1.csv
-INFO:dppylib:combined-NC-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NC-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NC-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-TE-form_month4-day1to1.csv
-INFO:__main__:importing file combined-TE-form_month4-day1to1.csv
-INFO:dppylib:combined-TE-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-TE-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-TE-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NL-form_month4-day1to1.csv
-INFO:__main__:importing file combined-NL-form_month4-day1to1.csv
-INFO:dppylib:combined-NL-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NL-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NL-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-IR-form_month4-day1to1.csv
-INFO:__main__:importing file combined-IR-form_month4-day1to1.csv
-INFO:dppylib:combined-IR-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-IR-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-IR-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-OR-form_month4-day1to1.csv
-INFO:__main__:importing file combined-OR-form_month4-day1to1.csv
-INFO:dppylib:combined-OR-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-OR-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-OR-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NN-form_month4-day1to1.csv
-INFO:__main__:importing file combined-NN-form_month4-day1to1.csv
-INFO:dppylib:combined-NN-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NN-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NN-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_month4-day1to1.csv
-INFO:__main__:importing file combined-WU-form_month4-day1to1.csv
-INFO:dppylib:combined-WU-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_month4-day1to1.csv
-INFO:__main__:importing file combined-PI-form_month4-day1to1.csv
-INFO:dppylib:combined-PI-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PA-form_month4-day1to1.csv
-INFO:__main__:importing file combined-PA-form_month4-day1to1.csv
-INFO:dppylib:combined-PA-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PA-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PA-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_month4-day1to1.csv
-INFO:__main__:importing file combined-YA-form_month4-day1to1.csv
-INFO:dppylib:combined-YA-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_month4-day1to1.csv
-INFO:__main__:importing file combined-LA-form_month4-day1to1.csv
-INFO:dppylib:combined-LA-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SG-form_month8-day1to1.csv
-INFO:__main__:importing file combined-SG-form_month8-day1to1.csv
-INFO:dppylib:combined-SG-form_month8-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SG-form_month8-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SG-form_month8-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month8-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month8-day1to1.csv
-INFO:dppylib:combined-AD-form_month8-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month8-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month8-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_month4-day1to1.csv
-INFO:__main__:importing file combined-SI-form_month4-day1to1.csv
-INFO:dppylib:combined-SI-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_month4-day1to1.csv
-INFO:__main__:importing file combined-HA-form_month4-day1to1.csv
-INFO:dppylib:combined-HA-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_month4-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_month4-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AMPSCZ-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AMPSCZ-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_month4-day1to1.csv
-INFO:__main__:importing file combined-CA-form_month4-day1to1.csv
-INFO:dppylib:combined-CA-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_month4-day1to1.csv
-INFO:__main__:importing file combined-SD-form_month4-day1to1.csv
-INFO:dppylib:combined-SD-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_month4-day1to1.csv
-INFO:__main__:importing file combined-SF-form_month4-day1to1.csv
-INFO:dppylib:combined-SF-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-GA-form_month2-day1to1.csv
-INFO:__main__:importing file combined-GA-form_month2-day1to1.csv
-INFO:dppylib:combined-GA-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-GA-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-GA-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CM-form_screening-day1to1.csv
-INFO:__main__:importing file combined-CM-form_screening-day1to1.csv
-INFO:dppylib:combined-CM-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CM-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CM-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PV-form_month1-day1to1.csv
-INFO:__main__:importing file combined-PV-form_month1-day1to1.csv
-INFO:dppylib:combined-PV-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PV-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PV-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-MT-form_month3-day1to1.csv
-INFO:__main__:importing file combined-MT-form_month3-day1to1.csv
-INFO:dppylib:combined-MT-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-MT-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-MT-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AD-form_month7-day1to1.csv
-INFO:__main__:importing file combined-AD-form_month7-day1to1.csv
-INFO:dppylib:combined-AD-form_month7-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AD-form_month7-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AD-form_month7-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-KC-form_month2-day1to1.csv
-INFO:__main__:importing file combined-KC-form_month2-day1to1.csv
-INFO:dppylib:combined-KC-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-KC-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-KC-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BI-form_month3-day1to1.csv
-INFO:__main__:importing file combined-BI-form_month3-day1to1.csv
-INFO:dppylib:combined-BI-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BI-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BI-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-KC-form_month3-day1to1.csv
-INFO:__main__:importing file combined-KC-form_month3-day1to1.csv
-INFO:dppylib:combined-KC-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-KC-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-KC-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BI-form_month4-day1to1.csv
-INFO:__main__:importing file combined-BI-form_month4-day1to1.csv
-INFO:dppylib:combined-BI-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BI-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BI-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_month1-day1to1.csv
-INFO:__main__:importing file combined-SD-form_month1-day1to1.csv
-INFO:dppylib:combined-SD-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_month1-day1to1.csv
-INFO:__main__:importing file combined-PI-form_month1-day1to1.csv
-INFO:dppylib:combined-PI-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-IR-form_month1-day1to1.csv
-INFO:__main__:importing file combined-IR-form_month1-day1to1.csv
-INFO:dppylib:combined-IR-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-IR-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-IR-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NL-form_month1-day1to1.csv
-INFO:__main__:importing file combined-NL-form_month1-day1to1.csv
-INFO:dppylib:combined-NL-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NL-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NL-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NC-form_month1-day1to1.csv
-INFO:__main__:importing file combined-NC-form_month1-day1to1.csv
-INFO:dppylib:combined-NC-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NC-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NC-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-BI-form_month2-day1to1.csv
-INFO:__main__:importing file combined-BI-form_month2-day1to1.csv
-INFO:dppylib:combined-BI-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-BI-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-BI-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-TE-form_month1-day1to1.csv
-INFO:__main__:importing file combined-TE-form_month1-day1to1.csv
-INFO:dppylib:combined-TE-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-TE-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-TE-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRESCIENT-form_month8-day1to1.csv
-INFO:__main__:importing file combined-PRESCIENT-form_month8-day1to1.csv
-INFO:dppylib:combined-PRESCIENT-form_month8-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRESCIENT-form_month8-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRESCIENT-form_month8-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month8-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month8-day1to1.csv
-INFO:dppylib:combined-ME-form_month8-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month8-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month8-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-ME-form_month4-day1to1.csv
-INFO:__main__:importing file combined-ME-form_month4-day1to1.csv
-INFO:dppylib:combined-ME-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-ME-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-ME-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_screening-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_screening-day1to1.csv
-INFO:dppylib:combined-PRONET-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_baseline-day1to1.csv
-INFO:dppylib:combined-PRONET-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_month1-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_month1-day1to1.csv
-INFO:dppylib:combined-PRONET-form_month1-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_month1-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_month1-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_month2-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_month2-day1to1.csv
-INFO:dppylib:combined-PRONET-form_month2-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_month2-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_month2-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_month3-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_month3-day1to1.csv
-INFO:dppylib:combined-PRONET-form_month3-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_month3-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_month3-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PRONET-form_month4-day1to1.csv
-INFO:__main__:importing file combined-PRONET-form_month4-day1to1.csv
-INFO:dppylib:combined-PRONET-form_month4-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PRONET-form_month4-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PRONET-form_month4-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-CA-form_baseline-day1to1.csv
-INFO:dppylib:combined-CA-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-CA-form_screening-day1to1.csv
-INFO:__main__:importing file combined-CA-form_screening-day1to1.csv
-INFO:dppylib:combined-CA-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-CA-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-CA-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-SD-form_baseline-day1to1.csv
-INFO:dppylib:combined-SD-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SD-form_screening-day1to1.csv
-INFO:__main__:importing file combined-SD-form_screening-day1to1.csv
-INFO:dppylib:combined-SD-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SD-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SD-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-SF-form_baseline-day1to1.csv
-INFO:dppylib:combined-SF-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SF-form_screening-day1to1.csv
-INFO:__main__:importing file combined-SF-form_screening-day1to1.csv
-INFO:dppylib:combined-SF-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SF-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SF-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-SI-form_baseline-day1to1.csv
-INFO:dppylib:combined-SI-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-SI-form_screening-day1to1.csv
-INFO:__main__:importing file combined-SI-form_screening-day1to1.csv
-INFO:dppylib:combined-SI-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-SI-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-SI-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-HA-form_baseline-day1to1.csv
-INFO:dppylib:combined-HA-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-HA-form_screening-day1to1.csv
-INFO:__main__:importing file combined-HA-form_screening-day1to1.csv
-INFO:dppylib:combined-HA-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-HA-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-HA-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-YA-form_baseline-day1to1.csv
-INFO:dppylib:combined-YA-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-YA-form_screening-day1to1.csv
-INFO:__main__:importing file combined-YA-form_screening-day1to1.csv
-INFO:dppylib:combined-YA-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-YA-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-YA-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-LA-form_baseline-day1to1.csv
-INFO:dppylib:combined-LA-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-LA-form_screening-day1to1.csv
-INFO:__main__:importing file combined-LA-form_screening-day1to1.csv
-INFO:dppylib:combined-LA-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-LA-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-LA-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-WU-form_baseline-day1to1.csv
-INFO:dppylib:combined-WU-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-WU-form_screening-day1to1.csv
-INFO:__main__:importing file combined-WU-form_screening-day1to1.csv
-INFO:dppylib:combined-WU-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-WU-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-WU-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-PI-form_baseline-day1to1.csv
-INFO:dppylib:combined-PI-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PI-form_screening-day1to1.csv
-INFO:__main__:importing file combined-PI-form_screening-day1to1.csv
-INFO:dppylib:combined-PI-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PI-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PI-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PA-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-PA-form_baseline-day1to1.csv
-INFO:dppylib:combined-PA-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PA-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PA-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-PA-form_screening-day1to1.csv
-INFO:__main__:importing file combined-PA-form_screening-day1to1.csv
-INFO:dppylib:combined-PA-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-PA-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-PA-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-OR-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-OR-form_baseline-day1to1.csv
-INFO:dppylib:combined-OR-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-OR-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-OR-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-OR-form_screening-day1to1.csv
-INFO:__main__:importing file combined-OR-form_screening-day1to1.csv
-INFO:dppylib:combined-OR-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-OR-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-OR-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NN-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-NN-form_baseline-day1to1.csv
-INFO:dppylib:combined-NN-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NN-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NN-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NN-form_screening-day1to1.csv
-INFO:__main__:importing file combined-NN-form_screening-day1to1.csv
-INFO:dppylib:combined-NN-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NN-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NN-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-IR-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-IR-form_baseline-day1to1.csv
-INFO:dppylib:combined-IR-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-IR-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-IR-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-IR-form_screening-day1to1.csv
-INFO:__main__:importing file combined-IR-form_screening-day1to1.csv
-INFO:dppylib:combined-IR-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-IR-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-IR-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NL-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-NL-form_baseline-day1to1.csv
-INFO:dppylib:combined-NL-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NL-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NL-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NL-form_screening-day1to1.csv
-INFO:__main__:importing file combined-NL-form_screening-day1to1.csv
-INFO:dppylib:combined-NL-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NL-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NL-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NC-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-NC-form_baseline-day1to1.csv
-INFO:dppylib:combined-NC-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NC-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NC-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-NC-form_screening-day1to1.csv
-INFO:__main__:importing file combined-NC-form_screening-day1to1.csv
-INFO:dppylib:combined-NC-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-NC-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-NC-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-TE-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-TE-form_baseline-day1to1.csv
-INFO:dppylib:combined-TE-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-TE-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-TE-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-TE-form_screening-day1to1.csv
-INFO:__main__:importing file combined-TE-form_screening-day1to1.csv
-INFO:dppylib:combined-TE-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-TE-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-TE-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-MT-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-MT-form_baseline-day1to1.csv
-INFO:dppylib:combined-MT-form_baseline-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-MT-form_baseline-day1to1.csv
-INFO:dppylib:Journaling complete for combined-MT-form_baseline-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-MT-form_screening-day1to1.csv
-INFO:__main__:importing file combined-MT-form_screening-day1to1.csv
-INFO:dppylib:combined-MT-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-MT-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-MT-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_screening-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_screening-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_screening-day1to1.csv does not exist in the database. Importing.
-INFO:dppylib:Import success for combined-AMPSCZ-form_screening-day1to1.csv
-INFO:dppylib:Journaling complete for combined-AMPSCZ-form_screening-day1to1.csv
-INFO:__main__:document does not exist or is out of date combined-AMPSCZ-form_baseline-day1to1.csv
-INFO:__main__:importing file combined-AMPSCZ-form_baseline-day1to1.csv
-INFO:dppylib:combined-AMPSCZ-form_baseline-day1to1.csv does not exist in the database. Importing.
-ERROR:dppylib:connection closed
-ERROR:dppylib:Unable to import combined-AMPSCZ-form_baseline-day1to1.csv
+  File "combined_forms_qc.py", line 124, in <module>
+    sub_data_baseline = sub_data_all[sub_data_all['redcap_event_name'].isin([baseline])]
+  File "/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/site-packages/pandas/core/series.py", line 4294, in isin
+    result = algorithms.isin(self, values)
+  File "/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/site-packages/pandas/core/algorithms.py", line 453, in isin
+    return f(comps, values)
+  File "pandas/_libs/hashtable_func_helper.pxi", line 437, in pandas._libs.hashtable.ismember_object
+TypeError: unhashable type: 'list'
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*GA11092*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*MT18250*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SD03790*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SD07279*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SF09932*day*’: No such file or directory
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA08556*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA09116*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA09572*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA09994*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA11278*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA13632*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA15624*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA16301*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA16606*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA16945*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA17472*day*’: No such file or directory
+usage: count <expected line count>
+rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*YA17816*day*’: No such file or directory
 Traceback (most recent call last):
-  File "/data/predict1/miniconda3/bin/import.py", line 4, in <module>
-    __import__('pkg_resources').run_script('dpimport==0.0.1', 'import.py')
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pkg_resources/__init__.py", line 672, in run_script
-    self.require(requires)[0].run_script(script_name, ns)
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pkg_resources/__init__.py", line 1479, in run_script
-    exec(script_code, namespace, namespace)
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/dpimport-0.0.1-py3.10.egg/EGG-INFO/scripts/import.py", line 191, in <module>
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/dpimport-0.0.1-py3.10.egg/EGG-INFO/scripts/import.py", line 48, in main
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/dpimport-0.0.1-py3.10.egg/dpimport/database/__init__.py", line 69, in exists
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/collection.py", line 1319, in find_one
-    for result in cursor.limit(-1):
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/cursor.py", line 1207, in next
-    if len(self.__data) or self._refresh():
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/cursor.py", line 1100, in _refresh
-    self.__session = self.__collection.database.client._ensure_session()
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/mongo_client.py", line 1816, in _ensure_session
-    return self.__start_session(True, causal_consistency=False)
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/mongo_client.py", line 1766, in __start_session
-    server_session = self._get_server_session()
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/mongo_client.py", line 1802, in _get_server_session
-    return self._topology.get_server_session()
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/topology.py", line 496, in get_server_session
-    self._select_servers_loop(
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/topology.py", line 215, in _select_servers_loop
-    raise ServerSelectionTimeoutError(
-pymongo.errors.ServerSelectionTimeoutError: rc-predict.partners.org:27017: [Errno 111] Connection refused, Timeout: 30s, Topology Description: <TopologyDescription id: 642cf5b690ed556c0576ddbf, topology_type: Single, servers: [<ServerDescription ('rc-predict.partners.org', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rc-predict.partners.org:27017: [Errno 111] Connection refused')>]>
-Traceback (most recent call last):
-  File "/data/predict1/miniconda3/bin/import.py", line 4, in <module>
-    __import__('pkg_resources').run_script('dpimport==0.0.1', 'import.py')
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pkg_resources/__init__.py", line 672, in run_script
-    self.require(requires)[0].run_script(script_name, ns)
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pkg_resources/__init__.py", line 1479, in run_script
-    exec(script_code, namespace, namespace)
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/dpimport-0.0.1-py3.10.egg/EGG-INFO/scripts/import.py", line 191, in <module>
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/dpimport-0.0.1-py3.10.egg/EGG-INFO/scripts/import.py", line 48, in main
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/dpimport-0.0.1-py3.10.egg/dpimport/database/__init__.py", line 69, in exists
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/collection.py", line 1319, in find_one
-    for result in cursor.limit(-1):
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/cursor.py", line 1207, in next
-    if len(self.__data) or self._refresh():
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/cursor.py", line 1100, in _refresh
-    self.__session = self.__collection.database.client._ensure_session()
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/mongo_client.py", line 1816, in _ensure_session
-    return self.__start_session(True, causal_consistency=False)
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/mongo_client.py", line 1766, in __start_session
-    server_session = self._get_server_session()
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/mongo_client.py", line 1802, in _get_server_session
-    return self._topology.get_server_session()
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/topology.py", line 496, in get_server_session
-    self._select_servers_loop(
-  File "/data/predict1/miniconda3/lib/python3.10/site-packages/pymongo-3.11.4-py3.10-linux-x86_64.egg/pymongo/topology.py", line 215, in _select_servers_loop
-    raise ServerSelectionTimeoutError(
-pymongo.errors.ServerSelectionTimeoutError: rc-predict.partners.org:27017: [Errno 111] Connection refused, Timeout: 30s, Topology Description: <TopologyDescription id: 642d06c1a17c75ca5d687ea8, topology_type: Single, servers: [<ServerDescription ('rc-predict.partners.org', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('rc-predict.partners.org:27017: [Errno 111] Connection refused')>]>
+  File "combined_forms_qc.py", line 124, in <module>
+    sub_data_baseline = sub_data_all[sub_data_all['redcap_event_name'].isin([baseline])]
+  File "/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/site-packages/pandas/core/series.py", line 4294, in isin
+    result = algorithms.isin(self, values)
+  File "/data/pnl/soft/pnlpipe3/miniconda3/envs/pnlpipe3/lib/python3.6/site-packages/pandas/core/algorithms.py", line 453, in isin
+    return f(comps, values)
+  File "pandas/_libs/hashtable_func_helper.pxi", line 437, in pandas._libs.hashtable.ismember_object
+TypeError: unhashable type: 'list'

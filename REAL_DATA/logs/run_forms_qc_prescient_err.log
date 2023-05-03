@@ -1,134 +1,123 @@
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*CP36238*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*CP47813*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*CP88631*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*CP97074*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*LS40571*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*LS92596*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME00138*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME00772*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME02419*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME03013*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME04106*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME04934*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME04962*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME05411*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME06059*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME06126*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME06748*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME07469*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME07714*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME08607*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME08857*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME10086*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME10092*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME10464*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME10642*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME11046*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME11363*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME12189*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME12967*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME13399*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME14432*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME14898*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME16296*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME16818*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME17690*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME19787*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME20134*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME20328*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME20845*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME20906*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME21100*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME21588*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME21700*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME21922*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME22209*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME22598*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME23847*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME25045*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME25689*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME25712*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME25906*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME25984*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME26061*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME26966*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME27132*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME27710*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME28819*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME29457*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME30226*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME31169*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME31331*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME32052*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME33206*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME33634*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME33795*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME35971*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME36292*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME37852*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME40607*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME40663*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME43148*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME45196*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME45580*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME46095*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME46506*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME46801*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME48643*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME50327*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME50511*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME50599*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME51676*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME53129*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME53185*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME53985*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME54434*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME54628*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME54884*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME56454*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME57119*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME57903*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME58135*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME60831*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME61146*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME67495*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME67990*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME70317*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME71933*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME73814*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME74218*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME74779*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME76000*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME77159*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME78070*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME78581*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME79913*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME81520*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME81647*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME82730*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME84344*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME84388*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME88762*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME89055*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME91012*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME91028*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME91345*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME92666*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME93565*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME95674*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME97666*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME98165*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*ME99008*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG10636*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG18044*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG25112*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG41217*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG45530*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG60081*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG77682*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG78575*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG97600*day*’: No such file or directory
-rm: cannot remove ‘/data/predict1/data_from_nda/formqc/*SG99731*day*’: No such file or directory
+combined_forms_prescient.py:388: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_scr_final['day'] = numbers
+combined_forms_prescient.py:390: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_scr_final['num'] = numbers
+combined_forms_prescient.py:426: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:428: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
+combined_forms_prescient.py:476: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['day'] = numbers
+combined_forms_prescient.py:478: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  site_final['num'] = numbers
 combined_forms_prescient.py:388: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead

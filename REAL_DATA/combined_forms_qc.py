@@ -121,13 +121,18 @@ for id in id_list:
 	#print(sub_data)
 	
 	# setting up baseline
-	sub_data_baseline = sub_data_all[sub_data_all['redcap_event_name'].isin([baseline])]
-	sub_data_baseline = sub_data_baseline.reset_index(drop=True)
+	if baseline != []:
+		sub_data_baseline = sub_data_all[sub_data_all['redcap_event_name'].isin([baseline])]
+		sub_data_baseline = sub_data_baseline.reset_index(drop=True)
+	else:
+		sub_data_baseline = pd.DataFrame()
 
 	# setting up conversion
-	sub_data_conversion = sub_data_all[sub_data_all['redcap_event_name'].isin([conversion])]
-	sub_data_conversion = sub_data_conversion.reset_index(drop=True)
-
+	if conversion != []:
+		sub_data_conversion = sub_data_all[sub_data_all['redcap_event_name'].isin([conversion])]
+		sub_data_conversion = sub_data_conversion.reset_index(drop=True)
+	else:
+		sub_data_conversion = pd.DataFrame()
 
 	# Adding age variable
 	age = 0

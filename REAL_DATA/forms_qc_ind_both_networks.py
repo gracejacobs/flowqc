@@ -161,8 +161,6 @@ bprs_m2 = 0
 nsipr_m2 = 0
 cssrs_m2 = 0
 
-age_chart = np.nan
-sex_chart = np.nan
 included = np.nan
 cognition_status = 0
 blood_status = 0
@@ -241,8 +239,6 @@ for name in form_names:
 	if name in ['chart_statuses']: 
 		form_info_2.at["Percentage", screening] = 100 #so that I don't axe it at the end
 		form_info_2.at["included_excluded", screening] = included
-		form_info_2.at["chrdemo_sexassigned", screening] = sex_chart
-		form_info_2.at["interview_age", screening] = age_chart
 		form_info_2.at["cognition_status", screening] = cognition_status
 		form_info_2.at["blood_status", screening] = blood_status
 		form_info_2.at["saliva_status", screening] = saliva_status
@@ -327,8 +323,6 @@ for name in form_names:
 			age_adj = age_months - months_bet
 			age_adj = round(age_adj/12, 1)
 
-			age_chart = age
-			sex_chart = sub_data_all.at[2, "chrdemo_sexassigned"]
 			print("Adjusted age: "  + str(age_adj))
 			form_info_2.at["consent_age", baseline] = age_adj
 			form_info_2.at["interview_age", baseline] = age

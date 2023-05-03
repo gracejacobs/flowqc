@@ -118,6 +118,8 @@ bprs_m2 = 0
 nsipr_m2 = 0
 cssrs_m2 = 0
 
+age_chart = np.nan
+sex_chart = np.nan
 included = np.nan
 cognition_status = 0
 blood_status = 0
@@ -224,10 +226,12 @@ for name in form_names:
 
 				if "chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == 1:
 					print("INCLUDED")
+					included = 1
 					form_info.at["included_excluded", 'Variables'] = 1
 		
 				if"chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == 0:
-					print("EXCLUDED")					
+					print("EXCLUDED")
+					included = 0					
 					form_info.at["included_excluded", 'Variables'] = 0
 
 				#print(form_info)
@@ -239,7 +243,9 @@ for name in form_names:
 				age = sub_data.loc[0, "interview_age"]
 				print("Age: " + str(age))
 				age = round((int(age)/12), 1)
-				form_info.at["interview_age", 'Variables'] = age	
+				form_info.at["interview_age", 'Variables'] = age
+				age_chart = age
+				sex_chart = sub_data.loc[0, "chrdemo_sexassigned"] 	
 				print("Age: " + str(age))
 
 			# making a yes/no GUID form for whether there is a GUID or pseudoguid
@@ -1200,6 +1206,10 @@ form_info.at["cognition_status", 'Variables'] = cognition_status
 form_info.at["clinical_status", 'Variables'] = clinical_status
 form_info.at["blood_status", 'Variables'] = blood_status
 form_info.at["saliva_status", 'Variables'] = saliva_status
+form_info.at["included_excluded", 'Variables'] = included
+form_info.at["interview_age", 'Variables'] = age_chart
+form_info.at["chrdemo_sexassigned", 'Variables'] = sex_chart
+
 form_info = form_info.transpose()
 
 dpdash_main = dpdash_main.reset_index(drop=True)
