@@ -222,6 +222,8 @@ for name in form_names:
 			# creating a single exclusion inclusion variable
 			if name in ['inclusionexclusion_criteria_review']: 
 				form_info.at["included_excluded", 'Variables'] = np.nan
+				form_info.at["chrcrit_part", 'Variables'] = np.nan
+
 				form_info.at["Percentage", 'Variables'] = 100
 
 				if "chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == 1:
@@ -229,12 +231,16 @@ for name in form_names:
 					included = 1
 					form_info.at["included_excluded", 'Variables'] = 1
 		
-				if"chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == 0:
+				if "chrcrit_included" in sub_data and sub_data.loc[0, "chrcrit_included"] == 0:
 					print("EXCLUDED")
 					included = 0					
 					form_info.at["included_excluded", 'Variables'] = 0
 
-				#print(form_info)
+				if "chrcrit_part" in sub_data:
+					form_info.at["chrcrit_part", 'Variables'] = sub_data.loc[0, "chrcrit_part"]
+
+				print(form_info)
+			
 
 			# adding interview age
 			age = 0
@@ -1144,7 +1150,7 @@ for name in form_names:
 else:
 	print("No file for form: " + name)
 
-####
+# setting up inclusion/exclusion and chart statuses
 names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 dpdash_main = pd.DataFrame(columns = names_dash)
 dpdash_main.at[0, 'subjectid'] = id
@@ -1153,6 +1159,52 @@ dpdash_main.at[0, 'file_updated'] = today
 dpdash_main.at[0, 'day'] = 1
 dpdash_main.at[0, 'mtime'] = consent
 
+file = input_path+id+"_inclusionexclusion_criteria_review.csv"
+if not os.path.isfile(file):
+	name = 'inclusionexclusion_criteria_review'
+	form_info = pd.DataFrame()
+	form_info.at["Percentage", 'Variables'] = 100
+
+	form_info.at["included_excluded", 'Variables'] = np.nan
+	form_info.at["chrcrit_part", 'Variables'] = np.nan
+
+	form_info = form_info.transpose()
+
+	dpdash_main = dpdash_main.reset_index(drop=True)
+	form_info = form_info.reset_index(drop=True)
+	print("Form: Inclusion exclusion")
+	print(form_info)
+
+	frames = [dpdash_main, form_info]
+	dpdash_full = pd.concat(frames, axis=1)
+	print(dpdash_full.T)
+	dpdash_full.to_csv(output1 + site+"-"+str(id)+"-form_"+str(name)+"-day1to1.csv", sep=',', index = False, header=True)
+
+
+file = input_path+id+"_sociodemographics.csv"
+if not os.path.isfile(file):
+        name = 'sociodemographics'
+        form_info = pd.DataFrame()
+        form_info.at["Percentage", 'Variables'] = 100
+
+        form_info.at["chrdemo_sexassigned", 'Variables'] = np.nan
+
+        form_info = form_info.transpose()
+
+        dpdash_main = dpdash_main.reset_index(drop=True)
+        form_info = form_info.reset_index(drop=True)
+        print("Form: Sociodemographics")
+        print(form_info)
+
+        frames = [dpdash_main, form_info]
+        dpdash_full = pd.concat(frames, axis=1)
+        print(dpdash_full.T)
+        dpdash_full.to_csv(output1 + site+"-"+str(id)+"-form_"+str(name)+"-day1to1.csv", sep=',', index = False, header=True)
+
+
+
+
+####
 name = 'chart_statuses'
 form_info = pd.DataFrame()
 form_info.at["Percentage", 'Variables'] = 100

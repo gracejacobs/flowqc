@@ -268,6 +268,8 @@ for name in form_names:
 	# creating a single exclusion inclusion variable
 	if name in ['inclusionexclusion_criteria_review']: 
 		form_info_2.at["Percentage", screening] = 100 
+		form_info_2.at["included_excluded", screening] = np.nan
+
 		if "chrcrit_included" in sub_data_all and sub_consent.loc[0, "chrcrit_included"] == "1":
 			print("INCLUDED")
 			included = 1
@@ -278,9 +280,12 @@ for name in form_names:
 			included = 0
 			form_info_2.at["included_excluded", screening] = 0
 
-		#if "chrcrit_included" in sub_data_all and pd.notna(sub_consent.loc[0, "chrcrit_included"]):
-		#	form_info_2.at["included_excluded", screening] = np.nan
-			
+		if "chrcrit_part" in sub_data_all and pd.notna(sub_consent.loc[0, "chrcrit_part"]):
+			form_info_2.at["chrcrit_part", screening] = sub_consent.loc[0, "chrcrit_part"]
+		else:
+			form_info_2.at["chrcrit_part", screening] = np.nan
+	
+		print(form_info_2)		
 
 	# making a yes/no GUID form for whether there is a GUID or pseudoguid
 	if name in ['guid_form']: 
@@ -306,7 +311,12 @@ for name in form_names:
 	age = 0
 	age_months = 0
 	if name in ['sociodemographics']: 
-		#print(sub_data_all)
+		form_info_2.at["Percentage", baseline] = 100
+		form_info_2.at["chrdemo_sexassigned", baseline] = np.nan
+
+
+		if 'chrdemo_sexassigned' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_sexassigned"]):
+			form_info_2.at["chrdemo_sexassigned", baseline] = sub_data_all.at[2, "chrdemo_sexassigned"]
 
 		# getting the time difference between consent date and the date of the sociodemographics form
 		# need months to be more precise
@@ -334,7 +344,8 @@ for name in form_names:
 			form_info_2.at["interview_age", baseline] = age
 		
 		print("Age: " + str(age))
-
+		print(form_info_2.iloc[:,0:4])
+		
 	# adding IQ measure or not - if past baseline, marked
 	# get at baseline, bl + m2, M2 no bl, not completed	
 	if name in ['iq_assessment_wasiii_wiscv_waisiv']: 
