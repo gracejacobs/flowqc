@@ -84,6 +84,7 @@ screening = [i for i in event_list if i.startswith('screening_')][0]
 baseline = [i for i in event_list if i.startswith('baseline_')]
 if baseline != []:
 	baseline = baseline[0]
+print("Basline data:" + str( baseline))
 
 month2 = [i for i in event_list if i.startswith('month_2')]
 if month2 != []:
@@ -126,6 +127,22 @@ conversion = [i for i in event_list if i.startswith('conversion_')]
 if conversion != []:
 	conversion = conversion[0]
 
+
+# setting up removed status
+status_removed = "0"
+
+for event in event_list:
+	sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event])]
+	sub_data_test = sub_data_test.reset_index(drop=True)
+
+	if "chrmiss_withdrawn" in sub_data_test and sub_data_test.at[0, "chrmiss_withdrawn"] == '1':
+		status_removed = "1"
+	if "chrmiss_discon" in sub_data_test and sub_data_test.at[0, "chrmiss_discon"] == '1':
+		status_removed = "1"
+
+if status_removed == "1":
+	status = 99
+print("STATUS - with removed: " + str(status))
 
 # Opening data dictionary
 dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=True)
@@ -310,9 +327,13 @@ for name in form_names:
 	# adding an age variable
 	age = 0
 	age_months = 0
-	if name in ['sociodemographics']: 
-		form_info_2.at["Percentage", baseline] = 100
-		form_info_2.at["chrdemo_sexassigned", baseline] = np.nan
+	if name in ['sociodemographics']:
+		if baseline != []: 
+			form_info_2.at["Percentage", baseline] = 100
+			form_info_2.at["chrdemo_sexassigned", baseline] = np.nan
+		else:
+			form_info_2.at["Percentage", screening] = 100
+			form_info_2.at["chrdemo_sexassigned", screening] = np.nan
 
 
 		if 'chrdemo_sexassigned' in sub_data_all and pd.notna(sub_data_all.at[2, "chrdemo_sexassigned"]):
@@ -1088,8 +1109,24 @@ for name in form_names:
 				#print(str(int_date))
 				day = days_between(consent, int_date) + 1
 			else:
-				day = 0	## remove days with 0 at end		
-			
+				if len(ent_avail) > 0 and ent_avail[0] in sub_data_all:
+					#print("Using entry date instead")
+					var = ent_avail[0]
+					sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event_2])]
+					sub_data_test = sub_data_test.reset_index(drop=True)
+					ent_date = sub_data_test.at[0, var]
+
+					if pd.notna(ent_date) and ent_date != '-9' and ent_date != '-3':
+                                		dpdash_main.at[event_2, 'mtime'] = ent_date
+                                		day = days_between(consent, ent_date) + 1
+						#print(str(day))
+					else:
+						#print("Entry date not valid")
+						day = 0
+
+				else:
+					day = 0	## remove days with 0 at end		
+				
 		else:
 			#print("No interview date")
 			if event_2 in ['screening_arm_1']: # works for floating forms, lifetime AP
@@ -1132,6 +1169,7 @@ for name in form_names:
 				day = 0
 				
 
+		#print(str(day))
 		# setting day as the difference between the consent date (day 1) and interview date
 		#print("THE DAY FOR THE FORM: " + str(day))
 		dpdash_main.at[event_2, 'day'] = day
@@ -1142,6 +1180,8 @@ for name in form_names:
 
 	#removing rows with no data
 	final_csv = dpdash_main[dpdash_main.Percentage != 0]
+	#final_csv = dpdash_main[dpdash_main.mtime != "NaN"]
+
 	#print("After removing because of percentage but before removing duplicates")
 	#print(final_csv)
 	final_csv = final_csv.drop_duplicates()
@@ -1166,8 +1206,8 @@ for name in form_names:
 		final_csv = final_csv.round({"chrap_total":1})
 		print(final_csv[["chrap_total"]])
 
-	#print("Printing final csv and day for: ", name)	
-	#print(final_csv.T)
+	print("Printing final csv and day for: ", name)	
+	print(final_csv.T)
 
 	#print(final_csv['day'])
 	

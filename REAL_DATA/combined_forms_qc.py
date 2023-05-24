@@ -1046,7 +1046,7 @@ final_baseline_csv['num'] = numbers
 final_csv.to_csv(output1 + "combined-PRONET-form_screening-day1to1.csv", sep=',', index = False, header=True)
 final_baseline_csv.to_csv(output1 + "combined-PRONET-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
-for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8", "conversion"]:
+for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8"]:
 	
 	print(vi)
 	tracker_name = vars()['id_' + str(vi) + '_tracker']

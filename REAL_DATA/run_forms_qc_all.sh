@@ -7,76 +7,56 @@ LOGERR=/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_p
 
 exec 2> $LOGERR 1> $LOGFILE
 
-#ls /data/predict/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_chr.txt
-#find /data/predict/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_chr.txt
 
-####### gives date as well for combined
+# pronet subject list for cognitive data - everyone
+ls /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list.txt
+
 echo "Prescient participant List: "
-# most recently updated prescient participants
+# most recently updated prescient participants - raw csvs
 ls /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*[[:upper:]]*.csv | sed 's:.*/::' | cut -d '_' -f1 | cut -d '.' -f1 | sort | uniq > prescient_sub_list_recent.txt
 
-# all prescient participants for combined
-#ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*informed_consent_run_sheet.csv | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '_' -f1 > prescient_sub_list.txt
+# json list
+ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Prescient.json | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '.' -f1 > prescient_json_sub_list_combined.txt
+# all prescient participants for combined - raw csvs
 ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Prescient/PHOENIX/PROTECTED/Pres*/raw/*/surv*/*[[:upper:]]* | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '_' -f1 | cut -d '.' -f1 | sort -r  -k1 | sort -k2 -u > prescient_sub_list.txt
 
+
+########################################################################################
 cat prescient_sub_list.txt
 
 echo "Total Number of Prescient Participants: "
 cat prescient_sub_list.txt | wc -l
 
+########################################################################################
+### generating cognition summaries for participants
+echo "Creating cognitive summaries for participants"
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRESCIENT
 
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRONET
+
+########################################################################################
 echo "Combining forms for prescient participants"
 python combined_forms_prescient.py
 
+########################################################################################
 #### creating csvs for forms for all prescient participants
 echo "Creating csvs - Prescient"
 cat prescient_sub_list_recent.txt | while read sub; do
   echo "Generating individual forms"
   rm /data/predict1/data_from_nda/formqc/*$sub*day*
   python forms_qc_ind_csv_prescient.py $sub
+  #rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
+  #python forms_qc_ind_both_networks.py $sub PRESCIENT
   echo ""
   echo ""
   echo ""
 
 done 
 
-
-###### Individual Pronet participants
-#find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -6 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
-#ls /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
-
-cat pronet_sub_list_recent.txt
-
-echo "Total Number of Pronet Participants: "
-cat pronet_sub_list_recent.txt | wc -l
-
-#### creating csvs for forms for all pronet participants
-echo "Creating csvs - Pronet"
-#cat pronet_sub_list_recent.txt | while read sub; do
-  #rm /data/predict/data_from_nda/formqc/*$sub*day*
-  #python forms_qc_ind_csv_updated.py $sub
-  #echo ""
-  #echo ""
-  #echo ""
-
-#done
-
-echo "Pronet participant List: "
-ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | awk '{print $6, $7}' | sed 's:/.*/:/:' | sed "s/\///1" | cut -d '.' -f1 > pronet_sub_list_chr.txt
-
-#cat pronet_sub_list_chr.txt
-
-echo "Total Number of Pronet Participants: "
-cat pronet_sub_list_chr.txt | wc -l
-
 #############################################################################
 ### combining forms for prescient
 echo "Combining forms for prescient participants"
 python combined_forms_prescient.py
-
-### combining forms_qc files into a single file for pronet participants
-echo "Combining forms for pronet participants"
-#python combined_forms_qc.py
 
 
 #############################################################################

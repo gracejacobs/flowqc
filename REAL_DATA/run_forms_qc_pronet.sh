@@ -14,13 +14,13 @@ ls -l --time-style=+"%Y-%m-%d" /data/predict1/data_from_nda/Pronet/PHOENIX/PROTE
 echo "Total Number of Pronet Participants: "
 cat pronet_sub_list_chr.txt | wc -l
 
-python combined_forms_qc.py
+#python combined_forms_qc.py
 
 
 
 echo "Pronet participant List: "
 ls /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list.txt
-find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -4 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
+find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -3 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
 
 cat pronet_sub_list.txt
 
@@ -31,11 +31,13 @@ cat pronet_sub_list.txt | wc -l
 echo "Creating csvs - Pronet"
 	
 count = 0
-cat pronet_sub_list.txt | while read sub; do
+cat pronet_sub_list_recent.txt | while read sub; do
 	count = $count + 1
 	echo $count
 	rm /data/predict1/data_from_nda/formqc/*$sub*day*
 	python forms_qc_ind_csv_updated.py $sub
+	#rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
+	#python forms_qc_ind_both_networks.py $sub PRONET
 	echo ""
 	echo ""
 	echo ""
