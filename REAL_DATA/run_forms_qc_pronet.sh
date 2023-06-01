@@ -29,7 +29,7 @@ cat pronet_sub_list.txt
 echo "Creating csvs - Pronet"
 	
 cat pronet_sub_list_recent.txt | while read sub; do
-	rm /data/predict1/data_from_nda/formqc/*$sub*day*
+	#rm /data/predict1/data_from_nda/formqc/*$sub*day*
 	python forms_qc_ind_csv_updated.py $sub
 	#rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
 	#python forms_qc_ind_both_networks.py $sub PRONET
@@ -38,6 +38,12 @@ cat pronet_sub_list_recent.txt | while read sub; do
 	echo ""
 
 done 
+
+#############################################################################################
+echo "Generating cognitive summaries"
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRONET
+
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRESCIENT
 
 #############################################################################################
 

@@ -28,7 +28,10 @@ done
 
 
 #############################################################################
+# creating cognitive summary data
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRONET
 
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRESCIENT
 
 #############################################################################
 # Uploading data to dpdash

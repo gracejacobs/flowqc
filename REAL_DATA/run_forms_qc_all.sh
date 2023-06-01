@@ -28,12 +28,6 @@ echo "Total Number of Prescient Participants: "
 cat prescient_sub_list.txt | wc -l
 
 ########################################################################################
-### generating cognition summaries for participants
-echo "Creating cognitive summaries for participants"
-python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRESCIENT
-
-python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRONET
-
 ########################################################################################
 echo "Combining forms for prescient participants"
 python combined_forms_prescient.py
@@ -53,10 +47,24 @@ cat prescient_sub_list_recent.txt | while read sub; do
 
 done 
 
-#############################################################################
+########################################################################################
+
 ### combining forms for prescient
 echo "Combining forms for prescient participants"
 python combined_forms_prescient.py
+
+########################################################################################
+### generating cognition summaries for participants
+echo "Creating cognitive summaries for participants"
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRESCIENT
+
+python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRONET
+
+
+#############################################################################
+### combining forms for prescient
+#echo "Combining forms for prescient participants"
+#python combined_forms_prescient.py
 
 
 #############################################################################

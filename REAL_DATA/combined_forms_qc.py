@@ -951,6 +951,14 @@ for id in id_list:
 		dpdash_main.at[0, 'visit_status_string'] = "month9"
 	if status == 12:
 		dpdash_main.at[0, 'visit_status_string'] = "month10"
+	if status == 13:
+		dpdash_main.at[0, 'visit_status_string'] = "month11"
+	if status == 14:
+		dpdash_main.at[0, 'visit_status_string'] = "month12"
+	if status == 15:
+		dpdash_main.at[0, 'visit_status_string'] = "month18"
+	if status == 16:
+		dpdash_main.at[0, 'visit_status_string'] = "month24"
 	if status == '98':
 		dpdash_main.at[0, 'visit_status_string'] = "converted"
 	if status_removed == "1":

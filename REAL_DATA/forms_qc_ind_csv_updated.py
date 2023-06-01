@@ -84,7 +84,7 @@ screening = [i for i in event_list if i.startswith('screening_')][0]
 baseline = [i for i in event_list if i.startswith('baseline_')]
 if baseline != []:
 	baseline = baseline[0]
-print("Basline data:" + str( baseline))
+#print("Basline data:" + str( baseline))
 
 month2 = [i for i in event_list if i.startswith('month_2')]
 if month2 != []:
@@ -302,7 +302,7 @@ for name in form_names:
 		else:
 			form_info_2.at["chrcrit_part", screening] = np.nan
 	
-		print(form_info_2)		
+#		print(form_info_2)		
 
 	# making a yes/no GUID form for whether there is a GUID or pseudoguid
 	if name in ['guid_form']: 
@@ -365,7 +365,7 @@ for name in form_names:
 			form_info_2.at["interview_age", baseline] = age
 		
 		print("Age: " + str(age))
-		print(form_info_2.iloc[:,0:4])
+#		print(form_info_2.iloc[:,0:4])
 		
 	# adding IQ measure or not - if past baseline, marked
 	# get at baseline, bl + m2, M2 no bl, not completed	
@@ -475,8 +475,8 @@ for name in form_names:
 
 		vials = [s_1, s_2, s_3, s_4, s_5, s_6]
 		vials_m2 = [s_1_m2, s_2_m2, s_3_m2, s_4_m2, s_5_m2, s_6_m2]
-		print(vials)		
-		print(vials_m2)
+#		print(vials)		
+#		print(vials_m2)
 
 		for x in range(len(vials)):
 			if pd.isnull(vials[x]) or vials[x] == '-9' or vials[x] == '-3' or vials[x] == 'nan':
@@ -486,8 +486,8 @@ for name in form_names:
 			if pd.isnull(vials_m2[x]) or vials_m2[x] == '-9' or vials_m2[x] == '-3' or vials_m2[x] == 'nan':
 				vials_m2[x] = 0
 
-		print(vials)		
-		print(vials_m2)
+#		print(vials)		
+#		print(vials_m2)
 		#vials_m2[np.isnan(vials_m2)] = 0
 		print("Printing VIAL VOLUMES")
 		for i in range(len(vials)):
@@ -651,8 +651,8 @@ for name in form_names:
 
 		vials = [wb_1, wb_2, wb_3, sr_1, sr_2, sr_3, pl_1, pl_2, pl_3, pl_4, pl_5, pl_6, bc_1]
 		vials_m2 = [wb_1_m2, wb_2_m2, wb_3_m2, sr_1_m2, sr_2_m2, sr_3_m2, pl_1_m2, pl_2_m2, pl_3_m2, pl_4_m2, pl_5_m2, pl_6_m2, bc_1_m2]
-		print(vials)
-		print(vials_m2)
+#		print(vials)
+#		print(vials_m2)
 
 		for x in range(len(vials)):
 			if pd.isnull(vials[x]) or vials[x] == '-9' or vials[x] == '-3' or vials[x] == 'nan':
@@ -726,12 +726,12 @@ for name in form_names:
 			form_info_2.at["no_missing_pdiscrims", baseline] = 0
 
 			if pd.isnull(sub_data_all.at[2, "chrdim_dim_yesno_q1_1"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_q1_2"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_sex"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_age"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_q4_1"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_q5"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_q3"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_q6"]) or pd.isnull(sub_data_all.at[2, "chrdlm_dim_yesno_other"]):			
-				print("One of the variables is missing")
+#				print("One of the variables is missing")
 				check = 0
-				print(str(check))
+#				print(str(check))
 				form_info_2.at["no_missing_pdiscrims", baseline] = check
 			else: 
-				print("None of the variables are missing")
+#				print("None of the variables are missing")
 				form_info_2.at["no_missing_pdiscrims", baseline] = "1"
 
 		##print(form_info_2.at["no_missing_pdiscrims", baseline].to_string)
@@ -741,35 +741,35 @@ for name in form_names:
 		pub_first_q = 0
 		pub_m_q = 0
 		pub_f_q = 0
-		print("First check if variables exist")
+#		print("First check if variables exist")
 		if "chrpds_pds_1_p" in sub_data_all and "chrpds_pds_1_p" in sub_data_all and "chrpds_pds_2_p" in sub_data_all and "chrpds_pds_3_p" in sub_data_all:
-			print("No missing variables")
+#			print("No missing variables")
 			pub_first_q = 0
 			if pd.isnull(sub_data_all.at[2, "chrpds_pds_1_p"]) or pd.isnull(sub_data_all.at[2, "chrpds_pds_2_p"]) or  pd.isnull(sub_data_all.at[2, "chrpds_pds_3_p"]):
-				print("One is null")
+#				print("One is null")
 				pub_first_q = 0 # missing data
 			else:
-				print("No missing variables")
+#				print("No missing variables")
 				pub_first_q = 1 # has all data
 
 			# male questions
 			if "chrdemo_sexassigned" in sub_data_all and sub_data_all.at[2, "chrdemo_sexassigned"] == "1" and "chrpds_pds_1_p" in sub_data_all and "chrpds_pds_m5_p" in sub_data_all:
 				if pd.isnull(sub_data_all.at[2, "chrpds_pds_m4_p"]) or pd.isnull(sub_data_all.at[2, "chrpds_pds_m5_p"]):
-					print("Missing male variables")
+#					print("Missing male variables")
 					pub_m_q = 0 # missiing data
 				else:
-					print("No missing male variables")
+#					print("No missing male variables")
 					pub_m_q = 1 # looks like has data	
 			# female questions
 			if "chrdemo_sexassigned" in sub_data_all and sub_data_all.at[2, "chrdemo_sexassigned"] == "2" and "chrpds_pds_f4_p" in sub_data_all and "chrpds_pds_f5b_p" in sub_data_all:
 				if pd.isnull(sub_data_all.at[2, "chrpds_pds_f4_p"]) or pd.isnull(sub_data_all.at[2, "chrpds_pds_f5b_p"]):
-					print("Missing female variables")
+#					print("Missing female variables")
 					pub_f_q = 0 #missing data
 				else:
 					pub_f_q = 1 #not missing data
 			# all questions
 			if pub_first_q == 1 and pub_m_q == 1 or pub_f_q == 1:
-				print("Not missing variables")
+#				print("Not missing variables")
 				form_info_2.at["no_missing_pubds", baseline] = "1"
 			else: 
 				form_info_2.at["no_missing_pubds", baseline] = "0"
@@ -1206,8 +1206,8 @@ for name in form_names:
 		final_csv = final_csv.round({"chrap_total":1})
 		print(final_csv[["chrap_total"]])
 
-	print("Printing final csv and day for: ", name)	
-	print(final_csv.T)
+#	print("Printing final csv and day for: ", name)	
+#	print(final_csv.T)
 
 	#print(final_csv['day'])
 	

@@ -199,11 +199,36 @@ for id in id_list:
 	summary_form.at[0, "month12_cog"] = month12_avail
 	summary_form.at[0, "month18_cog"] = month18_avail
 	summary_form.at[0, "month24_cog"] = month24_avail
-		
+
+	## setting up chart
+	cog_status = 0
+
+	if baseline_avail == 1 and month2_avail == 1:
+		cog_status = 3 # baseline and month2
+	if baseline_avail == 1 and month2_avail == 0 and month6_avail == 0 and month12_avail == 0 and month18_avail == 0 and month24_avail == 0:
+		cog_status = 1 # only baseline
+	if baseline_avail == "0" and month2_avail == 1:
+		cog_status = 2 # only month 2
+	if baseline_avail == 0 and month2_avail == 0 and month6_avail == "0" and month12_avail == "0" and month18_avail == "0" and month24_avail == "0":
+		cog_status = 0 # no cognitive data
+
+	if baseline_avail == 1 and month2_avail == 1 and month6_avail == 1:
+		cog_status = 4 # baseline, month 2, month 6
+
+	if baseline_avail == 1 and month2_avail == 1 and month6_avail == 1 and month12_avail == "1":
+		cog_status = 5 # baseline - month12
+
+	if baseline_avail == 1 and month2_avail == 1 and month6_avail == 1 and month12_avail == 1 and month18_avail == 1:
+		cog_status = 6
+	if baseline_avail == 1 and month2_avail == 1 and month6_avail == 1 and month12_avail == 1 and month18_avail == 1 and month24_avail == 1:
+		cog_status = 7
+	
+
+	summary_form.at[0, "cog_status"] = cog_status	
 
 	#print(month2_NOSPLLT.T)
 
-
+	row=0
 	for visit in ["baseline", "month2", "month6", "month12", "month18", "month24"]:
 		#print(visit)
 		#data =  vars()[str(visit) + '_NOSPLLT']
@@ -217,16 +242,18 @@ for id in id_list:
 
 			data =  vars()[str(visit) + '_NOSPLLT']
                 	#print(data.info())
-                	#print(data.T)
+			#print(data.T)
 			if not data.empty:		
 		
 				var_vis = "{0}_{1}".format(var, visit)
 				#print(var_vis)
 			#	print(summary_form.T)
 				summary_form.at[0, var_vis] = data.at[0, var]
-		
+				summary_form.at[row, var] = data.at[0, var] #also creating accumulated variable		
+
 				if var == "digsym_valid_code" and len(data.at[0, var]) == 0:
 					summary_form.at[0, var_vis] = data.at[0, "digsymb_valid_code"]
+					summary_form.at[row, var] = data.at[0, "digsymb_valid_code"]
 
 		## SPLLT
 		data = vars()[str(visit) + '_SPLLT']
@@ -234,23 +261,24 @@ for id in id_list:
 		summary_form.at[0, var_vis] = ""
 
 		if not data.empty:
-			#var_vis = "spllt_valid_code_{0}".format(visit)
+			summary_form.at[row, "session_date"] = data.at[0, "session_date"]
 			if len(data.at[0, "spllt_a_valid_code"]) > 0:
 				summary_form.at[0, var_vis] = data.at[0, "spllt_a_valid_code"]
-		
+				summary_form.at[row, "spllt_valid_code"] = data.at[0, "spllt_a_valid_code"]
 			if len(data.at[0, "spllt_b_valid_code"]) > 0:
 				summary_form.at[0, var_vis] = data.at[0, "spllt_b_valid_code"]
-		
+				summary_form.at[row, "spllt_valid_code"] = data.at[0, "spllt_b_valid_code"]
 			if len(data.at[0, "spllt_c_valid_code"]) > 0:
 				summary_form.at[0, var_vis] = data.at[0, "spllt_c_valid_code"]
-
+				summary_form.at[row, "spllt_valid_code"] = data.at[0, "spllt_c_valid_code"]
 			if len(data.at[0, "spllt_d_valid_code"]) > 0:
 				summary_form.at[0, var_vis] = data.at[0, "spllt_d_valid_code"]
+				summary_form.at[row, "spllt_valid_code"] = data.at[0, "spllt_d_valid_code"]
+
+		row=row + 1
 
 
-
-
-#	print(summary_form.T)
+	#print(summary_form.T)
 	summary_form = summary_form.replace('',np.nan,regex=True)
 	#print(summary_form.T)
 
@@ -261,13 +289,17 @@ for id in id_list:
 	dpdash_main = pd.concat(frames)
 	dpdash_main = dpdash_main.reset_index(drop=True)
 
-	dpdash_main.at[0, 'subjectid'] = id
-	dpdash_main.at[0, 'site'] = site
-	dpdash_main.at[0, 'day'] = 1
-	dpdash_main.at[0, 'mtime'] = today
+	numbers = list(range(1, len(dpdash_main.index) + 1))
+	day = max(numbers)
+
+	#print(numbers)
+	dpdash_main.loc[:, 'subjectid'] = id
+	dpdash_main.loc[:, 'site'] = site
+	dpdash_main.loc[:,'day'] = numbers
+	dpdash_main.loc[:,'mtime'] = today
 	#print(dpdash_main.T)
 
-	dpdash_main.to_csv(output1 + site + "-" + id + "-form_cognition_summary-day1to1.csv", sep=',', index = False, header=True)
+	dpdash_main.to_csv(output1 + site + "-" + id + "-form_cognition_summary-day1to" + str(day) + ".csv", sep=',', index = False, header=True)
 
 
 
