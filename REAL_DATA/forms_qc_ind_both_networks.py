@@ -132,10 +132,54 @@ month9 = [i for i in event_list if i.startswith('month_9')]
 if month9 != []:
 	month9 = month9[0]
 
+month10 = [i for i in event_list if i.startswith('month_10')]
+if month10 != []:
+        month10 = month10[0]
+
+month11 = [i for i in event_list if i.startswith('month_11')]
+if month11 != []:
+        month11 = month11[0]
+
+month12 = [i for i in event_list if i.startswith('month_12')]
+if month12 != []:
+        month12 = month12[0]
+
+
+month18 = [i for i in event_list if i.startswith('month_18')]
+if month18 != []:
+        month9 = month18[0]
+
+month24 = [i for i in event_list if i.startswith('month_24')]
+if month24 != []:
+        month24 = month24[0]
 
 conversion = [i for i in event_list if i.startswith('conversion_')]
 if conversion != []:
 	conversion = conversion[0]
+
+
+# # setting up removed and conversion status
+status_removed = "0"
+conversion = "0"
+
+for event in event_list:
+	sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event])]
+	sub_data_test = sub_data_test.reset_index(drop=True)
+
+	if "chrmiss_withdrawn" in sub_data_test and sub_data_test.at[0, "chrmiss_withdrawn"] == '1':
+		status_removed = "1"
+	if "chrmiss_discon" in sub_data_test and sub_data_test.at[0, "chrmiss_discon"] == '1':
+		status_removed = "1"
+	if "chrpsychs_fu_ac1_conv" in sub_data_test and sub_data_test.at[0, "chrpsychs_fu_ac1_conv"] == '1':
+		print("CONVERTED")
+		conversion = "1"
+
+if status_removed == "1":
+	status = 99
+if conversion == "1":
+	status = 98
+
+print("STATUS - with removed and converted: " + str(status))
 
 
 # Opening data dictionary
@@ -188,6 +232,7 @@ nsipr_m2 = 0
 cssrs_m2 = 0
 
 included = np.nan
+converted = 0
 cognition_status = 0
 blood_status = 0
 saliva_status = 0

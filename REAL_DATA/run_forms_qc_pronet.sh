@@ -19,7 +19,7 @@ echo "Pronet participant List: "
 # all participants - no time
 ls /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list.txt
 ## most recent participants - no time
-find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -3 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
+find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -4 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
 
 cat pronet_sub_list.txt
 
@@ -28,11 +28,11 @@ cat pronet_sub_list.txt
 #### creating csvs for forms for all pronet participants
 echo "Creating csvs - Pronet"
 	
-cat pronet_sub_list_recent.txt | while read sub; do
-	#rm /data/predict1/data_from_nda/formqc/*$sub*day*
-	python forms_qc_ind_csv_updated.py $sub
-	#rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
-	#python forms_qc_ind_both_networks.py $sub PRONET
+cat pronet_sub_list.txt | while read sub; do
+#	rm /data/predict1/data_from_nda/formqc/*$sub*day*
+#	python forms_qc_ind_csv_updated.py $sub
+	rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
+	python forms_qc_ind_both_networks.py $sub PRONET
 	echo ""
 	echo ""
 	echo ""

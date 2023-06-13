@@ -130,6 +130,7 @@ if conversion != []:
 
 # setting up removed status
 status_removed = "0"
+conversion = "0"
 
 for event in event_list:
 	sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event])]
@@ -139,10 +140,17 @@ for event in event_list:
 		status_removed = "1"
 	if "chrmiss_discon" in sub_data_test and sub_data_test.at[0, "chrmiss_discon"] == '1':
 		status_removed = "1"
+	if "chrpsychs_fu_ac1_conv" in sub_data_test and sub_data_test.at[0, "chrpsychs_fu_ac1_conv"] == '1':
+		print("CONVERTED")
+		conversion = "1"
 
 if status_removed == "1":
 	status = 99
-print("STATUS - with removed: " + str(status))
+if conversion == "1":
+	status = 98
+print("STATUS - with conversion and removed: " + str(status))
+
+
 
 # Opening data dictionary
 dict = pd.read_csv('/data/pnl/home/gj936/U24/Clinical_qc/flowqc/AMPSCZFormRepository_DataDictionary_2022-08-19_min.csv', sep= ",", index_col = False, low_memory=True)

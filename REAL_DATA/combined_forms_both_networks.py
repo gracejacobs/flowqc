@@ -56,6 +56,10 @@ id_month7_tracker = {}
 id_month8_tracker = {}
 id_conversion_tracker = {}
 
+status_removed = "0"
+conversion = "0"
+
+
 print("\nCombining all measures for screening, baseline, and month 1-4 visits: ")
 
 # for each ID going to pull out the variables
@@ -103,7 +107,7 @@ for id in id_list:
 	else:
 		conversion = conversion[0]
 
-	for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+	for vi in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "18", "24"]:
 		#visit_data = vars()['sub_data_month' + str(vi)]
 		#name = ('sub_data_month' + str(vi))
 		#print(visit_data)
@@ -119,10 +123,28 @@ for id in id_list:
 		if name != []:
 			print("Subsetting data for: " + str(name))
 			visit_data = sub_data_all[sub_data_all['redcap_event_name'].isin([name])]
-			globals()['sub_data_month'+str(vi)] = visit_data.reset_index(drop=True)
+			visit_data = visit_data.reset_index(drop=True)
+			globals()['sub_data_month'+str(vi)] = visit_data
+			
+			## changin status if removed or converted
+			if "chrmiss_withdrawn" in visit_data and visit_data.at[0, "chrmiss_withdrawn"] == '1':
+				status_removed = "1"
+			if "chrmiss_discon" in visit_data and visit_data.at[0, "chrmiss_discon"] == '1':
+				status_removed = "1"
+			if "chrpsychs_fu_ac1_conv" in visit_data and visit_data.at[0, "chrpsychs_fu_ac1_conv"] == '1':
+				print("CONVERTED")
+				conversion = "1"
+
 			#print(visit_data)
 		else:
 			globals()['sub_data_month'+str(vi)] = pd.DataFrame()
+
+	if status_removed == "1":
+		status = 99
+	if conversion == "1":
+		status = 98
+	print("STATUS - with removed and converted: " + str(status))
+
 
 	print("Printing month 1 data")
 	print(sub_data_month1)
@@ -856,61 +878,20 @@ for id in id_list:
 		print("Printing conversion perc")
 		print(perc_check)
 
-		if perc_check_2.empty:
-			status = "0"
-		else:
-			perc_check_2 = perc_check_2.reset_index()
-			status = (perc_check_2.index[-1] + 1)
-
-			if perc_check_2['Total_empty'].min() > 58:
+		if status_removed == "0" and conversion == "0":
+			if perc_check_2.empty:
 				status = "0"
-		if not perc_check.empty:		
-			if perc_check.loc[0, 'Completed'] > 20:
-				status = "98" #conversion
+			else:
+				perc_check_2 = perc_check_2.reset_index()
+				status = (perc_check_2.index[-1] + 1)
 
-	
-	# adding removed status
-	status_removed = "0"
-	# screening
-	if "chrmiss_withdrawn" in sub_data and sub_data.at[0, "chrmiss_withdrawn"] == '1':
-		status_removed = "1"
-	if "chrmiss_discon" in sub_data and sub_data.at[0, "chrmiss_discon"] == '1':
-		status_removed = "1"
+				if perc_check_2['Total_empty'].min() > 58:
+					status = "0"
+		#if not perc_check.empty:		
+		#	if perc_check.loc[0, 'Completed'] > 20:
+		#		status = "98" #conversion
 
-	# baseline
-	if "chrmiss_withdrawn" in sub_data_baseline and sub_data_baseline.at[0, "chrmiss_withdrawn"] == '1':
-		status_removed = "1"
-	if "chrmiss_discon" in sub_data_baseline and sub_data_baseline.at[0, "chrmiss_discon"] == '1':
-		status_removed = "1"
-
-	#month1
-	if "chrmiss_withdrawn" in sub_data_month1 and sub_data_month1.at[0, "chrmiss_withdrawn"] == '1':
-		status_removed = "1"
-	if "chrmiss_discon" in sub_data_month1 and sub_data_month1.at[0, "chrmiss_discon"] == '1':
-		status_removed = "1"
-
-	#month2
-	if "chrmiss_withdrawn" in sub_data_month2 and sub_data_month2.at[0, "chrmiss_withdrawn"] == '1':
-		status_removed = "1"
-	if "chrmiss_discon" in sub_data_month2 and sub_data_month2.at[0, "chrmiss_discon"] == '1':
-		status_removed = "1"
-
-	#month3
-	if "chrmiss_withdrawn" in sub_data_month3 and sub_data_month3.at[0, "chrmiss_withdrawn"] == '1':
-		status_removed = "1"
-	if "chrmiss_discon" in sub_data_month3 and sub_data_month3.at[0, "chrmiss_discon"] == '1':
-		status_removed = "1"
-
-	#month4
-	if "chrmiss_withdrawn" in sub_data_month4 and sub_data_month4.at[0, "chrmiss_withdrawn"] == '1':
-		status_removed = "1"
-	if "chrmiss_discon" in sub_data_month4 and sub_data_month4.at[0, "chrmiss_discon"] == '1':
-		status_removed = "1"
-	
-	print("Visit status: " + str(status))
-	print("Removed status: " + str(status_removed))
-		
-
+	print("Visit Status: " + str(status))
 	#print(screening_perc.T)
 	#print(baseline_perc.T)
 

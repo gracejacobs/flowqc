@@ -159,7 +159,7 @@ for name in form_names:
 
 		for event in sub_data_all['visit'].unique():
 			event = str(event)
-			#print("Event: " + event)
+			print("Event: " + event)
 			sub_data = sub_data_all[sub_data_all['visit'].astype(str).isin([event])]
 			sub_data = sub_data.reset_index(drop=True)
 			#sub_data = sub_data.apply(lambda x: x.str.strip()).replace('', np.nan)
