@@ -19,19 +19,20 @@ echo "Pronet participant List: "
 # all participants - no time
 ls /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list.txt
 ## most recent participants - no time
-find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -4 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
+find /data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pr*/raw/*/surveys/*Pronet.json -mtime -5 | sed 's:.*/::' | cut -d '.' -f1 > pronet_sub_list_recent.txt
 
-cat pronet_sub_list.txt
+cat pronet_sub_list_recent.txt
 
 #############################################################################################
+#python combined_forms_qc.py
 
 #### creating csvs for forms for all pronet participants
 echo "Creating csvs - Pronet"
 	
 cat pronet_sub_list.txt | while read sub; do
-#	rm /data/predict1/data_from_nda/formqc/*$sub*day*
+	rm /data/predict1/data_from_nda/formqc/*$sub*day*
 #	python forms_qc_ind_csv_updated.py $sub
-	rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
+#	rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
 	python forms_qc_ind_both_networks.py $sub PRONET
 	echo ""
 	echo ""
@@ -39,17 +40,14 @@ cat pronet_sub_list.txt | while read sub; do
 
 done 
 
-#############################################################################################
-echo "Generating cognitive summaries"
-python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRONET
 
-python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/cognition/combining_cognitive_data.py PRESCIENT
+
 
 #############################################################################################
 
 echo "Creating combined csvs: "
 
-python combined_forms_qc.py
+python combined_forms_both_networks.py PRONET formqc
 
 
 #############################################################################################

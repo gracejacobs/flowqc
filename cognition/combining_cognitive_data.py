@@ -158,7 +158,8 @@ for id in id_list:
 					#print("month24_SPLLT")
 
 
-	#print(baseline_NOSPLLT)
+	print(baseline_NOSPLLT.T)
+	print(baseline_SPLLT.T)
 		## setting up status of data available
 	if not baseline_SPLLT.empty or not baseline_NOSPLLT.empty:
 		baseline_avail = 1

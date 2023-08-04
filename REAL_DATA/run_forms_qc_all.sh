@@ -37,10 +37,10 @@ python combined_forms_prescient.py
 echo "Creating csvs - Prescient"
 cat prescient_sub_list_recent.txt | while read sub; do
   echo "Generating individual forms"
-  #rm /data/predict1/data_from_nda/formqc/*$sub*day*
-  #python forms_qc_ind_csv_prescient.py $sub
-  rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
-  python forms_qc_ind_both_networks.py $sub PRESCIENT
+  rm /data/predict1/data_from_nda/formqc/*$sub*day*
+  python forms_qc_ind_csv_prescient.py $sub
+  #rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
+  #python forms_qc_ind_both_networks.py $sub PRESCIENT
   echo ""
   echo ""
   echo ""

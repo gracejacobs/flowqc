@@ -192,21 +192,21 @@ for id in id_list:
 	date_ate_bl = np.nan
 	date_drawn_m2 = np.nan
 	date_ate_m2 = np.nan
-	if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9':
+	if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9' and sub_data_baseline.at[0, "chrblood_drawdate"] != "1903-03-03":
 			date_drawn_bl = sub_data_baseline.at[0, "chrblood_drawdate"]
 			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_bl))
-	if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9':
+	if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9' and sub_data_month2.at[0, "chrblood_drawdate"] != "1903-03-03":
 			date_drawn_m2 = sub_data_month2.at[0, "chrblood_drawdate"]
 			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_m2))
-	if "chrchs_ate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != '-3' and sub_data_baseline.at[0, "chrchs_ate"] != '-9':
+	if "chrchs_ate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != '-3' and sub_data_baseline.at[0, "chrchs_ate"] != '-9' and sub_data_baseline.at[0, "chrchs_ate"] != "1903-03-03":
 		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
 			#print(form_info_2)
 			date_ate_bl = sub_data_baseline.at[0, "chrchs_ate"]
 			date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
 			print(str(date_ate_bl))
-	if "chrchs_ate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != '-3' and sub_data_month2.at[0, "chrchs_ate"] != '-9':
+	if "chrchs_ate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != '-3' and sub_data_month2.at[0, "chrchs_ate"] != '-9' and sub_data_month2.at[0, "chrchs_ate"] != "1903-03-03":
 			date_ate_m2 = sub_data_month2.at[0, "chrchs_ate"]
 			date_ate_m2 = datetime.strptime(date_ate_m2, "%Y-%m-%d %H:%M")
 			print(str(date_ate_m2))
@@ -234,73 +234,63 @@ for id in id_list:
 	pl_1_m2 = pl_2_m2 = pl_3_m2 = pl_4_m2 = pl_5_m2 = pl_6_m2 = 0
 	bc_1_m2 = 0
 
+	wb_1 = wb_2 = wb_3 = 0
+	sr_1 = sr_2 = sr_3 = 0
+	pl_1 = pl_2 = pl_3 = pl_4 = pl_5 = pl_6 = 0
+	bc_1 = 0
+
 	if "chrblood_bc1vol" in sub_data_baseline:
 		bc_1 = sub_data_baseline.at[0, "chrblood_bc1vol"]
+	if "chrblood_bc1vol" in sub_data_month2:
 		bc_1_m2 = sub_data_month2.at[0, "chrblood_bc1vol"]
-	else: 
-		bc_1 = 0
 	if "chrblood_wb1vol" in sub_data_baseline:
 		wb_1 = sub_data_baseline.at[0, "chrblood_wb1vol"]
+	if "chrblood_wb1vol" in sub_data_month2:
 		wb_1_m2 = sub_data_month2.at[0, "chrblood_wb1vol"]
-	else: 
-		wb_1 = 0
 	if "chrblood_wb2vol" in sub_data_baseline:
 		wb_2 = sub_data_baseline.at[0, "chrblood_wb2vol"]
+	if "chrblood_wb2vol" in sub_data_month2:
 		wb_2_m2 = sub_data_month2.at[0, "chrblood_wb2vol"]
-	else: 
-		wb_2 = 0
 	if "chrblood_wb3vol" in sub_data_baseline:	
 		wb_3 = sub_data_baseline.at[0, "chrblood_wb3vol"]
+	if "chrblood_wb3vol" in sub_data_month2:
 		wb_3_m2 = sub_data_month2.at[0, "chrblood_wb3vol"]
-	else: 
-		wb_3 = 0
-
 	if "chrblood_se1vol" in sub_data_baseline:
 		sr_1 = sub_data_baseline.at[0, "chrblood_se1vol"]
+	if "chrblood_se1vol" in sub_data_month2:
 		sr_1_m2 = sub_data_month2.at[0, "chrblood_se1vol"]
-	else: 
-		sr_1 = 0
 	if "chrblood_se2vol" in sub_data_baseline:
 		sr_2 = sub_data_baseline.at[0, "chrblood_se2vol"]
+	if "chrblood_se2vol" in sub_data_month2:
 		sr_2_m2 = sub_data_month2.at[0, "chrblood_se2vol"]
-	else: 
-		sr_2 = 0
 	if "chrblood_se3vol" in sub_data_baseline:
 		sr_3 = sub_data_baseline.at[0, "chrblood_se3vol"]
+	if "chrblood_se3vol" in sub_data_month2:
 		sr_3_m2 = sub_data_month2.at[0, "chrblood_se3vol"]
-	else: 
-		sr_3 = 0
-
 	if "chrblood_pl1vol" in sub_data_baseline:
 		pl_1 = sub_data_baseline.at[0, "chrblood_pl1vol"]
+	if "chrblood_pl1vol" in sub_data_month2:
 		pl_1_m2 = sub_data_month2.at[0, "chrblood_pl1vol"]
-	else: 
-		pl_1 = 0
 	if "chrblood_pl2vol" in sub_data_baseline:
 		pl_2 = sub_data_baseline.at[0, "chrblood_pl2vol"]
+	if "chrblood_pl2vol" in sub_data_month2:
 		pl_2_m2 = sub_data_month2.at[0, "chrblood_pl2vol"]
-	else: 
-		pl_2 = 0
 	if "chrblood_pl3vol" in sub_data_baseline:
 		pl_3 = sub_data_baseline.at[0, "chrblood_pl3vol"]
+	if "chrblood_pl3vol" in sub_data_month2:
 		pl_3_m2 = sub_data_month2.at[0, "chrblood_pl3vol"]
-	else: 
-		pl_3 = 0
 	if "chrblood_pl4vol" in sub_data_baseline:
 		pl_4 = sub_data_baseline.at[0, "chrblood_pl4vol"]
+	if "chrblood_pl4vol" in sub_data_month2:
 		pl_4_m2 = sub_data_month2.at[0, "chrblood_pl4vol"]
-	else: 
-		pl_4 = 0
 	if "chrblood_pl5vol" in sub_data_baseline:
 		pl_5 = sub_data_baseline.at[0, "chrblood_pl5vol"]
+	if "chrblood_pl5vol" in sub_data_month2:
 		pl_5_m2 = sub_data_month2.at[0, "chrblood_pl5vol"]
-	else: 
-		pl_5 = 0
 	if "chrblood_pl6vol" in sub_data_baseline:
 		pl_6 = sub_data_baseline.at[0, "chrblood_pl6vol"]
+	if "chrblood_pl6vol" in sub_data_month2:
 		pl_6_m2 = sub_data_month2.at[0, "chrblood_pl6vol"]
-	else: 
-		pl_6 = 0
 
 	vials = [wb_1, wb_2, wb_3, sr_1, sr_2, sr_3, pl_1, pl_2, pl_3, pl_4, pl_5, pl_6, bc_1]
 	vials_m2 = [wb_1_m2, wb_2_m2, wb_3_m2, sr_1_m2, sr_2_m2, sr_3_m2, pl_1_m2, pl_2_m2, pl_3_m2, pl_4_m2, pl_5_m2, pl_6_m2, bc_1_m2]
@@ -338,21 +328,27 @@ for id in id_list:
 
 	if "chrsaliva_vol1a" in sub_data_baseline:
 		s_1 = sub_data_baseline.at[0, "chrsaliva_vol1a"]
+	if "chrsaliva_vol1a" in sub_data_month2:
 		s_1_m2 = sub_data_month2.at[0, "chrsaliva_vol1a"]
 	if "chrsaliva_vol1b" in sub_data_baseline:
 		s_2 = sub_data_baseline.at[0, "chrsaliva_vol1b"]
+	if "chrsaliva_vol1b" in sub_data_month2:
 		s_2_m2 = sub_data_month2.at[0, "chrsaliva_vol1b"]
 	if "chrsaliva_vol2a" in sub_data_baseline:
 		s_3 = sub_data_baseline.at[0, "chrsaliva_vol2a"]
+	if "chrsaliva_vol2a" in sub_data_month2:
 		s_3_m2 = sub_data_month2.at[0, "chrsaliva_vol2a"]
 	if "chrsaliva_vol2b" in sub_data_baseline:
 		s_4 = sub_data_baseline.at[0, "chrsaliva_vol2b"]
+	if "chrsaliva_vol2b" in sub_data_month2:
 		s_4_m2 = sub_data_month2.at[0, "chrsaliva_vol2b"]
 	if "chrsaliva_vol3a" in sub_data_baseline:
 		s_5 = sub_data_baseline.at[0, "chrsaliva_vol3a"]
+	if "chrsaliva_vol3a" in sub_data_month2:
 		s_5_m2 = sub_data_month2.at[0, "chrsaliva_vol3a"]
 	if "chrsaliva_vol3b" in sub_data_baseline:
 		s_6 = sub_data_baseline.at[0, "chrsaliva_vol3b"]
+	if "chrsaliva_vol3b" in sub_data_month2:
 		s_6_m2 = sub_data_month2.at[0, "chrsaliva_vol3b"]
 				
 	vials = [s_1, s_2, s_3, s_4, s_5, s_6]

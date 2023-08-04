@@ -26,8 +26,8 @@ print("Site: ", site)
 network = str(sys.argv[2])
 print("Network: ", network)
 
-#output1 = "/data/predict/data_from_nda/formqc/"
-output1 = "/data/predict1/data_from_nda/formqc_test/"
+output1 = "/data/predict1/data_from_nda/formqc/"
+#output1 = "/data/predict1/data_from_nda/formqc_test/"
 
 if network == "PRONET":
 	sub_data = "/data/predict1/data_from_nda/Pronet/PHOENIX/PROTECTED/Pronet{0}/raw/{1}/surveys/{1}.Pronet.json".format(site, id)
@@ -48,17 +48,15 @@ sub_data_all = sub_data_all.apply(lambda x: x.str.strip()).replace('', np.nan)
 # drop empty columns
 sub_data_all.dropna(axis=1, how='all', inplace=True)
 
-print("Printing raw data")
-print(sub_data_all)
 
 # getting visit status
 percpath = (output1 + site+"-"+id+"-percentage.csv")
 status = "0"
 if os.path.exists(percpath):
 	perc_check = pd.read_csv(percpath)
-	print(perc_check)
+	#print(perc_check)
 	perc_check = perc_check.drop('informed_consent_run_sheet' , axis='columns')
-	perc_check = perc_check[perc_check['Index'].str.contains('floating')==False]
+	perc_check = perc_check[perc_check.iloc[:,0].str.contains('floating')==False]
 	perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
 	perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
 	print("All percentages")
@@ -67,7 +65,7 @@ if os.path.exists(percpath):
 	#print(perc_check.transpose())
 	perc_check_2 = perc_check[perc_check.Completed > 100]
 	# adding conversion possibility
-	perc_check = perc_check[perc_check['Index'].str.contains('convers')==True]
+	perc_check = perc_check[perc_check.iloc[:,0].str.contains('convers')==True]
 	perc_check = perc_check.reset_index()
 	#print(perc_check)
 
@@ -79,9 +77,9 @@ if os.path.exists(percpath):
 
 		if perc_check_2['Total_empty'].min() > 58:
 			status = "0"
-	if not perc_check.empty:		
-		if perc_check.loc[0, 'Completed'] > 20:
-			status = "98" #conversion
+	#if not perc_check.empty:		
+	#	if perc_check.loc[0, 'Completed'] > 20:
+	#		status = "98" #conversion
 
 print("VISIT STATUS: " + str(status))
 
@@ -89,6 +87,9 @@ print("VISIT STATUS: " + str(status))
 
 # Subsetting data based on event
 event_list = sub_data_all.redcap_event_name.unique()
+#print(event_list)
+
+
 print("Event List: ", event_list)
 screening = [i for i in event_list if i.startswith('screening_')][0]
 
@@ -147,7 +148,7 @@ if month12 != []:
 
 month18 = [i for i in event_list if i.startswith('month_18')]
 if month18 != []:
-        month9 = month18[0]
+        month18 = month18[0]
 
 month24 = [i for i in event_list if i.startswith('month_24')]
 if month24 != []:
@@ -217,20 +218,9 @@ else:
 	sub_data_month2 = pd.DataFrame()
 
 
-oasis_bl = 0
-cdss_bl = 0
-promis_bl = 0
-cssrs_bl = 0
-nsipr_bl = 0
-bprs_bl = 0
-
-oasis_m2 = 0
-cdss_m2 = 0
-promis_m2 = 0
-bprs_m2 = 0
-nsipr_m2 = 0
-cssrs_m2 = 0
-
+oasis_bl = cdss_bl = promis_bl = cssrs_bl = nsipr_bl = bprs_bl = 0
+oasis_m2 = cdss_m2 = promis_m2 = bprs_m2 = nsipr_m2 = cssrs_m2 = 0
+sex = np.nan
 included = np.nan
 converted = 0
 cognition_status = 0
@@ -255,7 +245,7 @@ for name in form_names:
 	#print(id)
 	print(name)
 
-	form_info_2 = pd.DataFrame(columns = [event_list])
+	form_info_2 = pd.DataFrame(columns = event_list)
 
 	ex=0
 	miss=0
@@ -264,7 +254,11 @@ for name in form_names:
 			for event_2 in event_list:
 				sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event_2])]
 				sub_data_test = sub_data_test.reset_index(drop=True)
+				#print(form_info_2)
+
 				form_info_2.at[var, event_2] = sub_data_test.at[0, var]
+				
+				
 				
 	
 	#print("Added all the variables to the form:")
@@ -281,16 +275,20 @@ for name in form_names:
 		form_info_2.at["Existing_variables", event_2] = (len(form_info_2.index) - 3)
 		form_info_2.at["Total_variables", event_2] = (len(form_vars) - 3)
 		# adding the number of nas to the number of total minus existing variables
-		form_info_2.at["Missing_vars", event_2] = (total - existing) + form_info_2.isna().sum()
+		#print("getting sum for missing variables")
+		missing = form_info_2.isna().sum()
+		#print(missing)
+		#print(missing[event_2])
+		form_info_2.at["Missing_vars", event_2] = (total - existing) + missing[event_2]
 			
 		#print(form_info_2)
 		# Calculating the percentage of missing as compared to the existing variables
 	for event_2 in event_list:
-		if form_info_2.loc["Existing_variables", event_2].values[0] > 0:
-			if form_info_2.loc["Missing_vars", event_2].values[0] > 0:
-
-				m=form_info_2.loc["Missing_vars", event_2].values[0]
-				e=form_info_2.loc["Total_variables", event_2].values[0]
+		if form_info_2.at["Existing_variables", event_2] > 0:
+			if form_info_2.loc["Missing_vars", event_2] > 0:
+				#print(form_info_2.loc["Missing_vars", event_2])
+				m=form_info_2.at["Missing_vars", event_2]
+				e=form_info_2.at["Total_variables", event_2]
 				form_info_2.at["Percentage", event_2] = (100 - round((m / e) * 100))
 
 			else:
@@ -303,7 +301,7 @@ for name in form_names:
 
 	# make csv with form name, percentage, event
 	for event_2 in event_list:
-		percentage_form_2.at[event_2, name] = form_info_2.loc["Percentage", event_2].values[0]
+		percentage_form_2.at[event_2, name] = form_info_2.loc["Percentage", event_2]
 
 #	print("Printing percentage form")
 #	print(percentage_form_2)
@@ -338,16 +336,25 @@ for name in form_names:
 		if "chrcrit_included" in sub_data_all and sub_consent.loc[0, "chrcrit_included"] == "1":
 			print("INCLUDED")
 			included = 1
-			form_info_2.at["included_excluded", screening] = 1
 
 		if "chrcrit_included" in sub_data_all and sub_consent.loc[0, "chrcrit_included"] == "0":
 			print("EXCLUDED")
 			included = 0
-			form_info_2.at["included_excluded", screening] = 0
-
+		
+		form_info_2.at["included_excluded", screening] = included		
+		if "chrcrit_part" in sub_consent:
+			if sub_consent.loc[0, "chrcrit_part"] == "1":
+				print("CHR")
+			if sub_consent.loc[0, "chrcrit_part"] == "2":
+				print("HEALTHY CONTROL")
+		else:
+			 form_info_2.at["chrcrit_part", screening] = np.nan
 		#if "chrcrit_included" in sub_data_all and pd.notna(sub_consent.loc[0, "chrcrit_included"]):
 		#	form_info_2.at["included_excluded", screening] = np.nan
-			
+		filter_col = [col for col in form_info_2 if col.startswith('screen')]
+		form_info_2 = form_info_2[filter_col]
+		#print(filter_col)
+		print(form_info_2)
 
 	# making a yes/no GUID form for whether there is a GUID or pseudoguid
 	if name in ['guid_form']: 
@@ -367,6 +374,8 @@ for name in form_names:
 		form_info_2.at["visit_status", screening] = status
 		form_info_2.loc["Percentage" , :] = 0
 		form_info_2.at["Percentage", screening] = 100
+		filter_col = [col for col in form_info_2 if col.startswith('screen')]
+		form_info_2 = form_info_2[filter_col]
 		print(form_info_2)
 
 	# adding an age variable
@@ -374,7 +383,10 @@ for name in form_names:
 	age_months = 0
 	if name in ['sociodemographics']: 
 		#print(sub_data_all)
-
+		form_info_2.loc["Percentage" , baseline] = 100
+		if 'chrdemo_sexassigned' in sub_data_baseline:
+			sex = sub_data_baseline.at[0, "chrdemo_sexassigned"]
+		form_info_2.loc["chrdemo_sexassigned" , baseline] = sex
 		# getting the time difference between consent date and the date of the sociodemographics form
 		# need months to be more precise
 		if 'chrdemo_age_mos_chr' in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrdemo_age_mos_chr"]):
@@ -397,9 +409,13 @@ for name in form_names:
 			print("Adjusted age: "  + str(age_adj))
 			form_info_2.at["consent_age", baseline] = age_adj
 			form_info_2.at["interview_age", baseline] = age
-		
+		#sub_data_test = sub_data_all[sub_data_all['redcap_event_name'].isin([event_2])]	
 		print("Age: " + str(age))
-
+		if sub_data_baseline.empty:
+			form_info_2.loc["Percentage" , screening] = 100
+			form_info_2.loc["chrdemo_sexassigned" , screening] = sex 
+		#form_info_2 = form_info_2.T[form_info_2.T.Percentage > 0] 
+		#print(form_info_2.T)
 	# adding IQ measure or not - if past baseline, marked
 	# get at baseline, bl + m2, M2 no bl, not completed	
 	if name in ['iq_assessment_wasiii_wiscv_waisiv']: 
@@ -566,11 +582,11 @@ for name in form_names:
 
 	## adding blood biomarkers
 	if name in ['blood_sample_preanalytic_quality_assurance']: 
-		if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != -3 and sub_data_baseline.at[0, "chrblood_drawdate"] != -9:
+		if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9':
 			date_drawn_bl = sub_data_baseline.at[0, "chrblood_drawdate"]
 			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_bl))
-		if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != -3 and sub_data_month2.at[0, "chrblood_drawdate"] != -9:
+		if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9':
 			date_drawn_m2 = sub_data_month2.at[0, "chrblood_drawdate"]
 			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_m2))
@@ -591,6 +607,20 @@ for name in form_names:
 
 			print ("Plasma processing time: " + str(plasma_time) + " Label: " + str(plasma) + "\n")
 			form_info_2.at["plasma_time", baseline] = plasma
+
+		if "chrblood_plasma_freeze" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_plasma_freeze"]):
+			plasma_time = sub_data_month2.at[0, "chrblood_plasma_freeze"]
+			plasma_time = int(plasma_time)
+			plasma = 0
+			if plasma_time < 60 and plasma_time > 0:
+				plasma = 1
+			if plasma_time > 60 and plasma_time < 121:
+				plasma = 2
+			if plasma_time > 120:
+				plasma = 3
+			if plasma_time > 0:
+				form_info_2.at["plasma_time", month2] = plasma
+	
 
 		if "chrblood_buffy_freeze" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_buffy_freeze"]):
 			buffy_time = sub_data_baseline.at[0, "chrblood_buffy_freeze"]
@@ -836,21 +866,21 @@ for name in form_names:
 	if name in ['nsipr'] and 2 in sub_data_all.index: 
 		# baseline
 		if "chrnsipr_item1_rating" not in sub_data_all or "chrnsipr_item2_rating" not in sub_data_all or "chrnsipr_item3_rating" not in sub_data_all or "chrnsipr_item4_rating" not in sub_data_all or "chrnsipr_item5_rating" not in sub_data_all or "chrnsipr_item6_rating" not in sub_data_all or "chrnsipr_item7_rating" not in sub_data_all or "chrnsipr_item8_rating" not in sub_data_all or "chrnsipr_item9_rating" not in sub_data_all or "chrnsipr_item10_rating" not in sub_data_all or "chrnsipr_item11_rating" not in sub_data_all:
-			print("Missing variables")
+			#print("Missing variables")
 			form_info_2.at["no_missing_nsipr", baseline] = "0" # missing data
 			form_info_2.at["no_missing_nsipr", month2] = "0" 
 		else:
 			if pd.notna(sub_data_all.at[2, "chrnsipr_item1_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item2_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item3_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item4_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item5_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item6_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item7_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item8_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item9_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item10_rating"]) and pd.notna(sub_data_all.at[2, "chrnsipr_item11_rating"]):
-				print("yay no missing")
+				#print("yay no missing")
 				nsipr_bl = 1
 				form_info_2.at["no_missing_nsipr", baseline] = "1" # none are NA
 			else: 
-				print("One item is missing")
+				#print("One item is missing")
 				form_info_2.at["no_missing_nsipr", baseline] = "0"
 
 			if 4 in sub_data_all.index:
 				if pd.notna(sub_data_all.at[4, "chrnsipr_item1_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item2_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item3_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item4_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item5_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item6_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item7_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item8_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item9_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item10_rating"]) and pd.notna(sub_data_all.at[4, "chrnsipr_item11_rating"]):
-					print("yay no missing in month2")
+					#print("yay no missing in month2")
 					nsipr_m2 = 1
 					form_info_2.at["no_missing_nsipr", month2] = "1" # none are NA
 				else: 
@@ -861,26 +891,26 @@ for name in form_names:
 	if name in ['cdss'] and 2 in sub_data_all.index: 
 		# baseline
 		if "chrcdss_calg1" not in sub_data_all or  "chrcdss_calg2" not in sub_data_all or "chrcdss_calg3" not in sub_data_all or "chrcdss_calg4" not in sub_data_all or "chrcdss_calg5" not in sub_data_all or "chrcdss_calg6" not in sub_data_all or "chrcdss_calg7" not in sub_data_all or "chrcdss_calg8" not in sub_data_all or "chrcdss_calg9" not in sub_data_all:
-			print("Missing variables")
+			#print("Missing variables")
 			form_info_2.at["no_missing_cdss", baseline] = "0" #missing data
 			form_info_2.at["no_missing_cdss", month2] = "0"
 		else:
 			if pd.notna(sub_data_all.at[2, "chrcdss_calg1"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg2"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg3"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg4"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg5"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg6"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg7"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg8"]) and pd.notna(sub_data_all.at[2, "chrcdss_calg9"]):
 					
-				print("No missin data yay")
+				#print("No missin data yay")
 				cdss_bl = 1
 				form_info_2.at["no_missing_cdss", baseline] = "1" #none are nan so not missing
 			else: 
-				print("Missing variables")
+				#print("Missing variables")
 				form_info_2.at["no_missing_cdss", baseline] = "0"
 			if 4 in sub_data_all:
 				if pd.notna(sub_data_all.at[4, "chrcdss_calg1"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg2"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg3"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg4"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg5"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg6"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg7"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg8"]) and pd.notna(sub_data_all.at[4, "chrcdss_calg9"]):
 					
-					print("No missin data yay in month2")
+				#	print("No missin data yay in month2")
 					cdss_m2 = 1
 					form_info_2.at["no_missing_cdss", month2] = "1" #none are nan so not missing
 				else: 
-					print("Missing variables")
+				#	print("Missing variables")
 					form_info_2.at["no_missing_cdss", month2] = "0"
 			else:
 				form_info_2.at["no_missing_cdss", month2] = "0"
@@ -889,12 +919,12 @@ for name in form_names:
 	if name in ['oasis'] and 2 in sub_data_all.index:
 		# baseline
 		if "chroasis_oasis_1" not in sub_data_all or  "chroasis_oasis_2" not in sub_data_all or "chroasis_oasis_3" not in sub_data_all or "chroasis_oasis_4" not in sub_data_all or "chroasis_oasis_2" not in sub_data_all:
-			print("Missing variables nay")
+			#print("Missing variables nay")
 			form_info_2.at["no_missing_oasis", baseline] = "0" # something missing
 			form_info_2.at["no_missing_oasis", month2] = "0"
 		else:
 			if pd.notna(sub_data_all.at[2, "chroasis_oasis_1"]) and pd.notna(sub_data_all.at[2, "chroasis_oasis_2"]) and pd.notna(sub_data_all.at[2, "chroasis_oasis_3"]) and pd.notna(sub_data_all.at[2, "chroasis_oasis_4"]) and pd.notna(sub_data_all.at[2, "chroasis_oasis_5"]):
-				print("yay")
+				#print("yay")
 				oasis_bl = 1
 				form_info_2.at["no_missing_oasis", baseline] = "1" # nothing missing or na
 			else: 
@@ -902,7 +932,7 @@ for name in form_names:
 			#month2
 			if 4 in sub_data_all.index:
 				if pd.notna(sub_data_all.at[4, "chroasis_oasis_1"]) and pd.notna(sub_data_all.at[4, "chroasis_oasis_2"]) and pd.notna(sub_data_all.at[4, "chroasis_oasis_3"]) and pd.notna(sub_data_all.at[4, "chroasis_oasis_4"]) and pd.notna(sub_data_all.at[4, "chroasis_oasis_5"]):
-					print("yay in month2")
+					#print("yay in month2")
 					oasis_m2 = 1
 					form_info_2.at["no_missing_oasis", month2] = "1" # nothing missing or na
 				else: 
@@ -924,28 +954,28 @@ for name in form_names:
 	if name in ['item_promis_for_sleep'] and 2 in sub_data_all.index: 
 		# baseline
 		if "chrpromis_sleep109" not in sub_data_all or "chrpromis_sleep109" not in sub_data_all or "chrpromis_sleep116" not in sub_data_all or "chrpromis_sleep20" not in sub_data_all or "chrpromis_sleep44" not in sub_data_all or "chrpromise_sleep108" not in sub_data_all or "chrpromis_sleep72" not in sub_data_all or "chrpromis_sleep67" not in sub_data_all or "chrpromis_sleep115" not in sub_data_all:
-			print("Missing variables")
+			#print("Missing variables")
 			form_info_2.at["no_missing_promis", baseline] = "0"
 			form_info_2.at["no_missing_promis", month2] = "0"
 		else:			
 			if pd.isnull(sub_data_all.at[2, "chrpromis_sleep109"]) or pd.isnull(sub_data_all.at[2, "chrpromis_sleep116"]) or pd.isnull(sub_data_all.at[2, "chrpromis_sleep20"]) or pd.isnull(sub_data_all.at[2, "chrpromis_sleep44"]) or pd.isnull(sub_data_all.at[2, "chrpromise_sleep108"]) or pd.isnull(sub_data_all.at[2, "chrpromis_sleep72"]) or pd.isnull(sub_data_all.at[2, "chrpromis_sleep67"]) or pd.isnull(sub_data_all.at[2, "chrpromis_sleep115"]):
 				
-				print("Missing data")	
+				#print("Missing data")	
 				form_info_2.at["no_missing_promis", baseline] = "0"
 				
 			else: 
-				print("No missing data")
+				#print("No missing data")
 				promis_bl = 1
 				form_info_2.at["no_missing_promis", baseline] = "1"
 			#month2
 			if 4 in sub_data_all.index:
 				if pd.isnull(sub_data_all.at[4, "chrpromis_sleep109"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep116"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep20"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep44"]) or pd.isnull(sub_data_all.at[4, "chrpromise_sleep108"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep72"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep67"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep115"]):
 				
-					print("Missing data")	
+					#print("Missing data")	
 					form_info_2.at["no_missing_promis", month2] = "0"
 				
 				else: 
-					print("No missing data")
+					#print("No missing data")
 					promis_m2 = 1
 					form_info_2.at["no_missing_promis", month2] = "1"
 			else:
@@ -1151,13 +1181,20 @@ for name in form_names:
 	#print("Setting up dpdash columns")
 	names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 	dpdash_all = pd.DataFrame(columns = names_dash)
-
+	#print("Checking form info")
+	#print(form_info_2.T)
+	#shape(form_info_2)
 	frames = [dpdash_all, form_info_2]
-	dpdash_main = pd.concat(frames)
+	dpdash_main = pd.concat(frames, axis=1)
+	#print("checking main")
+	#print(dpdash_all)
+	#print(dpdash_main)
 
-	dpdash_main = dpdash_main.set_index('level_0')
+	dpdash_main = dpdash_main.set_index('index')
+	#print(dpdash_main.index)
 
 	for event_2 in event_list:
+		#print(event_2)
 		dpdash_main.at[event_2, 'subjectid'] = id
 		dpdash_main.at[event_2, 'site'] = site
 
@@ -1190,7 +1227,9 @@ for name in form_names:
 			else:
 				day = 2
 
-		
+		#if name in ['sociodemographics'] and sub_data_baseline.at[0, 'chrdemo_interview_date'] == '3' or sub_data_baseline.at[0, 'chrdemo_interview_date'] == '9':
+		#	day = 1
+		#	print("CHECK day is correct")
 		if name in ['psychs_p1p8_fu'] or name in ['psychs_p9ac32_fu']:
 			if 'chrpsychs_fu_interview_date' in sub_data_all:
 				#print("CHECK")
@@ -1232,11 +1271,20 @@ for name in form_names:
 		dpdash_main.at[event_2, 'days_since_consent'] = days_between(consent, today)	
 
 
+	dpdash_main = dpdash_main[dpdash_main.Percentage > 0]
+
+	if name in ['sociodemographics']:
+		if dpdash_main.at[baseline, 'day'] == 0:
+			print("Changing day!")
+			dpdash_main.at[baseline, 'day'] = 1
+			print(dpdash_main.T)
 	#removing rows with no data
-	final_csv = dpdash_main[dpdash_main.Percentage != 0]
+	final_csv = dpdash_main[dpdash_main.Percentage > 0]
+	#final_csv = dpdash_main[dpdash_main.Percentage != "NaN"]
+	#print(final_csv.T)
 	#print("After removing because of percentage but before removing duplicates")
 	#print(final_csv)
-	final_csv = final_csv.drop_duplicates()
+	#final_csv = final_csv.drop_duplicates()
 	final_csv = final_csv[final_csv.day != 0]
 	#print("After removing duplicates and day 0")
 	#print(final_csv)
@@ -1258,8 +1306,8 @@ for name in form_names:
 		final_csv = final_csv.round({"chrap_total":1})
 		print(final_csv[["chrap_total"]])
 
-	#print("Printing final csv and day for: ", name)	
-	#print(final_csv.T)
+#	print("Printing final csv and day for: ", name)	
+#	print(final_csv.T)
 
 	#print(final_csv['day'])
 	
@@ -1272,4 +1320,4 @@ print(percentage_form_2.T)
 percentage_form_2.index.name='Index'
 percentage_form_2.to_csv(output1 + site+"-"+id+"-percentage.csv", sep=',', index = True, header=True)
 
-
+print("Executed normally")

@@ -72,14 +72,14 @@ if os.path.exists(percpath):
 # Getting all the form names from the data dictionary
 #form_names = pd.read_csv('form_names.csv')
 form_names = dict['Form Name'].unique()
-print("check")
+#print("check")
 percentage_form = pd.DataFrame(columns = form_names)
 form_names = np.append(form_names, "chart_statuses")
 
 print("Loading consent sheet")
 file = input_path+id+"_informed_consent_run_sheet.csv"
 sub_consent = pd.read_csv(file)
-print(sub_consent)
+#print(sub_consent)
 consent = sub_consent.at[0, "chric_consent_date"]
 consent = consent.split(" ")[0]
 

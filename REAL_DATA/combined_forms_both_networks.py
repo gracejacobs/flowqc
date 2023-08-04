@@ -22,9 +22,14 @@ today = today.strftime("%Y-%m-%d")
 network = str(sys.argv[1])
 print("Network: ", network)
 
+directory = str(sys.argv[2])
+output1 = "/data/predict1/data_from_nda/" + directory + "/"
+
+print("Directory: ", output1)
+
 # output folder
 #output1 = "/data/predict/data_from_ndaformqc/"
-output1 = "/data/predict1/data_from_nda/formqc_test/"
+#output1 = "/data/predict1/data_from_nda/formqc_test/"
 
 # list of sites for site-specific combined files
 site_list = ["BI", "CA", "CM", "GA", "KC", "SD", "SF", "SI", "HA", "YA", "LA", "WU", "PI", "PA", "PV", "OR", "NN", "IR", "NL", "NN", "NC", "TE", "MT", "LS"]
@@ -54,17 +59,30 @@ id_month5_tracker = {}
 id_month6_tracker = {}
 id_month7_tracker = {}
 id_month8_tracker = {}
+id_month9_tracker = {}
+id_month10_tracker = {}
+id_month11_tracker = {}
+id_month12_tracker = {}
+id_month18_tracker = {}
+id_month24_tracker = {}
 id_conversion_tracker = {}
 
-status_removed = "0"
-conversion = "0"
+#status_removed = "0"
+#conversion_status = "0"
 
 
 print("\nCombining all measures for screening, baseline, and month 1-4 visits: ")
+if network == "PRONET":
+	id_list.remove("2023-07-12 HA12047")
+
 
 # for each ID going to pull out the variables
 # then going to append them to each other
 for id in id_list:
+	
+	status_removed = "0"
+	conversion_status = "0"
+
 	print("\nID: " + id)
 	last_date = id.split(" ")[0]
 	print(last_date)
@@ -93,7 +111,11 @@ for id in id_list:
 	print(sub_data_all)
 	
 	all_events = sub_data_all['redcap_event_name'].unique()
-	screening = [i for i in all_events if i.startswith('screening_')][0]
+	screening = [i for i in all_events if i.startswith('screening_')]
+	if screening  == []:
+		screening == []
+	else:
+		screening = screening[0]
 
 	baseline = [i for i in all_events if i.startswith('baseline_')]
 	if baseline == []:
@@ -128,36 +150,49 @@ for id in id_list:
 			
 			## changin status if removed or converted
 			if "chrmiss_withdrawn" in visit_data and visit_data.at[0, "chrmiss_withdrawn"] == '1':
+				print("REMOVED - withdrawn")
 				status_removed = "1"
 			if "chrmiss_discon" in visit_data and visit_data.at[0, "chrmiss_discon"] == '1':
 				status_removed = "1"
+				print("REMOVED - discontinued")
 			if "chrpsychs_fu_ac1_conv" in visit_data and visit_data.at[0, "chrpsychs_fu_ac1_conv"] == '1':
 				print("CONVERTED")
-				conversion = "1"
+				conversion_status = "1"
 
 			#print(visit_data)
 		else:
 			globals()['sub_data_month'+str(vi)] = pd.DataFrame()
 
-	if status_removed == "1":
-		status = 99
-	if conversion == "1":
-		status = 98
-	print("STATUS - with removed and converted: " + str(status))
-
-
-	print("Printing month 1 data")
-	print(sub_data_month1)
+	print("Printing screening data")
+	print("status removed: ", status_removed)
 
 	# setting up screening
 	sub_data = sub_data_all[sub_data_all['redcap_event_name'].isin([screening])]
 	sub_data = sub_data.reset_index(drop=True)
-	#print(sub_data)
+	if "chrmiss_withdrawn" in sub_data and sub_data.at[0, "chrmiss_withdrawn"] == '1':
+		print("REMOVED - withdrawn")
+		status_removed = "1"
+	if "chrmiss_discon" in sub_data and sub_data.at[0, "chrmiss_discon"] == '1':
+		status_removed = "1"
+		print("REMOVED - discontinued")
+	if "chrpsychs_fu_ac1_conv" in sub_data and sub_data.at[0, "chrpsychs_fu_ac1_conv"] == '1':	
+		print("CONVERTED")
+		conversion_status = "1"
+	print(sub_data)
 	
 	# setting up baseline
 	if baseline != []:
 		sub_data_baseline = sub_data_all[sub_data_all['redcap_event_name'].isin([baseline])]
 		sub_data_baseline = sub_data_baseline.reset_index(drop=True)
+		if "chrmiss_withdrawn" in sub_data_baseline and sub_data_baseline.at[0, "chrmiss_withdrawn"] == '1':
+			print("REMOVED - withdrawn")
+			status_removed = "1"
+		if "chrmiss_discon" in sub_data_baseline and sub_data_baseline.at[0, "chrmiss_discon"] == '1':
+			status_removed = "1"
+			print("REMOVED - discontinued")
+		if "chrpsychs_fu_ac1_conv" in sub_data_baseline and sub_data_baseline.at[0, "chrpsychs_fu_ac1_conv"] == '1':    
+			print("CONVERTED")
+			conversion_status = "1"
 	else:
 		sub_data_baseline = pd.DataFrame()
 
@@ -226,21 +261,21 @@ for id in id_list:
 	date_ate_bl = np.nan
 	date_drawn_m2 = np.nan
 	date_ate_m2 = np.nan
-	if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9':
+	if "chrblood_drawdate" in sub_data_baseline and sub_data_baseline.at[0, "chrblood_drawdate"] !=  "1903-03-03" and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9':
 			date_drawn_bl = sub_data_baseline.at[0, "chrblood_drawdate"]
 			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_bl))
-	if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9':
+	if "chrblood_drawdate" in sub_data_month2 and sub_data_month2.at[0, "chrblood_drawdate"] != "1903-03-03" and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9':
 			date_drawn_m2 = sub_data_month2.at[0, "chrblood_drawdate"]
 			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_m2))
-	if "chrchs_ate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != '-3' and sub_data_baseline.at[0, "chrchs_ate"] != '-9':
+	if "chrchs_ate" in sub_data_baseline and sub_data_baseline.at[0, "chrchs_ate"] != "1903-03-03" and pd.notna(sub_data_baseline.at[0, "chrchs_ate"]) and sub_data_baseline.at[0, "chrchs_ate"] != '-3' and sub_data_baseline.at[0, "chrchs_ate"] != '-9':
 		#with pd.option_context('display.max_rows', None, 'display.precision', 3,):
 			#print(form_info_2)
 			date_ate_bl = sub_data_baseline.at[0, "chrchs_ate"]
 			date_ate_bl = datetime.strptime(date_ate_bl, "%Y-%m-%d %H:%M")
 			print(str(date_ate_bl))
-	if "chrchs_ate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != '-3' and sub_data_month2.at[0, "chrchs_ate"] != '-9':
+	if "chrchs_ate" in sub_data_month2 and sub_data_month2.at[0, "chrchs_ate"] != "1903-03-03" and pd.notna(sub_data_month2.at[0, "chrchs_ate"]) and sub_data_month2.at[0, "chrchs_ate"] != '-3' and sub_data_month2.at[0, "chrchs_ate"] != '-9':
 			date_ate_m2 = sub_data_month2.at[0, "chrchs_ate"]
 			date_ate_m2 = datetime.strptime(date_ate_m2, "%Y-%m-%d %H:%M")
 			print(str(date_ate_m2))
@@ -528,15 +563,10 @@ for id in id_list:
 
 	#if name in ['oasis']:
 	# baseline
-	if "chroasis_oasis_1" not in sub_data_baseline or  "chroasis_oasis_2" not in sub_data_baseline or "chroasis_oasis_3" not in sub_data_baseline or "chroasis_oasis_4" not in sub_data_baseline or "chroasis_oasis_2" not in sub_data_baseline:
-		#print("Missing variables nay")
-		sub_data_baseline.at[0, 'no_missing_oasis'] = "0" # something missing
-		sub_data_month1.at[0, 'no_missing_oasis'] = "0"
-		sub_data_month2.at[0, 'no_missing_oasis'] = "0"
-		sub_data_month3.at[0, 'no_missing_oasis'] = "0"
-		sub_data_month6.at[0, 'no_missing_oasis'] = "0"
-	else:
-		if pd.notna(sub_data_baseline.at[0, "chroasis_oasis_1"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_2"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_3"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_4"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_5"]):
+	if "chroasis_oasis_1" in sub_data_baseline and "chroasis_oasis_2" in sub_data_baseline and "chroasis_oasis_3" in sub_data_baseline and "chroasis_oasis_4"  in sub_data_baseline and "chroasis_oasis_2" in sub_data_baseline:
+		#sub_data_month2.at[0, 'no_missing_oasis'] = "0"
+		
+		if pd.notna(sub_data_baseline.at[0, "chroasis_oasis_1"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_2"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_3"]) and pd.notna(sub_data_baseline.at[0, "chroasis_oasis_4"]):
 			#print("yay")
 			sub_data_baseline.at[0, 'no_missing_oasis'] = "1" # nothing missing or na
 		else:
@@ -554,6 +584,13 @@ for id in id_list:
 			else:
 				print("No data")
 				visit_data.loc[0, 'no_missing_oasis'] = "0"
+	else:
+		sub_data_baseline.at[0, 'no_missing_oasis'] = "0" # something missing
+		sub_data_month1.at[0, 'no_missing_oasis'] = "0"
+		sub_data_month2.at[0, 'no_missing_oasis'] = "0"
+		sub_data_month3.at[0, 'no_missing_oasis'] = "0"
+		sub_data_month6.at[0, 'no_missing_oasis'] = "0"
+
 
 	#if name in ['pss']:
 		# baseline
@@ -807,7 +844,7 @@ for id in id_list:
 
 	print("check")
 	#getting percentages for each of the forms
-	percentage_file = "/data/predict1/data_from_nda/formqc_test/{0}-{1}-percentage.csv".format(site, id)
+	percentage_file = "/data/predict1/data_from_nda/formqc/{0}-{1}-percentage.csv".format(site, id)
 	status = "0"
 	screening_perc = pd.DataFrame()
 	baseline_perc = pd.DataFrame()
@@ -819,6 +856,12 @@ for id in id_list:
 	month6_perc = pd.DataFrame()
 	month7_perc = pd.DataFrame()
 	month8_perc = pd.DataFrame()
+	month9_perc = pd.DataFrame()
+	month10_perc = pd.DataFrame()
+	month11_perc = pd.DataFrame()
+	month12_perc = pd.DataFrame()
+	month18_perc = pd.DataFrame()
+	month24_perc = pd.DataFrame()
 	conversion_perc = pd.DataFrame()
 
 
@@ -843,7 +886,7 @@ for id in id_list:
 		print("Screening percentage")
 		print(screening_perc)
 
-		for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+		for vi in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "18", "24"]:
 			#print(vi)
 			#visit_name = ('month_' + str(vi) + '_')
 			visit_perc = pd.DataFrame()
@@ -877,21 +920,31 @@ for id in id_list:
 		print(perc_check_2)
 		print("Printing conversion perc")
 		print(perc_check)
+		print(str(status_removed))
+		print(str(conversion_status))
 
-		if status_removed == "0" and conversion == "0":
+		if status_removed == "0" and conversion_status == "0":
 			if perc_check_2.empty:
+				print("percentage file is empty")
 				status = "0"
 			else:
 				perc_check_2 = perc_check_2.reset_index()
+				print("Length of percentage file: ", perc_check_2.index[-1])
 				status = (perc_check_2.index[-1] + 1)
 
 				if perc_check_2['Total_empty'].min() > 58:
+					print("Total empty too low")
 					status = "0"
 		#if not perc_check.empty:		
 		#	if perc_check.loc[0, 'Completed'] > 20:
 		#		status = "98" #conversion
 
-	print("Visit Status: " + str(status))
+	if status_removed == "1":
+		status = 99
+	if conversion_status == "1":
+		status = 98
+	print("STATUS - with removed and converted: " + str(status))
+	#print("Visit Status: " + str(status))
 	#print(screening_perc.T)
 	#print(baseline_perc.T)
 
@@ -951,7 +1004,7 @@ for id in id_list:
 		dpdash_main.at[0, 'visit_status_string'] = "month18"
 	if status == 16:
 		dpdash_main.at[0, 'visit_status_string'] = "month24"
-	if status == '98':
+	if conversion_status == '1':
 		dpdash_main.at[0, 'visit_status_string'] = "converted"
 	if status_removed == "1":
 		dpdash_main.at[0, 'visit_status_string'] = "removed"
@@ -995,7 +1048,7 @@ for id in id_list:
 
 	# concatenating dpdash main and month1, month2, month3, month4
 	#sub_data_month1 = sub_data_month1.reset_index(drop=True)
-	for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+	for vi in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "18", "24"]:
 		print("Month " + vi)
 
 		visit_tracker = vars()['id_month' + str(vi) + '_tracker']
@@ -1046,7 +1099,7 @@ final_baseline_csv['num'] = numbers
 final_csv.to_csv(output1 + "combined-"+ network +"-form_screening-day1to1.csv", sep=',', index = False, header=True)
 final_baseline_csv.to_csv(output1 + "combined-"+ network +"-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
-for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8"]:
+for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8", "month9", "month10", "month11", "month12", "month18", "month24"]:
 	
 	print(vi)
 	tracker_name = vars()['id_' + str(vi) + '_tracker']
