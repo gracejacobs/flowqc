@@ -1141,6 +1141,7 @@ for name in form_names:
 		#print(name)
 		#removing rows with no data
 		#final_csv = final_csv[final_csv.Percentage != 0]
+		#print("LAST DAY: " + str(last_day))
 		#print("FINAL CSV TO BE EXPORTED:\n", final_csv.T)
 	
 		# Saving to a csv based on ID and event

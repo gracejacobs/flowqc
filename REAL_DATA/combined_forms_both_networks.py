@@ -66,15 +66,10 @@ id_month12_tracker = {}
 id_month18_tracker = {}
 id_month24_tracker = {}
 id_conversion_tracker = {}
+id_floating_tracker = {}
 
 #status_removed = "0"
 #conversion_status = "0"
-
-
-print("\nCombining all measures for screening, baseline, and month 1-4 visits: ")
-if network == "PRONET":
-	id_list.remove("2023-07-12 HA12047")
-
 
 # for each ID going to pull out the variables
 # then going to append them to each other
@@ -129,6 +124,12 @@ for id in id_list:
 	else:
 		conversion = conversion[0]
 
+	floating = [i for i in all_events if i.startswith('floating')]
+	if floating == []:
+		floating = []
+	else:
+		floating = floating[0]
+
 	for vi in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "18", "24"]:
 		#visit_data = vars()['sub_data_month' + str(vi)]
 		#name = ('sub_data_month' + str(vi))
@@ -140,23 +141,24 @@ for id in id_list:
 			name = []
 		else:
 			name = evlist[0]
-			print(str(name))
+			#print(str(name))
 
 		if name != []:
-			print("Subsetting data for: " + str(name))
+			#print("Subsetting data for: " + str(name))
 			visit_data = sub_data_all[sub_data_all['redcap_event_name'].isin([name])]
 			visit_data = visit_data.reset_index(drop=True)
 			globals()['sub_data_month'+str(vi)] = visit_data
 			
 			## changin status if removed or converted
 			if "chrmiss_withdrawn" in visit_data and visit_data.at[0, "chrmiss_withdrawn"] == '1':
-				print("REMOVED - withdrawn")
+			
+				print("REMOVED - withdrawn at " + name)
 				status_removed = "1"
 			if "chrmiss_discon" in visit_data and visit_data.at[0, "chrmiss_discon"] == '1':
 				status_removed = "1"
-				print("REMOVED - discontinued")
+				print("REMOVED - discontinued at " + name)
 			if "chrpsychs_fu_ac1_conv" in visit_data and visit_data.at[0, "chrpsychs_fu_ac1_conv"] == '1':
-				print("CONVERTED")
+				print("CONVERTED at " + name)
 				conversion_status = "1"
 
 			#print(visit_data)
@@ -202,6 +204,13 @@ for id in id_list:
 		sub_data_conversion = sub_data_conversion.reset_index(drop=True)
 	else:
 		sub_data_conversion = pd.DataFrame()
+
+	if floating != []:
+		sub_data_floating = sub_data_all[sub_data_all['redcap_event_name'].isin([floating])]
+		sub_data_floating = sub_data_floating.reset_index(drop=True)
+	else:
+		sub_data_floating = pd.DataFrame()
+
 
 	# Adding age variable
 	age = 0
@@ -844,7 +853,9 @@ for id in id_list:
 
 	print("check")
 	#getting percentages for each of the forms
-	percentage_file = "/data/predict1/data_from_nda/formqc/{0}-{1}-percentage.csv".format(site, id)
+	#output1 = "/data/predict1/data_from_nda/" + directory + "/"
+	percentage_file = "{0}/{1}-{2}-percentage.csv".format(output1, site, id)
+	print(percentage_file)
 	status = "0"
 	screening_perc = pd.DataFrame()
 	baseline_perc = pd.DataFrame()
@@ -868,7 +879,7 @@ for id in id_list:
 	if os.path.exists(percentage_file):
 		print("Reading in percentage file")
 		percentages = pd.read_csv(percentage_file, sep= ",", index_col=0)
-		print(percentages)
+		#print(percentages)
 
 		screening_perc = pd.DataFrame(percentages.loc[screening])
 		screening_perc = screening_perc.transpose()
@@ -884,7 +895,7 @@ for id in id_list:
 			conversion_perc = conversion_perc.reset_index(drop=True)
 
 		print("Screening percentage")
-		print(screening_perc)
+		#print(screening_perc)
 
 		for vi in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "18", "24"]:
 			#print(vi)
@@ -912,37 +923,37 @@ for id in id_list:
 		#print("check")
 		perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
 		perc_check['Total_empty'] = (perc_check == 0).sum(axis=1)
-		#print(perc_check)
-		perc_check_2 = perc_check[perc_check.Completed > 100]
+		print(perc_check)
+		perc_check_2 = perc_check[perc_check.Completed > 75]
 		perc_check = perc_check[perc_check.index.str.contains('convers')==True]
 		perc_check = perc_check.reset_index()
 		print("Printing visit perc")
 		print(perc_check_2)
-		print("Printing conversion perc")
-		print(perc_check)
-		print(str(status_removed))
-		print(str(conversion_status))
 
-		if status_removed == "0" and conversion_status == "0":
-			if perc_check_2.empty:
-				print("percentage file is empty")
-				status = "0"
-			else:
-				perc_check_2 = perc_check_2.reset_index()
-				print("Length of percentage file: ", perc_check_2.index[-1])
-				status = (perc_check_2.index[-1] + 1)
-
-				if perc_check_2['Total_empty'].min() > 58:
-					print("Total empty too low")
-					status = "0"
-		#if not perc_check.empty:		
-		#	if perc_check.loc[0, 'Completed'] > 20:
-		#		status = "98" #conversion
-
+		if perc_check_2.empty:
+			print("percentage file is empty")
+			status = "0"
+		else:
+			status_label = perc_check_2.index[-1]
+			print("LAST VISIT: " + status_label)
+			perc_check_2 = perc_check_2.reset_index()
+			print("Length of percentage file: ", perc_check_2.index[-1])
+			status = (perc_check_2.index[-1] + 1)
+			
+						
 	if status_removed == "1":
 		status = 99
 	if conversion_status == "1":
 		status = 98
+
+	count = 0
+	if not perc_check_2.empty:
+		for vi in ["screening", "baseline", "month_1_", "month_2_", "month_3_", "month_4_", "month_5_", "month_6_", "month_7_", "month_8_", "month_9_", "month_10", "month_11", "month_12", "month_18", "month_24"]:
+			count = count + 1
+			if  status_label.startswith(vi):
+				print("Status starts with: " + vi)
+				status = count
+
 	print("STATUS - with removed and converted: " + str(status))
 	#print("Visit Status: " + str(status))
 	#print(screening_perc.T)
@@ -957,6 +968,11 @@ for id in id_list:
 	dpdash_main.at[0, 'day'] = 1
 	dpdash_main.at[0, 'days_since_consent'] = days_between(sub_data.at[0, "chric_consent_date"], today)
 	dpdash_main.at[0, 'weeks_since_consent'] = round(dpdash_main.at[0, 'days_since_consent'] / 7)
+	dpdash_main.at[0, 'last_visit_status'] = status
+	if conversion_status == '1':
+		status = 98
+	if status_removed == "1":
+		status = 99
 	dpdash_main.at[0, 'visit_status'] = status
 	dpdash_main.at[0, 'status_removed'] = status_removed
 	dpdash_main.at[0, 'file_updated'] = last_date
@@ -1024,7 +1040,7 @@ for id in id_list:
 
 	dpdash_full.dropna(how='all', axis=0, inplace=True)
 	print("Screening csv for participant: ")
-	print(dpdash_full.T)
+	print(dpdash_full.T.head(15))
 	
 	id_tracker["Screening_{0}".format(id)] = dpdash_full
 
@@ -1045,6 +1061,12 @@ for id in id_list:
 	dpdash_full.dropna(how='all', axis=0, inplace=True)
 
 	id_conversion_tracker["Conversion_{0}".format(id)] = dpdash_full
+	# floating
+	sub_data_floating = sub_data_floating.reset_index(drop=True)
+	frames = [dpdash_main, sub_data_floating]
+	dpdash_full = pd.concat(frames, axis=1)
+	dpdash_full.dropna(how='all', axis=0, inplace=True)
+	id_floating_tracker["Floating_{0}".format(id)] = dpdash_full
 
 	# concatenating dpdash main and month1, month2, month3, month4
 	#sub_data_month1 = sub_data_month1.reset_index(drop=True)
@@ -1078,26 +1100,53 @@ if "chrap_total" in final_csv:
 
 print("Creating and saving screening and baseline csvs")
 numbers = list(range(1,(len(final_csv.index) +1))) # changing day numbers to sequence
-final_csv['day'] = numbers
+final_csv.loc[:,'day'] = numbers
 
 final_csv = final_csv.sort_values(['days_since_consent', 'day'])
-final_csv['day'] = numbers
+final_csv.loc[:,'day'] = numbers
 numbers.sort(reverse = True)
-final_csv['num'] = numbers
+final_csv.loc[:,'num'] = numbers
 	
+final_csv.to_csv(output1 + "combined-"+ network +"-form_screening-day1to1.csv", sep=',', index = False, header=True)
+
+
 # baseline visit
 final_baseline_csv = pd.concat(id_baseline_tracker, ignore_index=True)
 numbers = list(range(1,(len(final_baseline_csv.index) +1))) # changing day numbers to sequence
-final_baseline_csv['day'] = numbers
+final_baseline_csv.loc[:,'day'] = numbers
 
 final_baseline_csv = final_baseline_csv.sort_values(['days_since_consent', 'day'])
-final_baseline_csv['day'] = numbers
+final_baseline_csv.loc[:,'day'] = numbers
 numbers.sort(reverse = True)
-final_baseline_csv['num'] = numbers
+final_baseline_csv.loc[:,'num'] = numbers
+
+final_baseline_csv.to_csv(output1 + "combined-"+ network +"-form_baseline-day1to1.csv", sep=',', index = False, header=True)
+
+### conversion
+final_csv = pd.concat(id_conversion_tracker, ignore_index=True)
+numbers = list(range(1,(len(final_csv.index) +1)))
+final_csv.loc[:,'day'] = numbers
+final_csv = final_csv.sort_values(['days_since_consent', 'day'])
+final_csv.loc[:,'day'] = numbers
+numbers.sort(reverse = True)
+final_csv.loc[:,'num'] = numbers
+
+final_csv.to_csv(output1 + "combined-"+ network +"-form_conversion-day1to1.csv", sep=',', index = False, header=True)
+
+## floating
+final_csv = pd.concat(id_floating_tracker, ignore_index=True)
+numbers = list(range(1,(len(final_csv.index) +1)))
+final_csv.loc[:,'day'] = numbers
+final_csv = final_csv.sort_values(['days_since_consent', 'day'])
+final_csv.loc[:,'day'] = numbers
+numbers.sort(reverse = True)
+final_csv.loc[:,'num'] = numbers
+
+final_csv.to_csv(output1 + "combined-"+ network +"-form_floating-day1to1.csv", sep=',', index = False, header=True)
+
 
 ###### Saving combined csvs
-final_csv.to_csv(output1 + "combined-"+ network +"-form_screening-day1to1.csv", sep=',', index = False, header=True)
-final_baseline_csv.to_csv(output1 + "combined-"+ network +"-form_baseline-day1to1.csv", sep=',', index = False, header=True)
+#final_baseline_csv.to_csv(output1 + "combined-"+ network +"-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
 for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8", "month9", "month10", "month11", "month12", "month18", "month24"]:
 	
@@ -1106,11 +1155,11 @@ for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7",
 	concat_csv = pd.concat(tracker_name, ignore_index=True)
 
 	numbers = list(range(1,(len(concat_csv.index) +1))) # changing day numbers to sequence
-	concat_csv['day'] = numbers
+	concat_csv.loc[:,'day'] = numbers
 	concat_csv = concat_csv.sort_values(['days_since_consent', 'day'])
-	concat_csv['day'] = numbers
+	concat_csv.loc[:,'day'] = numbers
 	numbers.sort(reverse = True)
-	concat_csv['num'] = numbers
+	concat_csv.loc[:,'num'] = numbers
 
 	print(concat_csv.T)
 
@@ -1137,7 +1186,7 @@ for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7",
 		numbers = list(range(1,(len(site_final.index) +1))) 
 		site_final.loc[:, 'day'] = numbers
 		numbers.sort(reverse = True)
-		site_final['num'] = numbers
+		site_final.loc[:,'num'] = numbers
 
 		file_name = "combined-{0}-form_{1}-day1to1.csv".format(si, vi)
 		site_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
@@ -1160,7 +1209,7 @@ for si in site_list:
 	numbers = list(range(1,(len(site_final.index) +1))) 
 	site_final.loc[:, 'day'] = numbers
 	numbers.sort(reverse = True)
-	site_final['num'] = numbers
+	site_final.loc[:,'num'] = numbers
 
 	file_name = "combined-{0}-form_baseline-day1to1.csv".format(si)
 	site_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
@@ -1169,9 +1218,9 @@ for si in site_list:
 	site_scr_final = final_csv[final_csv['site'].str.contains(si)]
 	# changing day numbers to sequence
 	numbers = list(range(1,(len(site_scr_final.index) +1))) 
-	site_scr_final['day'] = numbers
+	site_scr_final.loc[:,'day'] = numbers
 	numbers.sort(reverse = True)
-	site_scr_final['num'] = numbers
+	site_scr_final.loc[:,'num'] = numbers
 
 	file_name = "combined-{0}-form_screening-day1to1.csv".format(si)
 	site_scr_final.to_csv(output1 + file_name, sep=',', index = False, header=True)

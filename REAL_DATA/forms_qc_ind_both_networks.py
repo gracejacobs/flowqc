@@ -26,7 +26,11 @@ print("Site: ", site)
 network = str(sys.argv[2])
 print("Network: ", network)
 
-output1 = "/data/predict1/data_from_nda/formqc/"
+directory = str(sys.argv[3])
+output1 = "/data/predict1/data_from_nda/" + directory + "/"
+
+
+#output1 = "/data/predict1/data_from_nda/formqc/"
 #output1 = "/data/predict1/data_from_nda/formqc_test/"
 
 if network == "PRONET":
@@ -72,14 +76,21 @@ if os.path.exists(percpath):
 	if perc_check_2.empty:
 		status = "0"
 	else:
+		status_label = perc_check_2.Index.iat[-1]
+		print("LAST VISIT: " + status_label)
 		perc_check_2 = perc_check_2.reset_index()
+		print("Length of percentage file: ", perc_check_2.index[-1])
 		status = (perc_check_2.index[-1] + 1)
 
-		if perc_check_2['Total_empty'].min() > 58:
-			status = "0"
-	#if not perc_check.empty:		
-	#	if perc_check.loc[0, 'Completed'] > 20:
-	#		status = "98" #conversion
+
+	count = 0
+	if not perc_check_2.empty:
+		for vi in ["screening", "baseline", "month_1_", "month_2_", "month_3_", "month_4_", "month_5_", "month_6_", "month_7_", "month_8_", "month_9_", "month_10", "month_11", "month_12", "month_18", "month_24"]:
+			count = count + 1
+			if  status_label.startswith(vi):
+				print("Status starts with: " + vi)
+				status = count
+
 
 print("VISIT STATUS: " + str(status))
 

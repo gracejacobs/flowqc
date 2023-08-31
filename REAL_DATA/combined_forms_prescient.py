@@ -47,7 +47,12 @@ id_month5_tracker = {}
 id_month6_tracker = {}
 id_month7_tracker = {}
 id_month8_tracker = {}
-
+id_month9_tracker = {}
+id_month10_tracker = {}
+id_month11_tracker = {}
+id_month12_tracker = {}
+id_month18_tracker = {}
+id_month24_tracker = {}
 
 print("\nCombining all measures for screening to month 4 visits: ")
 
@@ -75,6 +80,13 @@ for id in id_list:
 	month6_perc = pd.DataFrame()
 	month7_perc = pd.DataFrame()
 	month8_perc = pd.DataFrame()
+	month9_perc = pd.DataFrame()
+	month10_perc = pd.DataFrame()
+	month11_perc = pd.DataFrame()
+	month12_perc = pd.DataFrame()
+	month18_perc = pd.DataFrame()
+	month24_perc = pd.DataFrame()
+
 	status = "0"
 
 	if os.path.exists(percentage_file):
@@ -112,7 +124,18 @@ for id in id_list:
 		if 10 in percentages.index.values:
 			month8_perc = pd.DataFrame(percentages.loc[10]).transpose()
 			print(month8_perc)
-
+		if 11 in percentages.index.values:
+                        month9_perc = pd.DataFrame(percentages.loc[11]).transpose()
+                        print(month9_perc)
+		if 12 in percentages.index.values:
+                        month10_perc = pd.DataFrame(percentages.loc[12]).transpose()
+                        print(month10_perc)
+		if 13 in percentages.index.values:
+                        month11_perc = pd.DataFrame(percentages.loc[13]).transpose()
+                        print(month11_perc)
+		if 14 in percentages.index.values:
+                        month12_perc = pd.DataFrame(percentages.loc[14]).transpose()
+                        print(month12_perc)
 
 		screening_perc = screening_perc.reset_index(drop=True)
 		baseline_perc = baseline_perc.reset_index(drop=True)
@@ -124,6 +147,10 @@ for id in id_list:
 		month6_perc = month6_perc.reset_index(drop=True)
 		month7_perc = month7_perc.reset_index(drop=True)
 		month8_perc = month8_perc.reset_index(drop=True)
+		month9_perc = month9_perc.reset_index(drop=True)
+		month10_perc = month10_perc.reset_index(drop=True)
+		month11_perc = month11_perc.reset_index(drop=True)
+		month12_perc = month12_perc.reset_index(drop=True)
 
 		# getting the visit status
 		perc_check = percentages
@@ -207,6 +234,10 @@ for id in id_list:
 		dpdash_main.at[0, 'visit_status_string'] = "month9"
 	if status == 12:
 		dpdash_main.at[0, 'visit_status_string'] = "month10"
+	if status == 13:
+		dpdash_main.at[0, 'visit_status_string'] = "month11"
+	if status == 14:
+		dpdash_main.at[0, 'visit_status_string'] = "month12"
 	if status == 99:
 		dpdash_main.at[0, 'visit_status_string'] = "removed"
 
@@ -299,7 +330,7 @@ for id in id_list:
 
 
 	# month1
-	for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8"]:
+	for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7", "month8", "month9", "month10", "month11", "month12"]:
 		print("Month " + vi)
 
 		file = (output1 + site+"-"+id+"-" + str(vi) +".csv")
@@ -366,13 +397,13 @@ if len(id_tracker) > 0:
 
 	numbers = list(range(1,(len(final_csv.index) +1))) # changing day numbers to sequence
 	print("Length of csv: " + str(numbers)) 
-	final_csv['day'] = numbers
+	final_csv.loc[:,'day'] = numbers
 	
 	# reordering based on days since consent
 	final_csv = final_csv.sort_values(['days_since_consent', 'day'])
-	final_csv['day'] = numbers
+	final_csv.loc[:,'day'] = numbers
 	numbers.sort(reverse = True)
-	final_csv['num'] = numbers
+	final_csv.loc[:,'num'] = numbers
 
 	print("Final screening file: ")
 	print(final_csv.T)
@@ -385,9 +416,9 @@ if len(id_tracker) > 0:
 		site_scr_final = final_csv[final_csv['site'].str.contains(si)]
 		# changing day numbers to sequence
 		numbers = list(range(1,(len(site_scr_final.index) +1))) 
-		site_scr_final['day'] = numbers
+		site_scr_final.loc[:,'day'] = numbers
 		numbers.sort(reverse = True)
-		site_scr_final['num'] = numbers
+		site_scr_final.loc[:,'num'] = numbers
 
 		file_name = "combined-{0}-form_screening-day1to1.csv".format(si)
 		site_scr_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
@@ -403,14 +434,14 @@ if len(id_baseline_tracker) > 0:
 	final_baseline_csv = pd.concat(id_baseline_tracker, ignore_index=True)
 	final_baseline_csv.dropna(subset=['subjectid'], inplace=True)
 	numbers = list(range(1,(len(final_baseline_csv.index) +1))) # changing day numbers to sequence
-	final_baseline_csv['day'] = numbers
+	final_baseline_csv.loc[:,'day'] = numbers
 	
 	# reordering based on days since consent
 	final_baseline_csv = final_baseline_csv.sort_values(['days_since_consent', 'day'])
 	#print(final_baseline_csv.T.iloc[:14 , :5])
-	final_baseline_csv['day'] = numbers
+	final_baseline_csv.loc[:,'day'] = numbers
 	numbers.sort(reverse = True)
-	final_baseline_csv['num'] = numbers
+	final_baseline_csv.loc[:,'num'] = numbers
 
 	print("Combined baseline file: ")
 	print(final_baseline_csv.T)
@@ -423,9 +454,9 @@ if len(id_baseline_tracker) > 0:
 		site_final = final_baseline_csv[final_baseline_csv['site'].str.contains(si)]
 		# changing day numbers to sequence
 		numbers = list(range(1,(len(site_final.index) +1))) 
-		site_final['day'] = numbers
+		site_final.loc[:,'day'] = numbers
 		numbers.sort(reverse = True)
-		site_final['num'] = numbers
+		site_final.loc[:,'num'] = numbers
 
 		file_name = "combined-{0}-form_baseline-day1to1.csv".format(si)
 		site_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
@@ -439,7 +470,7 @@ if len(id_baseline_tracker) > 0:
 
 
 # month1 visit
-for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
+for vi in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]:
 	print("Combining and saving data for month " + vi)
 	tracker_name = vars()['id_month' + str(vi) + '_tracker']
 	print("Length: " + str(len(tracker_name)))
@@ -454,13 +485,13 @@ for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 		#print("Before extra subjects are dropped")
 		#print(final_event_csv)
 		numbers = list(range(1,(len(final_event_csv.index) +1))) # changing day numbers to sequence
-		final_event_csv['day'] = numbers
+		final_event_csv.loc[:,'day'] = numbers
 	
 		# reordering based on days since consent
 		final_event_csv = final_event_csv.sort_values(['days_since_consent', 'day'])
-		final_event_csv['day'] = numbers
+		final_event_csv.loc[:,'day'] = numbers
 		numbers.sort(reverse = True)
-		final_event_csv['num'] = numbers
+		final_event_csv.loc[:,'num'] = numbers
 
 		print("Combined month" + str(vi) + " file: ")
 		print(final_event_csv.T)
@@ -473,9 +504,9 @@ for vi in ["1", "2", "3", "4", "5", "6", "7", "8"]:
 			site_final = final_event_csv[final_event_csv['site'].str.contains(si)]
 			# changing day numbers to sequence
 			numbers = list(range(1,(len(site_final.index) +1))) 
-			site_final['day'] = numbers
+			site_final.loc[:,'day'] = numbers
 			numbers.sort(reverse = True)
-			site_final['num'] = numbers
+			site_final.loc[:,'num'] = numbers
 
 			file_name = "combined-{0}-form_month{1}-day1to1.csv".format(si, vi)
 			site_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
