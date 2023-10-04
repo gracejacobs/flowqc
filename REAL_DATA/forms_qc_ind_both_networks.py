@@ -17,6 +17,13 @@ def days_between(d1, d2):
 today = date.today()
 today = today.strftime("%Y-%m-%d")
 
+########################################################################
+# NEED 3 ARGUEMENTS
+# 1) ID
+# 2) Network
+# 3) Directory
+########################################################################
+
 id = str(sys.argv[1])
 print("ID: ", id)
 
@@ -48,6 +55,9 @@ sub_data_all = pd.DataFrame.from_dict(json, orient="columns")
 #replacing empty cells with NaN
 sub_data_all = sub_data_all.apply(lambda x: x.str.strip()).replace('', np.nan)
 
+#floating = sub_data_all[sub_data_all['redcap_event_name'].isin([floating])]
+#print(floating)
+#print(floating.iT)
 #print(sub_data_all.T)
 # drop empty columns
 sub_data_all.dropna(axis=1, how='all', inplace=True)
@@ -58,7 +68,7 @@ percpath = (output1 + site+"-"+id+"-percentage.csv")
 status = "0"
 if os.path.exists(percpath):
 	perc_check = pd.read_csv(percpath)
-	#print(perc_check)
+	print(perc_check)
 	perc_check = perc_check.drop('informed_consent_run_sheet' , axis='columns')
 	perc_check = perc_check[perc_check.iloc[:,0].str.contains('floating')==False]
 	perc_check['Completed']= perc_check.iloc[:, 1:].sum(axis=1)
@@ -169,6 +179,9 @@ conversion = [i for i in event_list if i.startswith('conversion_')]
 if conversion != []:
 	conversion = conversion[0]
 
+floating = [i for i in event_list if i.startswith('floating_')]
+if floating != []:
+        floating = floating[0]
 
 # # setting up removed and conversion status
 status_removed = "0"
@@ -185,6 +198,18 @@ for event in event_list:
 	if "chrpsychs_fu_ac1_conv" in sub_data_test and sub_data_test.at[0, "chrpsychs_fu_ac1_conv"] == '1':
 		print("CONVERTED")
 		conversion = "1"
+
+
+#if 'statusform_reason' in sub_data_all or 'statusform_withdrawal' in sub_data_all or 'statusform_comments' in sub_data_all:
+if floating != []:
+	floating = sub_data_all[sub_data_all['redcap_event_name'].isin([floating])]
+	print(floating)
+	print(floating.T)
+	#if 'statusform_reason' in sub_data_all or 'statusform_withdrawal' in sub_data_all or 'statusform_comments' in sub_data_all:
+	#	print("Status form filled out")
+	#	status_removed = "1"
+	#else:
+	#	print("No status form variables")
 
 if status_removed == "1":
 	status = 99
@@ -249,12 +274,12 @@ print(id)
 for name in form_names:
 	form_tracker = {}
 	day_tracker = []
-
+	print(name)
 	form = dict.loc[dict['Form Name'] == name]
 	form_vars = form['Variable / Field Name'].tolist()
-
+	form_vars.append('redcap_event_name')
 	#print(id)
-	print(name)
+	#print(name)
 
 	form_info_2 = pd.DataFrame(columns = event_list)
 
@@ -281,10 +306,10 @@ for name in form_names:
 		form_info_2.at["Total_variables", event_2] = 0
 		form_info_2.at["Missing_vars", event_2] = 0
 
-		total = (len(form_vars) - 3)
-		existing = (len(form_info_2.index) - 3)
-		form_info_2.at["Existing_variables", event_2] = (len(form_info_2.index) - 3)
-		form_info_2.at["Total_variables", event_2] = (len(form_vars) - 3)
+		total = (len(form_vars) - 4)
+		existing = (len(form_info_2.index) - 4)
+		form_info_2.at["Existing_variables", event_2] = (len(form_info_2.index) - 4)
+		form_info_2.at["Total_variables", event_2] = (len(form_vars) - 4)
 		# adding the number of nas to the number of total minus existing variables
 		#print("getting sum for missing variables")
 		missing = form_info_2.isna().sum()
@@ -393,7 +418,7 @@ for name in form_names:
 	age = 0
 	age_months = 0
 	if name in ['sociodemographics']: 
-		#print(sub_data_all)
+		print(sex)
 		form_info_2.loc["Percentage" , baseline] = 100
 		if 'chrdemo_sexassigned' in sub_data_baseline:
 			sex = sub_data_baseline.at[0, "chrdemo_sexassigned"]
@@ -424,12 +449,18 @@ for name in form_names:
 		print("Age: " + str(age))
 		if sub_data_baseline.empty:
 			form_info_2.loc["Percentage" , screening] = 100
-			form_info_2.loc["chrdemo_sexassigned" , screening] = sex 
+			form_info_2.loc["chrdemo_sexassigned" , screening] = sex
+
 		#form_info_2 = form_info_2.T[form_info_2.T.Percentage > 0] 
-		#print(form_info_2.T)
+		print(form_info_2)
+
 	# adding IQ measure or not - if past baseline, marked
 	# get at baseline, bl + m2, M2 no bl, not completed	
-	if name in ['iq_assessment_wasiii_wiscv_waisiv']: 
+	if name in ['health_conditions_medical_historypsychiatric_histo']:
+		print("Check")
+
+	if name in ['iq_assessment_wasiii_wiscv_waisiv']:
+		print("Check1") 
 		if "chriq_fsiq" in sub_data_baseline and "chrpenn_complete" in sub_data_baseline and "chrpreiq_standard_score" in sub_data_baseline:
 			bl_cog = 0
 			m2_cog = 0	
@@ -593,12 +624,13 @@ for name in form_names:
 
 	## adding blood biomarkers
 	if name in ['blood_sample_preanalytic_quality_assurance']: 
-		if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9':
+		if "chrblood_drawdate" in sub_data_baseline and pd.notna(sub_data_baseline.at[0, "chrblood_drawdate"]) and sub_data_baseline.at[0, "chrblood_drawdate"] != '-3' and sub_data_baseline.at[0, "chrblood_drawdate"] != '-9' and sub_data_baseline.at[0, "chrblood_drawdate"] != '1903-03-03':
 			date_drawn_bl = sub_data_baseline.at[0, "chrblood_drawdate"]
 			date_drawn_bl = datetime.strptime(date_drawn_bl, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_bl))
-		if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9':
+		if "chrblood_drawdate" in sub_data_month2 and pd.notna(sub_data_month2.at[0, "chrblood_drawdate"]) and sub_data_month2.at[0, "chrblood_drawdate"] != '-3' and sub_data_month2.at[0, "chrblood_drawdate"] != '-9' and sub_data_month2.at[0, "chrblood_drawdate"] != '1903-03-03' :
 			date_drawn_m2 = sub_data_month2.at[0, "chrblood_drawdate"]
+			print(str(date_drawn_m2))
 			date_drawn_m2 = datetime.strptime(date_drawn_m2, "%Y-%m-%d %H:%M")
 			print(str(date_drawn_m2))
 
@@ -929,7 +961,7 @@ for name in form_names:
 
 	if name in ['oasis'] and 2 in sub_data_all.index:
 		# baseline
-		if "chroasis_oasis_1" not in sub_data_all or  "chroasis_oasis_2" not in sub_data_all or "chroasis_oasis_3" not in sub_data_all or "chroasis_oasis_4" not in sub_data_all or "chroasis_oasis_2" not in sub_data_all:
+		if "chroasis_oasis_1" not in sub_data_all or  "chroasis_oasis_2" not in sub_data_all or "chroasis_oasis_3" not in sub_data_all or "chroasis_oasis_4" not in sub_data_all or "chroasis_oasis_5" not in sub_data_all:
 			#print("Missing variables nay")
 			form_info_2.at["no_missing_oasis", baseline] = "0" # something missing
 			form_info_2.at["no_missing_oasis", month2] = "0"
@@ -979,6 +1011,7 @@ for name in form_names:
 				promis_bl = 1
 				form_info_2.at["no_missing_promis", baseline] = "1"
 			#month2
+			#print(sub_data_all)
 			if 4 in sub_data_all.index:
 				if pd.isnull(sub_data_all.at[4, "chrpromis_sleep109"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep116"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep20"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep44"]) or pd.isnull(sub_data_all.at[4, "chrpromise_sleep108"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep72"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep67"]) or pd.isnull(sub_data_all.at[4, "chrpromis_sleep115"]):
 				
@@ -1131,21 +1164,21 @@ for name in form_names:
 
 
 
-	if name in ['premorbid_adjustment_scale'] and 2 in sub_data_all.index: 
+	if name in ['premorbid_adjustment_scale'] and 3 in sub_data_all.index: 
 		# baseline
-		pas_6_11_q = 0
-		pas_12_15_q = 0
-		pas_16_18_q = 0
+		pub_6_11_q = 0
+		pub_12_15_q = 0
+		pub_16_18_q = 0
 		pub_19_q = 0
 		if "chrpas_pmod_child1" not in sub_data_all or  "chrpas_pmod_child1" not in sub_data_all or "chrpas_pmod_child2" not in sub_data_all or "chrpas_pmod_child3" not in sub_data_all or "chrpas_pmod_child4" not in sub_data_all:
 			print("Missing variables")
-			pas_6_11_q = 0
+			pub_6_11_q = 0
 		else:
 			if pd.isnull(sub_data_all.at[3, "chrpas_pmod_child1"]) or pd.isnull(sub_data_all.at[3, "chrpas_pmod_child2"]) or pd.isnull(sub_data_all.at[3, "chrpas_pmod_child3"]) or pd.isnull(sub_data_all.at[3, "chrpas_pmod_child4"]):
-				pas_6_11_q = 0
+				pub_6_11_q = 0
 			else:
 				print("Complete variables")
-				pas_6_11_q = 1
+				pub_6_11_q = 1
 			# early adol
 		if "chrpas_pmod_adol_early1" not in sub_data_all or "chrpas_pmod_adol_early2" not in sub_data_all or "chrpas_pmod_adol_early3" not in sub_data_all or "chrpas_pmod_adol_early4" not in sub_data_all or "chrpas_pmod_adol_early5" not in sub_data_all:
 			pub_12_15_q = 0
@@ -1173,17 +1206,17 @@ for name in form_names:
 				pub_19_q = 0	
 		# all questions
 		form_info_2.at["no_missing_pubds", baseline] = "0"
-		if age < 15 and pas_6_11_q == 1:	
+		if age < 15 and pub_6_11_q == 1:	
 			form_info_2.at["no_missing_pubds", month1] = "1"
-		if age < 18 and pas_6_11_q == 1 and pub_12_15_q == 1:
+		if age < 18 and pub_6_11_q == 1 and pub_12_15_q == 1:
 			form_info_2.at["no_missing_pubds", month1] = "1"
-		if age < 19 and pas_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1:
+		if age < 19 and pub_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1:
 			form_info_2.at["no_missing_pubds", month1] = "1"
-		if age > 19 and pas_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1 and pub_19_q == 1:
+		if age > 19 and pub_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1 and pub_19_q == 1:
 			form_info_2.at["no_missing_pubds", month1] = "1"
 			
 			
-
+	
 	form_info_2 = form_info_2.transpose()
 	form_info_2.reset_index(inplace=True)
 	#print("Printing form info - are there multiple rows?")
@@ -1199,7 +1232,7 @@ for name in form_names:
 	dpdash_main = pd.concat(frames, axis=1)
 	#print("checking main")
 	#print(dpdash_all)
-	#print(dpdash_main)
+	#print(dpdash_main.T)
 
 	dpdash_main = dpdash_main.set_index('index')
 	#print(dpdash_main.index)
@@ -1279,16 +1312,21 @@ for name in form_names:
 		dpdash_main.at[event_2, 'day'] = day
 	
 		# adding a days since consent
-		dpdash_main.at[event_2, 'days_since_consent'] = days_between(consent, today)	
+		#dpdash_main.at[event_2, 'days_since_consent'] = days_between(consent, today)	
 
 
 	dpdash_main = dpdash_main[dpdash_main.Percentage > 0]
-
+	#print(dpdash_main)
 	if name in ['sociodemographics']:
-		if dpdash_main.at[baseline, 'day'] == 0:
-			print("Changing day!")
-			dpdash_main.at[baseline, 'day'] = 1
-			print(dpdash_main.T)
+		print(baseline)
+		if dpdash_main.index.contains(str(baseline)):
+			if dpdash_main.at[baseline, 'day'] == 0:
+				print("Changing day!")
+				dpdash_main.at[baseline, 'day'] = 1
+				print(dpdash_main.T)
+			else:
+				print("Don't need to change the day!")
+				print(dpdash_main.T)
 	#removing rows with no data
 	final_csv = dpdash_main[dpdash_main.Percentage > 0]
 	#final_csv = dpdash_main[dpdash_main.Percentage != "NaN"]

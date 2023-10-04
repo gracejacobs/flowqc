@@ -26,7 +26,13 @@ directory = str(sys.argv[2])
 output1 = "/data/predict1/data_from_nda/" + directory + "/"
 
 print("Directory: ", output1)
-
+my_csv = open("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/combined_variables3.txt","r") 
+my_text = my_csv.read() 
+my_list = my_text.split(",") 
+print(my_list)
+print(type(my_list))
+#my_list = tuple(my_list)
+#print(type(my_list))
 # output folder
 #output1 = "/data/predict/data_from_ndaformqc/"
 #output1 = "/data/predict1/data_from_nda/formqc_test/"
@@ -36,8 +42,11 @@ site_list = ["BI", "CA", "CM", "GA", "KC", "SD", "SF", "SI", "HA", "YA", "LA", "
 
 # list of ids to include
 if network == "PRONET":
+	site_list = ["BI", "CA", "CM", "GA", "KC","MA","MU", "SD", "SF", "SI", "HA", "YA", "LA", "WU", "PI", "PA", "PV", "OR","SL", "IR", "NL", "NN", "NC", "TE", "MT", "LS"]
 	ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/pronet_sub_list_chr.txt", sep= "\n", index_col = False, header = None)
+
 if network == "PRESCIENT":
+	site_list = ["ME", "CP", "BM", "SG", "AD", "CM", "LS", "ST", "JE", "HK", "GW"]
 	ids = pd.read_csv("/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/prescient_json_sub_list_combined.txt", sep= "\n", index_col = False, header = None)
 
 id_list = ids.iloc[:, 0].tolist()
@@ -940,6 +949,9 @@ for id in id_list:
 			print("Length of percentage file: ", perc_check_2.index[-1])
 			status = (perc_check_2.index[-1] + 1)
 			
+	
+	else:
+		perc_check_2 = pd.DataFrame()
 						
 	if status_removed == "1":
 		status = 99
@@ -1090,7 +1102,7 @@ for id in id_list:
 
 ## Concatenating all participant data together
 # screening visit
-final_csv = pd.concat(id_tracker, ignore_index=True)
+final_csv = pd.concat(id_tracker, ignore_index=True, sort=True)
 print("Screening CSV")
 print(final_csv)
 
@@ -1106,12 +1118,20 @@ final_csv = final_csv.sort_values(['days_since_consent', 'day'])
 final_csv.loc[:,'day'] = numbers
 numbers.sort(reverse = True)
 final_csv.loc[:,'num'] = numbers
-	
+len(final_csv.columns)
 final_csv.to_csv(output1 + "combined-"+ network +"-form_screening-day1to1.csv", sep=',', index = False, header=True)
 
+column_headers = list(final_csv.columns.values)
+updated_list = list(set(column_headers) & set(my_list))
+#print(updated_list)
+#final_csv.loc[[updated_list]]
+#final_csv = final_csv[[my_list]]
+#print("SCREENING CSV")
+#print(final_csv)
+#final_csv.to_csv(output1 + "combined-"+ network +"-screening-day1to1.csv", sep=',', index = False, header=True)
 
 # baseline visit
-final_baseline_csv = pd.concat(id_baseline_tracker, ignore_index=True)
+final_baseline_csv = pd.concat(id_baseline_tracker, ignore_index=True, sort=True)
 numbers = list(range(1,(len(final_baseline_csv.index) +1))) # changing day numbers to sequence
 final_baseline_csv.loc[:,'day'] = numbers
 
@@ -1119,11 +1139,15 @@ final_baseline_csv = final_baseline_csv.sort_values(['days_since_consent', 'day'
 final_baseline_csv.loc[:,'day'] = numbers
 numbers.sort(reverse = True)
 final_baseline_csv.loc[:,'num'] = numbers
-
+len(final_baseline_csv.columns)
 final_baseline_csv.to_csv(output1 + "combined-"+ network +"-form_baseline-day1to1.csv", sep=',', index = False, header=True)
 
+#final_baseline_csv = final_baseline_csv[[my_list]]
+#print(final_baseline_csv)
+#final_baseline_csv.to_csv(output1 + "combined-"+ network +"-baseline-day1to1.csv", sep=',', index = False, header=True)
+
 ### conversion
-final_csv = pd.concat(id_conversion_tracker, ignore_index=True)
+final_csv = pd.concat(id_conversion_tracker, ignore_index=True, sort=True)
 numbers = list(range(1,(len(final_csv.index) +1)))
 final_csv.loc[:,'day'] = numbers
 final_csv = final_csv.sort_values(['days_since_consent', 'day'])
@@ -1133,8 +1157,14 @@ final_csv.loc[:,'num'] = numbers
 
 final_csv.to_csv(output1 + "combined-"+ network +"-form_conversion-day1to1.csv", sep=',', index = False, header=True)
 
+#final_csv = final_csv[[my_list]]
+#print("CONVERSION CSV")
+#print(final_csv)
+#final_csv.to_csv(output1 + "combined-"+ network +"-conversion-day1to1.csv", sep=',', index = False, header=True)
+
+
 ## floating
-final_csv = pd.concat(id_floating_tracker, ignore_index=True)
+final_csv = pd.concat(id_floating_tracker, ignore_index=True, sort=True)
 numbers = list(range(1,(len(final_csv.index) +1)))
 final_csv.loc[:,'day'] = numbers
 final_csv = final_csv.sort_values(['days_since_consent', 'day'])
@@ -1144,6 +1174,10 @@ final_csv.loc[:,'num'] = numbers
 
 final_csv.to_csv(output1 + "combined-"+ network +"-form_floating-day1to1.csv", sep=',', index = False, header=True)
 
+#print("SMALLER floating CSV")
+#final_csv = final_csv[[my_list]]
+#print(final_csv)
+#final_csv.to_csv(output1 + "combined-"+ network +"-floating-day1to1.csv", sep=',', index = False, header=True)
 
 ###### Saving combined csvs
 #final_baseline_csv.to_csv(output1 + "combined-"+ network +"-form_baseline-day1to1.csv", sep=',', index = False, header=True)
@@ -1152,7 +1186,7 @@ for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7",
 	
 	print(vi)
 	tracker_name = vars()['id_' + str(vi) + '_tracker']
-	concat_csv = pd.concat(tracker_name, ignore_index=True)
+	concat_csv = pd.concat(tracker_name, ignore_index=True, sort=True)
 
 	numbers = list(range(1,(len(concat_csv.index) +1))) # changing day numbers to sequence
 	concat_csv.loc[:,'day'] = numbers
@@ -1167,6 +1201,10 @@ for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7",
 	concat_csv.to_csv(output1 + file_name, sep=',', index = False, header=True)
 	print("csv saved and creating AMP-SCZ")
 
+#	concat_csv = concat_csv[[my_list]]
+#	file_name = "combined-{0}-{1}-day1to1.csv".format(network, vi)
+#	concat_csv.to_csv(output1 + file_name, sep=',', index = False, header=True)
+	
 	## Creating AMP-SCZ files
 	#prescient_file = pd.read_csv(output1 + "combined-PRESCIENT-form_" + str(vi) + "-day1to1.csv")
 	#ampscz = pd.concat([concat_csv, prescient_file], axis=0, ignore_index=True)
@@ -1187,7 +1225,7 @@ for vi in ["month1", "month2", "month3", "month4", "month5", "month6", "month7",
 		site_final.loc[:, 'day'] = numbers
 		numbers.sort(reverse = True)
 		site_final.loc[:,'num'] = numbers
-
+		len(site_final.columns)
 		file_name = "combined-{0}-form_{1}-day1to1.csv".format(si, vi)
 		site_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
 
@@ -1210,7 +1248,7 @@ for si in site_list:
 	site_final.loc[:, 'day'] = numbers
 	numbers.sort(reverse = True)
 	site_final.loc[:,'num'] = numbers
-
+	len(site_final.columns)
 	file_name = "combined-{0}-form_baseline-day1to1.csv".format(si)
 	site_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
 
@@ -1221,7 +1259,7 @@ for si in site_list:
 	site_scr_final.loc[:,'day'] = numbers
 	numbers.sort(reverse = True)
 	site_scr_final.loc[:,'num'] = numbers
-
+	len(site_final.columns)
 	file_name = "combined-{0}-form_screening-day1to1.csv".format(si)
 	site_scr_final.to_csv(output1 + file_name, sep=',', index = False, header=True)
 

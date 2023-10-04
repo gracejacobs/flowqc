@@ -491,23 +491,28 @@ for name in form_names:
 					else:
 						form_info.at["no_missing_cdssrsfu", 'Variables'] = "0"
 
-			if name in ['premorbid_adjustment_scale']:
+			
+
+			#if name in ['premorbid_adjustment_scale']:
 			# month1
-				pas_6_11_q = 0
-				pas_12_15_q = 0
-				pas_16_18_q = 0
-				pub_19_q = 0
+			pub_6_11_q = 0
+			pub_12_15_q = 0
+			print("pub_12_15_q: " + str(pub_12_15_q))
+			pub_16_18_q = 0
+			pub_19_q = 0
+			if name in ['premorbid_adjustment_scale']:
 				if "chrpas_pmod_child1" not in sub_data or  "chrpas_pmod_child1" not in sub_data or "chrpas_pmod_child2" not in sub_data or "chrpas_pmod_child3" not in sub_data or "chrpas_pmod_child4" not in sub_data:
 					print("Missing variables")
-					pas_6_11_q = 0
+					pub_6_11_q = 0
 				else:
 					if pd.isnull(sub_data.at[0, "chrpas_pmod_child1"]) or pd.isnull(sub_data.at[0, "chrpas_pmod_child2"]) or pd.isnull(sub_data.at[0, "chrpas_pmod_child3"]) or pd.isnull(sub_data.at[0, "chrpas_pmod_child4"]):
-						pas_6_11_q = 0
+						pub_6_11_q = 0
 					else:
 						print("Complete variables")
-						pas_6_11_q = 1
+						pub_6_11_q = 1
 				# early adol
 				if "chrpas_pmod_adol_early1" not in sub_data or "chrpas_pmod_adol_early2" not in sub_data or "chrpas_pmod_adol_early3" not in sub_data or "chrpas_pmod_adol_early4" not in sub_data or "chrpas_pmod_adol_early5" not in sub_data:
+					print("CHECK 1")
 					pub_12_15_q = 0
 				else:
 					if pd.notna(sub_data.at[0, "chrpas_pmod_adol_early1"]) or pd.notna(sub_data.at[0, "chrpas_pmod_adol_early2"]) or pd.notna(sub_data.at[0, "chrpas_pmod_adol_early3"]) or pd.notna(sub_data.at[0, "chrpas_pmod_adol_early4"]) or pd.notna(sub_data.at[0, "chrpas_pmod_adol_early5"]) or pd.isnull(sub_data.at[0, "chrpas_pmod_child4"]):
@@ -533,13 +538,13 @@ for name in form_names:
 						pub_19_q = 0
 				# all questions
 				form_info.at["no_missing_pubds", 'Variables'] = "0"
-				if age < 15 and pas_6_11_q == 1:
+				if age < 15 and pub_6_11_q == 1:
 					form_info.at["no_missing_pubds", 'Variables'] = "1"
-				if age < 18 and pas_6_11_q == 1 and pub_12_15_q == 1:
+				if age < 18 and pub_6_11_q == 1 and pub_12_15_q == 1:
 					form_info.at["no_missing_pubds", 'Variables'] = "1"
-				if age < 19 and pas_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1:
+				if age < 19 and pub_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1:
 					form_info.at["no_missing_pubds", 'Variables'] = "1"
-				if age > 19 and pas_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1 and pub_19_q == 1:
+				if age > 19 and pub_6_11_q == 1 and pub_12_15_q == 1 and pub_16_18_q == 1 and pub_19_q == 1:
 					form_info.at["no_missing_pubds", 'Variables'] = "1"
 			
 

@@ -26,7 +26,7 @@ else:
 
 
 id_list = ids.iloc[:, 0].tolist()
-print(id_list)
+#print(id_list)
 
 baseline_SPLLT_tracker = {}
 baseline_NOSPLLT_tracker = {}
@@ -61,7 +61,7 @@ for id in id_list:
 		sub_data_all.sort_values(by='session_date')
 		sub_data_all = sub_data_all.reset_index(drop=True)
 		pd.set_option('display.max_rows', None)
-		#print(sub_data_all.T)
+		print(sub_data_all.T)
 
 		all_events = sub_data_all.index.tolist()
 		print(all_events)
@@ -158,8 +158,10 @@ for id in id_list:
 					#print("month24_SPLLT")
 
 
-	print(baseline_NOSPLLT.T)
-	print(baseline_SPLLT.T)
+	#print("NOSPLLT")
+	#print(baseline_NOSPLLT.T)
+	#print("SPLLT")
+	#print(baseline_SPLLT.T)
 		## setting up status of data available
 	if not baseline_SPLLT.empty or not baseline_NOSPLLT.empty:
 		baseline_avail = 1
@@ -235,7 +237,7 @@ for id in id_list:
 		#data =  vars()[str(visit) + '_NOSPLLT']
 		#print(data.info())
 		#print(data.T)		
-
+		
 		for var in ["mpract_valid_code", "spcptn90_valid_code", "er40_d_valid_code", "sfnb2_valid_code", "sfnb2_valid_code", "digsym_valid_code", "svolt_a_valid_code", "sctap_valid_code"]:
 
 			var_vis = "{0}_{1}".format(var, visit)
@@ -244,8 +246,7 @@ for id in id_list:
 			data =  vars()[str(visit) + '_NOSPLLT']
                 	#print(data.info())
 			#print(data.T)
-			if not data.empty:		
-		
+			if not data.empty and var in data:			
 				var_vis = "{0}_{1}".format(var, visit)
 				#print(var_vis)
 			#	print(summary_form.T)
@@ -255,6 +256,8 @@ for id in id_list:
 				if var == "digsym_valid_code" and len(data.at[0, var]) == 0:
 					summary_form.at[0, var_vis] = data.at[0, "digsymb_valid_code"]
 					summary_form.at[row, var] = data.at[0, "digsymb_valid_code"]
+			if not data.empty and var not in data:
+				print("Missing " + var + " in " + visit)
 
 		## SPLLT
 		data = vars()[str(visit) + '_SPLLT']
@@ -287,7 +290,7 @@ for id in id_list:
 	names_dash = ['reftime','day', 'timeofday', 'weekday', 'subjectid', 'site', 'mtime']
 	dpdash_all = pd.DataFrame(columns = names_dash)
 	frames = [dpdash_all, summary_form]
-	dpdash_main = pd.concat(frames)
+	dpdash_main = pd.concat(frames, sort=False)
 	dpdash_main = dpdash_main.reset_index(drop=True)
 
 	numbers = list(range(1, len(dpdash_main.index) + 1))
@@ -298,9 +301,57 @@ for id in id_list:
 	dpdash_main.loc[:, 'site'] = site
 	dpdash_main.loc[:,'day'] = numbers
 	dpdash_main.loc[:,'mtime'] = today
-	#print(dpdash_main.T)
+	print(dpdash_main.T)
 
 	dpdash_main.to_csv(output1 + site + "-" + id + "-form_cognition_summary-day1to" + str(day) + ".csv", sep=',', index = False, header=True)
+
+	print("Baseline SPLLT before adding subject id and site")
+	print(baseline_SPLLT)
+
+	for vi in ["baseline_SPLLT", "baseline_NOSPLLT", "month2_SPLLT", "month2_NOSPLLT", "month6_SPLLT", "month6_NOSPLLT"]:
+		print(vi)
+		data = vars()[str(vi)]
+		if not data.empty:
+			data.loc[0,'subjectid'] = id
+			data.loc[0,'site'] = site
+
+	print("Baseline SPLLT after adding subject id and site")
+	print(baseline_SPLLT.T)
+	baseline_SPLLT_tracker["Baseline_{0}".format(id)] = baseline_SPLLT
+	baseline_NOSPLLT_tracker["Baseline_{0}".format(id)] = baseline_NOSPLLT
+	
+	month2_SPLLT_tracker["Month2_{0}".format(id)] = month2_SPLLT
+	month2_NOSPLLT_tracker["Month2_{0}".format(id)] = month2_NOSPLLT
+
+	month6_SPLLT_tracker["Month6_{0}".format(id)] = month6_SPLLT
+	month6_NOSPLLT_tracker["Month6_{0}".format(id)] = month6_NOSPLLT
+
+#SPLLT trackers first
+print("\n\n\n" + "CONCATENATING TRACKERS")
+
+for vi in ["baseline", "month2", "month6"]:
+	print(vi)
+	tracker_name = vars()[str(vi) + '_SPLLT_tracker']
+	concat_csv = pd.concat(tracker_name, ignore_index=True, sort=False)
+
+	numbers = list(range(1,(len(concat_csv.index) +1))) # changing day numbers to sequence
+	concat_csv.loc[:,'day'] = numbers
+
+	print("Concatenated SPLLT csv")
+	print(concat_csv.T)
+	file_name = "combined_cognition_SPLLT-{0}-{1}-day1to1.csv".format(network, vi)
+	concat_csv.to_csv(output1 + file_name, sep=',', index = False, header=True)
+
+for vi in ["baseline", "month2", "month6"]:
+	print(vi)
+	tracker_name = vars()[str(vi) +'_NOSPLLT_tracker']
+	concat_csv = pd.concat(tracker_name, ignore_index=True, sort=False)
+	numbers = list(range(1,(len(concat_csv.index) +1)))
+	concat_csv.loc[:,'day'] = numbers
+	print("Concatenated NOSPLLT csv")
+	print(concat_csv.T)
+	file_name = "combined_cognition_NOSPLLT-{0}-{1}-day1to1.csv".format(network, vi)
+	concat_csv.to_csv(output1 + file_name, sep=',', index = False, header=True)
 
 
 

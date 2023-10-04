@@ -29,7 +29,7 @@ month2_prescient = pd.read_csv(input + "combined-PRESCIENT-form_month2-day1to1.c
 print(screening_prescient.T)
 
 
-screening_prescient_1 = screening_prescient[['subjectid', 'site', 'chrguid_guid', 'chric_consent_date', 'chrcrit_part', 'included_excluded', 'visit_status_string']]
+screening_prescient_1 = screening_prescient[['subjectid', 'site', 'chrguid_guid', 'chric_consent_date', 'chrcrit_part', 'included_excluded', 'visit_status_string', 'last_visit_status']]
 #print(screening_prescient)
 
 ## screening complet - "['chrcrit_missing'] not in index"
@@ -94,7 +94,7 @@ baseline_pronet = pd.read_csv(input + "combined-PRONET-form_baseline-day1to1.csv
 
 print(screening_pronet.T)
 
-screening_pronet_1 = screening_pronet[['subjectid', 'site', 'chrguid_guid', 'chric_consent_date', 'chrcrit_part', 'included_excluded', 'visit_status_string']]
+screening_pronet_1 = screening_pronet[['subjectid', 'site', 'chrguid_guid', 'chric_consent_date', 'chrcrit_part', 'included_excluded', 'visit_status_string', 'last_visit_status']]
 
 ## excluded adverse events, psychosocial treatment, resource use log
 
@@ -163,6 +163,8 @@ ampscz = ampscz.rename(columns={'chrguid_guid': 'GUID', 'chrcrit_part': 'Group',
 ampscz['included_excluded'] = ampscz['included_excluded'].map({1:'yes' , 0:'no'})
 ampscz['Sex_at_birth'] = ampscz['Sex_at_birth'].map({1:'male' , 2:'female'})  
 ampscz['Group'] = ampscz['Group'].map({1:'CHR' , 2:'HC'})  
+ampscz['last_visit_status'] = ampscz['last_visit_status'].map({0.0:'consent' , 1.0:'screen', 2.0:'baseline', 3.0:'month1', 4.0:'month2', 5.0:'month3',6.0:'month4', 7.0:'month5', 8.0:'month6', 9.0:'month7', 10.0:'month8', 11.0:'month9', 12.0:'month10', 13.0:'month11', 14.0:'month12', 15.0:'month18', 16.0:'month24' })
+
 #ampscz['Hispanic_Latino'] = ampscz['Hispanic_Latino'].map({0:'no' , 1:'yes'})
 #ampscz['Race'] = ampscz['Race'].map({1:'Indigenous' , 2:'East Asian', 3:'Southeast Asian', 4:'South Asian', 5:'Black/African American', 6:'West/Central Asian & Middle Eastern', 7:'White/European/North American/Australian', 8:'Native Hawaiian or Native Pacific islander'})
  

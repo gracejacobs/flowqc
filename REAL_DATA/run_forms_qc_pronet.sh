@@ -1,23 +1,18 @@
 #!/bin/bash
 
-#source /data/pnl/soft/pnlpipe3/bashrc3
-
 source /data/pnl/soft/pnlpipe3/bashrc3
 
 cd /data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/
 
-#today = `date +"%m_%d_%Y"`
-#today = $(date +"%m_%d_%Y")
-
-# creating files
+# creating log files
 echo $(date +"%d-%m-%Y") > /data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_$(date +"%d-%m-%Y").log
 
 echo $(date +"%d-%m-%Y") > /data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_err_$(date +"%d-%m-%Y").log
 chmod 777 /data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_err_$(date +"%d-%m-%Y").log
 
-LOGFILE=/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_$(date +"%d-%m-%Y")_2.log
+LOGFILE=/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_$(date +"%d-%m-%Y").log
 
-LOGERR=/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_err_$(date +"%d-%m-%Y")_2.log
+LOGERR=/data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/logs/run_forms_qc_pronet_err_$(date +"%d-%m-%Y").log
 
 echo ${LOGFILE}
 echo ${LOGERR}
@@ -49,8 +44,7 @@ echo "Creating csvs - Pronet"
 	
 cat pronet_sub_list_recent.txt | while read sub; do
 	rm /data/predict1/data_from_nda/formqc/*$sub*day*
-#	python forms_qc_ind_csv_updated.py $sub
-#	rm /data/predict1/data_from_nda/formqc_test/*$sub*day*
+
 	python /data/pnl/home/gj936/U24/Clinical_qc/flowqc/REAL_DATA/forms_qc_ind_both_networks.py $sub PRONET formqc
 	echo ""
 	echo ""
